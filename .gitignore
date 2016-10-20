@@ -1,0 +1,11 @@
+build
+bin
+.gradle
+.settings
+.project
+.classpath
+repo
+buildSrc
+buildSrcc
+releaseNotes.wiki
+target

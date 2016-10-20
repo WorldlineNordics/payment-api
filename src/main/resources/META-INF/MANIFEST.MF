@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+risaacson-build: 3
+Implementation-Title: PaymentPageAPI
+Implementation-Version: 0.0.4
+TAG: PaymentPageAPI_0_0_4_50
+mhallstrom-build: 13
+TargetJDK: 1.6
+Build: 50
+Build-date: Fri Aug 03 13:52:59 CDT 2012
+Project-status: Release
+Last_build_by: risaacson
+VCS_branch: HEAD
+unknowndev-build: 17
+kkarlberg-build: 17
+

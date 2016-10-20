@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>${static.title}</title>
+    <link type="text/css" href="${config.content_url}css/custom-theme/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+    <link href="${config.content_url}css/payment.css" type="text/css" media="screen" rel="stylesheet" />
+		<style type="text/css">
+			.paymentChoice h3{color:#FFF;background:#999 url("${config.content_url}img/gradient.gif") top left repeat-x;margin:-10px -10px 0;padding:4px;}
+			/*.active{width:550px;border:1px solid #999;background-color:#FFF;margin:10px 0;padding:10px;}
+			.active h3{color:#fff;background:#999 url("${config.content_url}img/gradient.gif") top left repeat-x;margin:-10px -10px 0;padding:4px;}*/
+			.submit{margin-top:20px;background-image:url("${config.content_url}img/button_background.png");background-position:left top;background-repeat:repeat-x;border:1px outset #CCC;color:#555;cursor:pointer;font-weight:700;padding:4px 5px;}
+    </style>
+  </head>
+  <body>
+  	<div id="attentionBlock">
+    	<noscript>
+        <fieldset id="nojs">
+          <img width="14" height="14" src="${config.content_url}img/stop.gif" alt="${static.errorCode1}"/>&nbsp; ${static.javaScriptInfo}
+        </fieldset>
+      </noscript>
+    	<fieldset id="attention">
+    		${static.refreshAndBackInfo}
+      </fieldset>
+    </div>
+    <div id="paymentMethods">
+	    <fieldset class="topField">
+      	<div id="price">
+          <span class="label">${static.amount}:</span>&nbsp; ${req.formattedAmount} ${req.currency}
+          <br \>
+          <span class="label">${static.orderId}:</span>&nbsp; ${req.orderId}
+          <br \>
+          <span class="label">${static.orderDescription}:</span>&nbsp; ${req.orderDescription}
+        </div>
+        <div id="nglogo">
+          <img src="${config.content_url}img/merchant_logo.gif" alt="Merchant logo" id="merchantlogo" width="173" height="50">
+        </div>
+      </fieldset>
+      <#assign rv = req.errorCode!"0">
+      <#if rv != "0">
+        <p class="error">
+          <fieldset id="errorField">
+            <#if rv == "1">
+              ${static.errorCode1}
+            <#elseif rv == "2">
+              ${static.errorCode2}
+            <#elseif rv == "3">
+              ${static.errorCode3}
+            <#else>
+              ${static.errorCodeUnknown}
+            </#if>
+          </fieldset>
+          <br />
+        </p>
+      </#if>
+      
+      <div id="paymentChoiceCCbig" class="paymentChoice">
+        <h3><input type="radio" id="rbtnCreditCard" value="Credit Card" name="paymentType" checked="checked" onClick="toggleStatus()"><label for="rbtnCreditCard">${static.creditCard}</label></h3>
+        <div id="paymentChoiceCC">
+        <form name="creditCard" id="creditCard" action="${config.payment_servlet}" method="POST">
+          <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
+          <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
+          <input type="hidden" name="${input.paymentType}" value="CARD"/>
+          <input type="hidden" name="${input.cardNumberField}" value="${input.cardNumber}"/>
+          <input type="hidden" name="${input.cvCodeField}" value="${input.cvCode}"/>
+          <input type="hidden" name="${input.cardType}" value="UNKNOWN"/>
+          
+		  <fieldset class="cardType">
+            <ul id="ulCCType">
+              <li>
+                <!-- INTERNATIONAL -->
+                <div style="width:75px" align="center">
+                <img width="75" height="40" class="ccLogo" src="${config.content_url}img/visa_logo.gif" alt="Visa"/>
+                </div>
+               </li>
+              <li>
+              <div style="width:75px" align="center">
+                <img width="75" height="40" class="ccLogo" src="${config.content_url}img/mastercard_logo.gif" alt="MasterCard"/>
+                </div>
+                </li>
+              <li>
+              <div style="width:75px" align="center">
+                <img width="75" height="40" class="ccLogo" src="${config.content_url}img/amex_logo.gif" alt="American Express"/>
+                </div>
+                </li> 
+              <li>
+              	<div style="width:75px" align="center">
+                <img width="75" height="40" class="ccLogo" src="${config.content_url}img/maestro_logo.gif" alt="Maestro"/>
+                </div>
+              </li>
+              <li> 
+              	<div style="width:75px" align="center">
+                <img height="40" class="ccLogo" src="${config.content_url}img/discover_logo.gif" alt="Discover"/>
+                </div>
+              </li>
+              <li> 
+              	<div style="width:75px" align="center">
+                <img height="40" class="ccLogo" src="${config.content_url}img/diners_logo.png" alt="Diners"/>
+                </div>
+              </li>
+            </ul>
+          </fieldset>
+		  
+          <fieldset class="cardNumber">
+            <label for="${input.cardNumber}">${static.cardNumber}:</label>
+            <input type="text" name="${input.cardNumber}" id="${input.cardNumber}" size="21" value="${prev.cardNumber}" autocomplete="off"/>
+          </fieldset>
+          
+          <fieldset class="expirationDate">
+            ${static.cardExpirationDate}:
+            <!--<label for="${input.expDateMonth}">${static.month}:</label>-->
+            <select name="${input.expDateMonth}" id="${input.expDateMonth}">
+              <#list ["${static.month}","01", "02", "03", "04", "05","06", "07", "08", "09","10","11", "12"] as month>
+              <#if "${month}" == prev.expDateMonth>selected</#if> >${month}<option value="${month}" <#if "${month}" == prev.expDateMonth>selected</#if> >${month}</option>
+              </#list>
+            </select> 
+            <!--<label for="${input.expDateYear}">${static.year}:</label>-->
+            <select name="${input.expDateYear}" id="${input.expDateYear}" style="font-family:Arial Unicode MS"></select>
+          </fieldset>
+          
+          <fieldset class="cvv">
+          	<span id="cvvlabel" title="${static.cvvInfo}"><label for="${input.cvCode}"><a href="#" id="cvvinfolabel">${static.cvv}:</a></label></span>
+            <input type="text" name="${input.cvCode}" id="${input.cvCode}" size="4" maxlength="4" autocomplete="off"/>
+          </fieldset>
+
+ 					<fieldset class="bottomField">
+          	<div class="submitCCOBbtn">
+              <input id="submitCC" class="submit" type="submit" value="${static.submit}"/>
+            </div>
+            <div class="vbv_mcsc">
+            	<a href="http://www.visaeurope.com/personal/onlineshopping/verifiedbyvisa/signup/main.jsp" target="_blank">
+              	<img class="vbv" src="${config.content_url}img/vbv.gif" alt="Verified by Visa" height="35" width="66"/>
+              </a>
+              <a href="http://www.mastercard.com/securecode/" target="_blank">
+              	<img class="mcsc" src="${config.content_url}img/mcsc.gif" alt="MasterCard SecureCode" height="35" width="79"/>
+              </a>
+              <a href="http://protectbuy.com/discover-faq/" target="_blank">
+              	<img class="mcsc" src="${config.content_url}img/discover_ptb.png" alt="Discover ProtectBuy" height="35"/>
+              </a>
+              <a href="http://protectbuy.com/diners-club-faq/" target="_blank">
+              	<img class="mcsc" src="${config.content_url}img/diners_ptb.png" alt="Diners ProtectBuy" height="35"/>
+              </a>
+            </div>
+          </fieldset>
+          
+        </form>
+        </div><!-- /#paymentChoiceCC-->
+      </div><!-- /.paymentChoice-->
+     
+      <div id="paymentChoiceEFTbig" class="paymentChoice">
+      	<h3><input type="radio" id="rbtnEFT" value="EFT" name="paymentType" onClick="toggleStatus()"><label for="rbtnEFT">${static.eft}</label></h3>
+		    <div id="paymentChoiceEFT">
+          <form name="eft" id="eft" action="${config.eft_servlet}" method="GET">
+            <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
+            <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
+            <input type="hidden" name="${input.paymentMethodId}" value="2007" />
+            <fieldset class="expirationDate">
+            	${static.eftStartInstruction}
+            </fieldset>
+            <fieldset class="bottomField">
+              <div class="submitCCOBbtn">
+                <input id="submitEFT" class="submit" type="submit" value="${static.submit}"/>
+              </div>
+              <div class="vbv_mcsc">
+              </div>
+            </fieldset>
+          </form>
+      	</div>
+      </div>    
+   
+   <div id="paymentChoicePPbig" class="paymentChoice">
+      	<h3><input type="radio" id="rbtnPayPal" value="PayPalBanking" name="paymentType" onClick="toggleStatus()"><label for="rbtnPayPal">${static.ewallet}</label></h3>
+		    <div id="paymentChoicePP">
+          <form name="paypalBanking" id="paypalBanking" action="${config.ibp_servlet}" method="GET">
+            <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
+            <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
+            <fieldset class="cardType">
+              <ul id="ulPPType">
+              <li>
+              	<ul class="lbl">
+                  <li class="lblw"><label for="PAYPAL"><img width="120" height="40" class="ccLogo" src="${config.content_url}img/paypal_logo.gif" alt="PAYPAL"/></label></li>
+                  <li>
+                    <div style="width:120px" align="center">
+                    <input type="radio" name="${input.bankId}" id="PAYPAL" value="29" checked="checked" />
+                    <label for="PAYPAL">PayPal</label>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              </ul>
+            </fieldset>
+            <fieldset class="bottomField">
+              <div class="submitCCOBbtn">
+                <input id="submitPP" class="submit" type="submit" value="${static.submit}"/>
+              </div>
+              <div class="vbv_mcsc">
+              </div>
+            </fieldset>
+          </form>
+      	</div>
+      </div>
+            
+      <form name="cancelPayment" id="cancelPayment" action="${config.cancel_servlet}" method="POST">
+        <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
+        <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
+        <input id="cancelBtn" class="cancel" type="submit" value="${static.cancel}">
+      </form>
+      <script src="${config.content_url}js/jquery-1.3.2.min.js" type="text/javascript"></script>
+			<script src="${config.content_url}js/jquery.flower_bubble.js" type="text/javascript"></script>
+      <script src="${config.content_url}js/jquery.pngFix.js" type="text/javascript"></script>
+      <script src="${config.content_url}js/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
+      <script type="text/javascript">
+      /*
+      For the CVV info dialog the jQuery 'dialog' plugin is used:
+      http://docs.jquery.com/UI/Dialog
+      Files required:
+      - js/jquery-1.3.2.min.js
+      - js/jquery-ui-1.7.2.custom.min.js (generated by ThemeRoller tool: http://jqueryui.com/themeroller/)
+      - "css/custom-theme" folder
+      */
+      jQuery(document).ready(function($){
+				// cvv dialog
+        $('#dialog').dialog({
+          autoOpen: false,
+          width: 600
+        });
+        // cvv dialog click here link
+        $('#cvvinfolabel').click(function(){
+          $('#dialog').removeClass('cvvdialog');
+          $('#dialog').dialog('open');
+          return false;
+        });
+      });
+			
+      /*
+      For the opaque overlay cover jQuery 'FLOWER_BUBBLE' plugin is used:
+      http://plugins.jquery.com/project/flower_bubble
+      Files required:
+      - js/jquery-1.3.2.min.js
+      - js/jquery.flower_bubble.js
+      - js/jquery.pngFix.js
+      - flower.gif
+      - bubble.png
+      */
+      $(window).load(function() {
+				flobu1 = new flower_bubble ({
+					base_obj: $( 'div#paymentChoiceCC' ),
+					background: { css: 'white', opacity: 0.5 },
+					block_mode: 'base_obj'
+				});							
+				
+				flobu2 = new flower_bubble ({
+					base_obj: $( 'div#paymentChoiceEFT' ),
+					background: { css: 'white', opacity: 0.5 },
+					block_mode: 'base_obj'
+				});
+				
+				flobu3 = new flower_bubble ({
+					base_obj: $( 'div#paymentChoicePP' ),
+					background: { css: 'white', opacity: 0.5 },
+					block_mode: 'base_obj'
+				});
+        
+        // Now, check which one is clicked by user, and activate corresponding box.
+				toggleStatus();
+				
+				$("#creditCard").submit(function(){
+					if($("#creditCard").valid()){
+						$("#submitCC").attr('value','${static.processingWait}'); 
+						
+						// Disable all submit buttons
+						$("#submitPP").attr('disabled','disabled');						 
+						$("#submitEFT").attr('disabled','disabled'); 
+						$("#submitCC").attr('disabled','disabled'); 
+						$("#cancelBtn").attr('disabled','disabled');	
+						$("#rbtnEFT").attr('disabled','disabled');
+						$("#rbtnPayPal").attr('disabled','disabled');						
+						$("#cancelBtn").css("color","#CCCCCC");
+					}
+					else return;
+				});
+				
+				
+				$("#eft").submit(function(){
+					$("#submitEFT").attr('value','${static.processingWait}');
+					
+					// Disable all submit buttons
+					$("#submitPP").attr('disabled','disabled');					 
+					$("#submitEFT").attr('disabled','disabled'); 
+					$("#submitCC").attr('disabled','disabled'); 
+					$("#cancelBtn").attr('disabled','disabled');
+					
+					$("#rbtnCreditCard").attr('disabled','disabled');					
+					$("#rbtnPayPal").attr('disabled','disabled');
+					
+					$("#cancelBtn").css("color","#CCCCCC");
+				});
+				
+				$("#paypalBanking").submit(function(){
+					$("#submitPP").attr('value','${static.processingWait}');
+					
+					// Disable all submit buttons
+					$("#submitPP").attr('disabled','disabled');					 
+					$("#submitEFT").attr('disabled','disabled'); 
+					$("#submitCC").attr('disabled','disabled'); 
+					$("#cancelBtn").attr('disabled','disabled');
+					
+					$("#rbtnCreditCard").attr('disabled','disabled');
+					$("#rbtnEFT").attr('disabled','disabled');
+					
+					$("#cancelBtn").css("color","#CCCCCC");
+				});
+				
+				$("#cancelPayment").submit(function(){
+
+					// Disable all submit buttons
+					$("#submitPP").attr('disabled','disabled'); 
+					$("#submitEFT").attr('disabled','disabled'); 
+					$("#submitCC").attr('disabled','disabled'); 
+					$("#cancelBtn").attr('disabled','disabled');
+
+					$("#rbtnCreditCard").attr('disabled','disabled');
+					$("#rbtnEFT").attr('disabled','disabled');
+					$("#rbtnPayPal").attr('disabled','disabled');
+					
+					$("#cancelBtn").css("color","#CCCCCC");
+				});
+				
+      });
+      
+      function toggleStatus() {
+        if ($('#rbtnCreditCard').is(':checked')) {
+		  $('#paymentChoiceCC :input').removeAttr('disabled');          
+          $('#paymentChoiceEFT :input').attr('disabled', 'disabled');
+		  $('#paymentChoicePP :input').attr('disabled', 'disabled');
+          flobu1.disable();
+          flobu2.enable();
+		  flobu3.enable();
+		  
+        }
+        else if ($('#rbtnEFT').is(':checked')) {
+          $('#paymentChoiceEFT :input').removeAttr('disabled');
+          $('#paymentChoiceCC :input').attr('disabled', 'disabled');
+		  $('#paymentChoicePP :input').attr('disabled', 'disabled');
+          flobu2.disable();
+          flobu1.enable();
+		  flobu2.disable();
+        }
+		else if ($('#rbtnPayPal').is(':checked')) {
+		  $('#paymentChoicePP :input').removeAttr('disabled');
+          $('#paymentChoiceCC :input').attr('disabled', 'disabled');
+          $('#paymentChoiceEFT :input').attr('disabled', 'disabled');		  
+          flobu3.disable();
+          flobu1.enable();
+		  flobu2.enable();
+		}
+      }
+			
+      </script>
+      
+      <script type="text/javascript" src="${config.content_url}js/jquery.validate.js"></script>
+      <script type="text/javascript" src="${config.content_url}js/jquery.validate.creditcard2.js"></script>
+      <script type="text/javascript">
+        jQuery(document).ready(function($) {
+          // cvv info toggle
+          //$('fieldset.cvv label').click(function () {
+          //  $("#cvc-info").toggle();
+          //});
+          // card validation
+          $("#creditCard").validate({
+            rules: {
+              ${input.cardNumber}: {
+                required: true,
+                creditcard2: function(){
+										var cards = new Array();
+										cards[0] = { cardName: "VISA", regEx: "^4[0-9]{12}([0-9]{3})?$"};
+										cards[1] = { cardName: "MASTERCARD", regEx: "^5[1-5][0-9]{14}$"};
+										cards[2] = { cardName: "AMEX", regEx: "^3[47][0-9]{13}$"};
+										cards[3] = { cardName: "DINERS", regEx: "^3(0[0-5]|[68][0-9])[0-9]{11}$"};
+										cards[4] = { cardName: "DISCOVER", regEx: "^6011[0-9]{12}$"};
+										var cardNum = $("#paymentChoiceCC #creditCard .cardNumber > input").val();						
+										cardNum = cardNum.replace(/[^0-9]/g,'');
+										for (var i=0; i< cards.length; i++) {
+											if (new RegExp(cards[i]["regEx"]).test(cardNum)) {
+												return cards[i]["cardName"];	
+												break;
+											}
+										}
+										return "Unknown";
+  							    }
+              },
+              ${input.cvCode}: {
+                required: true,
+                digits: true,
+                rangelength: [3, 4]
+              },
+							${input.issue}: {
+                //required: true,
+                digits: true,
+                rangelength: [1, 4]
+              },
+              expdatemonth: {
+                required: true,
+                range: [1, 12]
+              },
+              expdateyear: {
+                required: true,
+                range: [10, 100]
+              },
+              issue: {
+                //required: true,
+                digits: true,
+                rangelength: [3, 4]
+              },
+              startdatemonth: {
+                //required: true,
+                range: [1, 12]
+              },
+              startdateyear: {
+                //required: true,
+                range: [8, 25]
+              }
+            },
+            messages: {
+              ${input.cardNumber}: {
+                required: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                creditcard2: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+                },
+              ${input.cvCode}:{
+                required: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                digits: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                rangelength: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+              },
+              ${input.issue}: {
+                required: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                digits: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                rangelength: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+              },
+              expdatemonth: {
+                required: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                range: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+              },
+              expdateyear: {
+                required: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                range: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+              },
+              startdatemonth: {
+                required: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                range: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+              },
+              startdateyear: {
+                required: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                range: '<span class="errorIcon"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+              }
+            }
+          });
+					
+					// Helper function to fire validation when cardType changes!
+					// Important!
+					$("input[type='radio'][name='${input.cardType}']").change(function(){
+							$("#creditCard").validate().element('#${input.cardNumber}');
+					});
+					$("input[type='radio'][name='${input.cardType}']").click(function(){
+							$("#creditCard").validate().element('#${input.cardNumber}');
+					});
+
+var date = new Date();
+						var year = date.getFullYear()-2000, opt; 
+
+						opt = '<option value="${static.year}">${static.year}</option>';
+						$('#paymentChoiceCCbig #creditCard #expdateyear').append(opt);
+						
+						for (i = -1; i < 12; i++) { 
+							opt = '<option value="' +(year+i)+ '">'+(year+i)+'</option>';
+							$('#paymentChoiceCCbig #creditCard #expdateyear').append(opt);
+						}
+					
+        });
+      </script>
+    </div><!-- /#paymentMethods-->
+    <div id="dialog" title="${static.cvv}" class="cvvdialog">
+      ${static.cvvInfoWindow}
+    	<div align="center"><img src="${config.content_url}img/cc-securitycode-pp.jpg"/></div>
+    </div>
+  </body>
+</html>

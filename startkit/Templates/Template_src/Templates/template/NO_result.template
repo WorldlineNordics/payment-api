@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>${static.eftResultInfo}</title>
+</head>
+<body>
+<div style="width:600px">
+	<#if result.paymentReference != ''>
+		<div>
+			<h2>${static.eftThankYou}</h2>
+			<p>${static.eftPaymentHeadInfo}</p>
+			<p>${static.eftPaymentBodyInfo}</p>
+		</div>
+		<div style="background-color:#eeeeee; width:100%; padding:10px; border:1px solid;">
+			${static.paymentInstruction} - ${static.eftPaymentInstructionDetail}:
+		</div>
+		<div style="width:100%; padding:10px; border-width:0px 1px 1px 1px; border-style:solid;">
+			<table width="100%">
+				<tr>
+					<td><b>${static.kidNummer}:</b></td>
+					<td><b>${result.paymentReference}</b></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td><b>${static.amount}:</b></td>
+					<td><b>${req.formattedAmount}&nbsp;${req.currency}</b></td>
+				</tr>
+				<tr>
+					<td><b>${static.paymentReceiver}:</b></td>
+					<td><b>Digital River World Payments AB</b></td>
+				</tr>
+				<tr>
+					<td><b>${static.paymentReceiverBank}:</b></td>
+					<td><b>Nordea Bank Norge ASA</b></td>
+				</tr>
+				<tr>
+					<td><b>${static.paymentReceiverAccount}:</b></td>
+					<td><b>[Account number]</b></td>
+				</tr>
+				<tr>
+					<td><b>${static.iban}:</b></td>
+					<td><b>[IBAN]</b></td>
+				</tr>
+				<tr>
+					<td><b>${static.bic}:</b></td>
+					<td><b>[BIC]</b></td>
+				</tr>
+			</table>
+		</div>
+		<p>${static.eftPaymentInstructionRefThreat}<br/>
+		${static.eftPaymentInstructionDateThreatStart}&nbsp;<b>${result.formattedDueDate}</b>.&nbsp;${static.eftPaymentInstructionDateThreatEnd}</p>
+		<p>${static.eftCollectionAgency}</p>
+		<p><a href="javascript:window.print()">${static.printButton}</a>&nbsp;${static.eftPaymentInstructionPrintHint}</p>
+		<input type="hidden" value="Order ID: ${req.orderId}"/>
+		<input type="hidden" value="encrypted: ${result.encryptedResponse}"/>
+		<input type="hidden" value="Status: ${result.transactionStatus}"/>
+		<br/>
+		<div style="float:left">
+			<form><input type=button name=print value="${static.printButton}" onClick="window.print()"></form>
+		</div>
+	</#if>
+	<#if result.paymentReference == ''>
+		<p>${static.errorCode2}</p>
+	</#if>
+	<div style="float:right">
+		<form><input type="button" onclick="location.href='${result.encryptedResponseUrl}'" value="${static.backToMerchantLink}"></form>
+	</div>
+	<br/><br/>
+</div>
+</body>
+</html>

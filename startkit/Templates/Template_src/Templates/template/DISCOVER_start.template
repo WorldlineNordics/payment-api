@@ -1,0 +1,698 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>${static.title}</title>
+    <link type="text/css" href="${config.content_url}css/custom-theme/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+    <link href="${config.content_url}css/payment.css" type="text/css" media="screen" rel="stylesheet" />
+		<style type="text/css">
+			.paymentChoice h3{color:#FFF;background:#555 url("${config.content_url}img/gradient.gif") top left repeat-x;margin:-10px -10px 0;padding:4px;}
+			/*.active{width:550px;border:1px solid #999;background-color:#FFF;margin:10px 0;padding:10px;}
+			.active h3{color:#fff;background:#999 url("${config.content_url}img/gradient.gif") top left repeat-x;margin:-10px -10px 0;padding:4px;}*/
+			.submit{margin-top:20px;background-image:url("${config.content_url}img/button_background.png");background-position:left top;background-repeat:repeat-x;border:1px outset #CCC;color:#555;cursor:pointer;font-weight:700;padding:4px 5px;}
+    </style>
+    <script type="text/javascript" src="${config.content_url}js/jquery.openInvoice.js"></script>
+  </head>
+  <body>
+    <div id="loadingImageDiv" style="display:none;">
+             <img src="${config.content_url}img/data-loading.gif"' alt="" /> 
+    </div>
+  	<div id="attentionBlock">
+    	<noscript>
+        <fieldset id="nojs">
+          <img width="14" height="14" src="${config.content_url}img/stop.gif" alt="${static.errorCode1}"/>&nbsp; ${static.javaScriptInfo}
+        </fieldset>
+      </noscript>
+    	<fieldset id="attention">
+    		${static.refreshAndBackInfo}
+      </fieldset>
+    </div>
+    <div id="paymentMethods">
+	    <fieldset class="topField">
+      	<div id="price">
+          <span class="label">${static.amount}:</span>&nbsp; ${req.formattedAmount} ${req.currency}
+          <br \>
+          <span class="label">${static.orderId}:</span>&nbsp; ${req.orderId}
+          <br \>
+          <span class="label">${static.orderDescription}:</span>&nbsp; ${req.orderDescription}
+        </div>
+        <div id="nglogo">
+          <img src="${config.content_url}img/merchant_logo.gif" alt="Merchant logo" id="merchantlogo" width="173" height="50">
+        </div>
+      </fieldset>
+      <#assign rv = req.errorCode!"0">
+      <#if rv != "0">
+        <p class="error">
+          <fieldset id="errorField">
+            <#if rv == "1">
+              ${static.errorCode1}
+            <#elseif rv == "2">
+              ${static.errorCode2}
+            <#elseif rv == "3">
+              ${static.errorCode3}
+            <#else>
+              ${static.errorCodeUnknown}
+            </#if>
+          </fieldset>
+          <br />
+        </p>
+      </#if>
+      
+      <div id="paymentChoiceCCbig" class="paymentChoice">
+        <h3><input type="radio" id="rbtnCreditCard" value="Credit Card" name="paymentType" checked="checked" onClick="toggleStatus()"><label for="rbtnCreditCard">${static.creditCard}</label></h3>
+        <div id="paymentChoiceCC">
+        <form name="creditCard" id="creditCard" action="${config.payment_servlet}" method="POST">
+          <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
+          <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
+          <input type="hidden" name="${input.paymentType}" value="CARD"/>
+          <input type="hidden" name="${input.cardNumberField}" value="${input.cardNumber}"/>
+          <input type="hidden" name="${input.cvCodeField}" value="${input.cvCode}"/>
+          <input type="hidden" name="${input.cardType}" value="UNKNOWN"/>
+          
+		  <fieldset class="cardType">
+            <ul id="ulCCType">
+              <li> 
+              	<div style="width:75px" align="center">
+                <img height="40" class="ccLogo" src="${config.content_url}img/discover_logo.gif" alt="Discover"/>
+                </div>
+              </li>
+              <li> 
+              	<div style="width:75px" align="center">
+                <img height="40" class="ccLogo" src="${config.content_url}img/diners_logo.png" alt="Diners"/>
+                </div>
+              </li>
+            </ul>
+          </fieldset>
+		  
+          <fieldset class="cardNumber">
+            <label for="${input.cardNumber}">${static.cardNumber}:</label>
+            <input type="text" name="${input.cardNumber}" id="${input.cardNumber}" size="21" value="${prev.cardNumber}" autocomplete="off"/>
+          </fieldset>
+          
+          <fieldset class="expirationDate">
+            ${static.cardExpirationDate}:
+            <!--<label for="${input.expDateMonth}">${static.month}:</label>-->
+            <select name="${input.expDateMonth}" id="${input.expDateMonth}" style="font-family:Arial Unicode MS">
+              <#list ["${static.month}","01", "02", "03", "04", "05","06", "07", "08", "09","10","11", "12"] as month>
+              <#if "${month}" == prev.expDateMonth>selected</#if> >${month}<option value="${month}" <#if "${month}" == prev.expDateMonth>selected</#if> >${month}</option>
+              </#list>
+            </select> 
+            <!--<label for="${input.expDateYear}">${static.year}:</label>-->
+            <select name="${input.expDateYear}" id="${input.expDateYear}" style="font-family:Arial Unicode MS"></select>
+          </fieldset>
+          
+          <fieldset class="cvv">
+          	<span id="cvvlabel" title="${static.cvvInfo}"><label for="${input.cvCode}"><a href="#" id="cvvinfolabel">${static.cvv}:</a></label></span>
+            <input type="text" name="${input.cvCode}" id="${input.cvCode}" size="4" maxlength="4" autocomplete="off"/>
+          </fieldset>
+
+ 					<fieldset class="bottomField">
+          	<div class="submitCCOBbtn">
+              <input id="submitCC" class="submit" type="submit" value="${static.submit}"/>
+            </div>
+            <div class="vbv_mcsc">
+              <a href="http://protectbuy.com/discover-faq/" target="_blank">
+              	<img class="mcsc" src="${config.content_url}img/discover_ptb.png" alt="Discover ProtectBuy" height="40"/>
+              </a>
+              <a href="http://protectbuy.com/diners-club-faq/" target="_blank">
+              	<img class="mcsc" src="${config.content_url}img/diners_ptb.png" alt="Diners ProtectBuy" height="40"/>
+              </a>
+            </div>
+          </fieldset>
+          
+        </form>
+        </div><!-- /#paymentChoiceCC-->
+      </div><!-- /.paymentChoice-->
+      
+      <form name="cancelPayment" id="cancelPayment" action="${config.cancel_servlet}" method="POST">
+        <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
+        <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
+        <input id="cancelBtn" class="cancel" type="submit" value="${static.cancel}">
+      </form>
+      <script src="${config.content_url}js/jquery-1.3.2.min.js" type="text/javascript"></script>
+			<script src="${config.content_url}js/jquery.flower_bubble.js" type="text/javascript"></script>
+      <script src="${config.content_url}js/jquery.pngFix.js" type="text/javascript"></script>
+      <script src="${config.content_url}js/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
+      <script type="text/javascript">
+      /*
+      For the CVV info dialog the jQuery 'dialog' plugin is used:
+      http://docs.jquery.com/UI/Dialog
+      Files required:
+      - js/jquery-1.3.2.min.js
+      - js/jquery-ui-1.7.2.custom.min.js (generated by ThemeRoller tool: http://jqueryui.com/themeroller/)
+      - "css/custom-theme" folder
+      */
+      jQuery(document).ready(function($){
+				// cvv dialog
+        $('#dialog').dialog({
+          autoOpen: false,
+          width: 600
+        });
+        // cvv dialog click here link
+        $('#cvvinfolabel').click(function(){
+          $('#dialog').removeClass('cvvdialog');
+          $('#dialog').dialog('open');
+          return false;
+        });
+      });
+			
+      /*
+      For the opaque overlay cover jQuery 'FLOWER_BUBBLE' plugin is used:
+      http://plugins.jquery.com/project/flower_bubble
+      Files required:
+      - js/jquery-1.3.2.min.js
+      - js/jquery.flower_bubble.js
+      - js/jquery.pngFix.js
+      - flower.gif
+      - bubble.png
+      */
+      $(window).load(function() {
+				flobu1 = new flower_bubble ({
+					base_obj: $( 'div#paymentChoiceCC' ),
+					background: { css: 'white', opacity: 0.5 },
+					block_mode: 'base_obj'
+				});
+						 
+				flobu2 = new flower_bubble ({
+					base_obj: $( 'div#paymentChoiceOB' ),
+					background: { css: 'white', opacity: 0.5 },
+					block_mode: 'base_obj'
+				});
+				
+				flobu3 = new flower_bubble ({
+					base_obj: $( 'div#paymentChoiceEFT' ),
+					background: { css: 'white', opacity: 0.5 },
+					block_mode: 'base_obj'
+				});
+				
+				flobu4 = new flower_bubble ({
+					base_obj: $( 'div#paymentChoicePP' ),
+					background: { css: 'white', opacity: 0.5 },
+					block_mode: 'base_obj'
+				});
+				
+				flobu5 = new flower_bubble ({
+					base_obj: $( 'div#paymentChoiceOI' ),
+					background: { css: 'white', opacity: 0.5 },
+					block_mode: 'base_obj'
+				});
+				
+				
+				// AJAX call for Klarna on page load
+				executingAjaxCallForKlarna();
+		
+                // Now, check which one is clicked by user, and activate corresponding box.
+				toggleStatus();
+				
+					$("#creditCard").submit(function(){
+					if($("#creditCard").valid()){
+					
+						$("#submitCC").attr('value','${static.processingWait}'); 
+						$("#submitCC").attr('disabled','disabled');
+						$("#submitEFT").attr('disabled','disabled'); 
+						$("#cancelBtn").attr('disabled','disabled');
+						$("#rbtnPayPal").attr('disabled','disabled');
+						$("#rbtnOnlineBanking").attr('disabled','disabled');
+						$('#rbtnEFT :input').attr('disabled', 'disabled');
+						$("#submitOI").attr('disabled','disabled');
+						$("#cancelBtn").css("color","#CCCCCC");
+					}
+					else return;
+				});
+				
+				$("#onlineBanking").submit(function(){
+					
+					$("#submitOB").attr('value','${static.processingWait}');
+					$("#submitPP").attr('disabled','disabled'); 
+					$("#submitOB").attr('disabled','disabled'); 
+					$("#submitEFT").attr('disabled','disabled');
+					$("#rbtnEFT").attr('disabled','disabled');
+					$("#cancelBtn").attr('disabled','disabled');
+					$("#rbtnCreditCard").attr('disabled','disabled');
+					$("#rbtnPayPal").attr('disabled','disabled');
+					$("#submitOI").attr('disabled','disabled');
+					$("#cancelBtn").css("color","#CCCCCC");
+				});
+				
+				("#eft").submit(function(){
+					$("#submitEFT").attr('value','${static.processingWait}');
+					
+					// Disable all submit buttons
+					$("#submitPP").attr('disabled','disabled'); 
+					$("#submitOB").attr('disabled','disabled');
+					$("#submitEFT").attr('disabled','disabled');										 
+					$("#submitCC").attr('disabled','disabled'); 
+					$("#cancelBtn").attr('disabled','disabled');
+					$("#rbtnOnlineBanking").attr('disabled','disabled');
+					$("#rbtnCreditCard").attr('disabled','disabled');					
+					$("#rbtnPayPal").attr('disabled','disabled');
+					$("#submitOI").attr('disabled','disabled');						
+					$("#cancelBtn").css("color","#CCCCCC");
+				});
+				
+				$("#paypalBanking").submit(function(){
+					
+					$("#submitPP").attr('value','${static.processingWait}'); 
+					$("#submitPP").attr('disabled','disabled');
+					$("#submitOB").attr('disabled','disabled'); 
+					$("#submitEFT").attr('disabled','disabled');
+					$("#cancelBtn").attr('disabled','disabled');
+					$("#rbtnCreditCard").attr('disabled','disabled');
+					$("#rbtnOnlineBanking").attr('disabled','disabled');
+					$("#submitOI").attr('disabled','disabled');
+					$("#cancelBtn").css("color","#CCCCCC");
+					$("#rbtnEFT").attr('disabled','disabled'); 
+					
+					
+				});
+				
+				$("#cancelPayment").submit(function(){
+					$("#cancelBtn").attr('disabled','disabled');
+					$("#submitCC").attr('disabled','disabled');
+					$("#submitEFT").attr('disabled','disabled');
+					$("#submitOB").attr('disabled','disabled');
+					$("#submitPP").attr('disabled','disabled');
+					$("#rbtnPayPal").attr('disabled','disabled');
+					$("#rbtnOnlineBanking").attr('disabled','disabled');
+					$("#rbtnCreditCard").attr('disabled','disabled');
+					$("#submitOI").attr('disabled','disabled');
+					$("#cancelBtn").css("color","#CCCCCC");
+				});
+				
+				$("#OIBanking").submit(function(){
+					$("#submitOI").attr('value','${static.processingWait}');
+					$("#submitPP").attr('disabled','disabled'); 
+					$("#submitOB").attr('disabled','disabled'); 
+					$("#submitEFT").attr('disabled','disabled');
+					$("#rbtnEFT").attr('disabled','disabled');
+					$("#cancelBtn").attr('disabled','disabled');
+					$("#rbtnCreditCard").attr('disabled','disabled');
+					$("#rbtnOnlineBanking").attr('disabled','disabled');
+					$("#rbtnPayPal").attr('disabled','disabled');
+					$("#cancelBtn").css("color","#CCCCCC");
+				});
+				
+      });
+      
+      var isGetPaymentPlanCallCompleted = "false";
+      var isGetAddressCallCompleted = "false";
+      var resultShippingAddress;
+	  var resultPaymentPlans;
+	  var billingSocialSecurityNumber;
+	  
+	    var iReqParam = "${req.encryptedCustomerRedirect}",
+		 	klarnaPaymentMethodId = "${static.klarnaPaymentMethodId}",
+		 	consumerCountry = "${req.consumerCountry}",
+		 	getAddressURL = "${config.get_address_servlet}",
+		 	getPaymentPlanURL = "${config.get_payment_plan_servlet}",
+		 	currencyCode = "${req.currency}",
+		 	invoice = "${static.klarnaInvoice}",
+		 	invoiceRadioDescription = "${static.klarnaInvoiceRadioDescription}",
+		 	partPaymentFixed = "${static.klarnaPartPaymentFixed}",
+			partPaymentFlexible = "${static.klarnaPartPaymentFlexible}",
+		 	month = "${static.klarnaMonth}",
+		 	months = "${static.klarnaMonths}",
+		 	klarnaPaymentPlanHeading = "${static.klarnaPaymentPlanHeading}",
+		 	klarnaPaymentPlanTotalCost = "${static.klarnaPaymentPlanTotalCost}",
+		 	klarnaPaymentPlanAnnualPercentageRate = "${static.klarnaPaymentPlanAnnualPercentageRate}",
+		 	klarnaShippingAddressHeading = "${static.klarnaShippingAddressHeading}",
+		 	klarnaShippingAddressError = "${static.klarnaShippingAddressError}",
+		 	klarnaSSNError = "${static.klarnaSSNError}";
+	  		klarnaTC = "${static.klarnaTC}";
+	  		klarnaForInvoice="${static.klarnaForInvoice}";
+            klarnaForPartPaymentFixed="${static.klarnaForPartPaymentFixed}";
+            klarnaForPartPaymentFlexible="${static.klarnaForPartPaymentFlexible}";
+			imgPath="${config.content_url}";
+	  
+	  function executingAjaxCallForKlarna(){
+		// AJAX call for getPaymentPlans
+		if(isGetPaymentPlanCallCompleted == "false"){
+			resultPaymentPlans = getPaymentPlan(getPaymentPlanURL, iReqParam, klarnaPaymentMethodId);
+			displayPaymentPlan(resultPaymentPlans, currencyCode, month, invoice, partPaymentFixed, partPaymentFlexible, months, 
+					invoiceRadioDescription, klarnaPaymentPlanHeading, klarnaPaymentPlanTotalCost, klarnaPaymentPlanAnnualPercentageRate, klarnaTC, klarnaForInvoice, klarnaForPartPaymentFixed, klarnaForPartPaymentFlexible, imgPath);
+			isGetPaymentPlanCallCompleted = "true";
+		}
+		
+		// AJAX call for getAddress
+		if(consumerCountry == 'SE' && isGetAddressCallCompleted == "false"){
+			billingSocialSecurityNumber = "${req.billingSocialSecurityNumber}";
+			if(!isEmpty(billingSocialSecurityNumber)){
+				resultShippingAddress = getAddress(billingSocialSecurityNumber, getAddressURL, iReqParam, klarnaPaymentMethodId);
+				displayShippingAddress(resultShippingAddress, klarnaShippingAddressHeading, klarnaSSNError, klarnaShippingAddressError, billingSocialSecurityNumber);
+				isGetAddressCallCompleted = "true";
+			}else{
+			    // Providing SSN texbox because SSN is blank and country is Sweden in the req
+				$("#ssnDiv").show();
+			}
+		}else if(consumerCountry != 'SE' && isGetAddressCallCompleted == "false"){
+			// Implementation for country other than Sweden is not supported
+			$("#paymentChoiceOI").hide();
+			alert("Klarna is not supported for the country other than Sweden.");
+		}
+		
+	  }
+	  
+      function toggleStatus() {
+        if ($('#rbtnCreditCard').is(':checked')) {
+			$('#paymentChoiceCC :input').removeAttr('disabled');
+          	$('#paymentChoiceOB :input').attr('disabled', 'disabled');
+			$('#paymentChoicePP :input').attr('disabled', 'disabled');
+			$('#paymentChoiceOI :input[type="radio"]').attr('disabled', 'disabled');
+          /*$('#paymentChoiceCCbig').removeClass('paymentChoice').addClass('active');
+          $('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');
+					$('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');*/
+          	flobu1.disable();
+          	flobu2.enable();
+			flobu3.enable();
+			flobu4.enable();
+			flobu5.enable(); 
+        }
+        else if ($('#rbtnOnlineBanking').is(':checked')) {
+          $('#paymentChoiceOB :input').removeAttr('disabled');
+          $('#paymentChoiceCC :input').attr('disabled', 'disabled');
+		  $('#paymentChoicePP :input').attr('disabled', 'disabled');
+          $('#paymentChoiceOI :input[type="radio"]').attr('disabled', 'disabled');
+          /*$('#paymentChoiceOBbig').removeClass('paymentChoice').addClass('active');
+          $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
+			$('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');*/
+			
+          flobu2.disable();
+          flobu1.enable();
+	      flobu3.enable();
+	      flobu4.enable();
+		  flobu5.enable(); 
+        }
+          else if ($('#rbtnEFT').is(':checked')) {
+          $('#paymentChoiceEFT :input').removeAttr('disabled');
+          $('#paymentChoiceCC :input').attr('disabled', 'disabled');
+          $('#paymentChoiceOB :input').attr('disabled', 'disabled');
+		  $('#paymentChoicePP :input').attr('disabled', 'disabled');
+		  $('#paymentChoiceOI :input[type="radio"]').attr('disabled', 'disabled');
+          flobu3.disable();
+          flobu1.enable();
+          flobu2.enable();
+		  flobu4.enable();
+		  flobu5.enable(); 
+		  
+		  
+        }
+		else if ($('#rbtnPayPal').is(':checked')) {
+			$('#paymentChoicePP :input').removeAttr('disabled');
+        	$('#paymentChoiceCC :input').attr('disabled', 'disabled');
+			$('#paymentChoiceOB :input').attr('disabled', 'disabled');
+			$('#paymentChoiceOI :input[type="radio"]').attr('disabled', 'disabled');
+          /*$('#paymentChoicePPbig').removeClass('paymentChoice').addClass('active');
+          $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
+					$('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');*/
+          flobu4.disable();          
+		  flobu1.enable();
+		  flobu2.enable();
+		  flobu3.enable();
+		  flobu5.enable(); 
+				}
+				
+		else if ($('#rbtnOI').is(':checked')) {
+			$('#paymentChoiceOI :input[type="radio"]').removeAttr('disabled');
+			$('#paymentChoiceCC :input').attr('disabled', 'disabled');
+			$('#paymentChoiceOB :input').attr('disabled', 'disabled');
+			$('#paymentChoicePP :input').attr('disabled', 'disabled');
+			 /*$('#paymentChoicePPbig').removeClass('paymentChoice').addClass('active');
+			$('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
+			$('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');*/
+			  flobu5.disable();          
+			  flobu1.enable();
+			  flobu2.enable();
+			  flobu3.enable();
+			  flobu4.enable();
+		  
+		  // Shipping address radio button event handling
+		  $("#shippingAddressDiv:Radio").click(function(){
+				$("#shippingAddressDiv").each(function(){
+				    if($(this).find('input[type="radio"]:checked').length > 0){
+					   var index = $(this).find('input[type="radio"]:checked').attr("class");
+				       passSelectedShippingAddressParameters(index,resultShippingAddress);
+					   $("#contactDetailsMainDiv").show();
+				       return false;
+				    }   
+				});
+				if(isEmpty($("#klarnaPhoneNumberBox").val()) && isEmpty($("#klarnaMobileNumberBox").val())){
+					disableConfirmButton();
+				}else{
+				    // Phone and mobile number received in the request is set as a hidden parameter.
+					$('.klarnaPhoneNumberHidden').val($("#klarnaPhoneNumberBox").val());
+					$('.klarnaMobileNumberHidden').val($("#klarnaMobileNumberBox").val());
+					enableConfirmButton();
+				}
+				$(".klarnaEmailIdHidden").val($("#klarnaEmailIdLabel").text());
+		   });
+		   
+		   // payment plan radio button event handling
+		   $("#paymentPlanDiv:Radio").click(function(){
+				$("#paymentPlanDiv").each(function(){
+			        if($(this).find('input[type="radio"]:checked').length > 0){
+					   var index = $(this).find('input[type="radio"]:checked').attr("class");
+					   passSelectedPaymentPlan(index,resultPaymentPlans);
+					   return false;
+					 }   
+			    });
+		   });
+		   
+		   // "Fetch Address" button event handling
+		   $("#getAddressCall").click(function(){
+					$("#contactDetailsMainDiv").hide();
+					$("#klarnaPhoneNumberBox").val("${req.shippingPhone}");
+					$("#klarnaMobileNumberBox").val("${req.shippingMobilePhone}");
+				    billingSocialSecurityNumber = $("#ssnBox").val();
+					if(isEmpty(billingSocialSecurityNumber)){
+					    // Assuming that user has already fetched the address by providing valid ssn number.
+					    // But after that if user try to fetch the address without ssn number then to remove previous ssn msg, previous address and disdabled confirm button
+					    // below logic is executed.
+					    disableConfirmButton();
+						$("#shippingAddressDiv").empty();
+					    $('#ssnMsg').empty();
+					    
+					    // Displaying msg to user if no ssn is entered and user has clicked on "Fetch" button.
+					    $('#ssnMsg').append('<label id="ssnMsgLabel">${static.klarnaSSNMessage}</label>');
+					    $('#shippingAddressDiv').attr('disabled', 'disabled');
+						return false;
+					}else{
+						resultShippingAddress = getAddress(billingSocialSecurityNumber, getAddressURL, iReqParam, klarnaPaymentMethodId);
+						displayShippingAddress(resultShippingAddress, klarnaShippingAddressHeading, klarnaSSNError, klarnaShippingAddressError, billingSocialSecurityNumber);
+						isGetAddressCallCompleted = "true";
+						return false;
+					}
+		  });
+		  
+		  // phone number box event handling
+		  $("#klarnaPhoneNumberBox").bind('input propertychange', function() {
+				if(!isEmpty($("#klarnaPhoneNumberBox").val())){
+					enableConfirmButton();
+				}else{
+					if(isEmpty($("#klarnaMobileNumberBox").val())){
+			   			disableConfirmButton();
+		   			}
+				}
+				$('.klarnaPhoneNumberHidden').val($("#klarnaPhoneNumberBox").val());
+		  });
+		  
+		 //Terms and Conditions for Klarna Invoice event handling
+		  $(document).ready(function(){
+      		  $("#klarnaTCInvoiceDialog").dialog({
+	          autoOpen: false,
+	          width: 600
+	        });
+        
+      		$("#klarnaTClabel").click(function(){
+      		    $("#klarnaTCPartPaymentDialog").dialog('close');
+				$("#klarnaTCPartPaymentFlexibleDialog").dialog('close');
+      			$("#klarnaTCInvoiceDialog").removeClass("klarnaDialog");
+          		$("#klarnaTCInvoiceDialog").dialog("open");
+          		 return false;
+      		});
+      	});
+      	
+      	//Terms and Conditions for Klarna Part Payment Fixed event handling
+      	$(document).ready(function(){
+      		$("#klarnaTCPartPaymentDialog").dialog({
+	          autoOpen: false,
+	          width: 600
+	        });
+        
+      		$("#klarnaTClabelPP").click(function(){
+      		    $("#klarnaTCInvoiceDialog").dialog('close');
+				$("#klarnaTCPartPaymentFlexibleDialog").dialog('close');
+      			$("#klarnaTCPartPaymentDialog").removeClass("klarnaDialog");
+          		$("#klarnaTCPartPaymentDialog").dialog("open");
+          		 return false;
+      		});
+      	});
+			
+		//Terms and Conditions for Klarna Part Payment Flexible event handling
+		$(document).ready(function(){
+      		$("#klarnaTCPartPaymentFlexibleDialog").dialog({
+	          autoOpen: false,
+	          width: 600
+	        });
+        
+      		$("#klarnaTClabelPPFlexible").click(function(){
+      		    $("#klarnaTCInvoiceDialog").dialog('close');
+				$("#klarnaTCPartPaymentDialog").dialog('close');
+      			$("#klarnaTCPartPaymentFlexibleDialog").removeClass("klarnaDialog");
+          		$("#klarnaTCPartPaymentFlexibleDialog").dialog("open");
+          		 return false;
+      		});
+      	});			
+
+		  // mobile number box event handling
+		  $("#klarnaMobileNumberBox").bind('input propertychange', function() {
+				if(!isEmpty($("#klarnaMobileNumberBox").val())){
+					enableConfirmButton();
+				}else{
+					if(isEmpty($("#klarnaPhoneNumberBox").val())){
+			   			disableConfirmButton();
+		   			}
+				}
+				$('.klarnaMobileNumberHidden').val($("#klarnaMobileNumberBox").val());
+		  });		
+		}//End of openInvoice				
+      }
+			
+      </script>
+
+      <script type="text/javascript" src="${config.content_url}js/jquery.validate.js"></script>
+      <script type="text/javascript" src="${config.content_url}js/jquery.validate.creditcard2.js"></script>
+      <script type="text/javascript">
+        jQuery(document).ready(function($) {
+          // cvv info toggle
+          //$('fieldset.cvv label').click(function () {
+          //  $("#cvc-info").toggle();
+          //});
+          // card validation
+          $("#creditCard").validate({
+            rules: {
+              ${input.cardNumber}: {
+                required: true,
+                creditcard2: function(){
+										var cards = new Array();
+										cards[0] = { cardName: "VISA", regEx: "^4[0-9]{12}([0-9]{3})?$"};
+										cards[1] = { cardName: "MASTERCARD", regEx: "^5[1-5][0-9]{14}$"};
+										cards[2] = { cardName: "AMEX", regEx: "^3[47][0-9]{13}$"};
+										cards[3] = { cardName: "DINERS", regEx: "^3(0[0-5]|[68][0-9])[0-9]{11}$"};
+										cards[4] = { cardName: "DISCOVER", regEx: "^6011[0-9]{12}$"};
+										var cardNum = $("#paymentChoiceCC #creditCard .cardNumber > input").val();						
+										cardNum = cardNum.replace(/[^0-9]/g,'');
+										for (var i=0; i< cards.length; i++) {
+											if (new RegExp(cards[i]["regEx"]).test(cardNum)) {
+												return cards[i]["cardName"];	
+												break;
+											}
+										}
+										return "Unknown";
+									}
+              },
+              ${input.cvCode}: {
+                required: true,
+                digits: true,
+                rangelength: [3, 4]
+              },
+							${input.issue}: {
+                //required: true,
+                digits: true,
+                rangelength: [1, 4]
+              },
+              expdatemonth: {
+                required: true,
+                range: [1, 12]
+              },
+              expdateyear: {
+                required: true,
+                range: [10, 100]
+              },
+              issue: {
+                //required: true,
+                digits: true,
+                rangelength: [3, 4]
+              },
+              startdatemonth: {
+                //required: true,
+                range: [1, 12]
+              },
+              startdateyear: {
+                //required: true,
+                range: [8, 25]
+              }
+            },
+            messages: {
+              ${input.cardNumber}: {
+                required: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                creditcard2: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+                },
+              ${input.cvCode}:{
+                required: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                digits: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                rangelength: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+              },
+              ${input.issue}: {
+                required: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                digits: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                rangelength: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+              },
+              expdatemonth: {
+                required: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                range: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+              },
+              expdateyear: {
+                required: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                range: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+              },
+              startdatemonth: {
+                required: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                range: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+              },
+              startdateyear: {
+                required: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>',
+                range: '<span class="errorIcon" title="${static.errorCode1}"><img width="16" height="16" src="${config.content_url}img/attention.gif" alt="${static.errorCode1}"/></span>'
+              }
+            }
+          });
+					
+					// Helper function to fire validation when cardType changes!
+					// Important!
+					$("input[type='radio'][name='${input.cardType}']").change(function(){
+							$("#creditCard").validate().element('#${input.cardNumber}');
+					});
+					$("input[type='radio'][name='${input.cardType}']").click(function(){
+							$("#creditCard").validate().element('#${input.cardNumber}');
+					});
+				var date = new Date();
+						var year = date.getFullYear()-2000, opt; 
+
+						opt = '<option value="${static.year}">${static.year}</option>';
+						$('#paymentChoiceCCbig #creditCard #expdateyear').append(opt);
+						
+						for (i = -1; i < 12; i++) { 
+							opt = '<option value="' +(year+i)+ '">'+(year+i)+'</option>';
+							$('#paymentChoiceCCbig #creditCard #expdateyear').append(opt);
+						} 	
+        });
+      </script>
+    </div><!-- /#paymentMethods-->
+    <div id="dialog" title="${static.cvv}" class="cvvdialog">
+      ${static.cvvInfoWindow}
+    	<div align="center"><img src="${config.content_url}img/cc-securitycode-pp.jpg"/></div>
+    </div>
+	
+	<div id="klarnaTCInvoiceDialog" title="${static.klarnaTCHeadingWindow}" class="klarnaDialog">
+      ${static.klarnaTermsAndConditionsWindowForInvoiceForSweden}
+    </div>
+    
+    <div id="klarnaTCPartPaymentDialog" title="${static.klarnaTCHeadingWindow}" class="klarnaDialog">
+      ${static.klarnaTermsAndConditionsWindowForPartPaymentForSweden}
+    </div>
+    
+    <div id="klarnaTCPartPaymentFlexibleDialog" title="${static.klarnaTCHeadingWindow}" class="klarnaDialog">
+      ${static.klarnaTermsAndConditionsWindowForPartPaymentFlexibleForSweden}
+    </div>
+    
+  </body>
+</html>

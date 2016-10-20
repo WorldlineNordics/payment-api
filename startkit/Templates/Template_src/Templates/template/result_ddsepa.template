@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>${static.ddResultInfo}</title>
+</head>
+<style>
+.content{ width:600px;margin-left:auto;margin-right:auto;border:1px solid black;color:#222222;background: white;position:relative;font-family:sans-serif, Verdana;font-size:12px;}
+.content p {line-height: 20px;font-style: italic;padding:5px 10px 5px 10px;}
+.content h2 {margin-left:auto;margin-right:auto;width: 250px;font-weight: normal;}
+
+ul.creditorInfo{list-style:none;padding:0;padding-bottom:10px;margin:10px;border-bottom:1px solid #DDDDDD}
+ul.creditorInfo li{padding:3px 0; font-size: 14px;position: relative;}
+ul.creditorInfo li span{padding-left: 10px;color:#000000;position: absolute; left: 175px;}
+
+ul.debtorInfo{list-style:none;padding:0;padding-bottom:10px;margin:10px;border-bottom:1px solid #DDDDDD;}
+ul.debtorInfo li{padding:3px 0; font-size: 12px;position: relative;}
+ul.debtorInfo li span{padding-left: 10px;color:#000000;position: absolute; left: 175px;}
+ul.creditorInfo #creditorNameLine {height: 25px;}
+
+</style>
+<body>
+	<fieldset class="content">
+		<h2>${static.sepaMandate}</h2>
+		<ul class="creditorInfo">
+			<li id="creditorNameLine">${static.creditor}: <span>${static.creditorName} ${static.onbehalfof}</span></li>
+			<li>&nbsp;<span>${static.creditorAddress}, ${static.creditorCity}</span></li>
+			<li>${static.creditorIdHeading}: <span>${static.creditorId}</span></li>
+			<li>${static.mandateReference}: <span>${req.mandateId}</span></li>
+		</ul>
+		
+		<ul class="debtorInfo">
+			<li>${static.debtorName}: <span>${req.billingFullName}</span></li>
+			<li>${static.debtorAddress}: <span>${req.billingAddress1} ${req.billingAddress2}</span></li>
+			<li>${static.debtorZipCity}: <span>${req.billingZipCode}, ${req.billingCity}</span></li>
+			<li>${static.debtorBic}: <span>${req.bankSwiftBIC}</span></li>
+			<li>${static.debtorAccountNum}: <span>${req.bankAccountIban}</span></li>
+			<li>${static.debtorDate}: <span>${req.mandateDate}</span></li>
+		</ul>
+		<p>${static.ddAgreementResult}</p>
+		<form><input type=button name=print value="${static.printButton}" onClick="window.print()"></form>
+		<a href="${result.encryptedResponseUrl}">${static.returnToMerchant}</a>
+	</fieldset>
+</body>
+</html>
