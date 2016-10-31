@@ -181,7 +181,7 @@
                   </li>
                 	<li>
                 		<div style="width:120px" align="center">
-                		<input type="radio" name="${input.bankId}" id="ALIPAY" value="152"  checked="checked" />
+                		<input type="radio" name="${input.bankId}" id="ALIPAY" value="2032"  checked="checked" />
                     </div>
                   </li>
                 </ul>
@@ -198,7 +198,7 @@
                   </li>	
                   <li>
                 		<div style="width:120px" align="center">
-                		<input type="radio" name="${input.bankId}" id="ALIPAY" value="151"/>
+                		<input type="radio" name="${input.bankId}" id="ALIPAY" value="2031"/>
                     </div>
                   </li>
                 </ul>
