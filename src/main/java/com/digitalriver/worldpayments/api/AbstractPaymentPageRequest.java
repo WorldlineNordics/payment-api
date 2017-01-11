@@ -235,4 +235,7 @@ abstract class AbstractPaymentPageRequest {
 	String shippingCareOf;
 	
 	List<LineItem> lineItems;
+
+	@Parameter(shortName = "AAO", required=false)
+	String authorizationType;
 }

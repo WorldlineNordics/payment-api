@@ -184,4 +184,14 @@ public class PaymentPageHandlerTestOk extends PaymentPageHandlerTestBase {
         Assert.assertTrue(requestString
                 .startsWith(PaymentPageHandler.DEFAULT_PRODUCTION_BASE_URL));
     }
+
+    @Test
+    public void testAuthorizationType_OK() {
+        PaymentPageRequest request = createValidRequest();
+        request.setAuthorizationType(AuthorizationType.FINAL_AUTHORIZATION);
+        String requestString = paymentPageHandler.createRedirectUrl(request);
+        System.out.println("url string is "+requestString);
+        Assert.assertTrue(requestString
+                .startsWith(PaymentPageHandler.DEFAULT_PRODUCTION_BASE_URL));
+    }
 }
