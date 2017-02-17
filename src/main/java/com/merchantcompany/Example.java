@@ -1,5 +1,6 @@
 package com.merchantcompany;
 
+import com.digitalriver.worldpayments.api.AuthorizationType;
 import com.digitalriver.worldpayments.api.PaymentPageHandler;
 import com.digitalriver.worldpayments.api.PaymentPageRequest;
 import com.digitalriver.worldpayments.api.PaymentPageResponse;
@@ -19,6 +20,7 @@ public class Example {
 		request.setConsumerCountry("SE");
 		request.setConsumerLanguage("sv");
 		request.setReturnUrl("http://merchant.com?f=3&f=q");
+		request.setAuthorizationType(AuthorizationType.PRE_AUTHORIZATION);
 		return request;
 	}
 
@@ -26,8 +28,8 @@ public class Example {
 
 		PaymentPageHandler paymentPageHandler = new PaymentPageHandler(
 				PaymentPageHandler.DEFAULT_PRODUCTION_BASE_URL,
-				new JKSKeyHandlerV6("src/resources_test/testkeys/java/merchant.jks",
-						"merchant", "merchant", "drwp_cert"));
+				new JKSKeyHandlerV6("src/test/resources/netgiro-2048.jks",
+						"123456", "netgiro", "netgiro"));
 
 		PaymentPageRequest request = buildRequest();
 
@@ -38,7 +40,7 @@ public class Example {
 		// sendRedirect(redirectUrl);
 		// get back a response when consumer comes back
 
-		String respString = "BEii9iVIovcIXe2rbjt31F7LixHliaguahcPN-YJF9HFzln_NDbJgRBp01pLjIy3su5FjzW-rPXO0hpAwhL6-fI2PjTxQ0posvZqX3PVQiAwWvWgGTFTMnbItbo_V6fQBJrZDRF_TdyH92KMP4RHj8yACK8F_Zm_r43-stm1w6K6dNBx4JXCG0BWlSY9ToFSU6gngfEdiYa__d6Yid9w2YwgSDWUN-3qRy83uJ3LhGhF5dETLuRa0iW9_gveowjtq8lvksn1LwF2PSHFA5p94XPGaepjbZMly0BB8EKU0MeLHdtBIhiK4kJseeyPEFif34zXOyFdqmci-Yh3LsGMwHJKVe5aQWDAua81YZBpXMA4PlYa_aFvUp3UC3oA9RI8ZGQNkqTiCbJJce_iSg1by9ZX6AtEuOmDk8WkRd4EUeZuEXBh3sYB6p3CyE_ESOCvXAseu8GsksTZAhIToRUeJ3SCkNy3BO9f9pTpfFieBl9JTGFjjlmt1DoaTO9JZ4B7wvmNfY7Z9CNVQmHyyl7zGtz9G1ldlEt9d80LxwreGLf-EMrevfpUQb6jmEH1QqsUp2ExNiu4qQJYobs8tMw-OJkWnjtcSLL8-g==";
+		String respString = "BgAAA-wAAAPqHZ-c1hJnrCiLG-JCvx7A-0lOGYWfYN6Uf8qH8Si15_22TvuQYX01VSCPsJNI5P_OkwtYv1xDhCmW8FPJora34L9bnL2UKSY9Zx8YpPjrCM3dTvM_ftoSDB_FXzlbkB6bwp_Vuc5U3L8FDbxAh6l3H1PZ3sjwe7Ew3Fx2qVv5DapTTuJ_RfyUCXi1w-ktNK0hIglACEg8H7zxMhqaLC15_O9_fYpqKBOgvvpTQyB3cBW2L7k-QhBF5SU1rKo_tAh56AtTMpJ1iojWHF4lCYykzR-MXzfThgZ0UxHheN9VYLL2r46XL7Zen3bv3t6_fQ4YFW37RR21THvhI0ho4JwKh0Q_pQ7qQkUjEGVR33MT88bIsH85-0iC_KrwVhFWbk-gYVPE6JnNy9FuSMkQ7Ax8MDBKkImJHqMgkJl-22UqihiYymYKl_90rLNjLlx7b0n2Mfa6yrJT4D8wRS5ZavrOISoupL9J5W9czs7g7oeLU7XoJEfz2efwTpamD90JxTokqmPr8vt-TWRNcZanKbAXQ-K7C7VZk5F28aGWBTeIEfTce7OTDusLpneRYOWQnOXAPMMkCbGGrID43tmBfIdhSmXCagqWU0ojSkdalRBZtvpE83Amjf_EvV6HE13KXykhZH5sH04w-a8bqfl8NLzpzgb-dCs8bFSFv8afKznobazDmEPjHygFqiW3fhdRqZdClO2CZtJedKajqudSoOyw9T_PVpju3l2R3cgPeIgUweh9i0BX4Q8iPqE6WDe8K2fibNxR18cgZ0yb5W4jofI_Mg919TMOfHdNonLT_lbS63cFjpaf9TUyt0ghkU16O3BhX7nN_tAzZbrD_sO-c9C3dcvMHBLmwII0OMgRTL9fvS4=";
 		PaymentPageResponse response = paymentPageHandler
 				.unpackResponse(respString);
 

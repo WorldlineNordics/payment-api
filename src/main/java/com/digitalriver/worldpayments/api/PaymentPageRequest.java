@@ -320,4 +320,10 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
     public void setCompanyResponsibleVatNumber(String vatNumber) {
         super.companyResponsibleVATNumber = vatNumber;
     }
+
+	public void setAuthorizationType(AuthorizationType authorizationType) {
+		if (authorizationType != null) {
+			super.authorizationType = authorizationType.value();
+		}
+	}
 }
