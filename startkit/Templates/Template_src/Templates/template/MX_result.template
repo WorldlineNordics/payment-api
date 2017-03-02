@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>${static.eftResultInfo}</title>
+</head>
+<body>
+<div style="width:600px">
+	<#if result.paymentReference != ''>
+	<#if result.paymentMethodId=='2029'>
+		<div>
+			<h2>${static.eftThankYou}</h2>
+			<p>${static.eftPaymentHeadInfo}</p>
+			<p>${static.eftPaymentBodyInfo}</p>
+		</div>
+		<div style="background-color:#eeeeee; width:100%; padding:10px; border:1px solid;">
+			${static.paymentInstruction} - ${static.eftPaymentInstructionDetail}:
+		</div>
+		<div style="width:100%; padding:10px; border-width:0px 1px 1px 1px; border-style:solid;">
+			<table width="100%">
+				<tr>
+					<td><b>${static.amount}:</b></td>
+					<td><b>${req.currency}&nbsp;${req.formattedAmount}</b></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<p>${static.clickOn} <a href="${result.paymentSlipUrl}" target="_new">${static.thisLink}</a> ${static.toOpenSlip}</p>
+					<img height="50" src="${config.content_url}img/oxxo_logo.png" alt="Oxxo"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<p>${static.eftPaymentInstructionDateThreatStart}&nbsp;<b>${result.formattedDueDate}</b>.&nbsp;${static.eftPaymentInstructionDateThreatEnd}</p>
+		<p><a href="javascript:window.print()">${static.printButton}</a>&nbsp;${static.eftPaymentInstructionPrintHint}</p>
+		<input type="hidden" value="Order ID: ${req.orderId}"/>
+		<input type="hidden" value="encrypted: ${result.encryptedResponse}"/>
+		<input type="hidden" value="Status: ${result.transactionStatus}"/>
+		<br/>
+		<#else>
+		<div>
+			<h2>${static.eftThankYou}</h2>
+			<p>${static.eftPaymentHeadInfo}</p>
+			<p>${static.eftPaymentBodyInfo}</p>
+		</div>
+		<div style="background-color:#eeeeee; width:100%; padding:10px; border:1px solid;">
+			${static.paymentInstruction} - ${static.eftPaymentInstructionDetail}:
+		</div>
+		<div style="width:100%; padding:10px; border-width:0px 1px 1px 1px; border-style:solid;">
+			<table width="100%">
+				<tr>
+					<td><b>${static.amount}:</b></td>
+					<td><b>${req.currency}&nbsp;${req.formattedAmount}</b></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<p>${static.clickOn} <a href="${result.paymentSlipUrl}" target="_new">${static.thisLink}</a> ${static.toOpenSlip}</p>
+					<img height="50" src="${config.content_url}img/santander_logo.png" alt="Santander"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<p>${static.eftPaymentInstructionDateThreatStart}&nbsp;<b>${result.formattedDueDate}</b>.&nbsp;${static.eftPaymentInstructionDateThreatEnd}</p>
+		<p><a href="javascript:window.print()">${static.printButton}</a>&nbsp;${static.eftPaymentInstructionPrintHint}</p>
+		<input type="hidden" value="Order ID: ${req.orderId}"/>
+		<input type="hidden" value="encrypted: ${result.encryptedResponse}"/>
+		<input type="hidden" value="Status: ${result.transactionStatus}"/>
+		<br/>
+		
+		
+	</#if>
+	</#if>
+	<#if result.paymentReference == ''>
+		<p>${static.errorCode2}</p>
+	</#if>
+	<div style="float:left">
+			<form><input type=button name=print value="${static.printButton}" onClick="window.print()"></form>
+		</div>
+	<div style="float:right">
+		<form><input type="button" onclick="location.href='${result.encryptedResponseUrl}'" value="${static.backToMerchantLink}"></form>
+	</div>
+	<br/><br/>
+</div>
+</body>
+</html>
