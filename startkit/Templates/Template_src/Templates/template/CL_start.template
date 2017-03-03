@@ -92,6 +92,11 @@
 					
                 </div>
                 </li>
+              <li>
+				<div style="width:75px" align="center">
+					<img height="40" class="ccLogo" src="${config.content_url}img/diners_logo.png" alt="Diners"/>
+				</div>
+              </li>
             </ul>
           </fieldset>
 		  
@@ -128,6 +133,12 @@
               <a href="http://www.mastercard.com/securecode/" target="_blank">
               	<img class="mcsc" src="${config.content_url}img/mcsc.gif" alt="MasterCard SecureCode" height="35" width="79"/>
               </a>
+			  <a href="http://protectbuy.com/discover-faq/" target="_blank">
+              	<img class="mcsc" src="${config.content_url}img/discover_ptb.png" alt="Discover ProtectBuy" height="35"/>
+              </a>
+              <a href="http://protectbuy.com/diners-club-faq/" target="_blank">
+              	<img class="mcsc" src="${config.content_url}img/diners_ptb.png" alt="Diners ProtectBuy" height="35"/>
+              </a>
             </div>
           </fieldset>
           
@@ -141,18 +152,18 @@
           <form name="eft" id="eft" action="${config.payment_servlet}" method="GET">
             <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
             <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
-            <input type="hidden" name="${input.paymentMethodId}" value="2029" />
+            <input type="hidden" name="${input.paymentMethodId}" value="2035" />
             <fieldset class="cardType">
               <ul id="ulEFTType">
               <li>
-              	<ul class="lbl">
+                <ul class="lbl">
                   <li class="lblw">
-                    <label for="OXXO">
-                    <img height="50" class="ccLogo" src="${config.content_url}img/oxxo_logo.png" alt="OXXO"/></label></li>
+                    <label for="Servipag">
+                    <img height="50" class="ccLogo" src="${config.content_url}img/servipag_logo.png" alt="Servipag"/></label></li>
                   <li>
-                  	<div style="width:100%" align="center">
-                       <input type="radio" id="OXXO"  checked="checked" />
-					   <label for="OXXO">OXXO</label>
+                    <div style="width:100%" align="center">
+                       <input type="radio" id="Servipag"  checked="checked" />
+             <label for="Servipag">Servipag</label>
                     </div>
                   </li>
                 </ul>
@@ -168,40 +179,65 @@
             </fieldset>
           </form>
       	</div>
-      </div>    
-      <div id="paymentChoicePPbig" class="paymentChoice">
-      	<h3><input type="radio" id="rbtnPayPal" value="PayPalBanking" name="paymentType" onClick="toggleStatus()"><label for="rbtnPayPal">${static.ewallet}</label></h3>
-		    <div id="paymentChoicePP">
-          <form name="paypalBanking" id="paypalBanking" action="${config.ibp_servlet}" method="GET">
+      </div>
+    <div id="paymentChoiceOBbig" class="paymentChoice">
+        <h3><input type="radio" id="rbtnOnlineBanking" value="Online Banking" name="paymentType" onClick="toggleStatus()"><label for="rbtnOnlineBanking">${static.onlineBanking}</label></h3>
+            <div id="paymentChoiceOB">
+          <form name="onlineBanking" id="onlineBanking" action="${config.payment_servlet}" method="GET">
             <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
             <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
             <fieldset class="cardType">
-              <ul id="ulPPType">
+              <ul id="ulOBType">
               <li>
-              	<ul class="lbl">
+                <ul class="lbl">
                   <li class="lblw">
-                    <label for="PAYPAL">
-                    <img width="120" height="50" class="ccLogo" src="${config.content_url}img/paypal_logo.gif" alt="PAYPAL"/></label>
+                    <label for="BCI">
+                    <img width="70" height="35" class="ccLogo" alt="BCI" src="../../WebContent/img/bci_logo.png"/></label>
                   </li>
                   <li>
-                  	<div style="width:120px" align="center">
-                    <input type="radio" name="${input.bankId}" id="PAYPAL" value="29" checked="checked" />
-					<label for="PAYPAL">PayPal</label>
+                    <div style="width:100%" align="center">
+                        <input type="radio" name="${input.paymentMethodId}" id="BCI" value="152" checked="checked"/>
+                        <label for="BCI">BCI</label>
                     </div>
                   </li>
                 </ul>
+                <ul class="lbl">
+                  <li class="lblw">
+                    <label for="SantanderIBP">
+                    <img width="70" height="35" class="ccLogo" alt="SantanderIBP" src="../../WebContent/img/santander_logo.png"/></label>
+                  </li>
+                  <li>
+                    <div style="width:100%" align="center">
+                        <input type="radio" name="${input.paymentMethodId}" id="SantanderIBP" value="151"/>
+                        <label for="SantanderIBP">SantanderIBP</label>
+                    </div>
+                  </li>
+                </ul>
+                <ul class="lbl">
+                  <li class="lblw">
+                    <label for="Itau">
+                    <img width="35" height="35" class="ccLogo" alt="Itau" src="../../WebContent/img/itau_logo.png"/></label>
+                  </li>
+                  <li>
+                    <div style="width:100%" align="center">
+                        <input type="radio" name="${input.paymentMethodId}" id="Itau" value="145"/>
+                        <label for="Itau">Itau</label>
+                    </div>
+                  </li>
+                </ul>                
               </li>
               </ul>
             </fieldset>
             <fieldset class="bottomField">
               <div class="submitCCOBbtn">
-                <input id="submitPP" class="submit" type="submit" value="${static.submit}"/>
+                <input id="submitOB" class="submit" type="submit" value="${static.submit}"/>
               </div>
               <div class="vbv_mcsc">
               </div>
             </fieldset>
+                  
           </form>
-      	</div>
+        </div>
       </div>
            
       <form name="cancelPayment" id="cancelPayment" action="${config.cancel_servlet}" method="POST">
