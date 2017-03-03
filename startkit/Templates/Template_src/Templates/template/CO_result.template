@@ -25,10 +25,22 @@
 				<tr>
 					<td colspan="2">
 					<p>${static.clickOn} <a href="${result.paymentSlipUrl}" target="_new">${static.thisLink}</a> ${static.toOpenSlipNew}</p>
-					<#if result.paymentMethodId=='2029'>
-					<img height="50" src="${config.content_url}img/santander_logo.png" alt="Santander"/>
+					<#if result.paymentMethodId=='2036'>
+					<img height="50" src="${config.content_url}img/davivienda_logo.png" alt="Davivienda"/>
+					</#if>
+					<#if result.paymentMethodId=='2037'>
+					<img height="50" src="${config.content_url}img/efecty_logo.png" alt="Efecty"/>
+					</#if>
+					<#if result.paymentMethodId=='2038'>
+					<img height="50" src="${config.content_url}img/carulla_logo.png" alt="Carulla"/>
+					</#if>
+					<#if result.paymentMethodId=='2039'>
+					<img height="50" src="${config.content_url}img/empressa_logo.png" alt="Empresa de Energía del Quindio"/>
+					</#if>
+					<#if result.paymentMethodId=='2040'>
+					<img height="50" src="${config.content_url}img/almacenes_logo.png" alt="Almacenes Éxito"/>
 					<#else>
-					<img height="50" src="${config.content_url}img/oxxo_logo.png" alt="Oxxo"/>
+					<img height="50" src="${config.content_url}img/surtimax_logo.png" alt="Surtimax"/>
 					</#if>
 					</td>
 				</tr>
