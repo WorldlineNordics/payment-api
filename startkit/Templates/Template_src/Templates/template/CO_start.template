@@ -92,6 +92,12 @@
 					
                 </div>
                 </li>
+				<li>
+				<div style="width:75px" align="center">
+					<img width="75" height="40" class="ccLogo" src="${config.content_url}img/diners_logo.png" alt="Diners"/>
+					
+                </div>
+                </li>
             </ul>
           </fieldset>
 		  
@@ -128,14 +134,120 @@
               <a href="http://www.mastercard.com/securecode/" target="_blank">
               	<img class="mcsc" src="${config.content_url}img/mcsc.gif" alt="MasterCard SecureCode" height="35" width="79"/>
               </a>
+              <a href="http://protectbuy.com/diners-club-faq/" target="_blank">
+              	<img class="mcsc" src="${config.content_url}img/diners_ptb.png" alt="Diners ProtectBuy" height="35"/>
+              </a>
             </div>
           </fieldset>
           
         </form>
         </div><!-- /#paymentChoiceCC-->
       </div><!-- /.paymentChoice-->
-	  
-	   <div id="paymentChoiceOBbig" class="paymentChoice">
+      
+      <div id="paymentChoiceEFTbig" class="paymentChoice">
+      	<h3><input type="radio" id="rbtnEFT" value="EFT" name="paymentType" onClick="toggleStatus()"><label for="rbtnEFT">${static.eft}</label></h3>
+		    <div id="paymentChoiceEFT">
+          <form name="eft" id="eft" action="${config.payment_servlet}" method="POST">
+            <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
+            <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
+            <fieldset class="cardType">
+              <ul id="ulEFTType">
+              <li>
+              	<ul class="lbl">
+                  <li class="lblw">
+                    <label for="Davivienda">
+                    <img height="50" class="ccLogo" src="${config.content_url}img/davivienda_logo.png" alt="Davivienda"/></label></li>
+                  <li>
+                  	<div style="width:100%" align="center">
+                       <input type="radio" id="Davivienda"  checked="checked" name="${input.paymentMethodId}" value="2036" />
+					   <label for="Davivienda">Davivienda</label>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+			  <li>
+              	<ul class="lbl">
+                  <li class="lblw">
+                    <label for="Efecty">
+                    <img height="50" class="ccLogo" src="${config.content_url}img/efecty_logo.png" alt="Efecty"/></label></li>
+                  <li>
+                  	<div style="width:100%" align="center">
+                       <input type="radio" id="Efecty" name="${input.paymentMethodId}" value="2037" />
+					   <label for="Efecty">Efecty</label>
+
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li>
+              	<ul class="lbl">
+                  <li class="lblw">
+                    <label for="Carulla">
+                    <img height="50" class="ccLogo" src="${config.content_url}img/carulla_logo.png" alt="Carulla"/></label></li>
+                  <li>
+                  	<div style="width:100%" align="center">
+                       <input type="radio" id="Carulla" name="${input.paymentMethodId}" value="2038" />
+					   <label for="Carulla">Carulla</label>
+
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li>
+              	<ul class="lbl">
+                  <li class="lblw">
+                    <label for="Empresa de Energía del Quindio">
+                    <img height="50" class="ccLogo" src="${config.content_url}img/empressa_logo.png" alt="Empresa de Energía del Quindio"/></label></li>
+                  <li>
+                  	<div style="width:100%" align="center">
+                       <input type="radio" id="EmpresadeEnergíadelQuindio" name="${input.paymentMethodId}" value="2039" />
+					   <label for="EmpresadeEnergíadelQuindio">Empresa de Energía del Quindio</label>
+
+                    </div>
+                  </li>
+                </ul>
+              </li>
+               <li>
+              	<ul class="lbl">
+                  <li class="lblw">
+                    <label for="Almacenes Éxito">
+                    <img height="50" class="ccLogo" src="${config.content_url}img/almacenes_logo.png" alt="Almacenes Éxito"/></label></li>
+                  <li>
+                  	<div style="width:100%" align="center">
+                       <input type="radio" id="AlmacenesÉxito" name="${input.paymentMethodId}" value="2040" />
+					   <label for="AlmacenesÉxito">Almacenes Éxito</label>
+
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li>
+              	<ul class="lbl">
+                  <li class="lblw">
+                    <label for="Surtimax">
+                    <img height="50" class="ccLogo" src="${config.content_url}img/surtimax_logo.png" alt="Surtimax"/></label></li>
+                  <li>
+                  	<div style="width:100%" align="center">
+                       <input type="radio" id="Surtimax" name="${input.paymentMethodId}" value="2041" />
+					   <label for="Surtimax">Surtimax</label>
+
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              </ul>
+            </fieldset>
+            <fieldset class="bottomField">
+              <div class="submitCCOBbtn">
+                <input id="submitEFT" class="submit" type="submit" value="${static.submit}"/>
+              </div>
+              <div class="vbv_mcsc">
+              </div>
+            </fieldset>
+          </form>
+      	</div>
+      </div>
+    <div id="paymentChoiceOBbig" class="paymentChoice">
         <h3><input type="radio" id="rbtnOnlineBanking" value="Online Banking" name="paymentType" onClick="toggleStatus()"><label for="rbtnOnlineBanking">${static.onlineBanking}</label></h3>
             <div id="paymentChoiceOB">
           <form name="onlineBanking" id="onlineBanking" action="${config.payment_servlet}" method="GET">
@@ -146,8 +258,8 @@
               <li>
                 <ul class="lbl">
                   <li class="lblw">
-                    <label for="BBVA Bancomer">
-                    <img width="90" height="35" class="ccLogo" alt="BBVA Bancomer" src="../../WebContent/img/bbvabancomer_logo.png"/></label>
+                    <label for="BBVABancomer">
+                    <img width="70" height="35" class="ccLogo" alt="BBVA Bancomer" src="${config.content_url}img/bbvabancomer_logo.png"/></label>
                   </li>
                   <li>
                     <div style="width:100%" align="center">
@@ -156,39 +268,31 @@
                     </div>
                   </li>
                 </ul>
+              </li>
+               <li>
                 <ul class="lbl">
                   <li class="lblw">
-                    <label for="Banamex">
-                    <img width="35" height="35" class="ccLogo" alt="Banamex" src="../../WebContent/img/banamex_logo.png"/></label>
+                    <label for="Bancodeoccidente">
+                    <img width="70" height="35" class="ccLogo" alt="Banco de occidente" src="${config.content_url}img/bancodeoccidente_logo.png"/></label>
                   </li>
                   <li>
                     <div style="width:100%" align="center">
-                        <input type="radio" name="${input.paymentMethodId}" id="Banamex" value="156"/>
-                        <label for="Banamex">Banamex</label>
+                        <input type="radio" name="${input.paymentMethodId}" id="Bancodeoccidente" value="154" checked="checked"/>
+                        <label for="Bancodeoccidente">Banco de occidente</label>
                     </div>
                   </li>
                 </ul>
+              </li>
+               <li>
                 <ul class="lbl">
                   <li class="lblw">
-                    <label for="SantanderRioIBP">
-                    <img width="70" height="35" class="ccLogo" alt="SantanderRioIBP" src="../../WebContent/img/santander_logo.png"/></label>
+                    <label for="PSE">
+                    <img width="70" height="35" class="ccLogo" alt="Banco de occidente" src="${config.content_url}img/pse_logo.png"/></label>
                   </li>
                   <li>
                     <div style="width:100%" align="center">
-                        <input type="radio" name="${input.paymentMethodId}" id="SantanderRioIBP" value="157"/>
-                        <label for="SantanderRioIBP">SantanderRioIBP</label>
-                    </div>
-                  </li>
-                </ul>
-                <ul class="lbl">
-                  <li class="lblw">
-                    <label for="SantanderIBP">                  
-                    <img width="70" height="35"  class="ccLogo" alt="SantanderIBP" src="../../WebContent/img/santander_logo.png"/></label>
-                  </li>
-                  <li>
-                    <div style="width:100%" align="center">                        
-                        <input type="radio" name="${input.paymentMethodId}" id="SantanderIBP" value="151"/>
-                        <label for="SantanderIBP">SantanderIBP</label>
+                        <input type="radio" name="${input.paymentMethodId}" id="PSE" value="155" checked="checked"/>
+                        <label for="PSE">PSE</label>
                     </div>
                   </li>
                 </ul>
@@ -207,87 +311,6 @@
         </div>
       </div>
       
-      <div id="paymentChoiceEFTbig" class="paymentChoice">
-      	<h3><input type="radio" id="rbtnEFT" value="EFT" name="paymentType" onClick="toggleStatus()"><label for="rbtnEFT">${static.eft}</label></h3>
-		    <div id="paymentChoiceEFT">
-          <form name="eft" id="eft" action="${config.payment_servlet}" method="GET">
-            <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
-            <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
-            
-            <fieldset class="cardType">
-              <ul id="ulEFTType">
-              <li>
-              	<ul class="lbl">
-                  <li class="lblw">
-                    <label for="OXXO">
-                    <img height="50" class="ccLogo" src="${config.content_url}img/oxxo_logo.png" alt="OXXO"/></label></li>
-                  <li>
-                  	<div style="width:100%" align="center">
-                       <input type="radio" name="${input.paymentMethodId}" id="OXXO" value="2029"  checked="checked" />
-					   <label for="OXXO">OXXO</label>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li>
-              	<ul class="lbl">
-                  <li class="lblw">
-                    <label for="SantanderCASH">
-                    <img height="50" class="ccLogo" src="${config.content_url}img/santander_logo.png" alt="SantanderCASH"/></label></li>
-                  <li>
-                  	<div style="width:100%" align="center">
-                       <input type="radio" name="${input.paymentMethodId}" id="SantanderCASH" value="2042" />
-					   <label for="SantanderCASH">SantanderCASH</label>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              </ul>
-            </fieldset>
-            <fieldset class="bottomField">
-              <div class="submitCCOBbtn">
-                <input id="submitEFT" class="submit" type="submit" value="${static.submit}"/>
-              </div>
-              <div class="vbv_mcsc">
-              </div>
-            </fieldset>
-          </form>
-      	</div>
-      </div>    
-      <div id="paymentChoicePPbig" class="paymentChoice">
-      	<h3><input type="radio" id="rbtnPayPal" value="PayPalBanking" name="paymentType" onClick="toggleStatus()"><label for="rbtnPayPal">${static.ewallet}</label></h3>
-		    <div id="paymentChoicePP">
-          <form name="paypalBanking" id="paypalBanking" action="${config.ibp_servlet}" method="GET">
-            <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
-            <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
-            <fieldset class="cardType">
-              <ul id="ulPPType">
-              <li>
-              	<ul class="lbl">
-                  <li class="lblw">
-                    <label for="PAYPAL">
-                    <img width="120" height="50" class="ccLogo" src="${config.content_url}img/paypal_logo.gif" alt="PAYPAL"/></label>
-                  </li>
-                  <li>
-                  	<div style="width:120px" align="center">
-                    <input type="radio" name="${input.bankId}" id="PAYPAL" value="29" checked="checked" />
-					<label for="PAYPAL">PayPal</label>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              </ul>
-            </fieldset>
-            <fieldset class="bottomField">
-              <div class="submitCCOBbtn">
-                <input id="submitPP" class="submit" type="submit" value="${static.submit}"/>
-              </div>
-              <div class="vbv_mcsc">
-              </div>
-            </fieldset>
-          </form>
-      	</div>
-      </div>
            
       <form name="cancelPayment" id="cancelPayment" action="${config.cancel_servlet}" method="POST">
         <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
@@ -495,18 +518,7 @@
 										cards[1] = { cardName: "MASTERCARD", regEx: "^5[1-5][0-9]{14}$"};
 										cards[2] = { cardName: "AMEX", regEx: "^3[47][0-9]{13}$"};
 										cards[3] = { cardName: "DINERS", regEx: "^3(0[0-5]|[68][0-9])[0-9]{11}$"};
-										cards[4] = { cardName: "DISCOVER", regEx: "^6011[0-9]{12}$"};
-										cards[5] = { cardName: "AURA", regEx: "^50[0-9]{14,17}$"};
-										cards[6] = { cardName: "HIPERCARD", regEx: "^(38|60)[0-9]{11,17}$"};
-										cards[7] = { cardName: "ELO", regEx: "^401178[0-9]{10}$|^438935[0-9]{10}$|^451416[0-9]{10}$|^457631[0-9]{10}$|^457632[0-9]{10}$|^504175[0-9]{10}$|^5067[0-7]{1}[0-9]{1}[0-9]{10}$|^509[0-9]{1}([0-8]{1}[0-9]{1}|9[0-8]{1})[0-9]{10}$|^636297[0-9]{10}$|^636368[0-9]{10}$|^636868[0-9]{10}$"};
-										cards[8] = { cardName: "ELO", regEx: "^401178[0-9]{10}$|^438935[0-9]{10}$|^451416[0-9]{10}$|^457631[0-9]{10}$|^457632[0-9]{10}$|^504175[0-9]{10}$|^5067([0-6]{1}[0-9]{1}|7[0-8]{1})[0-9]{10}$|^509[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{10}$|^627780[0-9]{10}$|^636368[0-9]{10}$|^636868[0-9]{10}$"};
-										cards[9] = { cardName: "ELO", regEx: "^401178[0-9]{10}$|^438935[0-9]{10}$|^451416[0-9]{10}$|^457631[0-9]{10}$|^457632[0-9]{10}$|^504175[0-9]{10}$|^5067((2[6-9])|(3[0]))[0-9]{10}$|^506733[0-9]{10}$|^5067(4[0-2])[0-9]{10}$|^5067(4[4-8])[0-9]{10}$|^506753[0-9]{10}$|^5067(7[7-8])[0-9]{10}$|^509009[0-9]{10}$|^5090(6[6-9])[0-9]{10}$|^627780[0-9]{10}$|^636368[0-9]{10}$|^636868[0-9]{10}$"};
-										cards[10] = { cardName: "ELO", regEx: "^402588[0-9]{10}$|^404347[0-9]{10}$|^4050(5[2-5])[0-9]{10}$|^4058((7[4-9])|(8[0-1]))[0-9]{10}$|^430423[0-9]{10}$|^4304(2[6-7])[0-9]{10}$|^4304(7[5-8])[0-9]{10}$|^4380(6[0-1])[0-9]{10}$|^438069[0-9]{10}$|^438071[0-9]{10}$|^465445[0-9]{10}$|^4700(7[2-7])[0-9]{10}$|^506699[0-9]{10}$|^506703[0-9]{10}$|^506713[0-9]{10}$|^5067(5[4-9])[0-9]{10}$|^5067(6[6-7])[0-9]{10}$|^506769[0-9]{10}$"};
-										cards[11] = { cardName: "ELO", regEx: "^5067((1[0-2][0-9]{10})|(37)[0-9]{10})$"};
-										cards[12] = { cardName: "ELO", regEx: "^5067((4[9][0-9]{10})|(5[0-2][0-9]{10}))$"};
-										cards[13] = { cardName: "ELO", regEx: "^5090((1[5-9][0-9]{10})|(33[0-9]{10}))$|^(506768[0-9]{10})$"};
-										cards[14] = { cardName: "ELO", regEx: "^402587[0-9]{10}$|^40588(([2-7])[0-9]{10})$|^40623[2-3][0-9]{10}$|^43047((([0-1][0-9]{10})|([3-4][0-9]{10})))$|^4380(6([2-4][0-9]{10}$)|(7[3-5][0-9]{10}$))|^47006[1-8][0-9]{10}$|^49606((([1-3])[0-9]{10})|(([5-7])[0-9]{10}))$|^5067(((0[0-6])[0-9]{10})|((1[4-6])[0-9]{10})|((6[0-5])[0-9]{10})|((7[0-3])[0-9]{10}))$"};
-										cards[15] = { cardName: "ELO", regEx: "^5067(09|38)[0-9]{10}$"};
+										
 										var cardNum = $("#paymentChoiceCC #creditCard .cardNumber > input").val();						
 										cardNum = cardNum.replace(/[^0-9]/g,'');
 										for (var i=0; i< cards.length; i++) {
