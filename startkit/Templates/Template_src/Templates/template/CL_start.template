@@ -152,14 +152,13 @@
           <form name="eft" id="eft" action="${config.payment_servlet}" method="GET">
             <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
             <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
-            <input type="hidden" name="${input.paymentMethodId}" value="2035" />
             <fieldset class="cardType">
               <ul id="ulEFTType">
               <li>
                 <ul class="lbl">
                   <li class="lblw">
                     <label for="Servipag">
-                    <img height="50" class="ccLogo" src="${config.content_url}img/servipag_logo.png" alt="Servipag"/></label></li>
+                    <img height="50" class="ccLogo" src="${config.content_url}img/servipag_logo.png" alt="Servipag" value="2035"/></label></li>
                   <li>
                     <div style="width:100%" align="center">
                        <input type="radio" id="Servipag"  checked="checked" />
