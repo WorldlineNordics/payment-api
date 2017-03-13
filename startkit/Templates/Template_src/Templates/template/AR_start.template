@@ -465,7 +465,12 @@
 										cards[1] = { cardName: "MASTERCARD", regEx: "^5[1-5][0-9]{14}$"};
 										cards[2] = { cardName: "AMEX", regEx: "^3[47][0-9]{13}$"};
 										cards[3] = { cardName: "DINERS", regEx: "^3(0[0-5]|[68][0-9])[0-9]{11}$"};
-										
+										cards[4] = { cardName: "ARGENCARD", regEx: "^501105([0-9]{10})$"};
+										cards[5] = { cardName: "NARANJA", regEx: "^589562([0-9]{10})$"};
+										cards[6] = { cardName: "CABAL", regEx: "^((627170)|(589657)|(603522)|(604((20[1-9])|(2[1-9][0-9])|(3[0-9]{2})|(400))))([0-9]{10})$"};
+										cards[7] = { cardName: "TARGETA SHOPPING", regEx: "^((603488)|(27995)[0-9])([0-9]{10})$"};
+										cards[8] = { cardName: "CENCOSUD", regEx: "^603493([0-9]{10})$"};
+										cards[9] = { cardName: "NATIVA", regEx: "^((520053)|(546553)|(554472)|(531847)|(527601))([0-9]{10})$"};
 										var cardNum = $("#paymentChoiceCC #creditCard .cardNumber > input").val();						
 										cardNum = cardNum.replace(/[^0-9]/g,'');
 										for (var i=0; i< cards.length; i++) {
