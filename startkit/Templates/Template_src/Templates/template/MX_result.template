@@ -26,9 +26,9 @@
 					<td colspan="2">
 					<p>${static.clickOn} <a href="${result.paymentSlipUrl}" target="_new">${static.thisLink}</a> ${static.toOpenSlipNew}</p>
 					<#if result.paymentMethodId=='2029'>
-					<img height="50" src="${config.content_url}img/santander_logo.png" alt="Santander"/>
+					<img height="50" src="${config.content_url}img/oxxo_logo.png" alt="Oxxo" value="2029"/>
 					<#else>
-					<img height="50" src="${config.content_url}img/oxxo_logo.png" alt="Oxxo"/>
+					<img height="50" src="${config.content_url}img/santander_logo.png" alt="Santander" value="2042"/>
 					</#if>
 					</td>
 				</tr>
