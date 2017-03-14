@@ -225,7 +225,7 @@
     <div id="paymentChoiceOBbig" class="paymentChoice">
         <h3><input type="radio" id="rbtnOnlineBanking" value="Online Banking" name="paymentType" onClick="toggleStatus()"><label for="rbtnOnlineBanking">${static.onlineBanking}</label></h3>
             <div id="paymentChoiceOB">
-          <form name="onlineBanking" id="onlineBanking" action="${config.payment_servlet}" method="GET">
+          <form name="onlineBanking" id="onlineBanking" action="${config.ibp_servlet}" method="GET">
             <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
             <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
             <fieldset class="cardType">
@@ -238,7 +238,7 @@
                   </li>
                   <li>
                     <div style="width:100%" align="center">
-                        <input type="radio" name="${input.paymentMethodId}" id="Santander" value="151" checked="checked"/>
+                        <input type="radio" name="${input.bankId}" id="Santander" value="151" checked="checked"/>
                         <label for="Santander">Santander</label>
                     </div>
                   </li>
