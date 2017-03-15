@@ -201,7 +201,7 @@
                   <li>
                   	<div style="width:100%" align="center">
                        <input type="radio" id="EmpresadeEnergíadelQuindio" name="${input.paymentMethodId}" value="2039" />
-					   <label for="EmpresadeEnergíadelQuindio">Empresa de Energía del Quindio</label>
+					   <label for="EmpresadeEnergíadelQuindio">Empresa de Energia del Quindio</label>
 
                     </div>
                   </li>
@@ -211,11 +211,11 @@
               	<ul class="lbl">
                   <li class="lblw">
                     <label for="Almacenes Éxito">
-                    <img height="50" class="ccLogo" src="${config.content_url}img/almacenes_logo.png" alt="Almacenes Éxito"/></label></li>
+                    <img height="50" class="ccLogo" src="${config.content_url}img/almacenes_logo.png" alt="Almacenes Exito"/></label></li>
                   <li>
                   	<div style="width:100%" align="center">
                        <input type="radio" id="AlmacenesÉxito" name="${input.paymentMethodId}" value="2040" />
-					   <label for="AlmacenesÉxito">Almacenes Éxito</label>
+					   <label for="AlmacenesÉxito">Almacenes Exito</label>
 
                     </div>
                   </li>
