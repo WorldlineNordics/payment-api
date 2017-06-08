@@ -238,4 +238,7 @@ abstract class AbstractPaymentPageRequest {
 
 	@Parameter(shortName = "AAO", required=false)
 	String authorizationType;
+	
+	@Parameter(shortName = "AAP", required=false)
+        String authenticationRedirect;
 }

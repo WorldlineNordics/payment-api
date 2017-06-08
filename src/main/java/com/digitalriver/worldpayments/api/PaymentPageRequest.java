@@ -23,38 +23,38 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
         }
     }
 
-    public void setShippingHouseNumber(String shippingHouseNumber){
-    	super.shippingHouseNumber = shippingHouseNumber; 
+    public void setShippingHouseNumber(String shippingHouseNumber) {
+        super.shippingHouseNumber = shippingHouseNumber;
     }
-    
-    public void setShippingHouseExtension(String shippingHouseExtension){
-    	super.shippingHouseExtension = shippingHouseExtension; 
+
+    public void setShippingHouseExtension(String shippingHouseExtension) {
+        super.shippingHouseExtension = shippingHouseExtension;
     }
-    
-    public void setShippingCareOf(String shippingCareOf){
-    	super.shippingCareOf = shippingCareOf;
+
+    public void setShippingCareOf(String shippingCareOf) {
+        super.shippingCareOf = shippingCareOf;
     }
-    
-    public void setGender(String gender){
-    	super.gender = gender; 
+
+    public void setGender(String gender) {
+        super.gender = gender;
     }
-    
-    public void setBillingStreetName(String streetName){
-    	super.billingStreetName = streetName; 
+
+    public void setBillingStreetName(String streetName) {
+        super.billingStreetName = streetName;
     }
-    
-    public void setShippingStreetName(String streetNameShippingInfo){
-    	super.shippingStreetName = streetNameShippingInfo; 
+
+    public void setShippingStreetName(String streetNameShippingInfo) {
+        super.shippingStreetName = streetNameShippingInfo;
     }
-    
-    public void setBillingHouseNumber(String houseNumber){
-    	super.billingHouseNumber = houseNumber; 
+
+    public void setBillingHouseNumber(String houseNumber) {
+        super.billingHouseNumber = houseNumber;
     }
-    
-    public void setBillingHouseExtension(String houseExtension){
-    	super.billingHouseExtension = houseExtension; 
+
+    public void setBillingHouseExtension(String houseExtension) {
+        super.billingHouseExtension = houseExtension;
     }
-    
+
     public void setAdditionalParameters(Map<String, String> additionalParameters) {
         super.additionalParameters = additionalParameters;
     }
@@ -132,15 +132,16 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
     }
 
     /**
-     * @param consumerCountry - ISO-3166, e.g. US. Used together with language to form the locale being
-     * used by Payment Page
+     * @param consumerCountry
+     *            - ISO-3166, e.g. US. Used together with language to form the locale being used by Payment Page
      */
     public void setConsumerCountry(String consumerCountry) {
         super.consumerCountry = consumerCountry;
     }
 
     /**
-     * @param consumerLanguage - Three alphabetic letter, ISO-4217 code
+     * @param consumerLanguage
+     *            - Three alphabetic letter, ISO-4217 code
      */
     public void setConsumerLanguage(String consumerLanguage) {
         super.consumerLanguage = consumerLanguage;
@@ -191,16 +192,18 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
     }
 
     /**
-     * @param returnUrl - When consumer has completed the payment page session this URL will be
-     * used for redirecting consumer back to merchant.
+     * @param returnUrl
+     *            - When consumer has completed the payment page session this URL will be used for redirecting consumer
+     *            back to merchant.
      */
     public void setReturnUrl(String returnUrl) {
         super.returnUrl = returnUrl;
     }
 
     /**
-     * @param timeLimit - Maximum time in seconds for the PaymentPageRequest to be valid. Set this
-     * to zero for an unlimited timeout.
+     * @param timeLimit
+     *            - Maximum time in seconds for the PaymentPageRequest to be valid. Set this to zero for an unlimited
+     *            timeout.
      */
     public void setTimeLimit(Integer timeLimit) {
         super.timeLimit = timeLimit;
@@ -263,8 +266,9 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
     }
 
     /**
-     * @param storeFlag - Indicates that a token should be stored. '0' = Store not used, '1' =
-     * Store and Debit/Authorize, '2' = Store only
+     * @param storeFlag
+     *            - Indicates that a token should be stored. '0' = Store not used, '1' = Store and Debit/Authorize, '2'
+     *            = Store only
      */
     public void setStoreFlag(StoreFlag storeFlag) {
         super.storeFlag = storeFlag.getVal();
@@ -275,7 +279,8 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
     }
 
     /**
-     * @param templateReference - Specifies which page to present in PaymentPage
+     * @param templateReference
+     *            - Specifies which page to present in PaymentPage
      */
     public void setTemplateReference(String templateReference) {
         super.templateReference = templateReference;
@@ -321,9 +326,15 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
         super.companyResponsibleVATNumber = vatNumber;
     }
 
-	public void setAuthorizationType(AuthorizationType authorizationType) {
-		if (authorizationType != null) {
-			super.authorizationType = authorizationType.value();
-		}
-	}
+    public void setAuthorizationType(AuthorizationType authorizationType) {
+        if (authorizationType != null) {
+            super.authorizationType = authorizationType.value();
+        }
+    }
+
+    public void setAuthenticationRedirect(AuthenticationRedirect authenticationRedirect) {
+        if (authenticationRedirect != null) {
+            super.authenticationRedirect = authenticationRedirect.value();
+        }
+    }
 }
