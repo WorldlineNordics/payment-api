@@ -132,16 +132,15 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
     }
 
     /**
-     * @param consumerCountry
-     *            - ISO-3166, e.g. US. Used together with language to form the locale being used by Payment Page
+     * @param consumerCountry - ISO-3166, e.g. US. Used together with language to form the locale being
+     * used by Payment Page
      */
     public void setConsumerCountry(String consumerCountry) {
         super.consumerCountry = consumerCountry;
     }
 
     /**
-     * @param consumerLanguage
-     *            - Three alphabetic letter, ISO-4217 code
+     * @param consumerLanguage - Three alphabetic letter, ISO-4217 code
      */
     public void setConsumerLanguage(String consumerLanguage) {
         super.consumerLanguage = consumerLanguage;
@@ -192,18 +191,16 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
     }
 
     /**
-     * @param returnUrl
-     *            - When consumer has completed the payment page session this URL will be used for redirecting consumer
-     *            back to merchant.
+     * @param returnUrl - When consumer has completed the payment page session this URL will be
+     * used for redirecting consumer back to merchant.
      */
     public void setReturnUrl(String returnUrl) {
         super.returnUrl = returnUrl;
     }
 
     /**
-     * @param timeLimit
-     *            - Maximum time in seconds for the PaymentPageRequest to be valid. Set this to zero for an unlimited
-     *            timeout.
+     * @param timeLimit - Maximum time in seconds for the PaymentPageRequest to be valid. Set this
+     * to zero for an unlimited timeout.
      */
     public void setTimeLimit(Integer timeLimit) {
         super.timeLimit = timeLimit;
@@ -266,9 +263,8 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
     }
 
     /**
-     * @param storeFlag
-     *            - Indicates that a token should be stored. '0' = Store not used, '1' = Store and Debit/Authorize, '2'
-     *            = Store only
+     * @param storeFlag - Indicates that a token should be stored. '0' = Store not used, '1' =
+     * Store and Debit/Authorize, '2' = Store only
      */
     public void setStoreFlag(StoreFlag storeFlag) {
         super.storeFlag = storeFlag.getVal();
@@ -279,8 +275,7 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
     }
 
     /**
-     * @param templateReference
-     *            - Specifies which page to present in PaymentPage
+     * @param templateReference - Specifies which page to present in PaymentPage
      */
     public void setTemplateReference(String templateReference) {
         super.templateReference = templateReference;
