@@ -198,7 +198,6 @@ public class PaymentPageHandlerTestOk extends PaymentPageHandlerTestBase {
         PaymentPageRequest request = createValidRequest();
         request.setAuthenticationRedirect(AuthenticationRedirect.REDIRECT);
         String requestString = paymentPageHandler.createRedirectUrl(request);
-        System.out.println("url string is " + requestString);
         Assert.assertTrue(requestString
                 .startsWith(PaymentPageHandler.DEFAULT_PRODUCTION_BASE_URL));
     }
