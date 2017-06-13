@@ -23,38 +23,38 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
         }
     }
 
-    public void setShippingHouseNumber(String shippingHouseNumber){
-    	super.shippingHouseNumber = shippingHouseNumber; 
+    public void setShippingHouseNumber(String shippingHouseNumber) {
+        super.shippingHouseNumber = shippingHouseNumber;
     }
-    
-    public void setShippingHouseExtension(String shippingHouseExtension){
-    	super.shippingHouseExtension = shippingHouseExtension; 
+
+    public void setShippingHouseExtension(String shippingHouseExtension) {
+        super.shippingHouseExtension = shippingHouseExtension;
     }
-    
-    public void setShippingCareOf(String shippingCareOf){
-    	super.shippingCareOf = shippingCareOf;
+
+    public void setShippingCareOf(String shippingCareOf) {
+        super.shippingCareOf = shippingCareOf;
     }
-    
-    public void setGender(String gender){
-    	super.gender = gender; 
+
+    public void setGender(String gender) {
+        super.gender = gender;
     }
-    
-    public void setBillingStreetName(String streetName){
-    	super.billingStreetName = streetName; 
+
+    public void setBillingStreetName(String streetName) {
+        super.billingStreetName = streetName;
     }
-    
-    public void setShippingStreetName(String streetNameShippingInfo){
-    	super.shippingStreetName = streetNameShippingInfo; 
+
+    public void setShippingStreetName(String streetNameShippingInfo) {
+        super.shippingStreetName = streetNameShippingInfo;
     }
-    
-    public void setBillingHouseNumber(String houseNumber){
-    	super.billingHouseNumber = houseNumber; 
+
+    public void setBillingHouseNumber(String houseNumber) {
+        super.billingHouseNumber = houseNumber;
     }
-    
-    public void setBillingHouseExtension(String houseExtension){
-    	super.billingHouseExtension = houseExtension; 
+
+    public void setBillingHouseExtension(String houseExtension) {
+        super.billingHouseExtension = houseExtension;
     }
-    
+
     public void setAdditionalParameters(Map<String, String> additionalParameters) {
         super.additionalParameters = additionalParameters;
     }
@@ -321,9 +321,15 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
         super.companyResponsibleVATNumber = vatNumber;
     }
 
-	public void setAuthorizationType(AuthorizationType authorizationType) {
-		if (authorizationType != null) {
-			super.authorizationType = authorizationType.value();
-		}
-	}
+    public void setAuthorizationType(AuthorizationType authorizationType) {
+        if (authorizationType != null) {
+            super.authorizationType = authorizationType.value();
+        }
+    }
+
+    public void setAuthenticationRedirect(AuthenticationRedirect authenticationRedirect) {
+        if (authenticationRedirect != null) {
+            super.authenticationRedirect = authenticationRedirect.value();
+        }
+    }
 }
