@@ -62,7 +62,7 @@
       <div id="paymentChoiceEFTbig" class="paymentChoice">
       	<h3><input type="radio" id="rbtnEFT" value="EFT" name="paymentType" onClick="toggleStatus()" checked="checked"><label for="rbtnEFT">${static.eft}</label></h3>
 		    <div id="paymentChoiceEFT">
-          <form name="eft" id="eft" action="${config.payment_servlet}" method="POST">
+          <form name="eft" id="eft" action="${config.eft_servlet}" method="GET">
             <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
             <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
             <input type="hidden" name="${input.paymentMethodId}" value="2028" />
