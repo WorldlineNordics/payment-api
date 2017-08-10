@@ -140,6 +140,35 @@
           
         </form>
         </div><!-- /#paymentChoiceCC-->
+      </div>  <div id="paymentChoiceOBbig" class="paymentChoice">
+      	<h3><input type="radio" id="rbtnOnlineBanking"  value="Online Banking" name="paymentType" onClick="toggleStatus()" ><label for="rbtnOnlineBanking">${static.onlineBanking}</label></h3>
+		    <div id="paymentChoiceOB">
+          <form name="onlineBanking" id="onlineBanking" action="${config.ibp_servlet}" method="GET">
+            <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
+            <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
+           <fieldset class="cardType">
+              <ul id="ulOBType">         <li>
+              	<ul class="lbl">
+                  <li class="lblw"><label for="DAOPAY"><img width="120" height="40" class="ccLogo" alt=DAOPAY src="${config.content_url}img/img"></label></li>
+                  <li>
+                  	<div style="width:120px" align="center">
+                    <input type="radio" name="${input.bankId}" id="DAOPAY" value="165"  checked="checked" />
+                    <label for="DAOPAY">DaoPay</label>
+                    </div>
+                  </li>
+              	</ul>
+				</li></ul>
+            </fieldset>  
+            <fieldset class="bottomField">
+              <div class="submitCCOBbtn">
+                <input id="submitOB" class="submit" type="submit" value="${static.submit}"/>
+              </div>
+              <div class="vbv_mcsc">
+              </div>
+            </fieldset>
+                  
+          </form>
+      	</div>
       </div><!-- /.paymentChoice-->
      
       <div id="paymentChoiceEFTbig" class="paymentChoice">

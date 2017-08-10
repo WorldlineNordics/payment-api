@@ -231,7 +231,37 @@
                   </li>
               	</ul>
               </li>
-              </ul>
+                   <li>
+              	<ul class="lbl">
+                  <li class="lblw"><label for="DAOPAY"><img width="120" height="40" class="ccLogo" alt=DAOPAY src="${config.content_url}img/img"></label></li>
+                  <li>
+                  	<div style="width:120px" align="center">
+                    <input type="radio" name="${input.bankId}" id="DAOPAY" value="165"  checked="checked" />
+                    <label for="DAOPAY">DaoPay</label>
+                    </div>
+                  </li>
+              	</ul>
+				</li>     <li>
+              	<ul class="lbl">
+                  <li class="lblw"><label for="PAYTRAIL"><img width="120" height="40" class="ccLogo" alt=PAYTRAIL src="${config.content_url}img/img"></label></li>
+                  <li>
+                  	<div style="width:120px" align="center">
+                    <input type="radio" name="${input.bankId}" id="PAYTRAIL" value="167"   />
+                    <label for="PAYTRAIL">Paytrail</label>
+                    </div>
+                  </li>
+              	</ul>
+				</li>     <li>
+              	<ul class="lbl">
+                  <li class="lblw"><label for="TRUSTLY"><img width="120" height="40" class="ccLogo" alt=TRUSTLY src="${config.content_url}img/img"></label></li>
+                  <li>
+                  	<div style="width:120px" align="center">
+                    <input type="radio" name="${input.bankId}" id="TRUSTLY" value="164"   />
+                    <label for="TRUSTLY">Trustly</label>
+                    </div>
+                  </li>
+              	</ul>
+				</li></ul>
             </fieldset>
             <fieldset class="bottomField">
               <div class="submitCCOBbtn">
@@ -285,7 +315,17 @@
                   </li>
                 </ul>
               </li>
-              </ul>
+               <li>
+                <ul class="lbl">
+                  <li class="lblw"><label for="TENPAY"><img width="120" height="40" class="ccLogo" src="${config.content_url}img/img" alt="TENPAY"/></label></li>
+                  <li>
+                    <div style="width:120px" align="center">
+                    <input type="radio" name="${input.bankId}" id="TENPAY" value="163"  checked="checked" />
+                    <label for="TENPAY">TenPay</label>
+                    </div>
+                  </li>
+                </ul>
+              </li></ul>
             </fieldset>
             <fieldset class="bottomField">
               <div class="submitCCOBbtn">

@@ -74,7 +74,17 @@
                   </li>
               	</ul>
               </li>
-              </ul>
+                   <li>
+              	<ul class="lbl">
+                  <li class="lblw"><label for="DAOPAY"><img width="120" height="40" class="ccLogo" alt=DAOPAY src="${config.content_url}img/img"></label></li>
+                  <li>
+                  	<div style="width:120px" align="center">
+                    <input type="radio" name="${input.bankId}" id="DAOPAY" value="165"  checked="checked" />
+                    <label for="DAOPAY">DaoPay</label>
+                    </div>
+                  </li>
+              	</ul>
+				</li></ul>
             </fieldset>
             <fieldset class="bottomField">
               <div class="submitCCOBbtn">
@@ -86,6 +96,46 @@
                   
           </form>
       	</div>
+      </div><div id="paymentChoicePPbig" class="paymentChoice">
+        <h3><input type="radio" id="rbtnPayPal" value="PayPalBanking"  name="paymentType" onClick="toggleStatus()" ><label for="rbtnPayPal">${static.ewallet}</label></h3>
+        <div id="paymentChoicePP">
+          <form name="paypalBanking" id="paypalBanking" action="${config.ibp_servlet}" method="GET">
+            <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
+            <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
+            <fieldset class="cardType">
+              <ul id="ulPPType">
+             
+               <li>
+                <ul class="lbl">
+                  <li class="lblw"><label for="CASHU"><img width="120" height="40" class="ccLogo" src="${config.content_url}img/img" alt="CASHU"/></label></li>
+                  <li>
+                    <div style="width:120px" align="center">
+                    <input type="radio" name="${input.bankId}" id="CASHU" value="160"  checked="checked" />
+                    <label for="CASHU">CashU</label>
+                    </div>
+                  </li>
+                </ul>
+              </li> <li>
+                <ul class="lbl">
+                  <li class="lblw"><label for="YANDEX"><img width="120" height="40" class="ccLogo" src="${config.content_url}img/img" alt="YANDEX"/></label></li>
+                  <li>
+                    <div style="width:120px" align="center">
+                    <input type="radio" name="${input.bankId}" id="YANDEX" value="97"   />
+                    <label for="YANDEX">Yandex Money</label>
+                    </div>
+                  </li>
+                </ul>
+              </li></ul>
+            </fieldset>
+            <fieldset class="bottomField">
+              <div class="submitCCOBbtn">
+                <input id="submitPP" class="submit" type="submit" value="${static.submit}"/>
+              </div>
+              <div class="vbv_mcsc">
+              </div>
+            </fieldset>
+          </form>
+        </div>
       </div>
       
             
