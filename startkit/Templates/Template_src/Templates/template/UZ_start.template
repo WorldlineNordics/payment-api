@@ -67,7 +67,7 @@
              
                <li>
                 <ul class="lbl">
-                  <li class="lblw"><label for="QIWI"><img width="120" height="40" class="ccLogo" src="${config.content_url}img/img" alt="QIWI"/></label></li>
+                  <li class="lblw"><label for="QIWI"><img width="120" height="46" class="ccLogo" src="${config.content_url}img/Visa_Qiwi_h_c.jpg" alt="QIWI"/></label></li>
                   <li>
                     <div style="width:120px" align="center">
                     <input type="radio" name="${input.bankId}" id="QIWI" value="140"  checked="checked" />

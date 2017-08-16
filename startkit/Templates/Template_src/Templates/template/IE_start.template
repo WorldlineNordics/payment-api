@@ -154,7 +154,7 @@
            <fieldset class="cardType">
               <ul id="ulOBType">         <li>
               	<ul class="lbl">
-                  <li class="lblw"><label for="DAOPAY"><img width="120" height="40" class="ccLogo" alt=DAOPAY src="${config.content_url}img/img"></label></li>
+                  <li class="lblw"><label for="DAOPAY"><img width="120" height="65" class="ccLogo" alt=DAOPAY src="${config.content_url}img/logos/daopay.png"></label></li>
                   <li>
                   	<div style="width:120px" align="center">
                     <input type="radio" name="${input.bankId}" id="DAOPAY" value="165"  checked="checked" />
@@ -164,7 +164,7 @@
               	</ul>
 				</li>     <li>
               	<ul class="lbl">
-                  <li class="lblw"><label for="TRUSTLY"><img width="120" height="40" class="ccLogo" alt=TRUSTLY src="${config.content_url}img/img"></label></li>
+                  <li class="lblw"><label for="TRUSTLY"><img width="120" height="37" class="ccLogo" alt=TRUSTLY src="${config.content_url}img/logos/Trustly.png"></label></li>
                   <li>
                   	<div style="width:120px" align="center">
                     <input type="radio" name="${input.bankId}" id="TRUSTLY" value="164"   />
@@ -206,7 +206,7 @@
               </li>
                <li>
                 <ul class="lbl">
-                  <li class="lblw"><label for="TENPAY"><img width="120" height="40" class="ccLogo" src="${config.content_url}img/img" alt="TENPAY"/></label></li>
+                  <li class="lblw"><label for="TENPAY"><img width="120" height="41" class="ccLogo" src="${config.content_url}img/logos/TenPay.png" alt="TENPAY"/></label></li>
                   <li>
                     <div style="width:120px" align="center">
                     <input type="radio" name="${input.bankId}" id="TENPAY" value="163"  checked="checked" />
