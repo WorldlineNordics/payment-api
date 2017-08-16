@@ -409,9 +409,9 @@
 					$('#paymentChoiceCC :input').removeAttr('disabled');
           $('#paymentChoiceOB :input').attr('disabled', 'disabled');
 					$('#paymentChoicePP :input').attr('disabled', 'disabled');
-          /*$('#paymentChoiceCCbig').removeClass('paymentChoice').addClass('active');
+          $('#paymentChoiceCCbig').removeClass('paymentChoice').addClass('active');
           $('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');
-					$('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');*/
+					$('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');
           flobu1.disable();
           flobu2.enable();
 		  flobu3.enable();
@@ -421,9 +421,9 @@
           $('#paymentChoiceCHK :input').removeAttr('disabled');
           $('#paymentChoiceCC :input').attr('disabled', 'disabled');
 		  $('#paymentChoicePP :input').attr('disabled', 'disabled');
-          /*$('#paymentChoiceCHKbig').removeClass('paymentChoice').addClass('active');
+          $('#paymentChoiceCHKbig').removeClass('paymentChoice').addClass('active');
           $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
-		  $('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');*/
+		  $('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');
           flobu2.disable();
           flobu1.enable();
 		  flobu3.enable();
@@ -433,9 +433,9 @@
           $('#paymentChoiceEFT :input').removeAttr('disabled');
           $('#paymentChoiceCC :input').attr('disabled', 'disabled');
 		  $('#paymentChoicePP :input').attr('disabled', 'disabled');
-          /*$('#paymentChoiceCHKbig').removeClass('paymentChoice').addClass('active');
+          $('#paymentChoiceCHKbig').removeClass('paymentChoice').addClass('active');
           $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
-		  $('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');*/
+		  $('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');
           flobu3.disable();
           flobu1.enable();
 		  flobu2.enable();
@@ -445,9 +445,9 @@
 		$('#paymentChoicePP :input').removeAttr('disabled');
         $('#paymentChoiceCC :input').attr('disabled', 'disabled');
 		$('#paymentChoiceOB :input').attr('disabled', 'disabled');
-        /*$('#paymentChoicePPbig').removeClass('paymentChoice').addClass('active');
+        $('#paymentChoicePPbig').removeClass('paymentChoice').addClass('active');
         $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
-		$('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');*/
+		$('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');
         flobu4.disable();
         flobu1.enable();
 		flobu2.enable();
