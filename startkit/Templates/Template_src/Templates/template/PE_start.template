@@ -58,7 +58,8 @@
           </fieldset>
           <br />
         </p>
-      </#if>      
+      </#if>     
+       
       <div id="paymentChoiceEFTbig" class="paymentChoice">
       	<h3><input type="radio" id="rbtnEFT" value="EFT" name="paymentType" onClick="toggleStatus()" checked="checked"><label for="rbtnEFT">${static.eft}</label></h3>
 		    <div id="paymentChoiceEFT">
