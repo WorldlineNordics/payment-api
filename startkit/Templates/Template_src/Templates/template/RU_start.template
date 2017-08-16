@@ -76,7 +76,7 @@
               </li>
                    <li>
               	<ul class="lbl">
-                  <li class="lblw"><label for="DAOPAY"><img width="120" height="65" class="ccLogo" alt=DAOPAY src="${config.content_url}img/logos/daopay.png"></label></li>
+                  <li class="lblw"><label for="DAOPAY"><img width="120" height="65" class="ccLogo" alt=DAOPAY src="${config.content_url}img/daopay.png"></label></li>
                   <li>
                   	<div style="width:120px" align="center">
                     <input type="radio" name="${input.bankId}" id="DAOPAY" value="165"  checked="checked" />
@@ -107,7 +107,7 @@
              
                <li>
                 <ul class="lbl">
-                  <li class="lblw"><label for="CASHU"><img width="120" height="56" class="ccLogo" src="${config.content_url}img/logos/CashU.png" alt="CASHU"/></label></li>
+                  <li class="lblw"><label for="CASHU"><img width="120" height="56" class="ccLogo" src="${config.content_url}img/CashU.png" alt="CASHU"/></label></li>
                   <li>
                     <div style="width:120px" align="center">
                     <input type="radio" name="${input.bankId}" id="CASHU" value="160"  checked="checked" />
@@ -117,7 +117,7 @@
                 </ul>
               </li> <li>
                 <ul class="lbl">
-                  <li class="lblw"><label for="YANDEX"><img width="120" height="47" class="ccLogo" src="${config.content_url}img/logos/yandex.png" alt="YANDEX"/></label></li>
+                  <li class="lblw"><label for="YANDEX"><img width="120" height="47" class="ccLogo" src="${config.content_url}img/yandex.png" alt="YANDEX"/></label></li>
                   <li>
                     <div style="width:120px" align="center">
                     <input type="radio" name="${input.bankId}" id="YANDEX" value="97"   />

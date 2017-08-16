@@ -77,7 +77,7 @@
                 </ul>
               </li> <li>
                 <ul class="lbl">
-                  <li class="lblw"><label for="YANDEX"><img width="120" height="47" class="ccLogo" src="${config.content_url}img/logos/yandex.png" alt="YANDEX"/></label></li>
+                  <li class="lblw"><label for="YANDEX"><img width="120" height="47" class="ccLogo" src="${config.content_url}img/yandex.png" alt="YANDEX"/></label></li>
                   <li>
                     <div style="width:120px" align="center">
                     <input type="radio" name="${input.bankId}" id="YANDEX" value="97"   />

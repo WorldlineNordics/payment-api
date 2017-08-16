@@ -65,7 +65,7 @@
            <fieldset class="cardType">
               <ul id="ulOBType">         <li>
               	<ul class="lbl">
-                  <li class="lblw"><label for="DAOPAY"><img width="120" height="65" class="ccLogo" alt=DAOPAY src="${config.content_url}img/logos/daopay.png"></label></li>
+                  <li class="lblw"><label for="DAOPAY"><img width="120" height="65" class="ccLogo" alt=DAOPAY src="${config.content_url}img/daopay.png"></label></li>
                   <li>
                   	<div style="width:120px" align="center">
                     <input type="radio" name="${input.bankId}" id="DAOPAY" value="165"  checked="checked" />
@@ -75,7 +75,7 @@
               	</ul>
 				</li>     <li>
               	<ul class="lbl">
-                  <li class="lblw"><label for="POLI"><img width="120" height="54" class="ccLogo" alt=POLI src="${config.content_url}img/logos/Poli.png"></label></li>
+                  <li class="lblw"><label for="POLI"><img width="120" height="54" class="ccLogo" alt=POLI src="${config.content_url}img/Poli.png"></label></li>
                   <li>
                   	<div style="width:120px" align="center">
                     <input type="radio" name="${input.bankId}" id="POLI" value="168"   />
