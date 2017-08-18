@@ -150,6 +150,45 @@
           
         </form>
         </div><!-- /#paymentChoiceCC-->
+      </div>  <div id="paymentChoiceOBbig" class="paymentChoice">
+      	<h3><input type="radio" id="rbtnOnlineBanking"  value="Online Banking" name="paymentType" onClick="toggleStatus()" ><label for="rbtnOnlineBanking">${static.onlineBanking}</label></h3>
+		    <div id="paymentChoiceOB">
+          <form name="onlineBanking" id="onlineBanking" action="${config.ibp_servlet}" method="GET">
+            <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
+            <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
+           <fieldset class="cardType">
+              <ul id="ulOBType">         <li>
+              	<ul class="lbl">
+                  <li class="lblw"><label for="DAOPAY"><img width="120" height="65" class="ccLogo" alt=DAOPAY src="${config.content_url}img/daopay.png"></label></li>
+                  <li>
+                  	<div style="width:120px" align="center">
+                    <input type="radio" name="${input.bankId}" id="DAOPAY" value="165"  checked="checked" />
+                    <label for="DAOPAY">DaoPay</label>
+                    </div>
+                  </li>
+              	</ul>
+				</li>     <li>
+              	<ul class="lbl">
+                  <li class="lblw"><label for="TRUSTLY"><img width="120" height="37" class="ccLogo" alt=TRUSTLY src="${config.content_url}img/Trustly.png"></label></li>
+                  <li>
+                  	<div style="width:120px" align="center">
+                    <input type="radio" name="${input.bankId}" id="TRUSTLY" value="164"   />
+                    <label for="TRUSTLY">Trustly</label>
+                    </div>
+                  </li>
+              	</ul>
+				</li></ul>
+            </fieldset>  
+            <fieldset class="bottomField">
+              <div class="submitCCOBbtn">
+                <input id="submitOB" class="submit" type="submit" value="${static.submit}"/>
+              </div>
+              <div class="vbv_mcsc">
+              </div>
+            </fieldset>
+                  
+          </form>
+      	</div>
       </div><!-- /.paymentChoice-->
       
     
@@ -215,7 +254,17 @@
                   </li>
                 </ul>
               </li>
-              </ul>
+               <li>
+                <ul class="lbl">
+                  <li class="lblw"><label for="TENPAY"><img width="120" height="41" class="ccLogo" src="${config.content_url}img/TenPay.png" alt="TENPAY"/></label></li>
+                  <li>
+                    <div style="width:120px" align="center">
+                    <input type="radio" name="${input.bankId}" id="TENPAY" value="163"  checked="checked" />
+                    <label for="TENPAY">TenPay</label>
+                    </div>
+                  </li>
+                </ul>
+              </li></ul>
             </fieldset>
             <fieldset class="bottomField">
               <div class="submitCCOBbtn">
@@ -360,9 +409,9 @@
 					$('#paymentChoiceCC :input').removeAttr('disabled');
           $('#paymentChoiceOB :input').attr('disabled', 'disabled');
 					$('#paymentChoicePP :input').attr('disabled', 'disabled');
-          /*$('#paymentChoiceCCbig').removeClass('paymentChoice').addClass('active');
+          $('#paymentChoiceCCbig').removeClass('paymentChoice').addClass('active');
           $('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');
-					$('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');*/
+					$('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');
           flobu1.disable();
           flobu2.enable();
 		  flobu3.enable();
@@ -372,9 +421,9 @@
           $('#paymentChoiceCHK :input').removeAttr('disabled');
           $('#paymentChoiceCC :input').attr('disabled', 'disabled');
 		  $('#paymentChoicePP :input').attr('disabled', 'disabled');
-          /*$('#paymentChoiceCHKbig').removeClass('paymentChoice').addClass('active');
+          $('#paymentChoiceCHKbig').removeClass('paymentChoice').addClass('active');
           $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
-		  $('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');*/
+		  $('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');
           flobu2.disable();
           flobu1.enable();
 		  flobu3.enable();
@@ -384,9 +433,9 @@
           $('#paymentChoiceEFT :input').removeAttr('disabled');
           $('#paymentChoiceCC :input').attr('disabled', 'disabled');
 		  $('#paymentChoicePP :input').attr('disabled', 'disabled');
-          /*$('#paymentChoiceCHKbig').removeClass('paymentChoice').addClass('active');
+          $('#paymentChoiceCHKbig').removeClass('paymentChoice').addClass('active');
           $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
-		  $('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');*/
+		  $('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');
           flobu3.disable();
           flobu1.enable();
 		  flobu2.enable();
@@ -396,9 +445,9 @@
 		$('#paymentChoicePP :input').removeAttr('disabled');
         $('#paymentChoiceCC :input').attr('disabled', 'disabled');
 		$('#paymentChoiceOB :input').attr('disabled', 'disabled');
-        /*$('#paymentChoicePPbig').removeClass('paymentChoice').addClass('active');
+        $('#paymentChoicePPbig').removeClass('paymentChoice').addClass('active');
         $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
-		$('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');*/
+		$('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');
         flobu4.disable();
         flobu1.enable();
 		flobu2.enable();

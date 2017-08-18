@@ -165,7 +165,17 @@
                   </li>
                 </ul>
               </li>
-              </ul>
+               <li>
+                <ul class="lbl">
+                  <li class="lblw"><label for="ONECARD"><img width="120" height="90" class="ccLogo" src="${config.content_url}img/OneCard.png" alt="ONECARD"/></label></li>
+                  <li>
+                    <div style="width:120px" align="center">
+                    <input type="radio" name="${input.bankId}" id="ONECARD" value="162"   />
+                    <label for="ONECARD">OneCard</label>
+                    </div>
+                  </li>
+                </ul>
+              </li></ul>
             </fieldset>
             <fieldset class="bottomField">
               <div class="submitCCOBbtn">
