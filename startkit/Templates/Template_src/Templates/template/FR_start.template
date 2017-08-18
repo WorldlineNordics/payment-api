@@ -441,6 +441,7 @@
           $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
 		  $('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');
       $('#paymentChoiceCHKbig').removeClass('active').addClass('paymentChoice');
+      $('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');
           flobu2.disable();
           flobu1.enable();
 		  flobu3.enable();
@@ -454,6 +455,7 @@
           $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
 		  $('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');
       $('#paymentChoiceEFTbig').removeClass('active').addClass('paymentChoice');
+      $('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');
           flobu3.disable();
           flobu1.enable();
 		  flobu2.enable();
