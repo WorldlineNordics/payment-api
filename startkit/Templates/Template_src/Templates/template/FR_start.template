@@ -356,6 +356,7 @@
 						$("#rbtnPayPal").attr('disabled','disabled');
 						$("#rbtnCHK").attr('disabled','disabled');
 						$("#rbtnEFT").attr('disabled','disabled');
+            $("#rbtnOnlineBanking").attr('disabled','disabled');
 						$("#cancelBtn").css("color","#CCCCCC");
 					}
 					else return;
@@ -367,7 +368,8 @@
 					$("#cancelBtn").attr('disabled','disabled');					
 					$("#rbtnCreditCard").attr('disabled','disabled');
 					$("#rbtnCHK").attr('disabled','disabled');					
-					$("#rbtnPayPal").attr('disabled','disabled');										
+					$("#rbtnPayPal").attr('disabled','disabled');					
+          $("#rbtnOnlineBanking").attr('disabled','disabled');					
 					$("#cancelBtn").css("color","#CCCCCC");
 				});
 								
@@ -378,7 +380,8 @@
 					$("#cancelBtn").attr('disabled','disabled');					
 					$("#rbtnCreditCard").attr('disabled','disabled');
 					$("#rbtnEFT").attr('disabled','disabled');					
-					$("#rbtnPayPal").attr('disabled','disabled');					
+					$("#rbtnPayPal").attr('disabled','disabled');				
+          $("#rbtnOnlineBanking").attr('disabled','disabled');	
 					$("#cancelBtn").css("color","#CCCCCC");
 				});
 				$("#paypalBanking").submit(function(){
@@ -388,8 +391,19 @@
 					$("#rbtnCreditCard").attr('disabled','disabled');
 					$("#rbtnEFT").attr('disabled','disabled');
 					$("#rbtnCHK").attr('disabled','disabled');					
+          $("#rbtnOnlineBanking").attr('disabled','disabled');
 					$("#cancelBtn").css("color","#CCCCCC");
 				});
+        $("#onlineBanking").submit(function(){
+          $("#submitOB").attr('value','${static.processingWait}'); 
+          $("#submitOB").attr('disabled','disabled'); 
+          $("#cancelBtn").attr('disabled','disabled');
+          $("#rbtnCreditCard").attr('disabled','disabled');
+          $("#rbtnEFT").attr('disabled','disabled');
+          $("#rbtnCHK").attr('disabled','disabled');          
+          $("#rbtnPayPal").attr('disabled','disabled');
+          $("#cancelBtn").css("color","#CCCCCC");
+        });        
 				
 				$("#cancelPayment").submit(function(){
 					$("#cancelBtn").attr('disabled','disabled');
@@ -409,9 +423,11 @@
 					$('#paymentChoiceCC :input').removeAttr('disabled');
           $('#paymentChoiceOB :input').attr('disabled', 'disabled');
 					$('#paymentChoicePP :input').attr('disabled', 'disabled');
+
           $('#paymentChoiceCCbig').removeClass('paymentChoice').addClass('active');
-          $('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');
+          $('#paymentChoiceEFTbig').removeClass('active').addClass('paymentChoice');
 					$('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');
+          $('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');
           flobu1.disable();
           flobu2.enable();
 		  flobu3.enable();
@@ -421,9 +437,11 @@
           $('#paymentChoiceCHK :input').removeAttr('disabled');
           $('#paymentChoiceCC :input').attr('disabled', 'disabled');
 		  $('#paymentChoicePP :input').attr('disabled', 'disabled');
-          $('#paymentChoiceCHKbig').removeClass('paymentChoice').addClass('active');
+          $('#paymentChoiceEFTbig').removeClass('paymentChoice').addClass('active');
           $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
 		  $('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');
+      $('#paymentChoiceCHKbig').removeClass('active').addClass('paymentChoice');
+      $('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');
           flobu2.disable();
           flobu1.enable();
 		  flobu3.enable();
@@ -436,6 +454,8 @@
           $('#paymentChoiceCHKbig').removeClass('paymentChoice').addClass('active');
           $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
 		  $('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');
+      $('#paymentChoiceEFTbig').removeClass('active').addClass('paymentChoice');
+      $('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');
           flobu3.disable();
           flobu1.enable();
 		  flobu2.enable();
@@ -448,11 +468,27 @@
         $('#paymentChoicePPbig').removeClass('paymentChoice').addClass('active');
         $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
 		$('#paymentChoiceOBbig').removeClass('active').addClass('paymentChoice');
+    $('#paymentChoiceEFTbig').removeClass('active').addClass('paymentChoice');
         flobu4.disable();
         flobu1.enable();
 		flobu2.enable();
 		flobu3.enable();
 		}
+else if ($('#rbtnOnlineBanking').is(':checked')) {
+    $('#paymentChoiceOB :input').removeAttr('disabled');
+        $('#paymentChoiceCC :input').attr('disabled', 'disabled');
+    $('#paymentChoicePP :input').attr('disabled', 'disabled');
+        $('#paymentChoiceOBbig').removeClass('paymentChoice').addClass('active');
+        $('#paymentChoiceCCbig').removeClass('active').addClass('paymentChoice');
+    $('#paymentChoicePPbig').removeClass('active').addClass('paymentChoice');
+    $('#paymentChoiceEFTbig').removeClass('active').addClass('paymentChoice');
+        flobu4.disable();
+        flobu1.enable();
+    flobu2.enable();
+    flobu3.enable();
+    }
+
+
       }
 			
       </script>
