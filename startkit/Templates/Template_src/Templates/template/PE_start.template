@@ -86,11 +86,11 @@
                 <ul class="lbl">
                   <li class="lblw">
                     <label for="SafetyPay">
-                    <img height="50" class="ccLogo" src="${config.content_url}img/safetypay_logo.jpg" alt="SafetyPay"/></label></li>
+                    <img height="50" class="ccLogo" src="${config.content_url}img/safetypay_logo.png" alt="SafetyPay"/></label></li>
                   <li>
                     <div style="width:100%" align="center">
-                       <input type="radio" id="SafetyPay"  checked="checked" name="${input.paymentMethodId}" value="2046"  />
-             <label for="SafetyPay">EBanx SafetyPay</label>
+                       <input type="radio" id="SafetyPay"  name="${input.paymentMethodId}" value="2046"  />
+             <label for="SafetyPay">SafetyPay</label>
                     </div>
                   </li>
                 </ul>
@@ -121,7 +121,7 @@
                <ul class="lbl" style="width:150px">
                   <li class="lblw">
                     <label for="safetypay-online">
-                    <img width="120" height="35" class="ccLogo" alt="SafetyPay Online" src="../../WebContent/img/safetypay_logo.png"/></label>
+                    <img width="120" height="35" class="ccLogo" alt="SafetyPay Online" src="${config.content_url}img/safetypay_logo.png"/></label>
                   </li>
                   <li>
                     <div style="width:100%" align="center">
@@ -133,7 +133,7 @@
                 <ul class="lbl" style="width:150px">
                   <li class="lblw">
                     <label for="safetypay-cash">
-                    <img width="120" height="35" class="ccLogo" alt="SafetyPay Cash" src="../../WebContent/img/safetypay_logo.png"/></label>
+                    <img width="120" height="35" class="ccLogo" alt="SafetyPay Cash" src="${config.content_url}img/safetypay_logo.png"/></label>
                   </li>
                   <li>
                     <div style="width:100%" align="center">
