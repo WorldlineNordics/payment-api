@@ -167,6 +167,19 @@
                   </li>
                 </ul>
               </li>
+              <li>
+                <ul class="lbl">
+                  <li class="lblw">
+                    <label for="Sencillito">
+                    <img height="50" class="ccLogo" src="${config.content_url}img/sencillito_logo.png" alt="Sencillito" /></label></li>
+                  <li>
+                    <div style="width:100%" align="center">
+                       <input type="radio" id="Sencillito"  checked="checked" name="${input.paymentMethodId}" value="2045"/>
+             <label for="Sencillito">EBanx Sencillito</label>
+                    </div>
+                  </li>
+                </ul>
+              </li>
               </ul>
             </fieldset>
             <fieldset class="bottomField">

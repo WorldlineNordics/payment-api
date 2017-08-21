@@ -66,7 +66,7 @@
           <form name="eft" id="eft" action="${config.eft_servlet}" method="GET">
             <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
             <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
-            <input type="hidden" name="${input.paymentMethodId}" value="2028" />
+            
             <fieldset class="cardType">
               <ul id="ulEFTType">
               <li>
@@ -76,13 +76,28 @@
                     <img height="50" class="ccLogo" src="${config.content_url}img/PagoEfectivo_logo.jpg" alt="PagoEfectivo"/></label></li>
                   <li>
                   	<div style="width:100%" align="center">
-                       <input type="radio" id="PagoEfectivo"  checked="checked" />
+                       <input type="radio" id="PagoEfectivo"  checked="checked" name="${input.paymentMethodId}" value="2028"  />
 					   <label for="PagoEfectivo">PagoEfectivo</label>
                     </div>
                   </li>
                 </ul>
               </li>
+                <li>
+                <ul class="lbl">
+                  <li class="lblw">
+                    <label for="SafetyPay">
+                    <img height="50" class="ccLogo" src="${config.content_url}img/safetypay_logo.jpg" alt="SafetyPay"/></label></li>
+                  <li>
+                    <div style="width:100%" align="center">
+                       <input type="radio" id="SafetyPay"  checked="checked" name="${input.paymentMethodId}" value="2046"  />
+             <label for="SafetyPay">EBanx SafetyPay</label>
+                    </div>
+                  </li>
+                </ul>
+
+              </li>
               </ul>
+
             </fieldset>
             <fieldset class="bottomField">
               <div class="submitCCOBbtn">
