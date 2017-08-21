@@ -143,7 +143,7 @@
         </form>
         </div><!-- /#paymentChoiceCC-->
       </div><!-- /.paymentChoice-->
-       
+
       <div id="paymentChoiceEFTbig" class="paymentChoice">
       	<h3><input type="radio" id="rbtnEFT" value="EFT" name="paymentType" onClick="toggleStatus()" checked="checked"><label for="rbtnEFT">${static.eft}</label></h3>
 		    <div id="paymentChoiceEFT">
@@ -170,7 +170,7 @@
                 <ul class="lbl">
                   <li class="lblw">
                     <label for="SafetyPay">
-                    <img height="50" class="ccLogo" src="${config.content_url}img/safetypay_logo.png" alt="SafetyPay"/></label></li>
+                    <img height="35" width="120" class="ccLogo" src="${config.content_url}img/safetypay_logo.png" alt="SafetyPay"/></label></li>
                   <li>
                     <div style="width:100%" align="center">
                        <input type="radio" id="SafetyPay"  name="${input.paymentMethodId}" value="2046"  />

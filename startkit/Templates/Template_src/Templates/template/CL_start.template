@@ -167,19 +167,7 @@
                   </li>
                 </ul>
               </li>
-              <li>
-                <ul class="lbl">
-                  <li class="lblw">
-                    <label for="Sencillito">
-                    <img height="50" class="ccLogo" src="${config.content_url}img/sencillito_logo.png" alt="Sencillito" /></label></li>
-                  <li>
-                    <div style="width:100%" align="center">
-                       <input type="radio" id="Sencillito"  checked="checked" name="${input.paymentMethodId}" value="2045"/>
-             <label for="Sencillito">EBanx Sencillito</label>
-                    </div>
-                  </li>
-                </ul>
-              </li>
+             
               </ul>
             </fieldset>
             <fieldset class="bottomField">
@@ -243,13 +231,27 @@
                   <li class="lblw"><label for="DAOPAY"><img width="120" height="65" class="ccLogo" alt=DAOPAY src="${config.content_url}img/daopay.png"></label></li>
                   <li>
                   	<div style="width:120px" align="center">
-                    <input type="radio" name="${input.bankId}" id="DAOPAY" value="165"  checked="checked" />
+                    <input type="radio" name="${input.bankId}" id="DAOPAY" value="165"   />
                     <label for="DAOPAY">DaoPay</label>
                     </div>
                   </li>
               	</ul>
-				</li></ul>
-            </fieldset>
+				</li>
+ <li>
+                <ul class="lbl">
+                  <li class="lblw">
+                    <label for="Sencillito">
+                    <img height="50" width = "120" class="ccLogo" src="${config.content_url}img/sencillito_logo.png" alt="Sencillito" /></label></li>
+                  <li>
+                    <div style="width:100%" align="center">
+                       <input type="radio" id="Sencillito" name="${input.paymentMethodId}" value="158"/>
+             <label for="Sencillito">EBanx Sencillito</label>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+        </ul>
+            </fieldset> 
             <fieldset class="bottomField">
               <div class="submitCCOBbtn">
                 <input id="submitOB" class="submit" type="submit" value="${static.submit}"/>
