@@ -60,13 +60,97 @@
         </p>
       </#if>     
        
+  <div id="paymentChoiceCCbig" class="paymentChoice">
+        <h3><input type="radio" id="rbtnCreditCard" value="Credit Card" name="paymentType" checked="checked" onClick="toggleStatus()"><label for="rbtnCreditCard">${static.creditCard}</label></h3>
+        <div id="paymentChoiceCC" >
+        <form name="creditCard" id="creditCard" action="${config.payment_servlet}" method="POST">
+          <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
+          <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
+          <input type="hidden" name="${input.paymentType}" value="CARD"/>
+          <input type="hidden" name="${input.cardNumberField}" value="${input.cardNumber}"/>
+          <input type="hidden" name="${input.cvCodeField}" value="${input.cvCode}"/>
+         <input type="hidden" name="${input.cardType}" value="UNKNOWN"/>
+          
+      <fieldset class="cardType" style="width:580px">
+            <ul id="ulCCType">
+              <li>
+                <!-- INTERNATIONAL -->
+                <div style="width:75px" align="center">
+            <img width="75" height="40" class="ccLogo" src="${config.content_url}img/visa_logo.gif" alt="Visa"/>
+          
+                </div>
+                </li>
+              <li>
+        <div style="width:75px" align="center">
+          <img width="75" height="40" class="ccLogo" src="${config.content_url}img/mastercard_logo.gif" alt="MasterCard"/>
+          
+        </div>
+        </li>
+              <li>
+        <div style="width:75px" align="center">
+          <img width="75" height="40" class="ccLogo" src="${config.content_url}img/amex_logo.gif" alt="American Express"/>
+          
+                </div>
+                </li>
+        <li>
+        <div style="width:75px" align="center">
+          <img width="75" height="40" class="ccLogo" src="${config.content_url}img/diners_logo.png" alt="Diners"/>
+          
+                </div>
+                </li>
+            </ul>
+          </fieldset>
+      
+          <fieldset class="cardNumber">
+            <label for="${input.cardNumber}">${static.cardNumber}:</label>
+            <input type="text" name="${input.cardNumber}" id="${input.cardNumber}" size="21" value="${prev.cardNumber}" autocomplete="off"/>
+          </fieldset>
+          
+          <fieldset class="expirationDate">
+            ${static.cardExpirationDate}:
+            <!--<label for="${input.expDateMonth}">${static.month}:</label>-->
+            <select name="${input.expDateMonth}" id="${input.expDateMonth}">
+              <#list ["${static.month}","01", "02", "03", "04", "05","06", "07", "08", "09","10","11", "12"] as month>
+              <#if "${month}" == prev.expDateMonth>selected</#if> >${month}<option value="${month}" <#if "${month}" == prev.expDateMonth>selected</#if> >${month}</option>
+              </#list>
+            </select> 
+            <!--<label for="${input.expDateYear}">${static.year}:</label>-->
+            <select name="${input.expDateYear}" id="${input.expDateYear}" style="font-family:Arial Unicode MS"></select>
+          </fieldset>
+          
+          <fieldset class="cvv">
+            <span id="cvvlabel" title="${static.cvvInfo}"><label for="${input.cvCode}"><a href="#" id="cvvinfolabel">${static.cvv}:</a></label></span>
+            <input type="text" name="${input.cvCode}" id="${input.cvCode}" size="4" maxlength="4" autocomplete="off"/>
+          </fieldset>
+
+          <fieldset class="bottomField">
+            <div class="submitCCOBbtn">
+              <input id="submitCC" class="submit" type="submit" value="${static.submit}"/>
+            </div>
+            <div class="vbv_mcsc">
+              <a href="http://www.visaeurope.com/personal/onlineshopping/verifiedbyvisa/signup/main.jsp" target="_blank">
+                <img class="vbv" src="${config.content_url}img/vbv.gif" alt="Verified by Visa" height="35" width="66"/>
+              </a>
+              <a href="http://www.mastercard.com/securecode/" target="_blank">
+                <img class="mcsc" src="${config.content_url}img/mcsc.gif" alt="MasterCard SecureCode" height="35" width="79"/>
+              </a>
+              <a href="http://protectbuy.com/diners-club-faq/" target="_blank">
+                <img class="mcsc" src="${config.content_url}img/diners_ptb.png" alt="Diners ProtectBuy" height="35"/>
+              </a>
+            </div>
+          </fieldset>
+          
+        </form>
+        </div><!-- /#paymentChoiceCC-->
+      </div><!-- /.paymentChoice-->
+
       <div id="paymentChoiceEFTbig" class="paymentChoice">
-      	<h3><input type="radio" id="rbtnEFT" value="EFT" name="paymentType" onClick="toggleStatus()" checked="checked"><label for="rbtnEFT">${static.eft}</label></h3>
+      	<h3><input type="radio" id="rbtnEFT" value="EFT" name="paymentType" onClick="toggleStatus()"><label for="rbtnEFT">${static.eft}</label></h3>
 		    <div id="paymentChoiceEFT">
           <form name="eft" id="eft" action="${config.eft_servlet}" method="GET">
             <input type="hidden" name="${input.encryptedCustomerRedirect}" value="${req.encryptedCustomerRedirect}" />
             <input type="hidden" name="${input.encryptedStatusTicket}" value="${req.encryptedStatusTicket}" />
-            <input type="hidden" name="${input.paymentMethodId}" value="2028" />
+            
             <fieldset class="cardType">
               <ul id="ulEFTType">
               <li>
@@ -76,13 +160,15 @@
                     <img height="50" class="ccLogo" src="${config.content_url}img/PagoEfectivo_logo.jpg" alt="PagoEfectivo"/></label></li>
                   <li>
                   	<div style="width:100%" align="center">
-                       <input type="radio" id="PagoEfectivo"  checked="checked" />
+                       <input type="radio" id="PagoEfectivo"  checked="checked" name="${input.paymentMethodId}" value="2028"  />
 					   <label for="PagoEfectivo">PagoEfectivo</label>
                     </div>
                   </li>
                 </ul>
               </li>
+          
               </ul>
+
             </fieldset>
             <fieldset class="bottomField">
               <div class="submitCCOBbtn">
@@ -106,7 +192,7 @@
                <ul class="lbl" style="width:150px">
                   <li class="lblw">
                     <label for="safetypay-online">
-                    <img width="120" height="35" class="ccLogo" alt="SafetyPay Online" src="../../WebContent/img/safetypay_logo.png"/></label>
+                    <img width="120" height="35" class="ccLogo" alt="SafetyPay Online" src="${config.content_url}img/safetypay_logo.png"/></label>
                   </li>
                   <li>
                     <div style="width:100%" align="center">
@@ -118,7 +204,7 @@
                 <ul class="lbl" style="width:150px">
                   <li class="lblw">
                     <label for="safetypay-cash">
-                    <img width="120" height="35" class="ccLogo" alt="SafetyPay Cash" src="../../WebContent/img/safetypay_logo.png"/></label>
+                    <img width="120" height="35" class="ccLogo" alt="SafetyPay Cash" src="${config.content_url}img/safetypay_logo.png"/></label>
                   </li>
                   <li>
                     <div style="width:100%" align="center">

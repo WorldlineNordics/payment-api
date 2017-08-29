@@ -167,6 +167,7 @@
                   </li>
                 </ul>
               </li>
+             
               </ul>
             </fieldset>
             <fieldset class="bottomField">
@@ -191,7 +192,7 @@
                 <ul class="lbl">
                   <li class="lblw">
                     <label for="BCI">
-                    <img width="70" height="35" class="ccLogo" alt="BCI" src="../../WebContent/img/bci_logo.png"/></label>
+                    <img width="70" height="35" class="ccLogo" alt="BCI" src="${config.content_url}img/bci_logo.png"/></label>
                   </li>
                   <li>
                     <div style="width:100%" align="center">
@@ -203,7 +204,7 @@
                 <ul class="lbl">
                   <li class="lblw">
                     <label for="SantanderIBP">
-                    <img width="70" height="35" class="ccLogo" alt="SantanderIBP" src="../../WebContent/img/santander_logo.png"/></label>
+                    <img width="70" height="35" class="ccLogo" alt="SantanderIBP" src="${config.content_url}img/santander_logo.png"/></label>
                   </li>
                   <li>
                     <div style="width:100%" align="center">
@@ -215,7 +216,7 @@
                 <ul class="lbl">
                   <li class="lblw">
                     <label for="Itau">
-                    <img width="35" height="35" class="ccLogo" alt="Itau" src="../../WebContent/img/itau_logo.png"/></label>
+                    <img width="35" height="35" class="ccLogo" alt="Itau" src="${config.content_url}img/itau_logo.png"/></label>
                   </li>
                   <li>
                     <div style="width:100%" align="center">
@@ -230,13 +231,27 @@
                   <li class="lblw"><label for="DAOPAY"><img width="120" height="65" class="ccLogo" alt=DAOPAY src="${config.content_url}img/daopay.png"></label></li>
                   <li>
                   	<div style="width:120px" align="center">
-                    <input type="radio" name="${input.bankId}" id="DAOPAY" value="165"  checked="checked" />
+                    <input type="radio" name="${input.bankId}" id="DAOPAY" value="165"   />
                     <label for="DAOPAY">DaoPay</label>
                     </div>
                   </li>
               	</ul>
-				</li></ul>
-            </fieldset>
+				</li>
+ <li>
+                <ul class="lbl">
+                  <li class="lblw">
+                    <label for="Sencillito">
+                    <img height="50" width = "120" class="ccLogo" src="${config.content_url}img/sencillito_logo.png" alt="Sencillito" /></label></li>
+                  <li>
+                    <div style="width:100%" align="center">
+                       <input type="radio" id="Sencillito" name="${input.paymentMethodId}" value="158"/>
+             <label for="Sencillito">EBanx Sencillito</label>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+        </ul>
+            </fieldset> 
             <fieldset class="bottomField">
               <div class="submitCCOBbtn">
                 <input id="submitOB" class="submit" type="submit" value="${static.submit}"/>

@@ -165,6 +165,8 @@
                   </li>
                 </ul>
               </li>
+                <li>
+                
 			  <li>
               	<ul class="lbl">
                   <li class="lblw">
@@ -235,6 +237,18 @@
                   </li>
                 </ul>
               </li>
+              <ul class="lbl">
+                  <li class="lblw">
+                    <label for="Baloto">
+                    <img height="50" width = "130" class="ccLogo" src="${config.content_url}img/baloto_logo.png" alt="Baloto"/></label></li>
+                  <li>
+                    <div style="width:100%" align="center">
+                       <input type="radio" id="Baloto" name="${input.paymentMethodId}" value="2044" />
+             <label for="Baloto">Baloto</label>
+                    </div>
+                  </li>
+                </ul>
+              </li>
               </ul>
             </fieldset>
             <fieldset class="bottomField">
@@ -297,6 +311,7 @@
                   </li>
                 </ul>
               </li>
+            
               </ul>
             </fieldset>
             <fieldset class="bottomField">
