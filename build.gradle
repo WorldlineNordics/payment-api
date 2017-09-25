@@ -1,120 +1,57 @@
+// FIXME: Replace with non-DRWP
 apply plugin: 'drwp-common-java6'
 apply plugin: 'drwp-lib'
 apply plugin: 'drwp-release'
-	
+
+
 repositories {
     maven {
-    	url artifactory_url+"/all-libs"
+        url artifactory_url+"/all-libs"
     }
 }
 
 def distBase = "${buildDir}/dist"
 def opensourceDistDir = "${distBase}/PaymentPageAPI"
-def startkitRoot = "${rootDir}/startkit"
-
-configurations {
-  templateTools
-}
 
 dependencies {
     testCompile fileTree(dir: 'lib/test', include: '*.jar')
-    templateTools fileTree(dir: 'startkit/Templates/lib', include: '*.jar')
 }
 
 sourceSets {
-	test {
-		java {
-			srcDir('src/test/java')
-			//stuff is here since they should not be included in source distibution but are needed for tests
-			srcDir('src/main/future')
-			srcDir('src/test/future')
-		}
-	}
+    test {
+        java {
+            srcDir('src/test/java')
+        }
+    }
 }
 
 tasks.eclipse.dependsOn cleanEclipse
 
-task processStartkitData( type: Copy ) {
-	  from ( "${startkitRoot}/doc/pdf" ) {
-      include '*.pdf'
-    }
-    from("${startkitRoot}") {
-        include '*.xls'
-        include 'test_keys.zip'
-    }
-    into "${distBase}"    
-}
-
-task zipExampleTemplates ( type: Zip ) {
-    archiveName "Example_templates.zip"
-    from("${startkitRoot}/Templates/Template_src")
-    destinationDir = file("${distBase}")   
-}
-
 task includeLibsInDistro(type: Copy) {
-  from (libsDir) {
-    include '*.jar'
-  }
-  into "${opensourceDistDir}/libs"
+    from (libsDir) {
+        include '*.jar'
+    }
+    into "${opensourceDistDir}/libs"
 }
 
 task includeSourceFilesInDistro(type: Copy) {
-  dependsOn sourceJar
-  from sourceSets.main.allSource
-  into "${opensourceDistDir}/src"
+    dependsOn sourceJar
+    from sourceSets.main.allSource
+    into "${opensourceDistDir}/src"
 }
 
 task includeJavadocFilesInDistro(type: Copy) {
-  dependsOn javadocJar
-  from javadoc.outputs
-  into "${opensourceDistDir}/javadoc"
+    dependsOn javadocJar
+    from javadoc.outputs
+    into "${opensourceDistDir}/javadoc"
 }
 
 task processOpenSourceFiles(dependsOn: ['includeLibsInDistro', 'includeSourceFilesInDistro', 'includeJavadocFilesInDistro'])
 
-task packageRelease ( type: Zip ) {
-    dependsOn processStartkitData, zipExampleTemplates, processOpenSourceFiles
-    baseName("PaymentPage_StartKit_DigitalRiver")
-    from("${distBase}")
-    destinationDir = file("${buildDir}/libs") 
-}
-
 artifacts {
-	archives packageRelease
+    archives packageRelease
 }
-
 
 task wrapper(type: Wrapper) {
-        distributionUrl="${artifactory_url}/third-party-apps/bin/gradle/${wrapperVersion}/gradle-${wrapperVersion}.zip"
-}
-
-/**
-* Do example template stuff
-*/
-task processExampleTemplateSrc (type: Copy ) {
-  from "${rootDir}/startkit/Templates/Template_src/"
-  into "${buildDir}"
-}
-
-task processExampleTemplateTools (type: Copy, dependsOn: processExampleTemplateSrc ) {
-  from "${rootDir}/startkit/Templates/resources/"
-  into "${buildDir}/templateTools/"
-}
-
-task compileTemplateTools( type: JavaCompile ) {
-  source = "${rootDir}/startkit/Templates/src/"
-  classpath = configurations.templateTools
-  destinationDir = file("${buildDir}/templateTools/")
-}
-
-task runTxtToResourceBundle( type: JavaExec, dependsOn: processExampleTemplateTools ) {
-  classpath compileTemplateTools.outputs 
-  main = "com.netgiro.pp.Txt2ResourceBundle"
-  workingDir = "${rootDir}/startkit/Templates/Template_src"
-}
-
-task runGenHtml( type: JavaExec, dependsOn: [processExampleTemplateTools, runTxtToResourceBundle] ) {
-  classpath (compileTemplateTools.outputs,configurations.templateTools,"${buildDir}")
-  main = "com.netgiro.pp.GenerateHtmlFiles"
-  workingDir = "${buildDir}"
+    distributionUrl="${artifactory_url}/third-party-apps/bin/gradle/${wrapperVersion}/gradle-${wrapperVersion}.zip"
 }
