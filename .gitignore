@@ -8,4 +8,7 @@ repo
 buildSrc
 buildSrcc
 releaseNotes.wiki
-target
+targetout
+.idea
+*.iml
+out/
