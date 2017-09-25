@@ -21,6 +21,9 @@ sourceSets {
     test {
         java {
             srcDir('src/test/java')
+            //stuff is here since they should not be included in source distibution but are needed for tests
+            srcDir('src/main/future')
+            srcDir('src/test/future')
         }
     }
 }
@@ -47,10 +50,6 @@ task includeJavadocFilesInDistro(type: Copy) {
 }
 
 task processOpenSourceFiles(dependsOn: ['includeLibsInDistro', 'includeSourceFilesInDistro', 'includeJavadocFilesInDistro'])
-
-artifacts {
-    archives packageRelease
-}
 
 task wrapper(type: Wrapper) {
     distributionUrl="${artifactory_url}/third-party-apps/bin/gradle/${wrapperVersion}/gradle-${wrapperVersion}.zip"
