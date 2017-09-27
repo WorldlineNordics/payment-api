@@ -6,11 +6,12 @@ import com.digitalriver.worldpayments.api.security.SecurityHandler;
 import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
 import com.digitalriver.worldpayments.api.security6.SecurityHandlerImpl;
 import com.digitalriver.worldpayments.api.utils.ParseUtil;
+import com.google.gson.Gson;
 
 /**
- * The responsibility of this class is to create a redirect URL (when
- * redirecting the consumer to PaymentPage), and unpack the response URL (that
- * comes back when consumer has been redirected back to Merchant)
+ * The responsibility of this class is to create a redirect URL (when redirecting the consumer to PaymentPage), and
+ * unpack the response URL (that comes back when consumer has been redirected back to Merchant)
+ * 
  * @see PaymentPageRequest
  * @see PaymentPageResponse
  */
@@ -34,51 +35,44 @@ public class PaymentPageHandler {
         return ppResponse;
     }
 
-    private final String iBaseUrl;
-
     private final SecurityHandler iSecurityHandler;
 
+    private static Gson gson = new Gson();
+
     /**
-     * Create a PaymentPageHandler with a specified key handler The
-     * PaymentPageHandler is then used to create a redirect URL used when
-     * redirecting consumer to PaymentPage.
+     * Create a PaymentPageHandler with a specified key handler The PaymentPageHandler is then used to create a redirect
+     * URL used when redirecting consumer to PaymentPage.
      *
-     * @param aBaseUrl the base of the response url @see #DEFAULT_PRODUCTION_BASE_URL @see #DEFAULT_TEST_BASE_URL
-     * @param aKeyHandler a KeyHandler containing payment page keys
+     * @param aBaseUrl
+     *            the base of the response url @see #DEFAULT_PRODUCTION_BASE_URL @see #DEFAULT_TEST_BASE_URL
+     * @param aKeyHandler
+     *            a KeyHandler containing payment page keys
      */
-    public PaymentPageHandler(String aBaseUrl, JKSKeyHandlerV6 aKeyHandler) {
-        this(aBaseUrl, new SecurityHandlerImpl(aKeyHandler));
+    public PaymentPageHandler(JKSKeyHandlerV6 aKeyHandler) {
+        this(new SecurityHandlerImpl(aKeyHandler));
     }
 
-    public PaymentPageHandler(String aBaseUrl, SecurityHandler aSecurityHandler) {
-        iBaseUrl = aBaseUrl;
+    public PaymentPageHandler(SecurityHandler aSecurityHandler) {
         iSecurityHandler = aSecurityHandler;
     }
 
     /**
-     * Method used for creating the the redirect URL used for redirecting
-     * consumers to PaymentPage.
+     * Method used for creating the the redirect URL used for redirecting consumers to PaymentPage.
      *
      * @param request
-     *            The request containing required data for initiate a payment in
-     *            DigitalRiver WorldPayments system
-     * @return The encrypted URL string that should be used when redirecting
-     *         consumer to PaymentPage
+     *            The request containing required data for initiate a payment in DigitalRiver WorldPayments system
+     * @return The encrypted URL string that should be used when redirecting consumer to PaymentPage
      */
-    public String createRedirectUrl(PaymentPageRequest request)
-            throws IllegalArgumentException {
-        StringBuilder url = new StringBuilder();
-        url.append(iBaseUrl);
-        Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
-        url.append(iSecurityHandler.encrypt(ParameterAnnotationHelper.createNvpString(nvp)));
-        return url.toString();
+
+    public String encryptRequest(PaymentPageRequest request) {
+        final String encryptedRequest = iSecurityHandler.encrypt(gson.toJson(request));
+        return encryptedRequest;
     }
 
     /**
-     * When PaymentPage is done, it redirects the consumer back to the
-     * returnUrl with a response string. The returnUrl can be
-     * set using {@link PaymentPageRequest#setReturnUrl}. The response
-     * string is encrypted and can be decrypted with the following method.
+     * When PaymentPage is done, it redirects the consumer back to the returnUrl with a response string. The returnUrl
+     * can be set using {@link PaymentPageRequest#setReturnUrl}. The response string is encrypted and can be decrypted
+     * with the following method.
      *
      * Be sure to have the response URLDecoded before calling this method
      *
