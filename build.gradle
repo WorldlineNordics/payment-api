@@ -5,13 +5,12 @@ apply plugin: 'drwp-release'
 
 
 repositories {
-    maven {
-        url artifactory_url+"/all-libs"
-    }
+    maven { url "${artifactory_url}/libs-beta" }  
+    maven { url "${artifactory_url}/drwp-repository-gateway-artifactory-cache" } 
 }
 
 def distBase = "${buildDir}/dist"
-def opensourceDistDir = "${distBase}/PaymentPageAPI"
+def opensourceDistDir = "${distBase}/PaymentAPI"
 
 dependencies {
     testCompile fileTree(dir: 'lib/test', include: '*.jar')
