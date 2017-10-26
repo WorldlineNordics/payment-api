@@ -46,6 +46,7 @@ public class Base64Utils {
 	 */
 	private static byte[] decodeChars(char[] in) {
 		int iLen = in.length;
+		System.out.println("Lenght"+iLen);
 		if (iLen % 4 != 0) {
 			throw new IllegalArgumentException(
 					"Length of Base64 encoded input string is not a multiple of 4.");

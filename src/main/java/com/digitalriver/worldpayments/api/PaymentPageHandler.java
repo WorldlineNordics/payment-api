@@ -6,6 +6,7 @@ import com.digitalriver.worldpayments.api.security.SecurityHandler;
 import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
 import com.digitalriver.worldpayments.api.security6.SecurityHandlerImpl;
 import com.digitalriver.worldpayments.api.utils.ParseUtil;
+import com.google.gson.Gson;
 
 /**
  * The responsibility of this class is to create a redirect URL (when redirecting the consumer to PaymentPage), and
@@ -35,6 +36,8 @@ public class PaymentPageHandler {
     }
 
     private final SecurityHandler iSecurityHandler;
+
+    private static Gson gson = new Gson();
 
     /**
      * Create a PaymentPageHandler with a specified key handler The PaymentPageHandler is then used to create a redirect
@@ -82,6 +85,7 @@ public class PaymentPageHandler {
 
         String decodedResponse = iSecurityHandler
                 .decrypt(encodedResponseString);
+        System.out.println("decodeddddddddddddddd"+decodedResponse);
 
         Map<String, String> nvpMap = ParseUtil.parseWithEscape(decodedResponse,
                 '=', ';');

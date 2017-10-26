@@ -43,8 +43,9 @@ public class SecurityHandlerImpl implements SecurityHandler {
 		byte[] envelope;
 		KeyPair merchantPrivPubKeyPair;
 		PublicKey drwpPublicKey;
-
+		System.out.println("Contentttttttttttt"+aRedirect);
 		envelope = iBase64Encoder.decode(aRedirect);
+		
 
 		switch (envelope[0]) {
 		case RSA_2048_AES_128_ENC_MODE_V6:
