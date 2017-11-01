@@ -9,12 +9,10 @@ import com.digitalriver.worldpayments.api.utils.Parameter;
 /**
  * When reading this code:
  *
- * The 'Parameter' annotation describes:
- *  * what a param is 'called' in the url when you set merchant id the 'createRedirectUrl' will translate
- *      it to: A=123456789
- *  * if it's required or not (IllegalArgumentException if you fail to set value for a required param)
- *  * regEx is a simple(?) reg-ex that the provided value is matched against ([0-9]{8,11} means 8-11 digits)
- *  * max length, self explanatory note that no param has both max length and reg-ex set.
+ * The 'Parameter' annotation describes: * what a param is 'called' in the url when you set merchant id the
+ * 'createRedirectUrl' will translate it to: A=123456789 * if it's required or not (IllegalArgumentException if you fail
+ * to set value for a required param) * regEx is a simple(?) reg-ex that the provided value is matched against
+ * ([0-9]{8,11} means 8-11 digits) * max length, self explanatory note that no param has both max length and reg-ex set.
  */
 abstract class AbstractPaymentPageRequest {
 
@@ -46,7 +44,7 @@ abstract class AbstractPaymentPageRequest {
     String orderDetailDescription;
 
     @Deprecated
-    @Parameter(shortName = "J", required = true)
+    @Parameter(shortName = "J")
     Double amountDouble;
 
     @Parameter(shortName = "K", required = true, regEx = "[A-Za-z]{3}")
@@ -234,7 +232,7 @@ abstract class AbstractPaymentPageRequest {
 
     @Parameter(shortName = "AAP", regEx = "(?i)NOREDIRECT|REDIRECT|REDIRECTONLY")
     String authenticationRedirect;
-    
+
     @Parameter(shortName = "AAQ")
     BigDecimal amount;
 }
