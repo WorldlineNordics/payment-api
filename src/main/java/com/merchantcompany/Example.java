@@ -1,5 +1,7 @@
 package com.merchantcompany;
 
+import java.math.BigDecimal;
+
 import com.digitalriver.worldpayments.api.AuthorizationType;
 import com.digitalriver.worldpayments.api.PaymentPageHandler;
 import com.digitalriver.worldpayments.api.PaymentPageRequest;
@@ -15,7 +17,7 @@ public class Example {
         request.setPosId("ABC");
         request.setTransactionChannel("Web Online");
         request.setOrderId("orderid");
-        request.setAmount(123.0);
+        request.setAmount(new BigDecimal(100));
         request.setCurrency("SEK");
         request.setConsumerCountry("SE");
         request.setConsumerLanguage("sv");

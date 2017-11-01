@@ -1,6 +1,7 @@
 package com.digitalriver.worldpayments.api;
 
 import java.io.File;
+import java.math.BigDecimal;
 
 import org.junit.BeforeClass;
 
@@ -22,7 +23,7 @@ public abstract class PaymentPageHandlerTestBase {
         request.setMid(123456789L);
         request.setSubMerchantId("1");
         request.setPosId("SE");
-        request.setAmount(100.00);
+        request.setAmount(new BigDecimal(100.00));
         request.setTransactionChannel("Web Online");
         request.setOrderId("OrderId");
         request.setCurrency("SEK");

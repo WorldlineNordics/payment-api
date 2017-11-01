@@ -1,5 +1,6 @@
 package com.digitalriver.worldpayments.api;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +30,6 @@ abstract class AbstractPaymentPageRequest {
     @Parameter(shortName = "D", regEx = "(Web Online|Mail|Telephone|Fax|FaceToFace|Cash register)")
     String transactionChannel;
 
-    // (?i) == case insensitive
     @Parameter(shortName = "E", regEx = "(?i)debit|authorize|refund")
     String transactionType;
 
@@ -45,18 +45,15 @@ abstract class AbstractPaymentPageRequest {
     @Parameter(shortName = "I")
     String orderDetailDescription;
 
-    // FIXME should be positive
     @Parameter(shortName = "J")
-    Double amount;
+    BigDecimal amount;
 
     @Parameter(shortName = "K", regEx = "[A-Za-z]{3}")
     String currency;
 
-    // FIXME add validation
     @Parameter(shortName = "L")
     Double vatAmount;
 
-    // FIXME add validation
     @Parameter(shortName = "M")
     Double vatRate;
 
@@ -78,14 +75,12 @@ abstract class AbstractPaymentPageRequest {
     @Parameter(shortName = "Z")
     Integer paymentMethodId;
 
-    // 0=Do not store, 1=Store and process, 2=Store only
     @Parameter(shortName = "AA", regEx = "[0-2]{1}")
     Integer storeFlag;
 
     @Parameter(shortName = "AB")
     String templateReference;
 
-    // FIXME restr. to length from ws2010
     @Parameter(shortName = "AG")
     String billingAddressLine1;
 
@@ -150,7 +145,6 @@ abstract class AbstractPaymentPageRequest {
     @Parameter(shortName = "BA")
     String dueDate;
 
-    // fixme string really? maybe?
     @Parameter(shortName = "BB")
     String paymentPlanCode;
 
@@ -184,7 +178,6 @@ abstract class AbstractPaymentPageRequest {
     @Parameter(shortName = "CV", maxLength = 25)
     String companyResponsibleVATNumber;
 
-    // (?i) == case insensitive
     @Parameter(shortName = "EA", regEx = "(?i)NOT_RECURRING|FIRST_RECURRING|SUBSEQUENT_RECURRING|LAST_RECURRING")
     String recurringType;
 

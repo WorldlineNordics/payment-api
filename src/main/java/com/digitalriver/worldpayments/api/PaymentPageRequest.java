@@ -1,5 +1,6 @@
 package com.digitalriver.worldpayments.api;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -59,7 +60,7 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
         super.additionalParameters = additionalParameters;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(BigDecimal amount) {
         super.amount = amount;
     }
 

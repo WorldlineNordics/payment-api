@@ -43,7 +43,6 @@ public class SecurityHandlerImpl implements SecurityHandler {
 		byte[] envelope;
 		KeyPair merchantPrivPubKeyPair;
 		PublicKey drwpPublicKey;
-		System.out.println("Contentttttttttttt"+aRedirect);
 		envelope = iBase64Encoder.decode(aRedirect);
 		
 
