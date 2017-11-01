@@ -13,8 +13,8 @@ public class PaymentPageHandler_V5 extends PaymentPageHandler {
      * @param aKeyHandler
      *            a KeyHandler containing payment page keys
      */
-    public PaymentPageHandler_V5(KeyHandler aKeyHandler) {
-        super(new SecurityHandlerImpl(aKeyHandler));
+    public PaymentPageHandler_V5(String aBaseUrl, KeyHandler aKeyHandler) {
+        super(aBaseUrl, new SecurityHandlerImpl(aKeyHandler));
     }
 
 }

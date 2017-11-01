@@ -59,6 +59,11 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
     public void setAdditionalParameters(Map<String, String> additionalParameters) {
         super.additionalParameters = additionalParameters;
     }
+    
+    @Deprecated
+    public void setAmountDouble(Double amountDouble) {
+    	super.amountDouble = amountDouble;
+    }
 
     public void setAmount(BigDecimal amount) {
         super.amount = amount;

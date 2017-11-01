@@ -15,6 +15,10 @@ import com.digitalriver.worldpayments.api.utils.ParseUtil;
  * @see PaymentPageResponse
  */
 public class PaymentPageHandler {
+	
+	public static final String DEFAULT_PRODUCTION_BASE_URL = "https://secure.payments.digitalriver.com/pay/?creq=";
+
+    public static final String DEFAULT_TEST_BASE_URL = "https://testpage.payments.digitalriver.com/pay/?creq=";
 
     static final PaymentPageResponse createPaymentPageResponse(
             final Map<String, String> nvp) {
@@ -29,6 +33,8 @@ public class PaymentPageHandler {
 
         return ppResponse;
     }
+    
+    private String iBaseUrl;
 
     private final SecurityHandler iSecurityHandler;
 
@@ -41,6 +47,16 @@ public class PaymentPageHandler {
      * @param aKeyHandler
      *            a KeyHandler containing payment page keys
      */
+    
+    public PaymentPageHandler(final String aBaseUrl, JKSKeyHandlerV6 aKeyHandler) {
+        this(aBaseUrl, new SecurityHandlerImpl(aKeyHandler));
+    }
+
+    public PaymentPageHandler(final String aBaseUrl, SecurityHandler aSecurityHandler) {
+        iBaseUrl = aBaseUrl;
+        iSecurityHandler = aSecurityHandler;
+    }
+    
     public PaymentPageHandler(JKSKeyHandlerV6 aKeyHandler) {
         this(new SecurityHandlerImpl(aKeyHandler));
     }
@@ -57,6 +73,16 @@ public class PaymentPageHandler {
      * @return The encrypted URL string that should be used when redirecting consumer to PaymentPage
      */
 
+    public String createRedirectUrl(PaymentPageRequest request)
+            throws IllegalArgumentException {
+        StringBuilder url = new StringBuilder();
+        url.append(iBaseUrl);
+        Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
+        url.append(iSecurityHandler.encrypt(ParameterAnnotationHelper.createNvpString(nvp)));
+        return url.toString();
+    }
+    
+    
     public String encryptRequest(PaymentPageRequest request) {
     	Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
         final String encryptedRequest = iSecurityHandler.encrypt(ParameterAnnotationHelper.createNvpString(nvp));

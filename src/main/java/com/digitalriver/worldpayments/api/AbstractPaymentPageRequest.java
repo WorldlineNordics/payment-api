@@ -18,7 +18,7 @@ import com.digitalriver.worldpayments.api.utils.Parameter;
  */
 abstract class AbstractPaymentPageRequest {
 
-    @Parameter(shortName = "A", regEx = "[0-9]{8,11}")
+    @Parameter(shortName = "A", required = true, regEx = "[0-9]{8,11}")
     Long mid;
 
     @Parameter(shortName = "B")
@@ -27,7 +27,7 @@ abstract class AbstractPaymentPageRequest {
     @Parameter(shortName = "C", maxLength = 50)
     String posId;
 
-    @Parameter(shortName = "D", regEx = "(Web Online|Mail|Telephone|Fax|FaceToFace|Cash register)")
+    @Parameter(shortName = "D", required = true, regEx = "(Web Online|Mail|Telephone|Fax|FaceToFace|Cash register)")
     String transactionChannel;
 
     @Parameter(shortName = "E", regEx = "(?i)debit|authorize|refund")
@@ -36,7 +36,7 @@ abstract class AbstractPaymentPageRequest {
     @Parameter(shortName = "F")
     String token;
 
-    @Parameter(shortName = "G",maxLength = 50)
+    @Parameter(shortName = "G", required = true, maxLength = 50)
     String orderId;
 
     @Parameter(shortName = "H")
@@ -45,10 +45,11 @@ abstract class AbstractPaymentPageRequest {
     @Parameter(shortName = "I")
     String orderDetailDescription;
 
-    @Parameter(shortName = "J")
-    BigDecimal amount;
+    @Deprecated
+    @Parameter(shortName = "J", required = true)
+    Double amountDouble;
 
-    @Parameter(shortName = "K", regEx = "[A-Za-z]{3}")
+    @Parameter(shortName = "K", required = true, regEx = "[A-Za-z]{3}")
     String currency;
 
     @Parameter(shortName = "L")
@@ -57,13 +58,13 @@ abstract class AbstractPaymentPageRequest {
     @Parameter(shortName = "M")
     Double vatRate;
 
-    @Parameter(shortName = "T", regEx = "[A-Z]{2}")
+    @Parameter(shortName = "T", required = true, regEx = "[A-Z]{2}")
     String consumerCountry;
 
-    @Parameter(shortName = "U", regEx = "[a-z]{2}")
+    @Parameter(shortName = "U", required = true, regEx = "[a-z]{2}")
     String consumerLanguage;
 
-    @Parameter(shortName = "V")
+    @Parameter(shortName = "V", required = true)
     String returnUrl;
 
     @Parameter(shortName = "W")
@@ -228,9 +229,12 @@ abstract class AbstractPaymentPageRequest {
 
     List<LineItem> lineItems;
 
-    @Parameter(shortName = "AAO")
+    @Parameter(shortName = "AAO", required = false)
     String authorizationType;
 
     @Parameter(shortName = "AAP", regEx = "(?i)NOREDIRECT|REDIRECT|REDIRECTONLY")
     String authenticationRedirect;
+    
+    @Parameter(shortName = "AAQ")
+    BigDecimal amount;
 }
