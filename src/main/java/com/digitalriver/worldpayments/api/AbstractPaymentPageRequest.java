@@ -62,7 +62,7 @@ abstract class AbstractPaymentPageRequest {
     @Parameter(shortName = "U", required = true, regEx = "[a-z]{2}")
     String consumerLanguage;
 
-    @Parameter(shortName = "V", required = true)
+    @Parameter(shortName = "V")
     String returnUrl;
 
     @Parameter(shortName = "W")
