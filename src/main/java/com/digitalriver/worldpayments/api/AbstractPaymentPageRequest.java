@@ -1,6 +1,5 @@
 package com.digitalriver.worldpayments.api;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -43,7 +42,6 @@ abstract class AbstractPaymentPageRequest {
 	@Parameter(shortName = "I")
 	String orderDetailDescription;
 
-	@Deprecated
 	@Parameter(shortName = "J")
 	Double amount;
 
@@ -233,6 +231,4 @@ abstract class AbstractPaymentPageRequest {
 	@Parameter(shortName = "AAP", regEx = "(?i)NOREDIRECT|REDIRECT|REDIRECTONLY")
 	String authenticationRedirect;
 
-	@Parameter(shortName = "AAQ")
-	BigDecimal amountBigDecimal;
 }
