@@ -61,8 +61,8 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
     }
     
     @Deprecated
-    public void setAmountDouble(Double amountDouble) {
-    	super.amountDouble = amountDouble;
+    public void setAmount(Double amount) {
+        super.amountDouble = amount;
     }
 
     public void setAmount(BigDecimal amount) {

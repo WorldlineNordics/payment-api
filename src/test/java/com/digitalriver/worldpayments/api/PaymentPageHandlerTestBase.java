@@ -13,18 +13,17 @@ public abstract class PaymentPageHandlerTestBase {
 
     @BeforeClass
     public static void setUp() {
-        derFile = new File(PaymentPageHandlerTestBase.class.getResource("/merchant_key.der").getFile() );
-        paymentPageHandler= new PaymentPageHandler_V5(
-                PaymentPageHandler.DEFAULT_PRODUCTION_BASE_URL, new DERKeyHandler( derFile ));
+        derFile = new File(PaymentPageHandlerTestBase.class.getResource("/merchant_key.der").getFile());
+        paymentPageHandler = new PaymentPageHandler_V5(
+                PaymentPageHandler.DEFAULT_PRODUCTION_BASE_URL, new DERKeyHandler(derFile));
     }
-
 
     protected PaymentPageRequest createValidRequest() {
         PaymentPageRequest request = new PaymentPageRequest();
         request.setMid(123456789L);
         request.setSubMerchantId("1");
         request.setPosId("SE");
-        request.setAmountDouble(100.00);
+        request.setAmount(100.00);
         request.setTransactionChannel("Web Online");
         request.setOrderId("OrderId");
         request.setCurrency("SEK");

@@ -18,7 +18,6 @@ public class DeviceRestApiExample {
         request.setTransactionChannel("Web Online");
         request.setOrderId("orderid");
         request.setAmount(new BigDecimal(100));
-        request.setAmountDouble(100.00);
         request.setCurrency("SEK");
         request.setConsumerCountry("SE");
         request.setConsumerLanguage("sv");
