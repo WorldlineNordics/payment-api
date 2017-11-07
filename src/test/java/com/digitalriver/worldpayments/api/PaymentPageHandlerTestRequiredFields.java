@@ -3,12 +3,9 @@ package com.digitalriver.worldpayments.api;
 import org.junit.Assert;
 import org.junit.Test;
 
-
-
-
 public class PaymentPageHandlerTestRequiredFields extends PaymentPageHandlerTestBase {
 
-    //check required
+    // check required
     @Test(expected = IllegalArgumentException.class)
     public void testNoMid() {
         PaymentPageRequest request = createValidRequest();
@@ -17,6 +14,7 @@ public class PaymentPageHandlerTestRequiredFields extends PaymentPageHandlerTest
         Assert.assertTrue(requestString
                 .startsWith(PaymentPageHandler.DEFAULT_PRODUCTION_BASE_URL));
     }
+
     @Test(expected = IllegalArgumentException.class)
     public void testNoOrderid() {
         PaymentPageRequest request = createValidRequest();
@@ -25,6 +23,7 @@ public class PaymentPageHandlerTestRequiredFields extends PaymentPageHandlerTest
         Assert.assertTrue(requestString
                 .startsWith(PaymentPageHandler.DEFAULT_PRODUCTION_BASE_URL));
     }
+
     @Test(expected = IllegalArgumentException.class)
     public void testNoCurrency() {
         PaymentPageRequest request = createValidRequest();
@@ -33,14 +32,7 @@ public class PaymentPageHandlerTestRequiredFields extends PaymentPageHandlerTest
         Assert.assertTrue(requestString
                 .startsWith(PaymentPageHandler.DEFAULT_PRODUCTION_BASE_URL));
     }
-    @Test(expected = IllegalArgumentException.class)
-    public void testNoAmount() {
-        PaymentPageRequest request = createValidRequest();
-        request.setAmount(null);
-        String requestString = paymentPageHandler.createRedirectUrl(request);
-        Assert.assertTrue(requestString
-                .startsWith(PaymentPageHandler.DEFAULT_PRODUCTION_BASE_URL));
-    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testNoLang() {
         PaymentPageRequest request = createValidRequest();
@@ -49,6 +41,7 @@ public class PaymentPageHandlerTestRequiredFields extends PaymentPageHandlerTest
         Assert.assertTrue(requestString
                 .startsWith(PaymentPageHandler.DEFAULT_PRODUCTION_BASE_URL));
     }
+
     @Test(expected = IllegalArgumentException.class)
     public void testNoCountry() {
         PaymentPageRequest request = createValidRequest();
@@ -57,6 +50,7 @@ public class PaymentPageHandlerTestRequiredFields extends PaymentPageHandlerTest
         Assert.assertTrue(requestString
                 .startsWith(PaymentPageHandler.DEFAULT_PRODUCTION_BASE_URL));
     }
+
     @Test(expected = IllegalArgumentException.class)
     public void testNoUrl() {
         PaymentPageRequest request = createValidRequest();

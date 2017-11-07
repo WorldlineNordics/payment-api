@@ -6,6 +6,9 @@ public class Transaction {
 
 	@Parameter(shortName = "C")
 	Long transactionId;
+	
+	@Parameter(shortName = "AAE")
+	String transactionDesc;
 
 	/**
 	 * @deprecated The parameter is really called transactionId, this method
@@ -25,4 +28,14 @@ public class Transaction {
 	public Long getTransactionId() {
 		return transactionId;
 	}
+
+	public String getTransactionDesc() {
+		return transactionDesc;
+	}
+
+	public void setTransactionDesc(String transactionDesc) {
+		this.transactionDesc = transactionDesc;
+	}
+	
+	
 }
