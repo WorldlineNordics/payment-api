@@ -64,10 +64,6 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
 		super.amount = amount;
 	}
 
-	public void setAmount(BigDecimal amount) {
-		super.amount = amount.doubleValue();
-	}
-
 	public void setBillingAddressLine3(String billingAddressLine3) {
 		this.billingAddressLine3 = billingAddressLine3;
 	}
