@@ -334,4 +334,12 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
 			super.authenticationRedirect = authenticationRedirect.value();
 		}
 	}
+	
+	public void setAutoCapture(boolean autoCapture) {
+		if (autoCapture == true) {
+			setTransactionType("DEBIT");
+		} else {
+			setTransactionType("AUTHORIZE");
+		}
+	}
 }
