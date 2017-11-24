@@ -66,8 +66,9 @@ public class PaymentHandler {
         return encryptedRequest;
     }
 
+    // FIXME Convert the constructor to builder pattern
     private PaymentRequest checkTransactionChannel(PaymentRequest request) {
-		if (StringUtils.isBlank(request.transactionChannel)) {
+		if ((request.transactionChannel).isEmpty() || request.transactionChannel == null) {
 			request.setTransactionChannel("Web Online");
 		}
 		return request;
