@@ -1,7 +1,6 @@
 package com.digitalriver.worldpayments.api;
 
 import java.util.Map;
-
 import com.digitalriver.worldpayments.api.security.SecurityHandler;
 import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
 import com.digitalriver.worldpayments.api.security6.SecurityHandlerImpl;
@@ -59,12 +58,21 @@ public class PaymentHandler {
      * @return the decrypted PaymentResponse object
      */
     public String encryptRequest(PaymentRequest request) {
+    	request = checkTransactionChannel(request);
     	Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
         final String encryptedRequest = iSecurityHandler.encrypt(ParameterAnnotationHelper.createNvpString(nvp));
         return encryptedRequest;
     }
 
-    /**
+    // FIXME Convert the constructor to builder pattern
+    private PaymentRequest checkTransactionChannel(PaymentRequest request) {
+		if ((request.transactionChannel).isEmpty() || request.transactionChannel == null) {
+			request.setTransactionChannel("Web Online");
+		}
+		return request;
+	}
+    
+	/**
      * When payment is done, it redirects the consumer back a response json string. The response string is encrypted and can be decrypted
      * with the following method.
      *
