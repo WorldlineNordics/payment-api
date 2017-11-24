@@ -1,8 +1,6 @@
 package com.digitalriver.worldpayments.api;
 
 import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
 import com.digitalriver.worldpayments.api.security.SecurityHandler;
 import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
 import com.digitalriver.worldpayments.api.security6.SecurityHandlerImpl;
