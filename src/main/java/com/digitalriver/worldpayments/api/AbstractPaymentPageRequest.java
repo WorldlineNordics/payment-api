@@ -230,5 +230,8 @@ abstract class AbstractPaymentPageRequest {
 
 	@Parameter(shortName = "AAP", regEx = "(?i)NOREDIRECT|REDIRECT|REDIRECTONLY")
 	String authenticationRedirect;
+	
+	@Parameter(shortName = "AAQ", required = true)
+	boolean autoCapture;
 
 }
