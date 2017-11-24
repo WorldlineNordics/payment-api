@@ -80,6 +80,7 @@ public class PaymentPageHandlerTestOk extends PaymentPageHandlerTestBase {
         lineItems.add(li2);
         request.lineItems = lineItems;
         request.shippingCompanyName = "MyCompany";
+        request.autoCapture = false;
 
         // Construct a set from the actual result
         Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
@@ -92,7 +93,7 @@ public class PaymentPageHandlerTestOk extends PaymentPageHandlerTestBase {
 
         // Construct expected request parameter set
         String[] expectedRequestParams = { "J=100.0", "T=SE", "U=sv", "K=SEK", "LIC_1=47.11", "LIA_1=1", "LID_1=2", "LIC_2=53.11", "LIA_2=3", "LID_2=2", "A=123456789", "G=OrderId",
-                "C=SE", "V=http://merchant.com", "BG=MyCompany", "B=1", "D=Web Online" };
+                "C=SE", "V=http://merchant.com", "BG=MyCompany", "B=1", "D=Web Online", "AAQ=false" };
         Set<String> expectedResultSet = new HashSet<String>();
         for (String s : expectedRequestParams) {
             expectedResultSet.add(s);
