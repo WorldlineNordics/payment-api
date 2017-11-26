@@ -1,11 +1,11 @@
 package com.digitalriver.worldpayments.api;
 
-import java.util.Map;
-
 import com.digitalriver.worldpayments.api.security.SecurityHandler;
 import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
 import com.digitalriver.worldpayments.api.security6.SecurityHandlerImpl;
 import com.digitalriver.worldpayments.api.utils.ParseUtil;
+
+import java.util.Map;
 
 /**
  * The responsibility of this class is to create a redirect URL (when redirecting the consumer to PaymentPage), and
@@ -71,7 +71,7 @@ public class PaymentPageHandler {
         StringBuilder url = new StringBuilder();
         url.append(iBaseUrl);
         Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
-        url.append(iSecurityHandler.encrypt(ParameterAnnotationHelper.createNvpString(nvp)));
+        url.append(iSecurityHandler.encrypt(NvpUtil.createNvpString(nvp)));
         return url.toString();
     }
     
