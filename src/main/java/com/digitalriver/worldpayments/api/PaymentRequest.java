@@ -10,7 +10,7 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
 		NO_STORE(0), STORE(1), STORE_ONLY(2);
 		private final int val;
 
-		private StoreFlag(int val) {
+		StoreFlag(int val) {
 			this.val = val;
 		}
 
@@ -188,24 +188,6 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
 		super.posDesc = posDesc;
 	}
 
-	/**
-	 * @param returnUrl
-	 *            - When consumer has completed the payment page session this
-	 *            URL will be used for redirecting consumer back to merchant.
-	 */
-	public void setReturnUrl(String returnUrl) {
-		super.returnUrl = returnUrl;
-	}
-
-	/**
-	 * @param timeLimit
-	 *            - Maximum time in seconds for the PaymentPageRequest to be
-	 *            valid. Set this to zero for an unlimited timeout.
-	 */
-	public void setTimeLimit(Integer timeLimit) {
-		super.timeLimit = timeLimit;
-	}
-
 	public void setShippingAddressLine1(String shippingAddressLine1) {
 		super.shippingAddressLine1 = shippingAddressLine1;
 	}
@@ -336,7 +318,7 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
 	}
 	
 	public void setAutoCapture(boolean autoCapture) {
-		if (autoCapture == true) {
+		if (autoCapture) {
 			setTransactionType("DEBIT");
 		} else {
 			setTransactionType("AUTHORIZE");
