@@ -52,7 +52,7 @@ public class PaymentHandlerTestBase {
 		return request;
 	}
 	
-	public PaymentRequest buildRequestWhenTransactionChannelEmpty() {
+	public PaymentRequest buildRequestWhenNoTransactionChannel() {
 		PaymentRequest request = new PaymentRequest();
 		request.setMid(1234567890L);
 		request.setPosId("ABC");
@@ -72,6 +72,21 @@ public class PaymentHandlerTestBase {
 		request.setPosId("ABC");
 		request.setOrderId("orderid");
 		request.setTransactionChannel(null);
+		request.setAmount(new BigDecimal(100.00));
+		request.setCurrency("SEK");
+		request.setConsumerCountry("SE");
+		request.setConsumerLanguage("sv");
+		request.setAuthorizationType(AuthorizationType.PRE_AUTHORIZATION);
+		request.setAutoCapture(false);
+		return request;
+	}
+	
+	public PaymentRequest buildRequestWhenEmptyTransactionChannel() {
+		PaymentRequest request = new PaymentRequest();
+		request.setMid(1234567890L);
+		request.setPosId("ABC");
+		request.setOrderId("orderid");
+		request.setTransactionChannel(new String(""));
 		request.setAmount(new BigDecimal(100.00));
 		request.setCurrency("SEK");
 		request.setConsumerCountry("SE");

@@ -20,8 +20,8 @@ public class PaymentHandlerTest extends PaymentHandlerTestBase {
 	}
 	
 	@Test
-	public void testWhenTransactionChannelEmpty() {
-		PaymentRequest request = buildRequestWhenTransactionChannelEmpty();
+	public void testWhenNoTransactionChannel() {
+		PaymentRequest request = buildRequestWhenNoTransactionChannel();
 		paymentHandler.encryptRequest(request);
 		Assert.assertEquals(WEBONLINE, request.transactionChannel);
 	}
@@ -38,6 +38,13 @@ public class PaymentHandlerTest extends PaymentHandlerTestBase {
 		PaymentRequest request = buildRequest();
 		paymentHandler.encryptRequest(request);
 		Assert.assertEquals(MAIL, request.transactionChannel);
+	}
+	
+	@Test
+	public void testWhenEmptyTransactionChannel() {
+		PaymentRequest request = buildRequestWhenEmptyTransactionChannel();
+		paymentHandler.encryptRequest(request);
+		Assert.assertEquals(WEBONLINE, request.transactionChannel);
 	}
 	
 	@Test
