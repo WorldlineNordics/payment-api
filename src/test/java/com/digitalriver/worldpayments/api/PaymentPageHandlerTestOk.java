@@ -1,19 +1,14 @@
 package com.digitalriver.worldpayments.api;
 
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import org.junit.Assert;
-import org.junit.Test;
 import com.digitalriver.worldpayments.api.security5.DERKeyHandler;
 import com.digitalriver.worldpayments.api.security5.SecurityHandlerImpl;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.io.File;
+import java.util.*;
+
+import static org.junit.Assert.assertTrue;
 
 public class PaymentPageHandlerTestOk extends PaymentPageHandlerTestBase {
 
@@ -54,14 +49,14 @@ public class PaymentPageHandlerTestOk extends PaymentPageHandlerTestBase {
         SecurityHandlerImpl encrypter = new SecurityHandlerImpl(
                 new DERKeyHandler(privateKeyFile, ngPublicKeyFile));
         Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
-        String encrypted = encrypter.encrypt(ParameterAnnotationHelper.createNvpString(nvp));
+        String encrypted = encrypter.encrypt(NvpUtil.createNvpString(nvp));
 
         SecurityHandlerImpl decrypter = new SecurityHandlerImpl(
                 new DERKeyHandler(ngPrivateKeyFile, publicKeyFile));
 
         String decrypted = decrypter.decrypt(encrypted);
         Map<String, String> nvpm = ParameterAnnotationHelper.mapObjectToNvp(request);
-        Assert.assertEquals(ParameterAnnotationHelper.createNvpString(nvpm), decrypted);
+        Assert.assertEquals(NvpUtil.createNvpString(nvpm), decrypted);
     }
 
     @Test
@@ -84,7 +79,7 @@ public class PaymentPageHandlerTestOk extends PaymentPageHandlerTestBase {
 
         // Construct a set from the actual result
         Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
-        String requestString = ParameterAnnotationHelper.createNvpString(nvp);
+        String requestString = NvpUtil.createNvpString(nvp);
         Set<String> resultSet = new HashSet<String>();
         String[] requestParams = requestString.split(";");
         for (String s : requestParams) {
@@ -112,7 +107,7 @@ public class PaymentPageHandlerTestOk extends PaymentPageHandlerTestBase {
         request.additionalParameters = additional;
         request.paymentMethodId = 1;
         Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
-        String requestString = ParameterAnnotationHelper.createNvpString(nvp);
+        String requestString = NvpUtil.createNvpString(nvp);
         String addParamOut = requestString.substring(requestString.indexOf("Y=") + 2);
         addParamOut = addParamOut.substring(0, addParamOut.indexOf(";"));
         List<String> VALID_VALUES = Arrays.asList("2=B#1=A#", "1=A#2=B#");
