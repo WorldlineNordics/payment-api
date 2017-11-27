@@ -3,13 +3,13 @@ package com.digitalriver.worldpayments.api;
 import java.util.Date;
 
 /**
- * Class that contains the response that comes back from PaymentPage when
- * consumer has been redirected back to Merchant
- * @see PaymentPageHandler
+ * Response from Worldline endpoint.
+ *
+ * @see PaymentHandler
  */
-public class PaymentPageResponse extends AbstractPaymentResponse {
+public class PaymentResponse extends AbstractPaymentResponse {
 
-    PaymentPageResponse() {
+    PaymentResponse() {
     }
 
     public Long getMid() {
@@ -21,7 +21,7 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
     }
 
     /**
-     * @return The status of this PaymentPage session
+     * @return The status of this Payment session
      * OK/NOK/ERROR/USERCANCEL/PENDING
      */
     public String getStatus() {
@@ -29,7 +29,7 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
     }
 
     /**
-     * @return The time stamp of when the PaymentPageResponse was created It's created
+     * @return The time stamp of when the PaymentResponse was created It's created
      * just before the consumer is redirected back to merchant.
      */
     public Date getTimestamp() {
@@ -46,15 +46,6 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
      */
     public Transaction getTransaction() {
         return transaction;
-    }
-
-    /**
-     * Redirected status, true if the consumer was redirected to a third party
-     * site during the session at Payment Page
-     * @return if trhe request was redirected
-     */
-    public boolean wasRedirected() {
-        return redirected.booleanValue();
     }
 
     /**
@@ -106,15 +97,6 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
     }
 
     /**
-     * @deprecated To reflect that the parameter is really called maskedCardNumber, will be removed in future release, instead use {@link #getMaskedCardNumber()}.
-     * @return
-     */
-    @Deprecated
-    public String getMaskedAccountNumber() {
-        return getMaskedCardNumber();
-    }
-
-    /**
      * Masked card number. The response value will only be present for card payments.
      * @return A masked card no.
      */
@@ -131,16 +113,6 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
     }
 
     /**
-     * Get card type (legacy from ws2006)
-     * @return visa or mastercard for example (unknown case)
-     * @deprecated used getPaymentMethodName instead
-     */
-    @Deprecated
-    public String getCardType() {
-        return cardType;
-    }
-
-    /**
      * Auth code from acquirer (typically card payments)
      * @return authCode
      */
@@ -149,8 +121,8 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
     }
 
     /**
-     * Name of payment method as returned from payment method config service
-     * Visa/Mastercard/Nordea...
+     * Name of payment method as returned from lookup at Worldline.
+     * Visa/Mastercard/Nordea.
      * @return name
      */
     public String getPaymentMethodName() {

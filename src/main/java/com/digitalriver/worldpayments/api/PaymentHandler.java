@@ -1,28 +1,26 @@
 package com.digitalriver.worldpayments.api;
 
-import java.util.Map;
 import com.digitalriver.worldpayments.api.security.SecurityHandler;
 import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
 import com.digitalriver.worldpayments.api.security6.SecurityHandlerImpl;
 import com.digitalriver.worldpayments.api.utils.ParseUtil;
 
+import java.util.Map;
+
 /**
- * The responsibility of this class is to create a redirect URL (when redirecting the consumer to PaymentPage), and
- * unpack the response URL (that comes back when consumer has been redirected back to Merchant)
- * 
- * @see PaymentPageRequest
- * @see PaymentPageResponse
+ * PaymentHandler is used for creating the encrypted string to be used when sending
+ * @see PaymentRequest
+ * @see PaymentResponse
  */
 public class PaymentHandler {
 	
-    static final PaymentPageResponse createPaymentPageResponse(
-            final Map<String, String> nvp) {
+    private static PaymentResponse createPaymentResponse(final Map<String, String> nvp) {
 
-        PaymentPageResponse ppResponse = new PaymentPageResponse();
+        PaymentResponse ppResponse = new PaymentResponse();
         try {
             ParameterAnnotationHelper.mapNvpToObject(ppResponse, nvp);
         } catch (Exception e) {
-            throw new IllegalArgumentException("Contact DRWP support",
+            throw new IllegalArgumentException("Contact Worldline support",
                     e);
         }
 
@@ -35,8 +33,6 @@ public class PaymentHandler {
      * Create a PaymentPageHandler with a specified key handler The PaymentPageHandler is then used to create a redirect
      * URL used when redirecting consumer to PaymentPage.
      *
-     * @param aBaseUrl
-     *            the base of the response url @see #DEFAULT_PRODUCTION_BASE_URL @see #DEFAULT_TEST_BASE_URL
      * @param aKeyHandler
      *            a KeyHandler containing payment page keys
      */
@@ -52,26 +48,13 @@ public class PaymentHandler {
     /**
      * The received request is encrypted with the following method.
      *
-     *
-     * @param encodedResponseString
-     *            the encrypted response json string received from PaymentPageServer
      * @return the decrypted PaymentResponse object
      */
     public String encryptRequest(PaymentRequest request) {
-    	request = checkTransactionChannel(request);
     	Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
-        final String encryptedRequest = iSecurityHandler.encrypt(ParameterAnnotationHelper.createNvpString(nvp));
-        return encryptedRequest;
+        return iSecurityHandler.encrypt(NvpUtil.createNvpString(nvp));
     }
 
-    // FIXME Convert the constructor to builder pattern
-    private PaymentRequest checkTransactionChannel(PaymentRequest request) {
-		if (request.transactionChannel == null || request.transactionChannel.isEmpty()) {
-			request.setTransactionChannel("Web Online");
-		}
-		return request;
-	}
-    
 	/**
      * When payment is done, it redirects the consumer back a response json string. The response string is encrypted and can be decrypted
      * with the following method.
@@ -82,7 +65,7 @@ public class PaymentHandler {
      *            the encrypted response string received from PaymentPageServer
      * @return the decrypted PaymentResponse object
      */
-    public PaymentPageResponse unpackResponse(String encodedResponseString) {
+    public PaymentResponse unpackResponse(String encodedResponseString) {
 
         String decodedResponse = iSecurityHandler
                 .decrypt(encodedResponseString);
@@ -90,6 +73,6 @@ public class PaymentHandler {
         Map<String, String> nvpMap = ParseUtil.parseWithEscape(decodedResponse,
                 '=', ';');
 
-        return createPaymentPageResponse(nvpMap);
+        return createPaymentResponse(nvpMap);
     }
 }

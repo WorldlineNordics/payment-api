@@ -1,20 +1,14 @@
 package com.digitalriver.worldpayments.api;
 
+import com.digitalriver.worldpayments.api.utils.ObjectConverter;
+import com.digitalriver.worldpayments.api.utils.Parameter;
+import com.digitalriver.worldpayments.api.utils.ParseUtil;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.digitalriver.worldpayments.api.utils.ObjectConverter;
-import com.digitalriver.worldpayments.api.utils.Parameter;
-import com.digitalriver.worldpayments.api.utils.ParseUtil;
+import java.util.*;
 
 class ParameterAnnotationHelper {
 
@@ -25,14 +19,6 @@ class ParameterAnnotationHelper {
             sb.append(key).append("=").append(ParseUtil.escapeChar(val, '#')).append("#");
         }
         return sb.toString();
-    }
-
-    static String createNvpString(Map<String, String> nvp) {
-        StringBuffer nvpString = new StringBuffer();
-        for (String name : nvp.keySet()) {
-            nvpString.append(name + "=" + ParseUtil.escapeChar(nvp.get(name), ';') + ";");
-        }
-        return nvpString.toString();
     }
 
     static List<Field> getAllDeclaredFields(Class<?> clazz) {
@@ -168,9 +154,7 @@ class ParameterAnnotationHelper {
                     }
                     List<?> list = (List<?>) o;
                     if (list != null) {
-                        Iterator<?> iter = list.iterator();
-                        while (iter.hasNext()) {
-                            Object o1 = iter.next();
+                        for (Object o1 : list) {
                             if (o1 != null) {
                                 nvp.putAll(mapObjectToNvp(o1, pos++, getAllDeclaredFields(o1.getClass())));
                             }
