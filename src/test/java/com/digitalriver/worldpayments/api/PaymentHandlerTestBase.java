@@ -23,76 +23,82 @@ public class PaymentHandlerTestBase {
 	}
 	
 	public PaymentRequest buildRequest() {
-		PaymentRequest request = new PaymentRequest();
-		request.setMid(1234567890L);
-		request.setPosId("ABC");
-		request.setTransactionChannel("Mail");
-		request.setOrderId("orderid");
-		request.setAmount(new BigDecimal(100.00));
-		request.setCurrency("SEK");
-		request.setConsumerCountry("SE");
-		request.setConsumerLanguage("sv");
-		request.setAuthorizationType(AuthorizationType.PRE_AUTHORIZATION);
-		request.setAutoCapture(true);
+		PaymentRequest request = new PaymentRequestBuilder()
+	    .setMid(1234567890L)
+		.setPosId("ABC")
+		.setTransactionChannel("Mail")
+		.setOrderId("orderid")
+		.setAmount(new BigDecimal(100.00))
+		.setCurrency("SEK")
+		.setConsumerCountry("SE")
+		.setConsumerLanguage("sv")
+		.setAuthorizationType(AuthorizationType.PRE_AUTHORIZATION)
+		.setAutoCapture(true)
+		.createPaymentRequest();
 		return request;
+		
 	}
 	
 	public PaymentRequest buildRequestWhenAutoCaptureFalse() {
-		PaymentRequest request = new PaymentRequest();
-		request.setMid(1234567890L);
-		request.setPosId("ABC");
-		request.setTransactionChannel("Web Online");
-		request.setOrderId("orderid");
-		request.setAmount(new BigDecimal(100.00));
-		request.setCurrency("SEK");
-		request.setConsumerCountry("SE");
-		request.setConsumerLanguage("sv");
-		request.setAuthorizationType(AuthorizationType.PRE_AUTHORIZATION);
-		request.setAutoCapture(false);
+		PaymentRequest request = new PaymentRequestBuilder()
+		.setMid(1234567890L)
+		.setPosId("ABC")
+		.setTransactionChannel("Web Online")
+		.setOrderId("orderid")
+		.setAmount(new BigDecimal(100.00))
+		.setCurrency("SEK")
+		.setConsumerCountry("SE")
+		.setConsumerLanguage("sv")
+		.setAuthorizationType(AuthorizationType.PRE_AUTHORIZATION)
+		.setAutoCapture(false)
+		.createPaymentRequest();
 		return request;
 	}
 	
 	public PaymentRequest buildRequestWhenNoTransactionChannel() {
-		PaymentRequest request = new PaymentRequest();
-		request.setMid(1234567890L);
-		request.setPosId("ABC");
-		request.setOrderId("orderid");
-		request.setAmount(new BigDecimal(100.00));
-		request.setCurrency("SEK");
-		request.setConsumerCountry("SE");
-		request.setConsumerLanguage("sv");
-		request.setAuthorizationType(AuthorizationType.PRE_AUTHORIZATION);
-		request.setAutoCapture(false);
+		PaymentRequest request = new PaymentRequestBuilder()
+		.setMid(1234567890L)
+		.setPosId("ABC")
+		.setOrderId("orderid")
+		.setAmount(new BigDecimal(100.00))
+		.setCurrency("SEK")
+		.setConsumerCountry("SE")
+		.setConsumerLanguage("sv")
+		.setAuthorizationType(AuthorizationType.PRE_AUTHORIZATION)
+		.setAutoCapture(false)
+		.createPaymentRequest();
 		return request;
 	}
 	
 	public PaymentRequest buildRequestWhenTransactionChannelNull() {
-		PaymentRequest request = new PaymentRequest();
-		request.setMid(1234567890L);
-		request.setPosId("ABC");
-		request.setOrderId("orderid");
-		request.setTransactionChannel(null);
-		request.setAmount(new BigDecimal(100.00));
-		request.setCurrency("SEK");
-		request.setConsumerCountry("SE");
-		request.setConsumerLanguage("sv");
-		request.setAuthorizationType(AuthorizationType.PRE_AUTHORIZATION);
-		request.setAutoCapture(false);
+		PaymentRequest request = new PaymentRequestBuilder()
+		.setMid(1234567890L)
+		.setPosId("ABC")
+		.setOrderId("orderid")
+		.setTransactionChannel(null)
+		.setAmount(new BigDecimal(100.00))
+		.setCurrency("SEK")
+		.setConsumerCountry("SE")
+		.setConsumerLanguage("sv")
+		.setAuthorizationType(AuthorizationType.PRE_AUTHORIZATION)
+		.setAutoCapture(false)
+		.createPaymentRequest();
 		return request;
 	}
 	
 	public PaymentRequest buildRequestWhenEmptyTransactionChannel() {
-		PaymentRequest request = new PaymentRequest();
-		request.setMid(1234567890L);
-		request.setPosId("ABC");
-		request.setOrderId("orderid");
-		request.setTransactionChannel(new String(""));
-		request.setAmount(new BigDecimal(100.00));
-		request.setCurrency("SEK");
-		request.setConsumerCountry("SE");
-		request.setConsumerLanguage("sv");
-		request.setAuthorizationType(AuthorizationType.PRE_AUTHORIZATION);
-		request.setAutoCapture(false);
+		PaymentRequest request = new PaymentRequestBuilder()
+		.setMid(1234567890L)
+		.setPosId("ABC")
+		.setOrderId("orderid")
+		.setTransactionChannel(new String(""))
+		.setAmount(new BigDecimal(100.00))
+		.setCurrency("SEK")
+		.setConsumerCountry("SE")
+		.setConsumerLanguage("sv")
+		.setAuthorizationType(AuthorizationType.PRE_AUTHORIZATION)
+		.setAutoCapture(false)
+		.createPaymentRequest();
 		return request;
 	}
 }
