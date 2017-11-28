@@ -510,4 +510,17 @@ public class PaymentRequestBuilderTest {
     @Test
     public void createPaymentRequest() throws Exception {
     }
+    
+    @Test
+    public void setPaymentMethodIdDefault() throws Exception {
+        PaymentRequest pr = new PaymentRequestBuilder()
+                .setMid(1234567890L)
+                .setOrderId("general-test")
+                .setConsumerCountry("UK")
+                .setConsumerLanguage("en")
+                .setCurrency("GBP")
+                .createPaymentRequest();
+
+        assertEquals(new Integer(1000), pr.paymentMethodId);
+    }
 }

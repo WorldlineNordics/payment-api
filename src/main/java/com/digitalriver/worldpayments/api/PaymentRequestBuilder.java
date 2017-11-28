@@ -23,7 +23,7 @@ public class PaymentRequestBuilder {
     private String returnUrl;
     private Integer timeLimit;
     private Map<String, String> additionalParameters;
-    private Integer paymentMethodId;
+    private Integer paymentMethodId = 1000;
     private PaymentRequest.StoreFlag storeFlag = PaymentRequest.StoreFlag.NO_STORE;
     private String billingAddressLine1;
     private String billingAddressLine2;
