@@ -6,95 +6,95 @@ import java.util.Date;
 
 public class AbstractPaymentResponse {
     @Parameter(shortName = "A")
-    Long mid;
+    protected Long mid;
     @Parameter(shortName = "B")
-    String status;
+    protected String status;
     @Parameter(shortName = "D")
-    String paymentMethod;
+    protected String paymentMethod;
     @Parameter(shortName = "E")
-    String orderId;
+    protected String orderId;
     @Parameter(shortName = "F")
-    Date timestamp;
+    protected Date timestamp;
     @Parameter(shortName = "G")
-    String VResId;
+    protected String VResId;
     @Parameter(shortName = "H")
-    String PAResId;
+    protected String PAResId;
     @Parameter(shortName = "I")
-    String dddsStatus;
+    protected String dddsStatus;
     @Parameter(shortName = "J")
-    String POSId;
+    protected String POSId;
     @Parameter(shortName = "K")
-    String CardTxType;
+    protected String CardTxType;
     @Parameter(shortName = "L")
-    String CardTxId;
+    protected String CardTxId;
     @Parameter(shortName= "M")
     String cardType;
     @Parameter(shortName= "P")
-    String expirationDate;
+    protected String expirationDate;
     @Parameter(shortName = "Q")
-    String StoreCardType;
+    protected String StoreCardType;
     @Parameter(shortName = "R")
-    String IbpTxId;
+    protected String IbpTxId;
     @Parameter(shortName = "S")
-    String IbpTxType;
+    protected String IbpTxType;
     @Parameter(shortName = "T")
     Boolean redirected;
     @Parameter(shortName= "U")
-    String maskedCardNumber;
+    protected String maskedCardNumber;
     @Parameter(shortName = "X")
-    String eftReferenceId;
+    protected String eftReferenceId;
     @Parameter(shortName = "Y")
-    String eftPaymentSlipUrl;
+    protected String eftPaymentSlipUrl;
     @Parameter(shortName = "Z")
-    Long eftTxId;
+    protected Long eftTxId;
     @Parameter(shortName = "AA")
-    Long directDebitTxId;
+    protected Long directDebitTxId;
     @Parameter(shortName = "AB")
-    Long payoutTxId;
+    protected Long payoutTxId;
     @Parameter(shortName= "AC")
-    Long avsAnswerCode;
+    protected Long avsAnswerCode;
     @Parameter(shortName= "AD")
-    String avsResponse;
+    protected String avsResponse;
     @Parameter(shortName= "AE")
-    String acquirerAnswerCode;
+    protected String acquirerAnswerCode;
     @Parameter(shortName= "AF")
-    Long clientAnswerCode;
+    protected Long clientAnswerCode;
     @Parameter(shortName= "AG")
-    Long cvAnswerCode;
+    protected Long cvAnswerCode;
     @Parameter(shortName= "AH")
-    String cvResponse;
+    protected String cvResponse;
     @Parameter(shortName= "AI")
-    String paymentMethodName;
+    protected String paymentMethodName;
     @Parameter(shortName= "AJ")
-    String acquirerAuthCode;
+    protected String acquirerAuthCode;
     @Parameter(shortName= "AK")
-    String houseExtension;
+    protected String houseExtension;
     @Parameter(shortName= "AL")
-    String houseNumber;
+    protected String houseNumber;
     @Parameter(shortName= "AM")
-    String streetName;
+    protected String streetName;
     @Parameter(shortName= "AN")
-    String gender;
+    protected String gender;
     @Parameter(shortName= "AO")
-    String birthDate;
+    protected String birthDate;
     @Parameter(shortName= "AU")
-    String answerDescription;
+    protected String answerDescription;
     @Parameter(shortName= "AV")
-    Long PaymentPlanCode;
+    protected Long PaymentPlanCode;
     @Parameter(shortName= "AW")
-    String socialSecNumber;
+    protected String socialSecNumber;
     @Parameter(shortName= "AX")
-    String firstName;
+    protected String firstName;
     @Parameter(shortName= "AY")
-    String lastName;
+    protected String lastName;
     @Parameter(shortName= "AZ")
-    String city;
+    protected String city;
     @Parameter(shortName= "AAA")
-    String countryCode;
+    protected String countryCode;
     @Parameter(shortName= "AAB")
-    String zipCode;
+    protected String zipCode;
     @Parameter(shortName= "AAC")
-    String addressLine1;
-    TokenizationResult tokenizationResult;
-    Transaction transaction;
+    protected String addressLine1;
+    protected TokenizationResult tokenizationResult;
+    protected Transaction transaction;
 }
