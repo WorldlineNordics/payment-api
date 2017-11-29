@@ -37,6 +37,7 @@ public class DeviceRestApiExample {
         TokenizationResult tokenizationResult = response.getTokenizationResult();
         System.out.println("Response: mid=" + response.getMid()
                 + ", orderid=" + response.getOrderId()
-                + ", status=" + response.getStatus());
+                + ", status=" + response.getStatus()
+                + ", token=" + tokenizationResult.getToken());
     }
 }

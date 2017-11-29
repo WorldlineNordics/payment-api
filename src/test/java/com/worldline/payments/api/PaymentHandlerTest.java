@@ -1,28 +1,27 @@
-package com.digitalriver.worldpayments.api;
+package com.worldline.payments.api;
 
 import org.junit.Assert;
 import org.junit.Test;
-import com.digitalriver.worldpayments.api.PaymentRequest;
 
 public class PaymentHandlerTest extends PaymentHandlerTestBase {
 	
 	@Test
 	public void testAutoCaptureTrue() {
 		PaymentRequest request = buildRequest();
-		Assert.assertEquals(DEBIT, request.transactionType);
+		Assert.assertEquals(DEBIT, request.getTransactionType());
 	}
 	
 	@Test
 	public void testAutoCaptureFalse() {
 		PaymentRequest request = buildRequestWhenAutoCaptureFalse();
-		Assert.assertEquals(AUTHORIZE, request.transactionType);
+		Assert.assertEquals(AUTHORIZE, request.getTransactionType());
 	}
 	
 	@Test
 	public void testWhenNoTransactionChannel() {
 		PaymentRequest request = buildRequestWhenNoTransactionChannel();
 		paymentHandler.encryptRequest(request);
-		Assert.assertEquals(WEBONLINE, request.transactionChannel);
+		Assert.assertEquals(WEBONLINE, request.getTransactionChannel());
 	}
 	
     @Test(expected = IllegalArgumentException.class)
@@ -35,7 +34,7 @@ public class PaymentHandlerTest extends PaymentHandlerTestBase {
 	public void testWhenDifferentTransactionChannel() {
 		PaymentRequest request = buildRequest();
 		paymentHandler.encryptRequest(request);
-		Assert.assertEquals(MAIL, request.transactionChannel);
+		Assert.assertEquals(MAIL, request.getTransactionChannel());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)

@@ -234,4 +234,296 @@ public abstract class AbstractPaymentPageRequest {
 	@Parameter(shortName = "AAQ", required = true)
 	protected boolean autoCapture;
 
+	public Long getMid() {
+		return mid;
+	}
+
+	public String getSubMerchantId() {
+		return subMerchantId;
+	}
+
+	public String getPosId() {
+		return posId;
+	}
+
+	public String getTransactionChannel() {
+		return transactionChannel;
+	}
+
+	public String getTransactionType() {
+		return transactionType;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public String getOrderDescription() {
+		return orderDescription;
+	}
+
+	public String getOrderDetailDescription() {
+		return orderDetailDescription;
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public Double getVatAmount() {
+		return vatAmount;
+	}
+
+	public Double getVatRate() {
+		return vatRate;
+	}
+
+	public String getConsumerCountry() {
+		return consumerCountry;
+	}
+
+	public String getConsumerLanguage() {
+		return consumerLanguage;
+	}
+
+	public String getReturnUrl() {
+		return returnUrl;
+	}
+
+	public Integer getTimeLimit() {
+		return timeLimit;
+	}
+
+	public Map<String, String> getAdditionalParameters() {
+		return additionalParameters;
+	}
+
+	public Integer getPaymentMethodId() {
+		return paymentMethodId;
+	}
+
+	public Integer getStoreFlag() {
+		return storeFlag;
+	}
+
+	public String getTemplateReference() {
+		return templateReference;
+	}
+
+	public String getBillingAddressLine1() {
+		return billingAddressLine1;
+	}
+
+	public String getBillingAddressLine2() {
+		return billingAddressLine2;
+	}
+
+	public String getBillingCity() {
+		return billingCity;
+	}
+
+	public String getBillingStateProvince() {
+		return billingStateProvince;
+	}
+
+	public String getBillingZipCode() {
+		return billingZipCode;
+	}
+
+	public String getBillingCountryCode() {
+		return billingCountryCode;
+	}
+
+	public String getBillingEmailAddress() {
+		return billingEmailAddress;
+	}
+
+	public String getBillingPhone() {
+		return billingPhone;
+	}
+
+	public String getBillingMobilePhone() {
+		return billingMobilePhone;
+	}
+
+	public String getBillingLastName() {
+		return billingLastName;
+	}
+
+	public String getBillingFirstName() {
+		return billingFirstName;
+	}
+
+	public String getBillingFullName() {
+		return billingFullName;
+	}
+
+	public String getShippingAddressLine1() {
+		return shippingAddressLine1;
+	}
+
+	public String getShippingAddressLine2() {
+		return shippingAddressLine2;
+	}
+
+	public String getShippingCity() {
+		return shippingCity;
+	}
+
+	public String getShippingStateProvince() {
+		return shippingStateProvince;
+	}
+
+	public String getShippingZipCode() {
+		return shippingZipCode;
+	}
+
+	public String getShippingCountryCode() {
+		return shippingCountryCode;
+	}
+
+	public String getShippingEmailAddress() {
+		return shippingEmailAddress;
+	}
+
+	public String getShippingPhone() {
+		return shippingPhone;
+	}
+
+	public String getDueDate() {
+		return dueDate;
+	}
+
+	public String getPaymentPlanCode() {
+		return paymentPlanCode;
+	}
+
+	public String getBillingCompanyName() {
+		return billingCompanyName;
+	}
+
+	public String getBillingBuyerVATNumber() {
+		return billingBuyerVATNumber;
+	}
+
+	public String getBillingBuyerType() {
+		return billingBuyerType;
+	}
+
+	public String getShippingCompanyName() {
+		return shippingCompanyName;
+	}
+
+	public String getShippingAddressLine3() {
+		return shippingAddressLine3;
+	}
+
+	public String getBillingAddressLine3() {
+		return billingAddressLine3;
+	}
+
+	public String getBirthDate() {
+		return birthDate;
+	}
+
+	public String getCompanyResponsibleBirthDate() {
+		return companyResponsibleBirthDate;
+	}
+
+	public String getCompanyResponsibleFullName() {
+		return companyResponsibleFullName;
+	}
+
+	public String getCompanyResponsibleVATNumber() {
+		return companyResponsibleVATNumber;
+	}
+
+	public String getRecurringType() {
+		return recurringType;
+	}
+
+	public String getPosDesc() {
+		return posDesc;
+	}
+
+	public String getShippingMobilePhone() {
+		return shippingMobilePhone;
+	}
+
+	public String getShippingLastName() {
+		return shippingLastName;
+	}
+
+	public String getShippingFirstName() {
+		return shippingFirstName;
+	}
+
+	public String getShippingFullName() {
+		return shippingFullName;
+	}
+
+	public String getBillingSSN() {
+		return billingSSN;
+	}
+
+	public String getCompanyTaxId() {
+		return companyTaxId;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public String getBillingStreetName() {
+		return billingStreetName;
+	}
+
+	public String getBillingHouseNumber() {
+		return billingHouseNumber;
+	}
+
+	public String getBillingHouseExtension() {
+		return billingHouseExtension;
+	}
+
+	public String getShippingStreetName() {
+		return shippingStreetName;
+	}
+
+	public String getShippingHouseNumber() {
+		return shippingHouseNumber;
+	}
+
+	public String getShippingHouseExtension() {
+		return shippingHouseExtension;
+	}
+
+	public String getShippingCareOf() {
+		return shippingCareOf;
+	}
+
+	public List<LineItem> getLineItems() {
+		return lineItems;
+	}
+
+	public String getAuthorizationType() {
+		return authorizationType;
+	}
+
+	public String getAuthenticationRedirect() {
+		return authenticationRedirect;
+	}
+
+	public boolean isAutoCapture() {
+		return autoCapture;
+	}
+	
 }
