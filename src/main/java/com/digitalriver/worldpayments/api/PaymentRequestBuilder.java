@@ -438,7 +438,6 @@ public class PaymentRequestBuilder {
 
         //FIXME: This creates an unnecessary nvp. Needed for validation purposes only
         ParameterAnnotationHelper.mapObjectToNvp(paymentRequest);
-
         return paymentRequest;
     }
 }
