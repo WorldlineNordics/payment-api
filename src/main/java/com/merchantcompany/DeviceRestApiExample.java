@@ -1,12 +1,12 @@
 package com.merchantcompany;
 
-import com.digitalriver.worldpayments.api.AuthorizationType;
-import com.digitalriver.worldpayments.api.TokenizationResult;
 import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
+import com.worldline.payments.api.AuthorizationType;
 import com.worldline.payments.api.PaymentHandler;
 import com.worldline.payments.api.PaymentRequest;
 import com.worldline.payments.api.PaymentRequestBuilder;
 import com.worldline.payments.api.PaymentResponse;
+import com.worldline.payments.api.TokenizationResult;
 
 import java.math.BigDecimal;
 

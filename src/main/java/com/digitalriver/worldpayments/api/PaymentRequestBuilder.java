@@ -3,7 +3,6 @@ package com.digitalriver.worldpayments.api;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
-import com.worldline.payments.api.PaymentRequest;
 
 public class PaymentRequestBuilder {
     private Long mid;

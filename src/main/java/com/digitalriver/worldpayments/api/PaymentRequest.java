@@ -1,7 +1,8 @@
-package com.worldline.payments.api;
+package com.digitalriver.worldpayments.api;
 
 import com.digitalriver.worldpayments.api.AbstractPaymentPageRequest;
 import com.digitalriver.worldpayments.api.AuthenticationRedirect;
+import com.digitalriver.worldpayments.api.AuthorizationType;
 import com.digitalriver.worldpayments.api.LineItem;
 
 import java.math.BigDecimal;

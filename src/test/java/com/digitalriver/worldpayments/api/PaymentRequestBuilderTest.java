@@ -3,7 +3,6 @@ package com.digitalriver.worldpayments.api;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import com.worldline.payments.api.PaymentRequest;
 
 import java.math.BigDecimal;
 

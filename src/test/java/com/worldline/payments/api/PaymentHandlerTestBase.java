@@ -2,8 +2,6 @@ package com.worldline.payments.api;
 
 import java.math.BigDecimal;
 import org.junit.BeforeClass;
-import com.digitalriver.worldpayments.api.AuthorizationType;
-import com.digitalriver.worldpayments.api.PaymentRequestBuilder;
 import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
 
 public class PaymentHandlerTestBase {

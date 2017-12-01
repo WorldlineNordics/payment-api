@@ -1,7 +1,6 @@
 package com.worldline.payments.api;
 
 import com.digitalriver.worldpayments.api.AuthenticationRedirect;
-import com.digitalriver.worldpayments.api.AuthorizationType;
 import com.digitalriver.worldpayments.api.LineItem;
 import com.digitalriver.worldpayments.api.ParameterAnnotationHelper;
 
