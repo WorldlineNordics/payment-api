@@ -132,6 +132,7 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
         setAuthorizationType(authorizationType);
         setAuthenticationRedirect(authenticationRedirect);
         setAutoCapture(autoCapture);
+        setVATamount(vatAmount);
 
     }
 
