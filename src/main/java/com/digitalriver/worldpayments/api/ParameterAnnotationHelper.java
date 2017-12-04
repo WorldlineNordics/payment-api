@@ -73,6 +73,7 @@ public class ParameterAnnotationHelper {
         for (Field field : fields) {
             if (Modifier.isPrivate(field.getModifiers()))
                 continue;
+            field.setAccessible(true);
             Parameter param = field.getAnnotation(Parameter.class);
             if (param != null) {
                 if (nvp.containsKey(param.shortName())) {
