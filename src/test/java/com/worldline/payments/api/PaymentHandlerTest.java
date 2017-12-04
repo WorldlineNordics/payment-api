@@ -1,40 +1,52 @@
 package com.worldline.payments.api;
 
+import java.lang.reflect.Field;
 import org.junit.Assert;
 import org.junit.Test;
+import com.digitalriver.worldpayments.api.AbstractPaymentPageRequest;
 
 public class PaymentHandlerTest extends PaymentHandlerTestBase {
-	
+
+	private <T> T getField(Object obj, String name, Class clazz) throws NoSuchFieldException, IllegalAccessException {
+		Field field = clazz.getDeclaredField(name);
+		field.setAccessible(true);
+		return (T) field.get(obj);
+	}
+
 	@Test
-	public void testAutoCaptureTrue() {
+	public void testAutoCaptureTrue() throws NoSuchFieldException, IllegalAccessException {
 		PaymentRequest request = buildRequest();
-		Assert.assertEquals(DEBIT, request.transactionType);
+		String transactionType = getField(request, "transactionType", AbstractPaymentPageRequest.class);
+		Assert.assertEquals(DEBIT, transactionType);
 	}
 	
 	@Test
-	public void testAutoCaptureFalse() {
+	public void testAutoCaptureFalse() throws NoSuchFieldException, IllegalAccessException {
 		PaymentRequest request = buildRequestWhenAutoCaptureFalse();
-		Assert.assertEquals(AUTHORIZE, request.transactionType);
+		String transactionType = getField(request, "transactionType", AbstractPaymentPageRequest.class);
+		Assert.assertEquals(AUTHORIZE, transactionType);
 	}
 	
 	@Test
-	public void testWhenNoTransactionChannel() {
+	public void testWhenNoTransactionChannel() throws NoSuchFieldException, IllegalAccessException {
 		PaymentRequest request = buildRequestWhenNoTransactionChannel();
 		paymentHandler.encryptRequest(request);
-		Assert.assertEquals(WEBONLINE, request.transactionChannel);
+		String transactionChannel = getField(request, "transactionChannel", AbstractPaymentPageRequest.class);
+		Assert.assertEquals(WEBONLINE, transactionChannel);
 	}
-	
-    @Test(expected = IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void testWhenTransactionChannelNull() {
 		PaymentRequest request = buildRequestWhenTransactionChannelNull();
 		paymentHandler.encryptRequest(request);
 	}
 	
 	@Test
-	public void testWhenDifferentTransactionChannel() {
+	public void testWhenDifferentTransactionChannel() throws NoSuchFieldException, IllegalAccessException {
 		PaymentRequest request = buildRequest();
 		paymentHandler.encryptRequest(request);
-		Assert.assertEquals(MAIL, request.transactionChannel);
+		String transactionChannel = getField(request, "transactionChannel", AbstractPaymentPageRequest.class);
+		Assert.assertEquals(MAIL, transactionChannel);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
