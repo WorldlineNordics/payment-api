@@ -10,7 +10,7 @@ import java.lang.reflect.ParameterizedType;
 import java.math.BigInteger;
 import java.util.*;
 
-class ParameterAnnotationHelper {
+public class ParameterAnnotationHelper {
 
     private static String createMapString(Map<String, String> map) {
         StringBuffer sb = new StringBuffer();
@@ -63,7 +63,7 @@ class ParameterAnnotationHelper {
         return type.getName().equals(Map.class.getName());
     }
 
-    static boolean mapNvpToObject(Object object, Map<String, String> nvp) throws Exception {
+    public static boolean mapNvpToObject(Object object, Map<String, String> nvp) throws Exception {
         return mapNvpToObject(object, nvp, getAllDeclaredFields(object.getClass()));
     }
 
@@ -123,7 +123,7 @@ class ParameterAnnotationHelper {
         return invokedSetter;
     }
 
-    static Map<String, String> mapObjectToNvp(Object object) throws IllegalArgumentException {
+    public static Map<String, String> mapObjectToNvp(Object object) throws IllegalArgumentException {
         return mapObjectToNvp(object, null, getAllDeclaredFields(object.getClass()));
     }
 

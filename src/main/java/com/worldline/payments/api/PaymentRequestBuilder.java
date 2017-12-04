@@ -1,4 +1,8 @@
-package com.digitalriver.worldpayments.api;
+package com.worldline.payments.api;
+
+import com.digitalriver.worldpayments.api.AuthenticationRedirect;
+import com.digitalriver.worldpayments.api.LineItem;
+import com.digitalriver.worldpayments.api.ParameterAnnotationHelper;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -437,6 +441,7 @@ public class PaymentRequestBuilder {
 
         //FIXME: This creates an unnecessary nvp. Needed for validation purposes only
         ParameterAnnotationHelper.mapObjectToNvp(paymentRequest);
+
         return paymentRequest;
     }
 }

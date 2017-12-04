@@ -1,4 +1,6 @@
-package com.digitalriver.worldpayments.api;
+package com.worldline.payments.api;
+
+import com.digitalriver.worldpayments.api.Transaction;
 
 import java.util.Date;
 

@@ -1,8 +1,7 @@
-package com.digitalriver.worldpayments.api;
+package com.worldline.payments.api;
 
 import com.digitalriver.worldpayments.api.AbstractPaymentPageRequest;
 import com.digitalriver.worldpayments.api.AuthenticationRedirect;
-import com.digitalriver.worldpayments.api.AuthorizationType;
 import com.digitalriver.worldpayments.api.LineItem;
 
 import java.math.BigDecimal;
@@ -133,6 +132,7 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
         setAuthorizationType(authorizationType);
         setAuthenticationRedirect(authenticationRedirect);
         setAutoCapture(autoCapture);
+        setVATamount(vatAmount);
 
     }
 

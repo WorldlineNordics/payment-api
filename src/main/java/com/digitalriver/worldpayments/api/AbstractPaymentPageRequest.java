@@ -1,9 +1,9 @@
 package com.digitalriver.worldpayments.api;
 
+import com.digitalriver.worldpayments.api.utils.Parameter;
+
 import java.util.List;
 import java.util.Map;
-
-import com.digitalriver.worldpayments.api.utils.Parameter;
 
 /**
  * When reading this code:
@@ -13,225 +13,225 @@ import com.digitalriver.worldpayments.api.utils.Parameter;
  * to set value for a required param) * regEx is a simple(?) reg-ex that the provided value is matched against
  * ([0-9]{8,11} means 8-11 digits) * max length, self explanatory note that no param has both max length and reg-ex set.
  */
-abstract class AbstractPaymentPageRequest {
+public abstract class AbstractPaymentPageRequest {
 
 	@Parameter(shortName = "A", required = true, regEx = "[0-9]{8,11}")
-	Long mid;
+	protected Long mid;
 
 	@Parameter(shortName = "B")
-	String subMerchantId;
+	protected String subMerchantId;
 
 	@Parameter(shortName = "C", maxLength = 50)
-	String posId;
+	protected String posId;
 
 	@Parameter(shortName = "D", required = true, regEx = "(Web Online|Mail|Telephone|Fax|FaceToFace|Cash register)")
-	String transactionChannel;
+	protected String transactionChannel;
 
 	@Parameter(shortName = "E", regEx = "(?i)debit|authorize|refund")
-	String transactionType;
+	protected String transactionType;
 
 	@Parameter(shortName = "F")
-	String token;
+	protected String token;
 
 	@Parameter(shortName = "G", required = true, maxLength = 50)
-	String orderId;
+	protected String orderId;
 
 	@Parameter(shortName = "H")
-	String orderDescription;
+	protected String orderDescription;
 
 	@Parameter(shortName = "I")
-	String orderDetailDescription;
+	protected String orderDetailDescription;
 
 	@Parameter(shortName = "J")
-	Double amount;
+	protected Double amount;
 
 	@Parameter(shortName = "K", required = true, regEx = "[A-Za-z]{3}")
-	String currency;
+	protected String currency;
 
 	@Parameter(shortName = "L")
-	Double vatAmount;
+	protected Double vatAmount;
 
 	@Parameter(shortName = "M")
-	Double vatRate;
+	protected Double vatRate;
 
 	@Parameter(shortName = "T", required = true, regEx = "[A-Z]{2}")
-	String consumerCountry;
+	protected String consumerCountry;
 
 	@Parameter(shortName = "U", required = true, regEx = "[a-z]{2}")
-	String consumerLanguage;
+	protected String consumerLanguage;
 
 	@Parameter(shortName = "V")
-	String returnUrl;
+	protected String returnUrl;
 
 	@Parameter(shortName = "W")
-	Integer timeLimit;
+	protected Integer timeLimit;
 
 	@Parameter(shortName = "Y")
-	Map<String, String> additionalParameters;
+	protected Map<String, String> additionalParameters;
 
 	@Parameter(shortName = "Z")
-	Integer paymentMethodId;
+	protected Integer paymentMethodId;
 
 	@Parameter(shortName = "AA", regEx = "[0-2]{1}")
-	Integer storeFlag;
+	protected Integer storeFlag;
 
 	@Parameter(shortName = "AB")
 	String templateReference;
 
 	@Parameter(shortName = "AG")
-	String billingAddressLine1;
+	protected String billingAddressLine1;
 
 	@Parameter(shortName = "AH")
-	String billingAddressLine2;
+	protected String billingAddressLine2;
 
 	@Parameter(shortName = "AI")
-	String billingCity;
+	protected String billingCity;
 
 	@Parameter(shortName = "AJ")
-	String billingStateProvince;
+	protected String billingStateProvince;
 
 	@Parameter(shortName = "AK")
-	String billingZipCode;
+	protected String billingZipCode;
 
 	@Parameter(shortName = "AL", regEx = "[A-Za-z]{2}")
-	String billingCountryCode;
+	protected String billingCountryCode;
 
 	@Parameter(shortName = "AM")
-	String billingEmailAddress;
+	protected String billingEmailAddress;
 
 	@Parameter(shortName = "AN")
-	String billingPhone;
+	protected String billingPhone;
 
 	@Parameter(shortName = "AO")
-	String billingMobilePhone;
+	protected String billingMobilePhone;
 
 	@Parameter(shortName = "AP")
-	String billingLastName;
+	protected String billingLastName;
 
 	@Parameter(shortName = "AQ")
-	String billingFirstName;
+	protected String billingFirstName;
 
 	@Parameter(shortName = "AR")
-	String billingFullName;
+	protected String billingFullName;
 
 	@Parameter(shortName = "AS")
-	String shippingAddressLine1;
+	protected String shippingAddressLine1;
 
 	@Parameter(shortName = "AT")
-	String shippingAddressLine2;
+	protected String shippingAddressLine2;
 
 	@Parameter(shortName = "AU")
-	String shippingCity;
+	protected String shippingCity;
 
 	@Parameter(shortName = "AV")
-	String shippingStateProvince;
+	protected String shippingStateProvince;
 
 	@Parameter(shortName = "AW")
-	String shippingZipCode;
+	protected String shippingZipCode;
 
 	@Parameter(shortName = "AX", regEx = "[A-Za-z]{2}")
-	String shippingCountryCode;
+	protected String shippingCountryCode;
 
 	@Parameter(shortName = "AY")
-	String shippingEmailAddress;
+	protected String shippingEmailAddress;
 
 	@Parameter(shortName = "AZ")
-	String shippingPhone;
+	protected String shippingPhone;
 
 	// FIXME format?
 	@Parameter(shortName = "BA")
-	String dueDate;
+	protected String dueDate;
 
 	@Parameter(shortName = "BB")
-	String paymentPlanCode;
+	protected String paymentPlanCode;
 
 	@Parameter(shortName = "BC")
-	String billingCompanyName;
+	protected String billingCompanyName;
 
 	@Parameter(shortName = "BD", maxLength = 25)
-	String billingBuyerVATNumber;
+	protected String billingBuyerVATNumber;
 
 	@Parameter(shortName = "BE", regEx = "(?i)individual|business")
-	String billingBuyerType;
+	protected String billingBuyerType;
 
 	@Parameter(shortName = "BG")
-	String shippingCompanyName;
+	protected String shippingCompanyName;
 
 	@Parameter(shortName = "BH")
-	String shippingAddressLine3;
+	protected String shippingAddressLine3;
 
 	@Parameter(shortName = "BJ")
-	String billingAddressLine3;
+	protected String billingAddressLine3;
 
 	@Parameter(shortName = "BT", regEx = "^((19\\d\\d)|([2-9]\\d\\d\\d))(0?[1-9]|1[012])(0?[1-9]|[12][0-9]|3[01])")
-	String birthDate;
+	protected String birthDate;
 
 	@Parameter(shortName = "CB", regEx = "^((19\\d\\d)|([2-9]\\d\\d\\d))(0?[1-9]|1[012])(0?[1-9]|[12][0-9]|3[01])")
-	String companyResponsibleBirthDate;
+	protected String companyResponsibleBirthDate;
 
 	@Parameter(shortName = "CN", maxLength = 50)
-	String companyResponsibleFullName;
+	protected String companyResponsibleFullName;
 
 	@Parameter(shortName = "CV", maxLength = 25)
-	String companyResponsibleVATNumber;
+	protected String companyResponsibleVATNumber;
 
 	@Parameter(shortName = "EA", regEx = "(?i)NOT_RECURRING|FIRST_RECURRING|SUBSEQUENT_RECURRING|LAST_RECURRING")
-	String recurringType;
+	protected String recurringType;
 
 	@Parameter(shortName = "PD", maxLength = 50)
-	String posDesc;
+	protected String posDesc;
 
 	@Parameter(shortName = "AAA")
-	String shippingMobilePhone;
+	protected String shippingMobilePhone;
 
 	@Parameter(shortName = "AAB")
-	String shippingLastName;
+	protected String shippingLastName;
 
 	@Parameter(shortName = "AAC")
-	String shippingFirstName;
+	protected String shippingFirstName;
 
 	@Parameter(shortName = "AAD")
-	String shippingFullName;
+	protected String shippingFullName;
 
 	@Parameter(shortName = "AAE", maxLength = 30)
-	String billingSSN;
+	protected String billingSSN;
 
 	@Parameter(shortName = "AAF", maxLength = 50)
-	String companyTaxId;
+	protected String companyTaxId;
 
 	@Parameter(shortName = "AAG")
-	String gender;
+	protected String gender;
 
 	@Parameter(shortName = "AAH")
-	String billingStreetName;
+	protected String billingStreetName;
 
 	@Parameter(shortName = "AAI")
-	String billingHouseNumber;
+	protected String billingHouseNumber;
 
 	@Parameter(shortName = "AAJ")
-	String billingHouseExtension;
+	protected String billingHouseExtension;
 
 	@Parameter(shortName = "AAK")
-	String shippingStreetName;
+	protected String shippingStreetName;
 
 	@Parameter(shortName = "AAL")
-	String shippingHouseNumber;
+	protected String shippingHouseNumber;
 
 	@Parameter(shortName = "AAM")
-	String shippingHouseExtension;
+	protected String shippingHouseExtension;
 
 	@Parameter(shortName = "AAN")
-	String shippingCareOf;
+	protected String shippingCareOf;
 
-	List<LineItem> lineItems;
+	protected List<LineItem> lineItems;
 
 	@Parameter(shortName = "AAO", required = false)
-	String authorizationType;
+	protected String authorizationType;
 
 	@Parameter(shortName = "AAP", regEx = "(?i)NOREDIRECT|REDIRECT|REDIRECTONLY")
-	String authenticationRedirect;
-	
+	protected String authenticationRedirect;
+
 	@Parameter(shortName = "AAQ", required = true)
-	boolean autoCapture;
+	protected boolean autoCapture;
 
 }
