@@ -25,7 +25,6 @@ bintray {
             desc = 'Worldline Online Payments Acceptance Payment API'
             released  = new Date()
             vcsTag = 'v' + currentVersion
-//            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
 }
