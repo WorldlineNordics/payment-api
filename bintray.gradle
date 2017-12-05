@@ -1,0 +1,42 @@
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
+apply plugin: 'maven-publish'
+apply plugin: 'java'
+
+group = 'com.worldline.payments'
+archivesBaseName = 'payment-api'
+version = currentVersion
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['PaymentAPI']
+
+    pkg {
+        repo = 'payment-api'
+        name = 'payment-api'
+        userOrg = 'worldlinenordics'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/WorldlineNordics/payment-api.git'
+
+        version {
+            name = currentVersion
+            desc = 'Worldline Online Payments Acceptance Payment API'
+            released  = new Date()
+            vcsTag = 'v' + currentVersion
+//            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        }
+    }
+}
+
+publishing {
+    publications {
+        PaymentAPI(MavenPublication) {
+            from components.java
+            groupId group
+            artifactId archivesBaseName
+            version project.version
+        }
+    }
+}
