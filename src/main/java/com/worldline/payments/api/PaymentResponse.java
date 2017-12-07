@@ -27,7 +27,15 @@ public class PaymentResponse extends AbstractPaymentResponse {
      * OK/NOK/ERROR/USERCANCEL/PENDING
      */
     public String getStatus() {
-        return status;
+    	if(status == null || status.isEmpty()){
+    		if(clientAnswerCode == 0){
+    			return status = "OK";
+    		}else {
+				return status = "NOK";
+			}
+    	} else {
+    		return status;
+    	}
     }
 
     /**
