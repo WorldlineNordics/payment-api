@@ -1,7 +1,5 @@
 package com.worldline.payments.api;
 
-import com.digitalriver.worldpayments.api.Transaction;
-
 import java.util.Date;
 
 /**
