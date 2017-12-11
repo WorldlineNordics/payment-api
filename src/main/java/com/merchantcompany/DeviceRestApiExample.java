@@ -1,12 +1,7 @@
 package com.merchantcompany;
 
 import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
-import com.worldline.payments.api.AuthorizationType;
-import com.worldline.payments.api.PaymentHandler;
-import com.worldline.payments.api.PaymentRequest;
-import com.worldline.payments.api.PaymentRequestBuilder;
-import com.worldline.payments.api.PaymentResponse;
-import com.worldline.payments.api.TokenizationResult;
+import com.worldline.payments.api.*;
 
 import java.math.BigDecimal;
 
@@ -14,7 +9,11 @@ public class DeviceRestApiExample {
 
     public static void main(String[] args) {
 
-        PaymentHandler paymentHandler = new PaymentHandler(new JKSKeyHandlerV6("src/test/resources/merchant.jks", "merchant", "merchant", "drwp_cert"));
+        PaymentHandler paymentHandler = new PaymentHandler(
+                new JKSKeyHandlerV6("src/test/resources/merchant.jks",
+                        "merchant",
+                        "merchant",
+                        "drwp_cert"));
 
 
         PaymentRequest paymentRequest = new PaymentRequestBuilder()
