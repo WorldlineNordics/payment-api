@@ -15,7 +15,9 @@ import java.util.Map;
  * @see PaymentResponse
  */
 public class PaymentHandler {
-	
+
+    protected String deviceEndpoint;
+
     private static PaymentResponse createPaymentResponse(final Map<String, String> nvp) {
 
         PaymentResponse ppResponse = new PaymentResponse();
@@ -36,22 +38,64 @@ public class PaymentHandler {
      * URL used when redirecting consumer to PaymentPage.
      *
      * @param aKeyHandler
-     *            a KeyHandler containing payment page keys
+     *            a KeyHandler containing device endpoint keys
      */
-    
+    @Deprecated
     public PaymentHandler(JKSKeyHandlerV6 aKeyHandler) {
         this(new SecurityHandlerImpl(aKeyHandler));
     }
 
+    @Deprecated
     public PaymentHandler(SecurityHandler aSecurityHandler) {
         iSecurityHandler = aSecurityHandler;
     }
-    
+
+    /**
+     * Create a PaymentHandler with a specified key handler and endpoint for the Device Payment API.
+     * @param keyHandler device endpoint keys
+     * @param deviceEndpoint URL to Device Payment API
+     */
+    public PaymentHandler(JKSKeyHandlerV6 keyHandler, String deviceEndpoint) {
+        iSecurityHandler = new SecurityHandlerImpl(keyHandler);
+        this.deviceEndpoint = deviceEndpoint;
+    }
+
+    /**
+     * Create a Device API Request to be used for Devices that processes with the Device API.
+     *
+     * @param request a request
+     * @return JSON object to be passed to the Device API
+     */
+    public String createDeviceAPIRequest(PaymentRequest request) {
+        Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
+        String encryptedRequest = iSecurityHandler.encrypt(NvpUtil.createNvpString(nvp));
+
+        return getResponseJson(encryptedRequest, deviceEndpoint);
+    }
+
+    protected String getResponseJson(String encryptedRequest, String deviceEndpoint) {
+        if (hasQuotes(encryptedRequest) || hasQuotes(deviceEndpoint)) {
+            throw new IllegalArgumentException("Cannot contain quotes.");
+        }
+        return "{ "
+                + "\"version\": \"A\", "
+                + "\"deviceEndpoint\": \""
+                + deviceEndpoint
+                + "\", \"encryptedPayload\": \""
+                + encryptedRequest + "\""
+                + "}";
+    }
+
+    protected boolean hasQuotes(String str) {
+        return str.contains("\"");
+    }
+
     /**
      * The received request is encrypted with the following method.
      *
-     * @return the decrypted PaymentResponse object
+     * @return the encrypted PaymentRequest object
      */
+    @Deprecated
     public String encryptRequest(PaymentRequest request) {
     	Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
         return iSecurityHandler.encrypt(NvpUtil.createNvpString(nvp));

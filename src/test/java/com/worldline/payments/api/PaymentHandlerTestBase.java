@@ -1,8 +1,9 @@
 package com.worldline.payments.api;
 
-import java.math.BigDecimal;
-import org.junit.BeforeClass;
 import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
+import org.junit.BeforeClass;
+
+import java.math.BigDecimal;
 
 public class PaymentHandlerTestBase {
 	
@@ -14,7 +15,8 @@ public class PaymentHandlerTestBase {
 	
 	@BeforeClass
 	public static void setUp() {
-		paymentHandler = new PaymentHandler(new JKSKeyHandlerV6("src/test/resources/merchant.jks", "merchant", "merchant", "drwp_cert"));
+		paymentHandler = new PaymentHandler(new JKSKeyHandlerV6("src/test/resources/merchant.jks", "merchant", "merchant", "drwp_cert"),
+				"https://nowhere-noendpoint:12345678");
 	}
 	
 	public PaymentRequest buildRequest() {
