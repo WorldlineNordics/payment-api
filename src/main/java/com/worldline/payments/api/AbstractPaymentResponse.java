@@ -1,101 +1,100 @@
 package com.worldline.payments.api;
 
-import com.digitalriver.worldpayments.api.Transaction;
 import com.digitalriver.worldpayments.api.utils.Parameter;
 
 import java.util.Date;
 
 public class AbstractPaymentResponse {
     @Parameter(shortName = "A")
-    public Long mid;
+    protected Long mid;
     @Parameter(shortName = "B")
-    public String status;
+    protected String status;
     @Parameter(shortName = "D")
-    public String paymentMethod;
+    protected String paymentMethod;
     @Parameter(shortName = "E")
-    public String orderId;
+    protected String orderId;
     @Parameter(shortName = "F")
-    public Date timestamp;
+    protected Date timestamp;
     @Parameter(shortName = "G")
-    public String VResId;
+    protected String VResId;
     @Parameter(shortName = "H")
-    public String PAResId;
+    protected String PAResId;
     @Parameter(shortName = "I")
-    public String dddsStatus;
+    protected String dddsStatus;
     @Parameter(shortName = "J")
-    public String POSId;
+    protected String POSId;
     @Parameter(shortName = "K")
-    public String CardTxType;
+    protected String CardTxType;
     @Parameter(shortName = "L")
-    public String CardTxId;
+    protected String CardTxId;
     @Parameter(shortName= "M")
-    public String cardType;
+    String cardType;
     @Parameter(shortName= "P")
-    public String expirationDate;
+    protected String expirationDate;
     @Parameter(shortName = "Q")
-    public String StoreCardType;
+    protected String StoreCardType;
     @Parameter(shortName = "R")
-    public String IbpTxId;
+    protected String IbpTxId;
     @Parameter(shortName = "S")
-    public String IbpTxType;
+    protected String IbpTxType;
     @Parameter(shortName = "T")
-    public Boolean redirected;
+    Boolean redirected;
     @Parameter(shortName= "U")
-    public String maskedCardNumber;
+    protected String maskedCardNumber;
     @Parameter(shortName = "X")
-    public String eftReferenceId;
+    protected String eftReferenceId;
     @Parameter(shortName = "Y")
-    public String eftPaymentSlipUrl;
+    protected String eftPaymentSlipUrl;
     @Parameter(shortName = "Z")
-    public Long eftTxId;
+    protected Long eftTxId;
     @Parameter(shortName = "AA")
-    public Long directDebitTxId;
+    protected Long directDebitTxId;
     @Parameter(shortName = "AB")
-    public Long payoutTxId;
+    protected Long payoutTxId;
     @Parameter(shortName= "AC")
-    public Long avsAnswerCode;
+    protected Long avsAnswerCode;
     @Parameter(shortName= "AD")
-    public String avsResponse;
+    protected String avsResponse;
     @Parameter(shortName= "AE")
-    public String acquirerAnswerCode;
+    protected String acquirerAnswerCode;
     @Parameter(shortName= "AF")
-    public Long clientAnswerCode;
+    protected Long clientAnswerCode;
     @Parameter(shortName= "AG")
-    public Long cvAnswerCode;
+    protected Long cvAnswerCode;
     @Parameter(shortName= "AH")
-    public String cvResponse;
+    protected String cvResponse;
     @Parameter(shortName= "AI")
-    public String paymentMethodName;
+    protected String paymentMethodName;
     @Parameter(shortName= "AJ")
-    public String acquirerAuthCode;
+    protected String acquirerAuthCode;
     @Parameter(shortName= "AK")
-    public String houseExtension;
+    protected String houseExtension;
     @Parameter(shortName= "AL")
-    public String houseNumber;
+    protected String houseNumber;
     @Parameter(shortName= "AM")
-    public String streetName;
+    protected String streetName;
     @Parameter(shortName= "AN")
-    public String gender;
+    protected String gender;
     @Parameter(shortName= "AO")
-    public String birthDate;
+    protected String birthDate;
     @Parameter(shortName= "AU")
-    public String answerDescription;
+    protected String answerDescription;
     @Parameter(shortName= "AV")
-    public Long PaymentPlanCode;
+    protected Long PaymentPlanCode;
     @Parameter(shortName= "AW")
-    public String socialSecNumber;
+    protected String socialSecNumber;
     @Parameter(shortName= "AX")
-    public String firstName;
+    protected String firstName;
     @Parameter(shortName= "AY")
-    public String lastName;
+    protected String lastName;
     @Parameter(shortName= "AZ")
-    public String city;
+    protected String city;
     @Parameter(shortName= "AAA")
-    public String countryCode;
+    protected String countryCode;
     @Parameter(shortName= "AAB")
-    public String zipCode;
+    protected String zipCode;
     @Parameter(shortName= "AAC")
-    public String addressLine1;
-    public TokenizationResult tokenizationResult;
-    public Transaction transaction;
+    protected String addressLine1;
+    protected TokenizationResult tokenizationResult;
+    protected Transaction transaction;
 }
