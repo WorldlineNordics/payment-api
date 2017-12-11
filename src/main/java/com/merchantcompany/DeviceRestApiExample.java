@@ -13,8 +13,12 @@ public class DeviceRestApiExample {
                 new JKSKeyHandlerV6("src/test/resources/merchant.jks",
                         "merchant",
                         "merchant",
+<<<<<<< HEAD
                         "drwp_cert"),
                 "https://worldline-endpoint:1234/");
+=======
+                        "drwp_cert"));
+>>>>>>> fd36bbf46ec7140c40c337eab0b537e826768bbf
 
 
         PaymentRequest paymentRequest = new PaymentRequestBuilder()
