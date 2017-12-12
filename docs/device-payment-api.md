@@ -1,17 +1,26 @@
 # Device Payment API Parameters
 
-## Getting started with Device Payment API
+## Using the Device Payment API
 
-![Overview of Device Payment API integration](device-payment-api-overview.png "Overview of Device Payment API integration.")
+![Overview of Device Payment API integration](device-payment-api-overview2.png "Overview of Device Payment API integration.")
+
 
 The Worldline JavaScript API will manage the interaction with the 
 Device Payment API, taking the card number details from the form. 
-It also requires information that is provided by the merchant, server side, 
-and for that purpose the PaymentRequestBuilder is used like this: 
+It also requires information that is provided by the merchant server side. 
+
+For a hands-on example of how this can be done, check out the [Payment API spring boot demo 
+application](https://github.com/WorldlineNordics/payment-api-spring-demo), that also
+includes an example of use of the Worldline Online Payments Acceptance Javascript API.
+
+### Getting Started
+1. First, acquire a PaymentHandler that will hold keys and addresses.
+2. Create a PaymentRequest
 
 ```java
 PaymentHandler paymentHandler = new PaymentHandler(
-        new JKSKeyHandlerV6("merchant.jks", "password", "signkey", "encryptkey"),
+        new JKSKeyHandlerV6("keystore.jks", "keystore-password",
+                "merchant-alias", "worldline-alias"),
         "https://worldline-endpoint/");
 
 PaymentRequest paymentRequest = new PaymentRequestBuilder()
@@ -26,25 +35,28 @@ PaymentRequest paymentRequest = new PaymentRequestBuilder()
 String deviceAPIRequest = paymentHandler.createDeviceAPIRequest(paymentRequest);
 
 ```
+The last step above will sign, encrypt, base64 encode and wrap the request for use with the Worldline
+JavaScript API.
 
-The response from the Device Payment API is then interpred by calling unpack:
+
+#### Unpacking the encrypted response from Device Payment API
+Upon return from the Device Payment API, the response must be decrypted in order
+to retrieve details on the success of the transaction, stored token etc.
+
+The response from the Device Payment API is gotten by unpack:
 
 ```java
-PaymentHandler paymentHandler = new PaymentHandler(
-        new JKSKeyHandlerV6("merchant.jks", "password", "signkey", "encryptkey"));
-
-PaymentResponse decodedResponse = handler.unpackResponse(response);
-
+PaymentResponse decodedResponse = paymentHandler.unpackResponse(response);
 ```
 The decodedResponse then contains the transaction details needed for
 determining the state of the transaction, like:
 
 ```java
-ecodedResponse.getStatus() // Easy interpreted status OK / NOK / ERROR / PENDING
+decodedResponse.getStatus() // Easy interpreted status OK / NOK / ERROR / PENDING
 decodedResponse.getTransaction() // Transaction Details.
 decodedResponse.getTokenizationResult() // For Tokenized cards
 ```
-
+For a complete list of response fields, see the [response table below](#response-details).
 
 ## Request Parameters
 The following parameters may be used when initiating a Device PaymentAPI Request.
