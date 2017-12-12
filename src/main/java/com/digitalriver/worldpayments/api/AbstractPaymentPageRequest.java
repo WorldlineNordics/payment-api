@@ -234,4 +234,7 @@ public abstract class AbstractPaymentPageRequest {
 	@Parameter(shortName = "AAQ", required = true)
 	protected boolean autoCapture;
 
+	@Parameter(shortName = "AAR")
+	protected Long timestamp;
+
 }

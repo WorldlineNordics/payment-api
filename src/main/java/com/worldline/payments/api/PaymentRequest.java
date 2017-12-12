@@ -10,29 +10,7 @@ import java.util.Map;
 
 public class PaymentRequest extends AbstractPaymentPageRequest {
 
-    public PaymentRequest(Long mid, String subMerchantId, String posId, String transactionChannel,
-                          String token, String orderId, String orderDescription,
-                          String orderDetailDescription, BigDecimal amount, String currency, BigDecimal vatAmount,
-                          Double vatRate, String consumerCountry, String consumerLanguage, String returnUrl,
-                          Integer timeLimit, Map<String, String> additionalParameters, Integer paymentMethodId,
-                          StoreFlag storeFlag, String billingAddressLine1, String billingAddressLine2,
-                          String billingCity, String billingStateProvince, String billingZipCode,
-                          String billingCountryCode, String billingEmailAddress, String billingPhone,
-                          String billingMobilePhone, String billingLastName, String billingFirstName,
-                          String billingFullName, String shippingAddressLine1, String shippingAddressLine2,
-                          String shippingCity, String shippingStateProvince, String shippingZipCode,
-                          String shippingCountryCode, String shippingEmailAddress, String shippingPhone,
-                          String dueDate, String paymentPlanCode, String billingCompanyName,
-                          String billingBuyerVATNumber, String billingBuyerType, String shippingCompanyName,
-                          String shippingAddressLine3, String billingAddressLine3, String birthDate,
-                          String companyResponsibleBirthDate, String companyResponsibleFullName,
-                          String companyResponsibleVATNumber, String recurringType, String posDesc,
-                          String shippingMobilePhone, String shippingLastName, String shippingFirstName,
-                          String shippingFullName, String billingSSN, String companyTaxId, String gender,
-                          String billingStreetName, String billingHouseNumber, String billingHouseExtension,
-                          String shippingStreetName, String shippingHouseNumber, String shippingHouseExtension,
-                          String shippingCareOf, List<LineItem> lineItems, AuthorizationType authorizationType,
-                          AuthenticationRedirect authenticationRedirect, boolean autoCapture) {
+    public PaymentRequest(Long mid, String subMerchantId, String posId, String transactionChannel, String token, String orderId, String orderDescription, String orderDetailDescription, BigDecimal amount, String currency, BigDecimal vatAmount, Double vatRate, String consumerCountry, String consumerLanguage, String returnUrl, Integer timeLimit, Map<String, String> additionalParameters, Integer paymentMethodId, StoreFlag storeFlag, String billingAddressLine1, String billingAddressLine2, String billingCity, String billingStateProvince, String billingZipCode, String billingCountryCode, String billingEmailAddress, String billingPhone, String billingMobilePhone, String billingLastName, String billingFirstName, String billingFullName, String shippingAddressLine1, String shippingAddressLine2, String shippingCity, String shippingStateProvince, String shippingZipCode, String shippingCountryCode, String shippingEmailAddress, String shippingPhone, String dueDate, String paymentPlanCode, String billingCompanyName, String billingBuyerVATNumber, String billingBuyerType, String shippingCompanyName, String shippingAddressLine3, String billingAddressLine3, String birthDate, String companyResponsibleBirthDate, String companyResponsibleFullName, String companyResponsibleVATNumber, String recurringType, String posDesc, String shippingMobilePhone, String shippingLastName, String shippingFirstName, String shippingFullName, String billingSSN, String companyTaxId, String gender, String billingStreetName, String billingHouseNumber, String billingHouseExtension, String shippingStreetName, String shippingHouseNumber, String shippingHouseExtension, String shippingCareOf, List<LineItem> lineItems, AuthorizationType authorizationType, AuthenticationRedirect authenticationRedirect, boolean autoCapture, Long timestamp) {
         setMid(mid);
         setSubMerchantId(subMerchantId);
         setPosId(posId);
@@ -42,7 +20,6 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
         setOrderId(orderId);
         setOrderDescription(orderDescription);
         setOrderDetailDescription(orderDetailDescription);
-
         setAmount(amount);
         setCurrency(currency);
         setVATRate(vatRate);
@@ -133,7 +110,7 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
         setAuthenticationRedirect(authenticationRedirect);
         setAutoCapture(autoCapture);
         setVATamount(vatAmount);
-
+        setTimestamp(timestamp);
     }
 
     public void setShippingHouseNumber(String shippingHouseNumber) {
@@ -450,11 +427,15 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
         }
     }
 
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public enum StoreFlag {
         NO_STORE(0), STORE(1), STORE_ONLY(2);
         private final int val;
 
-        private StoreFlag(int val) {
+        StoreFlag(int val) {
             this.val = val;
         }
 
