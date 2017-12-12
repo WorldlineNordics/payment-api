@@ -131,10 +131,22 @@ Authorization Type |No|Authorization type: Mastercard now require merchants to d
 
 **Parameter**|**Comment**
 -----|-----
+Status|Transaction status.
 MerchantId|MerchantId, same as in request.
 OrderId|OrderId, same as in request.
 POSId|POSId, same as in request.
 TransactionId|TransactionId
 Payment method name|Payment Method name, either the resolved card payment method, e.g. Mastercard, or the explicitly requested, e.g. Nordea
 Transaction Description|Description of the transaction performed
-AnswerDescription|AnswerDescription
+TBD|More to be documented.
+
+
+### Details on the Status
+**Status**|**Description**
+-----|-----
+OK | The payment has been successfully processed.
+NOK	| The payment was not completed. The user has used several attempts to submit a payment and ultimately been redirected back to the merchant due to exceeding the (configurable) maximum number of retries. NOK may also be returned if Worldline detects a possible fraud attempt. 
+USERCANCEL | The consumer pressed a cancel button.
+TIMEOUT | The consumer tried to initiate a payment after the timeout set by the merchant has expired.
+PENDING |The final status of the payment is not yet determined. The final status of the payment will be notified via a notification, in a report or pulled from Worldline Web Interface depending on your setup. Note that this is an expected result for many payment methods.
+ERROR |The Device Payment API has detected that there is something wrong in the URL content or the configuration of the merchant. If this result status is encountered, the merchant should review their parameters and contact Worldline if the problem cannot be identified.
