@@ -6,7 +6,7 @@ The PaymentAPI can be used for different kinds of integration. More details abou
 the integration is available on the developer portal, found via https://drwp.worldline.com/.
 
 * Device Payment API (see [reference](docs/device-payment-api.md))
-* Payment Page Integration 
+* Payment Page Integration (see [technical guide](http://developer.digitalriverworldpayments.io/technical-guides/payment-page-integration))
 
 
 
