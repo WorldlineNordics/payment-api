@@ -13,11 +13,11 @@ import static org.junit.Assert.*;
 public class PaymentRequestBuilderTest {
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
     }
 
 
@@ -43,7 +43,7 @@ public class PaymentRequestBuilderTest {
     }
 
     @Test
-    public void setWrongMid() throws Exception {
+    public void setWrongMid() {
         try {
             new PaymentRequestBuilder()
                     .setMid(123456L)
@@ -119,6 +119,23 @@ public class PaymentRequestBuilderTest {
 
         String value = getField(pr, "transactionChannel", AbstractPaymentPageRequest.class);
         assertEquals("Fax", value);
+
+    }
+
+    @Test
+    public void setTransactionChannelCashRegister() throws Exception {
+        PaymentRequest pr = new PaymentRequestBuilder()
+                .setMid(1234567890L)
+                .setOrderId("general-test")
+                .setConsumerCountry("UK")
+                .setConsumerLanguage("en")
+                .setCurrency("GBP")
+
+                .setTransactionChannel("Cash Register")
+                .createPaymentRequest();
+
+        String value = getField(pr, "transactionChannel", AbstractPaymentPageRequest.class);
+        assertEquals("Cash Register", value);
 
     }
 
@@ -237,35 +254,35 @@ public class PaymentRequestBuilderTest {
     }
 
     @Test
-    public void setVatAmount() throws Exception {
+    public void setVatAmount() {
     }
 
     @Test
-    public void setVatRate() throws Exception {
+    public void setVatRate() {
     }
 
     @Test
-    public void setConsumerCountry() throws Exception {
+    public void setConsumerCountry() {
     }
 
     @Test
-    public void setConsumerLanguage() throws Exception {
+    public void setConsumerLanguage() {
     }
 
     @Test
-    public void setReturnUrl() throws Exception {
+    public void setReturnUrl() {
     }
 
     @Test
-    public void setTimeLimit() throws Exception {
+    public void setTimeLimit() {
     }
 
     @Test
-    public void setAdditionalParameters() throws Exception {
+    public void setAdditionalParameters() {
     }
 
     @Test
-    public void setPaymentMethodId() throws Exception {
+    public void setPaymentMethodId() {
     }
 
     @Test
@@ -286,207 +303,207 @@ public class PaymentRequestBuilderTest {
     }
 
     @Test
-    public void setBillingAddressLine1() throws Exception {
+    public void setBillingAddressLine1() {
     }
 
     @Test
-    public void setBillingAddressLine2() throws Exception {
+    public void setBillingAddressLine2() {
     }
 
     @Test
-    public void setBillingCity() throws Exception {
+    public void setBillingCity() {
     }
 
     @Test
-    public void setBillingStateProvince() throws Exception {
+    public void setBillingStateProvince() {
     }
 
     @Test
-    public void setBillingZipCode() throws Exception {
+    public void setBillingZipCode() {
     }
 
     @Test
-    public void setBillingCountryCode() throws Exception {
+    public void setBillingCountryCode() {
     }
 
     @Test
-    public void setBillingEmailAddress() throws Exception {
+    public void setBillingEmailAddress() {
     }
 
     @Test
-    public void setBillingPhone() throws Exception {
+    public void setBillingPhone() {
     }
 
     @Test
-    public void setBillingMobilePhone() throws Exception {
+    public void setBillingMobilePhone() {
     }
 
     @Test
-    public void setBillingLastName() throws Exception {
+    public void setBillingLastName() {
     }
 
     @Test
-    public void setBillingFirstName() throws Exception {
+    public void setBillingFirstName() {
     }
 
     @Test
-    public void setBillingFullName() throws Exception {
+    public void setBillingFullName() {
     }
 
     @Test
-    public void setShippingAddressLine1() throws Exception {
+    public void setShippingAddressLine1() {
     }
 
     @Test
-    public void setShippingAddressLine2() throws Exception {
+    public void setShippingAddressLine2() {
     }
 
     @Test
-    public void setShippingCity() throws Exception {
+    public void setShippingCity() {
     }
 
     @Test
-    public void setShippingStateProvince() throws Exception {
+    public void setShippingStateProvince() {
     }
 
     @Test
-    public void setShippingZipCode() throws Exception {
+    public void setShippingZipCode() {
     }
 
     @Test
-    public void setShippingCountryCode() throws Exception {
+    public void setShippingCountryCode() {
     }
 
     @Test
-    public void setShippingEmailAddress() throws Exception {
+    public void setShippingEmailAddress() {
     }
 
     @Test
-    public void setShippingPhone() throws Exception {
+    public void setShippingPhone() {
     }
 
     @Test
-    public void setDueDate() throws Exception {
+    public void setDueDate() {
     }
 
     @Test
-    public void setPaymentPlanCode() throws Exception {
+    public void setPaymentPlanCode() {
     }
 
     @Test
-    public void setBillingCompanyName() throws Exception {
+    public void setBillingCompanyName() {
     }
 
     @Test
-    public void setBillingBuyerVATNumber() throws Exception {
+    public void setBillingBuyerVATNumber() {
     }
 
     @Test
-    public void setBillingBuyerType() throws Exception {
+    public void setBillingBuyerType() {
     }
 
     @Test
-    public void setShippingCompanyName() throws Exception {
+    public void setShippingCompanyName() {
     }
 
     @Test
-    public void setShippingAddressLine3() throws Exception {
+    public void setShippingAddressLine3() {
     }
 
     @Test
-    public void setBillingAddressLine3() throws Exception {
+    public void setBillingAddressLine3() {
     }
 
     @Test
-    public void setBirthDate() throws Exception {
+    public void setBirthDate() {
     }
 
     @Test
-    public void setCompanyResponsibleBirthDate() throws Exception {
+    public void setCompanyResponsibleBirthDate() {
     }
 
     @Test
-    public void setCompanyResponsibleFullName() throws Exception {
+    public void setCompanyResponsibleFullName() {
     }
 
     @Test
-    public void setCompanyResponsibleVATNumber() throws Exception {
+    public void setCompanyResponsibleVATNumber() {
     }
 
     @Test
-    public void setRecurringType() throws Exception {
+    public void setRecurringType() {
     }
 
     @Test
-    public void setPosDesc() throws Exception {
+    public void setPosDesc() {
     }
 
     @Test
-    public void setShippingMobilePhone() throws Exception {
+    public void setShippingMobilePhone() {
     }
 
     @Test
-    public void setShippingLastName() throws Exception {
+    public void setShippingLastName() {
     }
 
     @Test
-    public void setShippingFirstName() throws Exception {
+    public void setShippingFirstName() {
     }
 
     @Test
-    public void setShippingFullName() throws Exception {
+    public void setShippingFullName() {
     }
 
     @Test
-    public void setBillingSSN() throws Exception {
+    public void setBillingSSN() {
     }
 
     @Test
-    public void setCompanyTaxId() throws Exception {
+    public void setCompanyTaxId() {
     }
 
     @Test
-    public void setGender() throws Exception {
+    public void setGender() {
     }
 
     @Test
-    public void setBillingStreetName() throws Exception {
+    public void setBillingStreetName() {
     }
 
     @Test
-    public void setBillingHouseNumber() throws Exception {
+    public void setBillingHouseNumber() {
     }
 
     @Test
-    public void setBillingHouseExtension() throws Exception {
+    public void setBillingHouseExtension() {
     }
 
     @Test
-    public void setShippingStreetName() throws Exception {
+    public void setShippingStreetName() {
     }
 
     @Test
-    public void setShippingHouseNumber() throws Exception {
+    public void setShippingHouseNumber() {
     }
 
     @Test
-    public void setShippingHouseExtension() throws Exception {
+    public void setShippingHouseExtension() {
     }
 
     @Test
-    public void setShippingCareOf() throws Exception {
+    public void setShippingCareOf() {
     }
 
     @Test
-    public void setLineItems() throws Exception {
+    public void setLineItems() {
     }
 
     @Test
-    public void setAuthorizationType() throws Exception {
+    public void setAuthorizationType() {
     }
 
     @Test
-    public void setAuthenticationRedirect() throws Exception {
+    public void setAuthenticationRedirect() {
     }
 
     @Test
@@ -547,7 +564,7 @@ public class PaymentRequestBuilderTest {
     }
 
     @Test
-    public void createPaymentRequest() throws Exception {
+    public void createPaymentRequest() {
     }
     
     @Test
