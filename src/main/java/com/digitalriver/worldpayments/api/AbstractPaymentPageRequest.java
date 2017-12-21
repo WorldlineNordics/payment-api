@@ -24,7 +24,7 @@ public abstract class AbstractPaymentPageRequest {
 	@Parameter(shortName = "C", maxLength = 50)
 	protected String posId;
 
-	@Parameter(shortName = "D", required = true, regEx = "(Web Online|Mail|Telephone|Fax|FaceToFace|Cash register)")
+	@Parameter(shortName = "D", required = true, regEx = "(Web Online|Mail|Telephone|Fax|FaceToFace|Cash Register)")
 	protected String transactionChannel;
 
 	@Parameter(shortName = "E", regEx = "(?i)debit|authorize|refund")
