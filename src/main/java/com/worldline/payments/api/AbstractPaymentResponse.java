@@ -2,6 +2,7 @@ package com.worldline.payments.api;
 
 import com.digitalriver.worldpayments.api.utils.Parameter;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class AbstractPaymentResponse {
@@ -27,9 +28,9 @@ public class AbstractPaymentResponse {
     protected String CardTxType;
     @Parameter(shortName = "L")
     protected String CardTxId;
-    @Parameter(shortName= "M")
+    @Parameter(shortName = "M")
     String cardType;
-    @Parameter(shortName= "P")
+    @Parameter(shortName = "P")
     protected String expirationDate;
     @Parameter(shortName = "Q")
     protected String StoreCardType;
@@ -39,7 +40,7 @@ public class AbstractPaymentResponse {
     protected String IbpTxType;
     @Parameter(shortName = "T")
     Boolean redirected;
-    @Parameter(shortName= "U")
+    @Parameter(shortName = "U")
     protected String maskedCardNumber;
     @Parameter(shortName = "X")
     protected String eftReferenceId;
@@ -51,50 +52,78 @@ public class AbstractPaymentResponse {
     protected Long directDebitTxId;
     @Parameter(shortName = "AB")
     protected Long payoutTxId;
-    @Parameter(shortName= "AC")
+    @Parameter(shortName = "AC")
     protected Long avsAnswerCode;
-    @Parameter(shortName= "AD")
+    @Parameter(shortName = "AD")
     protected String avsResponse;
-    @Parameter(shortName= "AE")
+    @Parameter(shortName = "AE")
     protected String acquirerAnswerCode;
-    @Parameter(shortName= "AF")
+    @Parameter(shortName = "AF")
     protected Long clientAnswerCode;
-    @Parameter(shortName= "AG")
+    @Parameter(shortName = "AG")
     protected Long cvAnswerCode;
-    @Parameter(shortName= "AH")
+    @Parameter(shortName = "AH")
     protected String cvResponse;
-    @Parameter(shortName= "AI")
+    @Parameter(shortName = "AI")
     protected String paymentMethodName;
-    @Parameter(shortName= "AJ")
+    @Parameter(shortName = "AJ")
     protected String acquirerAuthCode;
-    @Parameter(shortName= "AK")
+    @Parameter(shortName = "AK")
     protected String houseExtension;
-    @Parameter(shortName= "AL")
+    @Parameter(shortName = "AL")
     protected String houseNumber;
-    @Parameter(shortName= "AM")
+    @Parameter(shortName = "AM")
     protected String streetName;
-    @Parameter(shortName= "AN")
+    @Parameter(shortName = "AN")
     protected String gender;
-    @Parameter(shortName= "AO")
+    @Parameter(shortName = "AO")
     protected String birthDate;
-    @Parameter(shortName= "AU")
+    @Parameter(shortName = "AU")
     protected String answerDescription;
-    @Parameter(shortName= "AV")
+    @Parameter(shortName = "AV")
     protected Long PaymentPlanCode;
-    @Parameter(shortName= "AW")
+    @Parameter(shortName = "AW")
     protected String socialSecNumber;
-    @Parameter(shortName= "AX")
+    @Parameter(shortName = "AX")
     protected String firstName;
-    @Parameter(shortName= "AY")
+    @Parameter(shortName = "AY")
     protected String lastName;
-    @Parameter(shortName= "AZ")
+    @Parameter(shortName = "AZ")
     protected String city;
-    @Parameter(shortName= "AAA")
+    @Parameter(shortName = "AAA")
     protected String countryCode;
-    @Parameter(shortName= "AAB")
+    @Parameter(shortName = "AAB")
     protected String zipCode;
-    @Parameter(shortName= "AAC")
+    @Parameter(shortName = "AAC")
     protected String addressLine1;
     protected TokenizationResult tokenizationResult;
     protected Transaction transaction;
+    @Parameter(shortName = "AAG")
+    protected BigDecimal orderAmount;
+    @Parameter(shortName = "AAH")
+    public BigDecimal fulfillmentAmount;
+    @Parameter(shortName = "AAI")
+    public BigDecimal capturedAmount;
+    @Parameter(shortName = "AAJ")
+    public BigDecimal refundedAmount;
+    @Parameter(shortName = "AAK")
+    public String currency;
+    @Parameter(shortName = "AAL")
+    public String orderState;
+    @Parameter(shortName = "AAM")
+    public boolean capturable;
+    @Parameter(shortName = "AAN")
+    public Integer paymentMethodId;
+    public FraudResult fraudResult;
+    @Parameter(shortName = "AAR")
+    public String subMerchantId;
+    @Parameter(shortName = "AAS")
+    public Long refTransactionId;
+    @Parameter(shortName = "AAT")
+    public String referenceId;
+    @Parameter(shortName = "AAU")
+    public String emvData;
+    @Parameter(shortName = "AAV")
+    public String posDescription;
+
 }
