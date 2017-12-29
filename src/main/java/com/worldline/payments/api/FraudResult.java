@@ -4,12 +4,12 @@ import com.digitalriver.worldpayments.api.utils.Parameter;
 
 public class FraudResult {
 
-    @Parameter(shortName = "AAO")
+    @Parameter(shortName = "AAP")
     protected String status;
 
-    @Parameter(shortName = "AAP")
+    @Parameter(shortName = "AAQ")
     protected String code;
 
-    @Parameter(shortName = "AAQ")
+    @Parameter(shortName = "AAR")
     protected String message;
 }

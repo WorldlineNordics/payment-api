@@ -98,32 +98,32 @@ public class AbstractPaymentResponse {
     protected String addressLine1;
     protected TokenizationResult tokenizationResult;
     protected Transaction transaction;
-    @Parameter(shortName = "AAG")
-    protected BigDecimal orderAmount;
     @Parameter(shortName = "AAH")
-    public BigDecimal fulfillmentAmount;
+    protected BigDecimal orderAmount;
     @Parameter(shortName = "AAI")
-    public BigDecimal capturedAmount;
+    public BigDecimal fulfillmentAmount;
     @Parameter(shortName = "AAJ")
-    public BigDecimal refundedAmount;
+    public BigDecimal capturedAmount;
     @Parameter(shortName = "AAK")
-    public String currency;
+    public BigDecimal refundedAmount;
     @Parameter(shortName = "AAL")
-    public String orderState;
+    public String currency;
     @Parameter(shortName = "AAM")
-    public boolean capturable;
+    public String orderState;
     @Parameter(shortName = "AAN")
+    public boolean capturable;
+    @Parameter(shortName = "AAO")
     public Integer paymentMethodId;
     public FraudResult fraudResult;
-    @Parameter(shortName = "AAR")
-    public String subMerchantId;
     @Parameter(shortName = "AAS")
-    public Long refTransactionId;
+    public String subMerchantId;
     @Parameter(shortName = "AAT")
-    public String referenceId;
+    public Long refTransactionId;
     @Parameter(shortName = "AAU")
-    public String emvData;
+    public String referenceId;
     @Parameter(shortName = "AAV")
+    public String emvData;
+    @Parameter(shortName = "AAW")
     public String posDescription;
 
 }

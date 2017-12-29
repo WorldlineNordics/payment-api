@@ -13,8 +13,15 @@ public class Transaction {
     @Parameter(shortName = "AAF")
     protected String transactionState;
 
+    @Parameter(shortName = "AAG")
+    protected String transactionType;
+
     public Long getTransactionId() {
         return transactionId;
+    }
+
+    public void setTransactionId(Long transactionId) {
+        this.transactionId = transactionId;
     }
 
     public String getTransactionDesc() {
@@ -31,6 +38,14 @@ public class Transaction {
 
     public void setTransactionState(String transactionState) {
         this.transactionState = transactionState;
+    }
+
+    public String getTransactionType() {
+        return transactionType;
+    }
+
+    public void setTransactionType(String transactionType) {
+        this.transactionType = transactionType;
     }
 
 }
