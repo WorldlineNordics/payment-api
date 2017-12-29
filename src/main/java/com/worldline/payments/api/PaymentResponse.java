@@ -21,8 +21,8 @@ public class PaymentResponse extends AbstractPaymentResponse {
         return orderId;
     }
 
-    public BigDecimal getOrderState() {
-        return orderAmount;
+    public String getOrderState() {
+        return orderState;
     }
 
     /**
