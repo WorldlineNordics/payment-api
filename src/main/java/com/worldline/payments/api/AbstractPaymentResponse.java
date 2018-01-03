@@ -108,8 +108,6 @@ public class AbstractPaymentResponse {
     public BigDecimal refundedAmount;
     @Parameter(shortName = "AAL")
     public String currency;
-    @Parameter(shortName = "AAM")
-    public String orderState;
     @Parameter(shortName = "AAN")
     public boolean capturable;
     @Parameter(shortName = "AAO")
@@ -121,8 +119,6 @@ public class AbstractPaymentResponse {
     public Long refTransactionId;
     @Parameter(shortName = "AAU")
     public String referenceId;
-    @Parameter(shortName = "AAV")
-    public String emvData;
     @Parameter(shortName = "AAW")
     public String posDescription;
 

@@ -21,10 +21,6 @@ public class PaymentResponse extends AbstractPaymentResponse {
         return orderId;
     }
 
-    public String getOrderState() {
-        return orderState;
-    }
-
     /**
      * @return The status of this Payment session OK/NOK/ERROR/USERCANCEL/PENDING
      */
@@ -265,10 +261,6 @@ public class PaymentResponse extends AbstractPaymentResponse {
 
     public Long getPayoutTxId() {
         return payoutTxId;
-    }
-
-    public String getEmvData() {
-        return emvData;
     }
 
     public BigDecimal getOrderAmount() {
