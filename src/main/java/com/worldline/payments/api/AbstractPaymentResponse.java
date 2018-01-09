@@ -101,7 +101,7 @@ public class AbstractPaymentResponse {
     @Parameter(shortName = "AAH")
     protected BigDecimal orderAmount;
     @Parameter(shortName = "AAI")
-    public BigDecimal fulfillmentAmount;
+    public BigDecimal fulfilmentAmount;
     @Parameter(shortName = "AAJ")
     public BigDecimal capturedAmount;
     @Parameter(shortName = "AAK")
@@ -118,7 +118,7 @@ public class AbstractPaymentResponse {
     @Parameter(shortName = "AAT")
     public Long refTransactionId;
     @Parameter(shortName = "AAU")
-    public String referenceId;
+    public String acquirerReferenceId;
     @Parameter(shortName = "AAW")
     public String posDescription;
 

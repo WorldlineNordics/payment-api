@@ -267,8 +267,8 @@ public class PaymentResponse extends AbstractPaymentResponse {
         return orderAmount;
     }
 
-    public BigDecimal getFulfillmentAmount() {
-        return fulfillmentAmount;
+    public BigDecimal getFulfilmentAmount() {
+        return fulfilmentAmount;
     }
 
     public BigDecimal getCapturedAmount() {
@@ -303,8 +303,8 @@ public class PaymentResponse extends AbstractPaymentResponse {
         return refTransactionId;
     }
 
-    public String getReferenceId() {
-        return referenceId;
+    public String getAcquirerReferenceId() {
+        return acquirerReferenceId;
     }
 
     public String getPosDescription() {
