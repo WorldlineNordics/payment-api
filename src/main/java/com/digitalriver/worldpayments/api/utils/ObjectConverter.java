@@ -1,5 +1,6 @@
 package com.digitalriver.worldpayments.api.utils;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,6 +36,9 @@ public class ObjectConverter {
 				|| clazz.isAssignableFrom(Byte.class)) {
 			return new Byte(value);
 		}
+		if (clazz.isAssignableFrom(BigDecimal.class)) {
+	            return new BigDecimal(value);
+	        }
 		if (clazz.isAssignableFrom(byte[].class)) {
 			return new BigInteger(value).toByteArray();
 		}
