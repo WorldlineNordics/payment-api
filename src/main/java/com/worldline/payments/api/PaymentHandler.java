@@ -117,7 +117,7 @@ public class PaymentHandler {
                 .decrypt(encodedResponseString);
 
         Map<String, String> nvpMap = ParseUtil.parseWithEscape(decodedResponse,
-                '=', ';');
+                '=', ',');
 
         return createPaymentResponse(nvpMap);
     }
