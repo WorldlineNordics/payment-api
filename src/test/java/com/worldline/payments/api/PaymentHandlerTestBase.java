@@ -15,7 +15,8 @@ public class PaymentHandlerTestBase {
 	
 	@BeforeClass
 	public static void setUp() {
-		paymentHandler = new PaymentHandler(new JKSKeyHandlerV6("src/test/resources/merchant.jks", "merchant", "merchant", "drwp_cert"),
+		paymentHandler = new PaymentHandler(new JKSKeyHandlerV6("src/test/resources/merchant2048.jks", "x923##.Lkk",
+				"merchant", "ngcert"),
 				"https://nowhere-noendpoint:12345678");
 	}
 	
