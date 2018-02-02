@@ -129,16 +129,25 @@ Authorization Type |No|Authorization type: Mastercard now require merchants to d
 
 ## Response Details
 
-**Parameter**|**Comment**
------|-----
-Status|Transaction status.
-MerchantId|MerchantId, same as in request.
-OrderId|OrderId, same as in request.
-POSId|POSId, same as in request.
-TransactionId|TransactionId
-Payment method name|Payment Method name, either the resolved card payment method, e.g. Mastercard, or the explicitly requested, e.g. Nordea
-Transaction Description|Description of the transaction performed
-TBD|More to be documented.
+**Parameter**|**Description**|**Example**
+-----|-----|-----
+Status|Transaction status. See below. | OK
+MerchantId|MerchantId, same as in request. Assigned by Worldline | 1234567890
+OrderId|OrderId, same as in request. Unique order ID assigned by merchant. | redbike-47123
+POSId|Point of sale ID, same as in request. | 0
+TransactionId|Worldline Transaction reference of the payment. | 12345678901
+Payment method name|Payment Method name, either the resolved card payment method. | Mastercard, Nordea
+Transaction Description|Description of the transaction performed | Transaction Accepted
+Token | In case that the request was done with a request to store the payment method, the token represents the assigned token to use in further recurring transactions. | 9000123123112234
+Token Masked Card | The masked card number, fist 6 and last 4, of the successful tokenization | 543215xxxxxx1234
+Token Expiry date | The expiry of the card number that was tokenized | 03-2020
+Currency | Currency used in the transaction | BRL
+Order Amount | The amount expected to be paid on the transaction | 100.00
+Fulfilment Amount | The amount that was successfully authorized with the acquirer | 100.00
+Captured Amount | The amount that was requested to be captured. In this API, this would be the same as fulfilment amount if auto-capture flag was used in the request, otherwise 0. | 100.00
+Refunded Amount | The amount requested to be refunded on the order. This is usable in split tender payments, where there could be several transactions on an order. | 0.00
+Transaction State | A high-level state on the transaction; Processed, Declined or System Error. | Processed  
+
 
 
 ### Details on the Status
