@@ -8,6 +8,11 @@ repositories {
     maven { url "${artifactory_url}/drwp-repository-gateway-artifactory-cache" } 
 }
 
+drwpRelease {
+    jiraProject='PAYAPIJAVA'
+    jiraServer='https://jira.drwp.digitalriver.com'
+}
+
 def distBase = "${buildDir}/dist"
 def opensourceDistDir = "${distBase}/payment-api"
 
