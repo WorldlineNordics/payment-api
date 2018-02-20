@@ -114,4 +114,26 @@ public class PaymentPageHandlerTestOk extends PaymentPageHandlerTestBase {
         assertTrue(VALID_VALUES.contains(addParamOut));
     }
 
+    @Test
+    public void testUnpackResponseOAT() {
+
+        SecurityHandlerImpl impl = new SecurityHandlerImpl(
+                new DERKeyHandler(new File("src/test/resources/drwp_key.der"),
+                        new File("src/test/resources/merchant_pub.der")));
+        System.err
+                .println(impl
+                        .encrypt("A=123456789;C=123;E=OrderId12345;F=2011-03-31 14:04:15 CEST;T=true;N=4711;Q=Visa;W=01/14;V=xxxx xxxx xxxx 4711;OAT=SAVINGS_ACCOUNT;"));
+
+        String responseString = "Bf090jUvOxI6kjlYzyoWRrPkrTIva_W775runQOBgSrtOwjJ6lK41N2ZiEpy4b3IK7GZmtkX65tIRqZeUsFOFUqiubJXAMY3yAnZjlM1meK0FBFBpnTcAs9drMv5QQ5wqYO3e4wCCQC8mnuFSscOnj3LGSkbRry2rnVlto-SZZLVFWWKZkdaYvOemcz9LqQ3Vlw9wcGxNltShBh-BQ_f85xRpzWjeS_xAk1_QAXXgmHPv1O2C_pe7v-RirPwhem0B1s3i-8BOS9KfXIEifVPfpcPO1H714lBK-WgPy19D0C70pqJG6h4ZsPkD-tvc0QwTu8nHx0438EIezmF7UWWJmWAO9HcwTge8MXSTXksqNIsmbDT2Mv8JwUueMeQtsJQFWtRr506ygGqeuYhWpcMSrdxpqpbvbfziAdhQDGRuk4LOypDrWIjJAHDKebPEF7JfOAOTHxqcdXACCxV2faktVwZZOy615Uhrrq1amXwLhgxsvmVE6N0_Eyom1T8bHzNh_Ni0BL_EbxrItqcLva0jCWtKjfRw6r-ihW5v8ZN820TUuVSJGw8BiaZYjlpmcJb5w==";
+
+        PaymentPageResponse response = paymentPageHandler
+                .unpackResponse(responseString);
+
+        Assert.assertEquals(123456789L, (long) response.getMid());
+        Assert.assertEquals(true, response.wasRedirected());
+        Assert.assertEquals("01/14", response.getTokenizationResult().getStoreExpirationDate());
+        Assert.assertEquals("xxxx xxxx xxxx 4711", response.getTokenizationResult().getStoreMaskedCardNumber());
+        Assert.assertEquals("4711", response.getTokenizationResult().getToken());
+        Assert.assertEquals("SAVINGS_ACCOUNT", response.getOriginatingAccountType());
+    }
 }
