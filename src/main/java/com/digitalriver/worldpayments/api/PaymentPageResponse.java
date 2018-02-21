@@ -3,8 +3,8 @@ package com.digitalriver.worldpayments.api;
 import java.util.Date;
 
 /**
- * Class that contains the response that comes back from PaymentPage when
- * consumer has been redirected back to Merchant
+ * Class that contains the response that comes back from PaymentPage when consumer has been redirected back to Merchant
+ * 
  * @see PaymentPageHandler
  */
 public class PaymentPageResponse extends AbstractPaymentResponse {
@@ -21,16 +21,19 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
     }
 
     /**
-     * @return The status of this PaymentPage session
-     * OK/NOK/ERROR/USERCANCEL/PENDING
+     * @return The status of this PaymentPage session OK/NOK/ERROR/USERCANCEL/PENDING
      */
     public String getStatus() {
         return status;
     }
 
+    public String getOriginatingAccountType() {
+        return originatingAccountType;
+    }
+
     /**
-     * @return The time stamp of when the PaymentPageResponse was created It's created
-     * just before the consumer is redirected back to merchant.
+     * @return The time stamp of when the PaymentPageResponse was created It's created just before the consumer is
+     *         redirected back to merchant.
      */
     public Date getTimestamp() {
         return timestamp;
@@ -42,6 +45,7 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
 
     /**
      * Transaction created in this PaymentPage session
+     * 
      * @return the transaction
      */
     public Transaction getTransaction() {
@@ -49,8 +53,8 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
     }
 
     /**
-     * Redirected status, true if the consumer was redirected to a third party
-     * site during the session at Payment Page
+     * Redirected status, true if the consumer was redirected to a third party site during the session at Payment Page
+     * 
      * @return if trhe request was redirected
      */
     public boolean wasRedirected() {
@@ -59,6 +63,7 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
 
     /**
      * AVS Answer Code. The response value will only be present if AVS is enabled for the payment type.
+     * 
      * @return avs answer code
      */
     public Long getAvsAnswerCode() {
@@ -67,6 +72,7 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
 
     /**
      * AVS Response. The response value will only be present if AVS is enabled for the payment type.
+     * 
      * @return avs response
      */
     public String getAvsResponse() {
@@ -75,6 +81,7 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
 
     /**
      * Acquirer Answer Code. This is the bank or payment providers answer code.
+     * 
      * @return aquierer answer code
      */
     public String getAcquirerAnswerCode() {
@@ -83,6 +90,7 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
 
     /**
      * Client Answer Code. This is the Digital River World Payments internal answer code
+     * 
      * @return client answer code
      */
     public Long getClientAnswerCode() {
@@ -91,6 +99,7 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
 
     /**
      * CVV Answer Code.This answer code will only be present for card payments.
+     * 
      * @return cv answer code
      */
     public Long getCvAnswerCode() {
@@ -99,6 +108,7 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
 
     /**
      * CVV Response. The response value will only be present for card payments.
+     * 
      * @return return cv response
      */
     public String getCvResponse() {
@@ -106,7 +116,8 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
     }
 
     /**
-     * @deprecated To reflect that the parameter is really called maskedCardNumber, will be removed in future release, instead use {@link #getMaskedCardNumber()}.
+     * @deprecated To reflect that the parameter is really called maskedCardNumber, will be removed in future release,
+     *             instead use {@link #getMaskedCardNumber()}.
      * @return
      */
     @Deprecated
@@ -116,14 +127,16 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
 
     /**
      * Masked card number. The response value will only be present for card payments.
+     * 
      * @return A masked card no.
      */
     public String getMaskedCardNumber() {
-    	return maskedCardNumber;
+        return maskedCardNumber;
     }
 
     /**
      * Expiration date for account (card). The response value will only be present for card payments.
+     * 
      * @return card expiery date
      */
     public String getExpirationDate() {
@@ -132,6 +145,7 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
 
     /**
      * Get card type (legacy from ws2006)
+     * 
      * @return visa or mastercard for example (unknown case)
      * @deprecated used getPaymentMethodName instead
      */
@@ -142,6 +156,7 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
 
     /**
      * Auth code from acquirer (typically card payments)
+     * 
      * @return authCode
      */
     public String getAcquirerAuthCode() {
@@ -149,127 +164,128 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
     }
 
     /**
-     * Name of payment method as returned from payment method config service
-     * Visa/Mastercard/Nordea...
+     * Name of payment method as returned from payment method config service Visa/Mastercard/Nordea...
+     * 
      * @return name
      */
     public String getPaymentMethodName() {
         return paymentMethodName;
     }
 
-	public String getHouseExtension() {
-		return houseExtension;
-	}
-
-	public String getHouseNumber() {
-		return houseNumber;
-	}
-
-	public String getStreetName() {
-		return streetName;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public String getBirthDate() {
-		return birthDate;
-	}
-
-	public String getAnswerDescription() {
-		return answerDescription;
-	}
-
-	public Long getPaymentPlanCode() {
-		return PaymentPlanCode;
-	}
-
-	public String getSocialSecNumber() {
-		return socialSecNumber;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public String getCountryCode() {
-		return countryCode;
-	}
-
-	public String getZipCode() {
-		return zipCode;
-	}
-        
-	public String getAddressLine1() {
-            return addressLine1;
+    public String getHouseExtension() {
+        return houseExtension;
     }
-	
-	public String getVResId() {
-		return VResId;
-	}
 
-	public String getPAResId() {
-		return PAResId;
-	}
+    public String getHouseNumber() {
+        return houseNumber;
+    }
 
-	public String getdddsStatus() {
-		return dddsStatus;
-	}
+    public String getStreetName() {
+        return streetName;
+    }
 
-	public String getPOSId() {
-		return POSId;
-	}
+    public String getGender() {
+        return gender;
+    }
 
-	public String getCardTxType() {
-		return CardTxType;
-	}
+    public String getBirthDate() {
+        return birthDate;
+    }
 
-	public String getCardTxId() {
-		return CardTxId;
-	}
+    public String getAnswerDescription() {
+        return answerDescription;
+    }
 
-	public String getStoreCardType() {
-		return StoreCardType;
-	}
+    public Long getPaymentPlanCode() {
+        return PaymentPlanCode;
+    }
 
-	public String getIbpTxId() {
-		return IbpTxId;
-	}
+    public String getSocialSecNumber() {
+        return socialSecNumber;
+    }
 
-	public String getIbpTxType() {
-		return IbpTxType;
-	}
-	
-	public String getPaymentMethod() {
-		return paymentMethod;
-	}
-	
-	public String getEftReferenceId() {
-		return eftReferenceId;
-	}
-	
-	public String getEftPaymentSlipUrl() {
-		return eftPaymentSlipUrl;
-	}
-	
-	public Long getEftTxId() {
-		return eftTxId;
-	}
-	
-	public Long getDirectDebitTxId() {
-		return directDebitTxId;
-	}
-	
-	public Long getPayoutTxId() {
-		return payoutTxId;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public String getAddressLine1() {
+        return addressLine1;
+    }
+
+    public String getVResId() {
+        return VResId;
+    }
+
+    public String getPAResId() {
+        return PAResId;
+    }
+
+    public String getdddsStatus() {
+        return dddsStatus;
+    }
+
+    public String getPOSId() {
+        return POSId;
+    }
+
+    public String getCardTxType() {
+        return CardTxType;
+    }
+
+    public String getCardTxId() {
+        return CardTxId;
+    }
+
+    public String getStoreCardType() {
+        return StoreCardType;
+    }
+
+    public String getIbpTxId() {
+        return IbpTxId;
+    }
+
+    public String getIbpTxType() {
+        return IbpTxType;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public String getEftReferenceId() {
+        return eftReferenceId;
+    }
+
+    public String getEftPaymentSlipUrl() {
+        return eftPaymentSlipUrl;
+    }
+
+    public Long getEftTxId() {
+        return eftTxId;
+    }
+
+    public Long getDirectDebitTxId() {
+        return directDebitTxId;
+    }
+
+    public Long getPayoutTxId() {
+        return payoutTxId;
+    }
+
 }
