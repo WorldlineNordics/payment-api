@@ -112,7 +112,7 @@ public class PaymentHandlerTest extends PaymentHandlerTestBase {
 
 	@Test
 	public void testCreateGetPaymentAPIRequest() {
-		PaymentOptionsRequest req = new PaymentOptionsRequest("23456789", 123456789L);
+		PaymentOptionsRequest req = new PaymentOptionsRequest("23456789", 123456789L, "pos123");
 		String request = paymentHandler.createGetPaymentAPIRequest(req);
 		assertTrue(request.contains("\"version\": \"A\""));
 		assertTrue(request.contains("\"deviceEndpoint\": \"https://nowhere-noendpoint:12345678/paymentOptions\""));
