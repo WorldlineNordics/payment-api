@@ -99,7 +99,7 @@ public class PaymentHandlerTest extends PaymentHandlerTestBase {
 		assertEquals(deviceEndpoint, jobject.get("deviceEndpoint").getAsString());
 		assertEquals("A", jobject.get("version").getAsString());
 	}
-
+	
 	@Test
 	public void containsNoQuotes() {
 		assertFalse(paymentHandler.hasQuotes("abcdef#%&¤"));
@@ -110,4 +110,12 @@ public class PaymentHandlerTest extends PaymentHandlerTestBase {
 		assertTrue(paymentHandler.hasQuotes("abcde\"f#%&¤"));
 	}
 
+	@Test
+	public void testCreateGetPaymentAPIRequest() {
+		PaymentOptionsRequest req = new PaymentOptionsRequest("23456789", 123456789L, "pos123");
+		String request = paymentHandler.createGetPaymentAPIRequest(req);
+		assertTrue(request.contains("\"version\": \"A\""));
+		assertTrue(request.contains("\"deviceEndpoint\": \"https://nowhere-noendpoint:12345678/paymentOptions\""));
+	}
+	
 }

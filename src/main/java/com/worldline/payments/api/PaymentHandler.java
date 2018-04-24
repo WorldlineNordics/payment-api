@@ -1,13 +1,13 @@
 package com.worldline.payments.api;
 
+import java.util.Map;
+
 import com.digitalriver.worldpayments.api.NvpUtil;
 import com.digitalriver.worldpayments.api.ParameterAnnotationHelper;
 import com.digitalriver.worldpayments.api.security.SecurityHandler;
 import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
 import com.digitalriver.worldpayments.api.security6.SecurityHandlerImpl;
 import com.digitalriver.worldpayments.api.utils.ParseUtil;
-
-import java.util.Map;
 
 /**
  * PaymentHandler is used for creating the encrypted string to be used when sending
@@ -17,6 +17,7 @@ import java.util.Map;
 public class PaymentHandler {
 
     protected String deviceEndpoint;
+    protected String paymentOptionsEndpoint;
 
     private static PaymentResponse createPaymentResponse(final Map<String, String> nvp) {
 
@@ -59,6 +60,18 @@ public class PaymentHandler {
         iSecurityHandler = new SecurityHandlerImpl(keyHandler);
         this.deviceEndpoint = deviceEndpoint;
     }
+    
+    /**
+     * Create a PaymentHandler with a specified key handler and endpoint for the Device Payment API and payment Options API Endpoint.
+     * @param keyHandler device endpoint keys
+     * @param deviceEndpoint URL to Device Payment API
+     * @param paymentOptionsEndpoint URL to PaymentOptions API
+     */
+    public PaymentHandler(JKSKeyHandlerV6 keyHandler, String deviceEndpoint, String paymentOptionsEndpoint) {
+        iSecurityHandler = new SecurityHandlerImpl(keyHandler);
+        this.deviceEndpoint = deviceEndpoint;
+        this.paymentOptionsEndpoint = paymentOptionsEndpoint;
+    }
 
     /**
      * Create a Device API Request to be used for Devices that processes with the Device API.
@@ -67,20 +80,34 @@ public class PaymentHandler {
      * @return JSON object to be passed to the Device API
      */
     public String createDeviceAPIRequest(PaymentRequest request) {
-        Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
-        String encryptedRequest = iSecurityHandler.encrypt(NvpUtil.createNvpString(nvp));
-
-        return getResponseJson(encryptedRequest, deviceEndpoint);
+    	Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
+    	return encryptMapAndGetResponseJson(nvp, deviceEndpoint);
     }
 
-    protected String getResponseJson(String encryptedRequest, String deviceEndpoint) {
-        if (hasQuotes(encryptedRequest) || hasQuotes(deviceEndpoint)) {
+    /**
+     * Create a Get Payment Option Request to be used for Devices that processes with the Device API.
+     *
+     * @param request a request
+     * @return JSON object to be passed to the Payment Options API
+     */
+    public String createGetPaymentAPIRequest(PaymentOptionsRequest request) {
+    	Map<String, String> nvp = PaymentOptionsRequest.mapObjectToNvp(request);
+    	return encryptMapAndGetResponseJson(nvp, paymentOptionsEndpoint);
+        }
+    
+    private String encryptMapAndGetResponseJson(Map<String, String> nvp, final String endpoint) {
+    	String encryptedRequest = iSecurityHandler.encrypt(NvpUtil.createNvpString(nvp));
+    	return getResponseJson(encryptedRequest, endpoint);
+    }
+
+    protected String getResponseJson(String encryptedRequest, String endpoint) {
+        if (hasQuotes(encryptedRequest) || hasQuotes(endpoint)) {
             throw new IllegalArgumentException("Cannot contain quotes.");
         }
         return "{ "
                 + "\"version\": \"A\", "
                 + "\"deviceEndpoint\": \""
-                + deviceEndpoint
+                + endpoint
                 + "\", \"encryptedPayload\": \""
                 + encryptedRequest + "\""
                 + "}";
