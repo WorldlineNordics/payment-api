@@ -7,6 +7,8 @@ public class ValidationHelper {
         orderIdMayBeEmpty(request);
     }
 
+    // We might want to change the annotation based validation to something advanced,
+    // conditional, based on another field that has a value, but this is OK.
     private static void orderIdMayBeEmpty(AbstractPaymentPageRequest request) {
         final String orderId = request.orderId;
         final Integer storeFlag = request.storeFlag;
