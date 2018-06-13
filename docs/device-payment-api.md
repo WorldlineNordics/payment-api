@@ -42,7 +42,7 @@ String deviceAPIRequest = paymentHandler.createDeviceAPIRequest(paymentRequest);
 
 #### Unpacking the encrypted response from Device Payment API
 Upon return from the Device Payment API, the response must be decrypted in order
-to retrieve details on the success of the transaction, stored token etc.
+to retrieve details on the success of the request.
 
 The response from the Device Payment API is gotten by unpack:
 
