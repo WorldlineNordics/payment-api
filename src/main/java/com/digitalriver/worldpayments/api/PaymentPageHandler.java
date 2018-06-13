@@ -77,8 +77,6 @@ public class PaymentPageHandler {
     }
 
 
-
-
     /**
      * When PaymentPage is done, it redirects the consumer back to the returnUrl with a response string. The returnUrl
      * can be set using {@link PaymentPageRequest#setReturnUrl}. The response string is encrypted and can be decrypted

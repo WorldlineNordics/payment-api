@@ -7,7 +7,6 @@ public class ValidationHelper {
         orderIdMayBeEmpty(request);
     }
 
-    // As the AbstractPaymentRequest is abstract, enums are not working as we would like
     private static void orderIdMayBeEmpty(AbstractPaymentPageRequest request) {
         final String orderId = request.orderId;
         final Integer storeFlag = request.storeFlag;
