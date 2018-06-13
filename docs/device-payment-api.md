@@ -14,8 +14,8 @@ application](https://github.com/WorldlineNordics/payment-api-spring-demo), that 
 includes an example of use of the Worldline Online Payments Acceptance Javascript API.
 
 ### Getting Started
-1. First, acquire a PaymentHandler that will hold keys and addresses.
-2. Create a PaymentRequest
+**Step 1.** First, acquire a PaymentHandler that will hold keys and addresses.
+**Step 2.** Create a PaymentRequest
 
 ```java
 PaymentHandler paymentHandler = new PaymentHandler(
@@ -31,13 +31,14 @@ PaymentRequest paymentRequest = new PaymentRequestBuilder()
         .setConsumerCountry("US")
         .setConsumerLanguage("en")
         .createPaymentRequest();
+```
 
+**Step 3.** Create the ```deviceAPIRequest```, a JSON string that is to be passed to the client SDK. The string holds the encrypted payload that the client passes on with payment details, the endpoint for the client to communicate with and an API version.
+
+```java
 String deviceAPIRequest = paymentHandler.createDeviceAPIRequest(paymentRequest);
 
 ```
-The last step above will sign, encrypt, base64 encode and wrap the request for use with the Worldline
-JavaScript API.
-
 
 #### Unpacking the encrypted response from Device Payment API
 Upon return from the Device Payment API, the response must be decrypted in order
@@ -69,7 +70,7 @@ POS ID|No|Point Of Sale ID, default ”0”|Check with integration manager|
 Transaction channel|Yes|Default: ”Web Online”|Web Online, Mail, Telephone, Fax, FaceToFace, Cash Register | 
 AutoCapture|No|Default: true|TRUE, FALSE| 
 Token|No|Token of stored card| | 
-Order ID|Yes|Merchant assigned Order ID| |50
+Order ID|Conditional|Merchant assigned Order ID. Required, with exception of when the Store Flag is set to STORE_ONLY (2) | |50
 Order description|No|Order description| | 
 Order Detail Description|No|Order Detail Description| | 
 Amount|Yes|Order amount,with decimal. Limit defined in integration|Example: 3.47| 
@@ -80,7 +81,7 @@ Country |Yes|Country code. ISO-3166, e.g. US. | |2
 Language |Yes|Language. ISO 639-1, e.g. en. | |2
 Time limit|No|Maximum time in seconds for request to be valid or zero if not used.| | 
 Payment method ID |No|Used when the consumer selects the payment method at the merchant site. Default: 1000 (Unspecified card)| | 
-Store Flag|No|Indicates that a token should be stored|0=Store not used, 1=Store and Debit/Authorize, 2=Store only| 
+Store Flag|No|Indicates that a token should be stored|0=NO_STORE - only Authorize/Debit, 1=STORE, and Debit/Authorize, 2=STORE_ONLY| 
 Billing address line 1 |No|Billing address line 1| | 
 Billing address line 2 |No|Billing address line 2| | 
 Billing city|No|Billing city | | 
