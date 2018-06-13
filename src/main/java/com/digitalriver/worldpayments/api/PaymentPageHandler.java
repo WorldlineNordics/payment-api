@@ -70,12 +70,15 @@ public class PaymentPageHandler {
             throws IllegalArgumentException {
         StringBuilder url = new StringBuilder();
         url.append(iBaseUrl);
+        ValidationHelper.validateNonAnnotatedFields(request);
         Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
         url.append(iSecurityHandler.encrypt(NvpUtil.createNvpString(nvp)));
         return url.toString();
     }
-    
-    
+
+
+
+
     /**
      * When PaymentPage is done, it redirects the consumer back to the returnUrl with a response string. The returnUrl
      * can be set using {@link PaymentPageRequest#setReturnUrl}. The response string is encrypted and can be decrypted
