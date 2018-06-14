@@ -174,16 +174,41 @@ public class PaymentRequestBuilderTest {
     public void setOrderId() throws Exception {
         PaymentRequest pr = new PaymentRequestBuilder()
                 .setMid(1234567890L)
-                .setOrderId("general-test")
                 .setConsumerCountry("UK")
                 .setConsumerLanguage("en")
                 .setCurrency("GBP")
-
                 .setOrderId("orderid-1234567890123456")
                 .createPaymentRequest();
 
         String value = getField(pr, "orderId", AbstractPaymentPageRequest.class);
         assertEquals("orderid-1234567890123456", value);
+
+    }
+
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void setOrderIdEmptyWhenNoStoreFlag() {
+        PaymentRequest pr = new PaymentRequestBuilder()
+                .setMid(1234567890L)
+                .setConsumerCountry("UK")
+                .setConsumerLanguage("en")
+                .setCurrency("GBP")
+                .createPaymentRequest();
+    }
+
+    @Test
+    public void setOrderIdEmpty() throws Exception {
+        PaymentRequest pr = new PaymentRequestBuilder()
+                .setMid(1234567890L)
+                .setConsumerCountry("UK")
+                .setConsumerLanguage("en")
+                .setCurrency("GBP")
+                .setStoreFlag(PaymentRequest.StoreFlag.STORE_ONLY)
+                .createPaymentRequest();
+
+        String value = getField(pr, "orderId", AbstractPaymentPageRequest.class);
+        assertTrue( value == null || value.equals(""));
 
     }
 

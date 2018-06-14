@@ -33,7 +33,7 @@ public abstract class AbstractPaymentPageRequest {
 	@Parameter(shortName = "F")
 	protected String token;
 
-	@Parameter(shortName = "G", required = true, maxLength = 50)
+	@Parameter(shortName = "G", maxLength = 50)
 	protected String orderId;
 
 	@Parameter(shortName = "H")

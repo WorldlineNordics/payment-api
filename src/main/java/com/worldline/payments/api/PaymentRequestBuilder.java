@@ -3,6 +3,7 @@ package com.worldline.payments.api;
 import com.digitalriver.worldpayments.api.AuthenticationRedirect;
 import com.digitalriver.worldpayments.api.LineItem;
 import com.digitalriver.worldpayments.api.ParameterAnnotationHelper;
+import com.digitalriver.worldpayments.api.ValidationHelper;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -448,6 +449,9 @@ public class PaymentRequestBuilder {
 
         //FIXME: This creates an unnecessary nvp. Needed for validation purposes only
         ParameterAnnotationHelper.mapObjectToNvp(paymentRequest);
+
+        ValidationHelper.validateNonAnnotatedFields(paymentRequest);
+
 
         return paymentRequest;
     }
