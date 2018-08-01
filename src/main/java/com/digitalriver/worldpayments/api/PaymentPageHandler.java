@@ -16,9 +16,9 @@ import java.util.Map;
  */
 public class PaymentPageHandler {
 	
-	public static final String DEFAULT_PRODUCTION_BASE_URL = "https://secure.payments.digitalriver.com/pay/?creq=";
+	public static final String DEFAULT_PRODUCTION_BASE_URL = "https://secure.payments.worldline.com/pay/?creq=";
 
-    public static final String DEFAULT_TEST_BASE_URL = "https://testpage.payments.digitalriver.com/pay/?creq=";
+    public static final String DEFAULT_TEST_BASE_URL = "https://testpage.payments.worldlinenordics.com/pay/?creq=";
 
     static final PaymentPageResponse createPaymentPageResponse(
             final Map<String, String> nvp) {
