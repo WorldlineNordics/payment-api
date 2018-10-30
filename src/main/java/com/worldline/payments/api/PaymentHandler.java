@@ -16,8 +16,10 @@ import com.digitalriver.worldpayments.api.utils.ParseUtil;
  */
 public class PaymentHandler {
 
+    
     protected String deviceEndpoint;
     protected String paymentOptionsEndpoint;
+    protected String  initAuthenticationEndpoint;
 
     private static PaymentResponse createPaymentResponse(final Map<String, String> nvp) {
 
@@ -60,6 +62,7 @@ public class PaymentHandler {
         iSecurityHandler = new SecurityHandlerImpl(keyHandler);
         this.deviceEndpoint = deviceEndpoint;
     }
+
     
     /**
      * Create a PaymentHandler with a specified key handler and endpoint for the Device Payment API and payment Options API Endpoint.
@@ -73,6 +76,15 @@ public class PaymentHandler {
         this.paymentOptionsEndpoint = paymentOptionsEndpoint;
     }
 
+    public PaymentHandler(JKSKeyHandlerV6 keyHandler, String deviceEndpoint, String paymentOptionsEndpoint, String initAuthenticationEndpoint) {
+        iSecurityHandler = new SecurityHandlerImpl(keyHandler);
+        this.deviceEndpoint = deviceEndpoint;
+        this.paymentOptionsEndpoint = paymentOptionsEndpoint;
+        this.initAuthenticationEndpoint = initAuthenticationEndpoint;
+    }
+
+
+
     /**
      * Create a Device API Request to be used for Devices that processes with the Device API.
      *
@@ -83,7 +95,7 @@ public class PaymentHandler {
     	Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
     	return encryptMapAndGetResponseJson(nvp, deviceEndpoint);
     }
-
+    
     /**
      * Create a Get Payment Option Request to be used for Devices that processes with the Device API.
      *
@@ -91,10 +103,16 @@ public class PaymentHandler {
      * @return JSON object to be passed to the Payment Options API
      */
     public String createGetPaymentAPIRequest(PaymentOptionsRequest request) {
-    	Map<String, String> nvp = PaymentOptionsRequest.mapObjectToNvp(request);
-    	return encryptMapAndGetResponseJson(nvp, paymentOptionsEndpoint);
-        }
-    
+        Map<String, String> nvp = PaymentOptionsRequest.mapObjectToNvp(request);
+        return encryptMapAndGetResponseJson(nvp, paymentOptionsEndpoint);
+    }
+
+
+    public String createInitAuthenticationAPIRequest(PaymentRequest request) {
+        Map<String, String> nvp = ParameterAnnotationHelper.mapObjectToNvp(request);
+        return encryptMapAndGetResponseJson(nvp, initAuthenticationEndpoint);
+    }
+
     private String encryptMapAndGetResponseJson(Map<String, String> nvp, final String endpoint) {
     	String encryptedRequest = iSecurityHandler.encrypt(NvpUtil.createNvpString(nvp));
     	return getResponseJson(encryptedRequest, endpoint);
