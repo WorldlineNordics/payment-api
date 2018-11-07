@@ -39,4 +39,8 @@ public class InitAuthenticationResponse extends AbstractPaymentResponse {
         return redirectMethod;
     }
 
+    public String getAcsToken() {
+        return acsToken;
+    }
+
 }
