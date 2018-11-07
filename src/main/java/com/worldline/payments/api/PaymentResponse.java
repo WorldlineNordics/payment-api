@@ -328,6 +328,8 @@ public class PaymentResponse extends AbstractPaymentResponse {
         return redirectMethod;
     }
 
-
+    public String getAcsToken() {
+        return acsToken;
+    }
 
 }
