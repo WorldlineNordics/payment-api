@@ -13,6 +13,10 @@ drwpRelease {
     jiraServer='https://jira.drwp.digitalriver.com'
 }
 
+drwpLib {
+    automaticModuleName = moduleName
+}
+
 def distBase = "${buildDir}/dist"
 def opensourceDistDir = "${distBase}/payment-api"
 
