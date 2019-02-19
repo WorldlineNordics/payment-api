@@ -4,13 +4,15 @@ apply plugin: 'drwp-release'
 
 
 repositories {
-    maven { url "${artifactory_url}/libs-beta" }  
-    maven { url "${artifactory_url}/drwp-repository-gateway-artifactory-cache" } 
+    maven { url "${artifactory_url}/all-libs" }
 }
 
 drwpRelease {
     jiraProject='PAYAPIJAVA'
-    jiraServer='https://jira.drwp.digitalriver.com'
+}
+
+drwpLib {
+    automaticModuleName = moduleName
 }
 
 def distBase = "${buildDir}/dist"

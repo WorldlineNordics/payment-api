@@ -311,4 +311,21 @@ public class PaymentResponse extends AbstractPaymentResponse {
         return posDescription;
     }
 
+
+    public String getAuthenticationStatus() {
+        return authenticationStatus;
+    }
+
+    public String getRedirectUrl() {
+        return redirectUrl;
+    }
+
+    public String getRedirectParameters() {
+        return redirectParameters;
+    }
+
+    public String getRedirectMethod() {
+        return redirectMethod;
+    }
+
 }

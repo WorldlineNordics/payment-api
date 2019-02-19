@@ -121,5 +121,19 @@ public class AbstractPaymentResponse {
     public String acquirerReferenceId;
     @Parameter(shortName = "AAW")
     public String posDescription;
+    
+    @Parameter(shortName= "AAX")
+    public String redirectUrl;
+
+    @Parameter(shortName= "AAY")
+    protected String authenticationStatus;
+    
+    @Parameter(shortName = "AAZ")
+    protected String redirectParameters;
+    
+    @Parameter(shortName = "ABA")
+    protected String redirectMethod;
+
+
 
 }
