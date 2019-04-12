@@ -338,4 +338,20 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
 			super.authenticationRedirect = authenticationRedirect.value();
 		}
 	}
+
+	public void setStoredCredentialIndicator(StoredCredentialIndicator storedCredentialIndicator) {
+		if (storedCredentialIndicator != null) {
+			super.storedCredentialIndicator = storedCredentialIndicator.value();
+		}
+	}
+
+	public void setStoredCredentialReason(StoredCredentialReason storedCredentialReason) {
+		if (storedCredentialReason != null) {
+			super.storedCredentialReason = storedCredentialReason.value();
+		}
+	}
+
+	public void setSchemeReferenceId(String schemeReferenceId) {
+		super.schemeReferenceId = schemeReferenceId;
+	}
 }

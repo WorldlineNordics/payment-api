@@ -237,4 +237,13 @@ public abstract class AbstractPaymentPageRequest {
 	@Parameter(shortName = "AAR")
 	protected Long timestamp;
 
+	@Parameter(shortName = "AAT")
+	protected String storedCredentialIndicator;
+
+	@Parameter(shortName = "AAU")
+	protected String storedCredentialReason;
+
+	@Parameter(shortName = "AAV")
+	protected String schemeReferenceId;
+
 }
