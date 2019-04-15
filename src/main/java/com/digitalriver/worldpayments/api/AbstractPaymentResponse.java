@@ -97,7 +97,7 @@ public class AbstractPaymentResponse {
     protected String addressLine1;
     @Parameter(shortName = "OAT")
     protected String originatingAccountType;
-    @Parameter(shortName = "OAU")
+    @Parameter(shortName = "ABB")
     protected String schemeReferenceId;
     protected TokenizationResult tokenizationResult;
     protected Transaction transaction;

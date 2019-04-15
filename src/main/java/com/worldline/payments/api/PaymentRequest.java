@@ -3,6 +3,8 @@ package com.worldline.payments.api;
 import com.digitalriver.worldpayments.api.AbstractPaymentPageRequest;
 import com.digitalriver.worldpayments.api.AuthenticationRedirect;
 import com.digitalriver.worldpayments.api.LineItem;
+import com.digitalriver.worldpayments.api.StoredCredentialIndicator;
+import com.digitalriver.worldpayments.api.StoredCredentialReason;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.Map;
 
 public class PaymentRequest extends AbstractPaymentPageRequest {
 
-    public PaymentRequest(Long mid, String subMerchantId, String posId, String transactionChannel, String token, String orderId, String orderDescription, String orderDetailDescription, BigDecimal amount, String currency, BigDecimal vatAmount, Double vatRate, String consumerCountry, String consumerLanguage, String returnUrl, Integer timeLimit, Map<String, String> additionalParameters, Integer paymentMethodId, StoreFlag storeFlag, String billingAddressLine1, String billingAddressLine2, String billingCity, String billingStateProvince, String billingZipCode, String billingCountryCode, String billingEmailAddress, String billingPhone, String billingMobilePhone, String billingLastName, String billingFirstName, String billingFullName, String shippingAddressLine1, String shippingAddressLine2, String shippingCity, String shippingStateProvince, String shippingZipCode, String shippingCountryCode, String shippingEmailAddress, String shippingPhone, String dueDate, String paymentPlanCode, String billingCompanyName, String billingBuyerVATNumber, String billingBuyerType, String shippingCompanyName, String shippingAddressLine3, String billingAddressLine3, String birthDate, String companyResponsibleBirthDate, String companyResponsibleFullName, String companyResponsibleVATNumber, String recurringType, String posDesc, String shippingMobilePhone, String shippingLastName, String shippingFirstName, String shippingFullName, String billingSSN, String companyTaxId, String gender, String billingStreetName, String billingHouseNumber, String billingHouseExtension, String shippingStreetName, String shippingHouseNumber, String shippingHouseExtension, String shippingCareOf, List<LineItem> lineItems, AuthorizationType authorizationType, AuthenticationRedirect authenticationRedirect, boolean autoCapture, Long timestamp) {
+    public PaymentRequest(Long mid, String subMerchantId, String posId, String transactionChannel, String token, String orderId, String orderDescription, String orderDetailDescription, BigDecimal amount, String currency, BigDecimal vatAmount, Double vatRate, String consumerCountry, String consumerLanguage, String returnUrl, Integer timeLimit, Map<String, String> additionalParameters, Integer paymentMethodId, StoreFlag storeFlag, String billingAddressLine1, String billingAddressLine2, String billingCity, String billingStateProvince, String billingZipCode, String billingCountryCode, String billingEmailAddress, String billingPhone, String billingMobilePhone, String billingLastName, String billingFirstName, String billingFullName, String shippingAddressLine1, String shippingAddressLine2, String shippingCity, String shippingStateProvince, String shippingZipCode, String shippingCountryCode, String shippingEmailAddress, String shippingPhone, String dueDate, String paymentPlanCode, String billingCompanyName, String billingBuyerVATNumber, String billingBuyerType, String shippingCompanyName, String shippingAddressLine3, String billingAddressLine3, String birthDate, String companyResponsibleBirthDate, String companyResponsibleFullName, String companyResponsibleVATNumber, String recurringType, String posDesc, String shippingMobilePhone, String shippingLastName, String shippingFirstName, String shippingFullName, String billingSSN, String companyTaxId, String gender, String billingStreetName, String billingHouseNumber, String billingHouseExtension, String shippingStreetName, String shippingHouseNumber, String shippingHouseExtension, String shippingCareOf, List<LineItem> lineItems, AuthorizationType authorizationType, AuthenticationRedirect authenticationRedirect, boolean autoCapture, Long timestamp, StoredCredentialIndicator storedCredentialIndicator, StoredCredentialReason storedCredentialReason, String schemeReferenceId) {
         setMid(mid);
         setSubMerchantId(subMerchantId);
         setPosId(posId);
@@ -111,6 +113,9 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
         setAutoCapture(autoCapture);
         setVATamount(vatAmount);
         setTimestamp(timestamp);
+        setStoredCredentialIndicator(storedCredentialIndicator);
+        setStoredCredentialReason(storedCredentialReason);
+        setSchemeReferenceId(schemeReferenceId);
     }
 
     public void setShippingHouseNumber(String shippingHouseNumber) {
@@ -430,6 +435,22 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
+    
+	public void setStoredCredentialIndicator(StoredCredentialIndicator storedCredentialIndicator) {
+		if (storedCredentialIndicator != null) {
+			super.storedCredentialIndicator = storedCredentialIndicator.value();
+		}
+	}
+
+	public void setStoredCredentialReason(StoredCredentialReason storedCredentialReason) {
+		if (storedCredentialReason != null) {
+			super.storedCredentialReason = storedCredentialReason.value();
+		}
+	}
+
+	public void setSchemeReferenceId(String schemeReferenceId) {
+		super.schemeReferenceId = schemeReferenceId;
+	}
 
     public enum StoreFlag {
         NO_STORE(0), STORE(1), STORE_ONLY(2);
