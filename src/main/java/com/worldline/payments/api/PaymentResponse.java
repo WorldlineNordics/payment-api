@@ -328,4 +328,8 @@ public class PaymentResponse extends AbstractPaymentResponse {
         return redirectMethod;
     }
 
+	public String getSchemeReferenceId() {
+		return schemeReferenceId;
+	}
+
 }
