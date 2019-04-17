@@ -87,7 +87,7 @@ public class PaymentRequestBuilder {
     private String schemeReferenceId;
     private boolean autoCapture = true;
     private Long timestamp = System.currentTimeMillis();
-
+    
 
     public PaymentRequestBuilder setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
@@ -448,8 +448,20 @@ public class PaymentRequestBuilder {
         this.autoCapture = autoCapture;
         return this;
     }
+    
+    public void setStoredCredentialIndicator(StoredCredentialIndicator storedCredentialIndicator) {
+		this.storedCredentialIndicator = storedCredentialIndicator;
+	}
 
-    public PaymentRequest createPaymentRequest() throws IllegalArgumentException {
+	public void setStoredCredentialReason(StoredCredentialReason storedCredentialReason) {
+		this.storedCredentialReason = storedCredentialReason;
+	}
+
+	public void setSchemeReferenceId(String schemeReferenceId) {
+		this.schemeReferenceId = schemeReferenceId;
+	}
+
+	public PaymentRequest createPaymentRequest() throws IllegalArgumentException {
         PaymentRequest paymentRequest = new PaymentRequest(mid, subMerchantId, posId, transactionChannel, token, orderId, orderDescription, orderDetailDescription, amount, currency, vatAmount, vatRate, consumerCountry, consumerLanguage, returnUrl, timeLimit, additionalParameters, paymentMethodId, storeFlag, billingAddressLine1, billingAddressLine2, billingCity, billingStateProvince, billingZipCode, billingCountryCode, billingEmailAddress, billingPhone, billingMobilePhone, billingLastName, billingFirstName, billingFullName, shippingAddressLine1, shippingAddressLine2, shippingCity, shippingStateProvince, shippingZipCode, shippingCountryCode, shippingEmailAddress, shippingPhone, dueDate, paymentPlanCode, billingCompanyName, billingBuyerVATNumber, billingBuyerType, shippingCompanyName, shippingAddressLine3, billingAddressLine3, birthDate, companyResponsibleBirthDate, companyResponsibleFullName, companyResponsibleVATNumber, recurringType, posDesc, shippingMobilePhone, shippingLastName, shippingFirstName, shippingFullName, billingSSN, companyTaxId, gender, billingStreetName, billingHouseNumber, billingHouseExtension, shippingStreetName, shippingHouseNumber, shippingHouseExtension, shippingCareOf, lineItems, authorizationType, authenticationRedirect, autoCapture, timestamp, storedCredentialIndicator, storedCredentialReason, schemeReferenceId);
 
         //FIXME: This creates an unnecessary nvp. Needed for validation purposes only
