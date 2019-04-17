@@ -449,16 +449,19 @@ public class PaymentRequestBuilder {
         return this;
     }
     
-    public void setStoredCredentialIndicator(StoredCredentialIndicator storedCredentialIndicator) {
+    public PaymentRequestBuilder setStoredCredentialIndicator(StoredCredentialIndicator storedCredentialIndicator) {
 		this.storedCredentialIndicator = storedCredentialIndicator;
+		return this;
 	}
 
-	public void setStoredCredentialReason(StoredCredentialReason storedCredentialReason) {
+	public PaymentRequestBuilder setStoredCredentialReason(StoredCredentialReason storedCredentialReason) {
 		this.storedCredentialReason = storedCredentialReason;
+		return this;
 	}
 
-	public void setSchemeReferenceId(String schemeReferenceId) {
+	public PaymentRequestBuilder setSchemeReferenceId(String schemeReferenceId) {
 		this.schemeReferenceId = schemeReferenceId;
+		return this;
 	}
 
 	public PaymentRequest createPaymentRequest() throws IllegalArgumentException {
