@@ -134,6 +134,8 @@ public class AbstractPaymentResponse {
     @Parameter(shortName = "ABA")
     protected String redirectMethod;
 
+    @Parameter(shortName = "ABB")
+    protected String schemeReferenceId;
 
 
 }

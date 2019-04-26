@@ -4,6 +4,8 @@ import com.digitalriver.worldpayments.api.AuthorizationType;
 import com.digitalriver.worldpayments.api.PaymentPageHandler;
 import com.digitalriver.worldpayments.api.PaymentPageRequest;
 import com.digitalriver.worldpayments.api.PaymentPageResponse;
+import com.digitalriver.worldpayments.api.StoredCredentialIndicator;
+import com.digitalriver.worldpayments.api.StoredCredentialReason;
 import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
 
 public class Example {
@@ -21,6 +23,9 @@ public class Example {
         request.setConsumerLanguage("sv");
         request.setReturnUrl("http://merchant.com?f=3&f=q");
         request.setAuthorizationType(AuthorizationType.PRE_AUTHORIZATION);
+        request.setStoredCredentialIndicator(StoredCredentialIndicator.CIT_USE_STORED);
+        request.setStoredCredentialReason(StoredCredentialReason.UNSCHEDULED);
+        request.setSchemeReferenceId("SchemeReferenceId");
         return request;
     }
 

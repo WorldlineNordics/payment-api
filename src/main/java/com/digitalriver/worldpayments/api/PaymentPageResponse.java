@@ -288,4 +288,8 @@ public class PaymentPageResponse extends AbstractPaymentResponse {
         return payoutTxId;
     }
 
+    public String getSchemeReferenceId() {
+        return schemeReferenceId;
+    }
+
 }
