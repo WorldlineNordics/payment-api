@@ -57,5 +57,5 @@ task includeJavadocFilesInDistro(type: Copy) {
 task processOpenSourceFiles(dependsOn: ['includeLibsInDistro', 'includeSourceFilesInDistro', 'includeJavadocFilesInDistro'])
 
 task wrapper(type: Wrapper) {
-    distributionUrl="${artifactory_url}/third-party-apps/bin/gradle/${wrapperVersion}/gradle-${wrapperVersion}.zip"
+    distributionUrl="${artifactory_url}/third-party-apps/gradle/gradle-${wrapperVersion}.zip"
 }
