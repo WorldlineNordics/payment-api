@@ -4,7 +4,7 @@ plugins {
 apply plugin: 'maven-publish'
 apply plugin: 'java'
 
-group="com.worldline.payments'
+group = 'com.worldline.payments'
 archivesBaseName = 'payment-api'
 version = currentVersion
 
