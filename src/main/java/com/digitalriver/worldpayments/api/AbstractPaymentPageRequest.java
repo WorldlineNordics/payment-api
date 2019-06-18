@@ -392,5 +392,8 @@ public abstract class AbstractPaymentPageRequest {
      
     @Parameter(shortName="ACW")
     protected String sdkEphemPubKey;
+    
+    @Parameter(shortName="ACX")
+    protected String referenceTransactionId;
 
 }
