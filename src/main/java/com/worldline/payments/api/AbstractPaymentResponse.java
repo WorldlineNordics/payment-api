@@ -136,6 +136,29 @@ public class AbstractPaymentResponse {
 
     @Parameter(shortName = "ABB")
     protected String schemeReferenceId;
-
-
+    
+    @Parameter(shortName = "ABC")
+    protected int eci;
+    
+    @Parameter(shortName = "ABD")
+    protected String cavv;
+    
+    @Parameter(shortName = "ABE")
+    protected String xid;
+    
+    @Parameter(shortName = "ABF")
+    protected String authRequired;
+    
+    @Parameter(shortName = "ABG")
+    protected String authenticationResult;
+    
+    @Parameter(shortName = "ABH")
+    protected String acsVerificationFlavor;
+    
+    @Parameter(shortName = "ABI")
+    protected String authenticationProtocolVersion;
+    
+    @Parameter(shortName = "ABJ")
+    protected String authenticationDsTransId;
+    
 }
