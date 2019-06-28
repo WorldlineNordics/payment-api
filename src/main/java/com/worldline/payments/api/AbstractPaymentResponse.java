@@ -161,4 +161,10 @@ public class AbstractPaymentResponse {
     @Parameter(shortName = "ABJ")
     protected String authenticationDsTransId;
     
+    @Parameter(shortName = "ABK")
+    protected String authenticationApplication;
+    
+    @Parameter(shortName = "ABL")
+    protected String authenticationVerificationData;
+    
 }
