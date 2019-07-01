@@ -12,7 +12,8 @@ import java.util.Map;
 
 public class PaymentRequest extends AbstractPaymentPageRequest {
 
-    public PaymentRequest(Long mid, String subMerchantId, String posId, String transactionChannel, String token, String orderId, String orderDescription, String orderDetailDescription, BigDecimal amount, String currency, BigDecimal vatAmount, Double vatRate, String consumerCountry, String consumerLanguage, String returnUrl, Integer timeLimit, Map<String, String> additionalParameters, Integer paymentMethodId, StoreFlag storeFlag, String billingAddressLine1, String billingAddressLine2, String billingCity, String billingStateProvince, String billingZipCode, String billingCountryCode, String billingEmailAddress, String billingPhone, String billingMobilePhone, String billingLastName, String billingFirstName, String billingFullName, String shippingAddressLine1, String shippingAddressLine2, String shippingCity, String shippingStateProvince, String shippingZipCode, String shippingCountryCode, String shippingEmailAddress, String shippingPhone, String dueDate, String paymentPlanCode, String billingCompanyName, String billingBuyerVATNumber, String billingBuyerType, String shippingCompanyName, String shippingAddressLine3, String billingAddressLine3, String birthDate, String companyResponsibleBirthDate, String companyResponsibleFullName, String companyResponsibleVATNumber, String recurringType, String posDesc, String shippingMobilePhone, String shippingLastName, String shippingFirstName, String shippingFullName, String billingSSN, String companyTaxId, String gender, String billingStreetName, String billingHouseNumber, String billingHouseExtension, String shippingStreetName, String shippingHouseNumber, String shippingHouseExtension, String shippingCareOf, List<LineItem> lineItems, AuthorizationType authorizationType, AuthenticationRedirect authenticationRedirect, boolean autoCapture, Long timestamp, StoredCredentialIndicator storedCredentialIndicator, StoredCredentialReason storedCredentialReason, String schemeReferenceId) {
+    public PaymentRequest(Long mid, String subMerchantId, String posId, String transactionChannel, String token, String orderId, String orderDescription, String orderDetailDescription, BigDecimal amount, String currency, BigDecimal vatAmount, Double vatRate, String consumerCountry, String consumerLanguage, String returnUrl, Integer timeLimit, Map<String, String> additionalParameters, Integer paymentMethodId, StoreFlag storeFlag, String billingAddressLine1, String billingAddressLine2, String billingCity, String billingStateProvince, String billingZipCode, String billingCountryCode, String billingEmailAddress, String billingPhone, String billingMobilePhone, String billingLastName, String billingFirstName, String billingFullName, String shippingAddressLine1, String shippingAddressLine2, String shippingCity, String shippingStateProvince, String shippingZipCode, String shippingCountryCode, String shippingEmailAddress, String shippingPhone, String dueDate, String paymentPlanCode, String billingCompanyName, String billingBuyerVATNumber, String billingBuyerType, String shippingCompanyName, String shippingAddressLine3, String billingAddressLine3, String birthDate, String companyResponsibleBirthDate, String companyResponsibleFullName, String companyResponsibleVATNumber, String recurringType, String posDesc, String shippingMobilePhone, String shippingLastName, String shippingFirstName, String shippingFullName, String billingSSN, String companyTaxId, String gender, String billingStreetName, String billingHouseNumber, String billingHouseExtension, String shippingStreetName, String shippingHouseNumber, String shippingHouseExtension, String shippingCareOf, List<LineItem> lineItems, AuthorizationType authorizationType, AuthenticationRedirect authenticationRedirect, boolean autoCapture, Long timestamp, StoredCredentialIndicator storedCredentialIndicator, StoredCredentialReason storedCredentialReason, String schemeReferenceId,
+    	String purchaseInstallment, String md, String acctID, String acctType, String addrMatch, String messageCategory, String purchaseDate, String transType, String threeRIInd, String threeDSRequestorAuthenticationInd, String threeDSRequestorChallengeInd, String challengeWindowSize, String shipIndicator, String deliveryTimeframe, String deliveryEmailAddress, String reorderItemsInd, String preOrderPurchaseInd, String preOrderDate, String giftCardAmount, String giftCardCurr, String giftCardCount, String chAccAgeInd, String chAccDate, String chAccChangeInd, String chAccChange, String chAccPwChangeInd, String chAccPwChange, String nbPurchaseAccount, String provisionAttemptsDay, String txnActivityDay, String txnActivityYear, String shipAddressUsageInd, String shipAddressUsage, String shipNameIndicator, String paymentAccInd, String paymentAccAge, String suspiciousAccActivity, String threeDSReqAuthMethod, String threeDSReqAuthTimestamp, String threeDSReqPriorRef, String threeDSReqPriorAuthMethod, String threeDSReqPriorAuthTimestamp, String sdkTransID, String sdkReferenceNumber, String sdkAppID, String sdkEncData, String sdkMaxTimeout, String deviceRenderOptions, String sdkEphemPubKey, String referenceTransactionId) {
         setMid(mid);
         setSubMerchantId(subMerchantId);
         setPosId(posId);
@@ -464,4 +465,204 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
             return val;
         }
     }
+    
+	public void setPurchaseInstallment(String purchaseInstallment) {
+		super.purchaseInstallment = purchaseInstallment;
+	}
+
+	public void setMd(String md) {
+		super.md = md;
+	}
+
+	public void setAcctID(String acctID) {
+		super.acctID = acctID;
+	}
+
+	public void setAcctType(String acctType) {
+		super.acctType = acctType;
+	}
+
+	public void setAddrMatch(String addrMatch) {
+		super.addrMatch = addrMatch;
+	}
+
+	public void setMessageCategory(String messageCategory) {
+		super.messageCategory = messageCategory;
+	}
+
+	public void setPurchaseDate(String purchaseDate) {
+		super.purchaseDate = purchaseDate;
+	}
+
+	public void setTransType(String transType) {
+		super.transType = transType;
+	}
+
+	public void setThreeRIInd(String threeRIInd) {
+		super.threeRIInd = threeRIInd;
+	}
+
+	public void setThreeDSRequestorAuthenticationInd(String threeDSRequestorAuthenticationInd) {
+		super.threeDSRequestorAuthenticationInd = threeDSRequestorAuthenticationInd;
+	}
+
+	public void setThreeDSRequestorChallengeInd(String threeDSRequestorChallengeInd) {
+		super.threeDSRequestorChallengeInd = threeDSRequestorChallengeInd;
+	}
+
+	public void setChallengeWindowSize(String challengeWindowSize) {
+		super.challengeWindowSize = challengeWindowSize;
+	}
+
+	public void setShipIndicator(String shipIndicator) {
+		super.shipIndicator = shipIndicator;
+	}
+
+	public void setDeliveryTimeframe(String deliveryTimeframe) {
+		super.deliveryTimeframe = deliveryTimeframe;
+	}
+
+	public void setDeliveryEmailAddress(String deliveryEmailAddress) {
+		super.deliveryEmailAddress = deliveryEmailAddress;
+	}
+
+	public void setReorderItemsInd(String reorderItemsInd) {
+		super.reorderItemsInd = reorderItemsInd;
+	}
+
+	public void setPreOrderPurchaseInd(String preOrderPurchaseInd) {
+		super.preOrderPurchaseInd = preOrderPurchaseInd;
+	}
+
+	public void setPreOrderDate(String preOrderDate) {
+		super.preOrderDate = preOrderDate;
+	}
+
+	public void setGiftCardAmount(String giftCardAmount) {
+		super.giftCardAmount = giftCardAmount;
+	}
+
+	public void setGiftCardCurr(String giftCardCurr) {
+		super.giftCardCurr = giftCardCurr;
+	}
+
+	public void setGiftCardCount(String giftCardCount) {
+		super.giftCardCount = giftCardCount;
+	}
+
+	public void setChAccAgeInd(String chAccAgeInd) {
+		super.chAccAgeInd = chAccAgeInd;
+	}
+
+	public void setChAccDate(String chAccDate) {
+		super.chAccDate = chAccDate;
+	}
+
+	public void setChAccChangeInd(String chAccChangeInd) {
+		super.chAccChangeInd = chAccChangeInd;
+	}
+
+	public void setChAccChange(String chAccChange) {
+		super.chAccChange = chAccChange;
+	}
+
+	public void setChAccPwChangeInd(String chAccPwChangeInd) {
+		super.chAccPwChangeInd = chAccPwChangeInd;
+	}
+
+	public void setChAccPwChange(String chAccPwChange) {
+		super.chAccPwChange = chAccPwChange;
+	}
+
+	public void setNbPurchaseAccount(String nbPurchaseAccount) {
+		super.nbPurchaseAccount = nbPurchaseAccount;
+	}
+
+	public void setProvisionAttemptsDay(String provisionAttemptsDay) {
+		super.provisionAttemptsDay = provisionAttemptsDay;
+	}
+
+	public void setTxnActivityDay(String txnActivityDay) {
+		super.txnActivityDay = txnActivityDay;
+	}
+
+	public void setTxnActivityYear(String txnActivityYear) {
+		super.txnActivityYear = txnActivityYear;
+	}
+
+	public void setShipAddressUsageInd(String shipAddressUsageInd) {
+		super.shipAddressUsageInd = shipAddressUsageInd;
+	}
+
+	public void setShipAddressUsage(String shipAddressUsage) {
+		super.shipAddressUsage = shipAddressUsage;
+	}
+
+	public void setShipNameIndicator(String shipNameIndicator) {
+		super.shipNameIndicator = shipNameIndicator;
+	}
+
+	public void setPaymentAccInd(String paymentAccInd) {
+		super.paymentAccInd = paymentAccInd;
+	}
+
+	public void setPaymentAccAge(String paymentAccAge) {
+		super.paymentAccAge = paymentAccAge;
+	}
+
+	public void setSuspiciousAccActivity(String suspiciousAccActivity) {
+		super.suspiciousAccActivity = suspiciousAccActivity;
+	}
+
+	public void setThreeDSReqAuthMethod(String threeDSReqAuthMethod) {
+		super.threeDSReqAuthMethod = threeDSReqAuthMethod;
+	}
+
+	public void setThreeDSReqAuthTimestamp(String threeDSReqAuthTimestamp) {
+		super.threeDSReqAuthTimestamp = threeDSReqAuthTimestamp;
+	}
+
+	public void setThreeDSReqPriorRef(String threeDSReqPriorRef) {
+		super.threeDSReqPriorRef = threeDSReqPriorRef;
+	}
+
+	public void setThreeDSReqPriorAuthMethod(String threeDSReqPriorAuthMethod) {
+		super.threeDSReqPriorAuthMethod = threeDSReqPriorAuthMethod;
+	}
+
+	public void setThreeDSReqPriorAuthTimestamp(String threeDSReqPriorAuthTimestamp) {
+		super.threeDSReqPriorAuthTimestamp = threeDSReqPriorAuthTimestamp;
+	}
+
+	public void setSdkTransID(String sdkTransID) {
+		super.sdkTransID = sdkTransID;
+	}
+
+	public void setSdkReferenceNumber(String sdkReferenceNumber) {
+		super.sdkReferenceNumber = sdkReferenceNumber;
+	}
+
+	public void setSdkAppID(String sdkAppID) {
+		super.sdkAppID = sdkAppID;
+	}
+
+	public void setSdkEncData(String sdkEncData) {
+		super.sdkEncData = sdkEncData;
+	}
+
+	public void setSdkMaxTimeout(String sdkMaxTimeout) {
+		super.sdkMaxTimeout = sdkMaxTimeout;
+	}
+
+	public void setDeviceRenderOptions(String deviceRenderOptions) {
+		super.deviceRenderOptions = deviceRenderOptions;
+	}
+
+	public void setSdkEphemPubKey(String sdkEphemPubKey) {
+		super.sdkEphemPubKey = sdkEphemPubKey;
+	}
+
+	public void setReferenceTransactionId(String referenceTransactionId) {
+		super.referenceTransactionId = referenceTransactionId;
+	}
 }

@@ -6,7 +6,6 @@ import com.digitalriver.worldpayments.api.ParameterAnnotationHelper;
 import com.digitalriver.worldpayments.api.StoredCredentialIndicator;
 import com.digitalriver.worldpayments.api.StoredCredentialReason;
 import com.digitalriver.worldpayments.api.ValidationHelper;
-
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
@@ -88,6 +87,56 @@ public class PaymentRequestBuilder {
     private boolean autoCapture = true;
     private Long timestamp = System.currentTimeMillis();
     
+	private String purchaseInstallment;
+    private String md;
+    private String acctID;
+    private String acctType;
+	private String addrMatch;
+    private String messageCategory;
+    private String purchaseDate;
+    private String transType;
+    private String threeRIInd;
+    private String threeDSRequestorAuthenticationInd;
+    private String threeDSRequestorChallengeInd;
+    private String challengeWindowSize;
+    private String shipIndicator;
+    private String deliveryTimeframe;
+    private String deliveryEmailAddress;
+    private String reorderItemsInd;
+    private String preOrderPurchaseInd;
+    private String preOrderDate;
+    private String giftCardAmount;
+    private String giftCardCurr;
+    private String giftCardCount;
+    private String chAccAgeInd;
+    private String chAccDate;
+    private String chAccChangeInd;
+    private String chAccChange;
+    private String chAccPwChangeInd;
+    private String chAccPwChange;
+    private String nbPurchaseAccount;
+    private String provisionAttemptsDay;
+    private String txnActivityDay;
+    private String txnActivityYear;
+    private String shipAddressUsageInd;
+    private String shipAddressUsage;
+    private String shipNameIndicator;
+    private String paymentAccInd;
+    private String paymentAccAge;
+    private String suspiciousAccActivity;
+    private String threeDSReqAuthMethod;
+    private String threeDSReqAuthTimestamp;
+    private String threeDSReqPriorRef;
+    private String threeDSReqPriorAuthMethod;
+    private String threeDSReqPriorAuthTimestamp;
+    private String sdkTransID;
+    private String sdkReferenceNumber;
+    private String sdkAppID;
+    private String sdkEncData;
+    private String sdkMaxTimeout;
+    private String deviceRenderOptions;
+    private String sdkEphemPubKey;
+    private String referenceTransactionId;
 
     public PaymentRequestBuilder setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
@@ -463,9 +512,12 @@ public class PaymentRequestBuilder {
 		this.schemeReferenceId = schemeReferenceId;
 		return this;
 	}
+	
+	
 
 	public PaymentRequest createPaymentRequest() throws IllegalArgumentException {
-        PaymentRequest paymentRequest = new PaymentRequest(mid, subMerchantId, posId, transactionChannel, token, orderId, orderDescription, orderDetailDescription, amount, currency, vatAmount, vatRate, consumerCountry, consumerLanguage, returnUrl, timeLimit, additionalParameters, paymentMethodId, storeFlag, billingAddressLine1, billingAddressLine2, billingCity, billingStateProvince, billingZipCode, billingCountryCode, billingEmailAddress, billingPhone, billingMobilePhone, billingLastName, billingFirstName, billingFullName, shippingAddressLine1, shippingAddressLine2, shippingCity, shippingStateProvince, shippingZipCode, shippingCountryCode, shippingEmailAddress, shippingPhone, dueDate, paymentPlanCode, billingCompanyName, billingBuyerVATNumber, billingBuyerType, shippingCompanyName, shippingAddressLine3, billingAddressLine3, birthDate, companyResponsibleBirthDate, companyResponsibleFullName, companyResponsibleVATNumber, recurringType, posDesc, shippingMobilePhone, shippingLastName, shippingFirstName, shippingFullName, billingSSN, companyTaxId, gender, billingStreetName, billingHouseNumber, billingHouseExtension, shippingStreetName, shippingHouseNumber, shippingHouseExtension, shippingCareOf, lineItems, authorizationType, authenticationRedirect, autoCapture, timestamp, storedCredentialIndicator, storedCredentialReason, schemeReferenceId);
+        PaymentRequest paymentRequest = new PaymentRequest(mid, subMerchantId, posId, transactionChannel, token, orderId, orderDescription, orderDetailDescription, amount, currency, vatAmount, vatRate, consumerCountry, consumerLanguage, returnUrl, timeLimit, additionalParameters, paymentMethodId, storeFlag, billingAddressLine1, billingAddressLine2, billingCity, billingStateProvince, billingZipCode, billingCountryCode, billingEmailAddress, billingPhone, billingMobilePhone, billingLastName, billingFirstName, billingFullName, shippingAddressLine1, shippingAddressLine2, shippingCity, shippingStateProvince, shippingZipCode, shippingCountryCode, shippingEmailAddress, shippingPhone, dueDate, paymentPlanCode, billingCompanyName, billingBuyerVATNumber, billingBuyerType, shippingCompanyName, shippingAddressLine3, billingAddressLine3, birthDate, companyResponsibleBirthDate, companyResponsibleFullName, companyResponsibleVATNumber, recurringType, posDesc, shippingMobilePhone, shippingLastName, shippingFirstName, shippingFullName, billingSSN, companyTaxId, gender, billingStreetName, billingHouseNumber, billingHouseExtension, shippingStreetName, shippingHouseNumber, shippingHouseExtension, shippingCareOf, lineItems, authorizationType, authenticationRedirect, autoCapture, timestamp, storedCredentialIndicator, storedCredentialReason, schemeReferenceId,
+        		purchaseInstallment, md, acctID, acctType, addrMatch, messageCategory, purchaseDate, transType, threeRIInd, threeDSRequestorAuthenticationInd, threeDSRequestorChallengeInd, challengeWindowSize, shipIndicator, deliveryTimeframe, deliveryEmailAddress, reorderItemsInd, preOrderPurchaseInd, preOrderDate, giftCardAmount, giftCardCurr, giftCardCount, chAccAgeInd, chAccDate, chAccChangeInd, chAccChange, chAccPwChangeInd, chAccPwChange, nbPurchaseAccount, provisionAttemptsDay, txnActivityDay, txnActivityYear, shipAddressUsageInd, shipAddressUsage, shipNameIndicator, paymentAccInd, paymentAccAge, suspiciousAccActivity, threeDSReqAuthMethod, threeDSReqAuthTimestamp, threeDSReqPriorRef, threeDSReqPriorAuthMethod, threeDSReqPriorAuthTimestamp, sdkTransID, sdkReferenceNumber, sdkAppID, sdkEncData, sdkMaxTimeout, deviceRenderOptions, sdkEphemPubKey, referenceTransactionId);
 
         //FIXME: This creates an unnecessary nvp. Needed for validation purposes only
         ParameterAnnotationHelper.mapObjectToNvp(paymentRequest);
