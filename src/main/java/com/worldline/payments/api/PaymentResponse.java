@@ -331,5 +331,45 @@ public class PaymentResponse extends AbstractPaymentResponse {
 	public String getSchemeReferenceId() {
 		return schemeReferenceId;
 	}
-
+	
+	public int getEci() {
+		return eci;
+	}
+	
+	public String getCavv() {
+		return cavv;
+	}
+	
+	public String getXid() {
+		return xid;
+	}
+	
+	public String getAuthRequired() {
+		return authRequired;
+	}
+	
+	public String getAuthenticationResult() {
+		return authenticationResult;
+	}
+	
+	public String getAcsVerificationFlavor() {
+		return acsVerificationFlavor;
+	}
+	
+	public String getAuthenticationProtocolVersion() {
+		return authenticationProtocolVersion;
+	}
+	
+	public String getAuthenticationDsTransId() {
+		return authenticationDsTransId;
+	}
+	
+	public String getAuthenticationApplication() {
+		return authenticationApplication;
+	}
+	
+	public String getAuthenticationVerificationData() {
+		return authenticationVerificationData;
+	}
+	
 }
