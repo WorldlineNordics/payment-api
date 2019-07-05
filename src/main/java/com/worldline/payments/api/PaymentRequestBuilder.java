@@ -513,7 +513,255 @@ public class PaymentRequestBuilder {
 		return this;
 	}
 	
-	
+	public PaymentRequestBuilder setPurchaseInstallment(String purchaseInstallment) {
+		this.purchaseInstallment = purchaseInstallment;
+		return this;
+	}
+
+	public PaymentRequestBuilder setMd(String md) {
+		this.md = md;
+		return this;
+	}
+
+	public PaymentRequestBuilder setAcctID(String acctID) {
+		this.acctID = acctID;
+		return this;
+	}
+
+	public PaymentRequestBuilder setAcctType(String acctType) {
+		this.acctType = acctType;
+		return this;
+	}
+
+	public PaymentRequestBuilder setAddrMatch(String addrMatch) {
+		this.addrMatch = addrMatch;
+		return this;
+	}
+
+	public PaymentRequestBuilder setMessageCategory(String messageCategory) {
+		this.messageCategory = messageCategory;
+		return this;
+	}
+
+	public PaymentRequestBuilder setPurchaseDate(String purchaseDate) {
+		this.purchaseDate = purchaseDate;
+		return this;
+	}
+
+	public PaymentRequestBuilder setTransType(String transType) {
+		this.transType = transType;
+		return this;
+	}
+
+	public PaymentRequestBuilder setThreeRIInd(String threeRIInd) {
+		this.threeRIInd = threeRIInd;
+		return this;
+	}
+
+	public PaymentRequestBuilder setThreeDSRequestorAuthenticationInd(String threeDSRequestorAuthenticationInd) {
+		this.threeDSRequestorAuthenticationInd = threeDSRequestorAuthenticationInd;
+		return this;
+	}
+
+	public PaymentRequestBuilder setThreeDSRequestorChallengeInd(String threeDSRequestorChallengeInd) {
+		this.threeDSRequestorChallengeInd = threeDSRequestorChallengeInd;
+		return this;
+	}
+
+	public PaymentRequestBuilder setChallengeWindowSize(String challengeWindowSize) {
+		this.challengeWindowSize = challengeWindowSize;
+		return this;
+	}
+
+	public PaymentRequestBuilder setShipIndicator(String shipIndicator) {
+		this.shipIndicator = shipIndicator;
+		return this;
+	}
+
+	public PaymentRequestBuilder setDeliveryTimeframe(String deliveryTimeframe) {
+		this.deliveryTimeframe = deliveryTimeframe;
+		return this;
+	}
+
+	public PaymentRequestBuilder setDeliveryEmailAddress(String deliveryEmailAddress) {
+		this.deliveryEmailAddress = deliveryEmailAddress;
+		return this;
+	}
+
+	public PaymentRequestBuilder setReorderItemsInd(String reorderItemsInd) {
+		this.reorderItemsInd = reorderItemsInd;
+		return this;
+	}
+
+	public PaymentRequestBuilder setPreOrderPurchaseInd(String preOrderPurchaseInd) {
+		this.preOrderPurchaseInd = preOrderPurchaseInd;
+		return this;
+	}
+
+	public PaymentRequestBuilder setPreOrderDate(String preOrderDate) {
+		this.preOrderDate = preOrderDate;
+		return this;
+	}
+
+	public PaymentRequestBuilder setGiftCardAmount(String giftCardAmount) {
+		this.giftCardAmount = giftCardAmount;
+		return this;
+	}
+
+	public PaymentRequestBuilder setGiftCardCurr(String giftCardCurr) {
+		this.giftCardCurr = giftCardCurr;
+		return this;
+	}
+
+	public PaymentRequestBuilder setGiftCardCount(String giftCardCount) {
+		this.giftCardCount = giftCardCount;
+		return this;
+	}
+
+	public PaymentRequestBuilder setChAccAgeInd(String chAccAgeInd) {
+		this.chAccAgeInd = chAccAgeInd;
+		return this;
+	}
+
+	public PaymentRequestBuilder setChAccDate(String chAccDate) {
+		this.chAccDate = chAccDate;
+		return this;
+	}
+
+	public PaymentRequestBuilder setChAccChangeInd(String chAccChangeInd) {
+		this.chAccChangeInd = chAccChangeInd;
+		return this;
+	}
+
+	public PaymentRequestBuilder setChAccChange(String chAccChange) {
+		this.chAccChange = chAccChange;
+		return this;
+	}
+
+	public PaymentRequestBuilder setChAccPwChangeInd(String chAccPwChangeInd) {
+		this.chAccPwChangeInd = chAccPwChangeInd;
+		return this;
+	}
+
+	public PaymentRequestBuilder setChAccPwChange(String chAccPwChange) {
+		this.chAccPwChange = chAccPwChange;
+		return this;
+	}
+
+	public PaymentRequestBuilder setNbPurchaseAccount(String nbPurchaseAccount) {
+		this.nbPurchaseAccount = nbPurchaseAccount;
+		return this;
+	}
+
+	public PaymentRequestBuilder setProvisionAttemptsDay(String provisionAttemptsDay) {
+		this.provisionAttemptsDay = provisionAttemptsDay;
+		return this;
+	}
+
+	public PaymentRequestBuilder setTxnActivityDay(String txnActivityDay) {
+		this.txnActivityDay = txnActivityDay;
+		return this;
+	}
+
+	public PaymentRequestBuilder setTxnActivityYear(String txnActivityYear) {
+		this.txnActivityYear = txnActivityYear;
+		return this;
+	}
+
+	public PaymentRequestBuilder setShipAddressUsageInd(String shipAddressUsageInd) {
+		this.shipAddressUsageInd = shipAddressUsageInd;
+		return this;
+	}
+
+	public PaymentRequestBuilder setShipAddressUsage(String shipAddressUsage) {
+		this.shipAddressUsage = shipAddressUsage;
+		return this;
+	}
+
+	public PaymentRequestBuilder setShipNameIndicator(String shipNameIndicator) {
+		this.shipNameIndicator = shipNameIndicator;
+		return this;
+	}
+
+	public PaymentRequestBuilder setPaymentAccInd(String paymentAccInd) {
+		this.paymentAccInd = paymentAccInd;
+		return this;
+	}
+
+	public PaymentRequestBuilder setPaymentAccAge(String paymentAccAge) {
+		this.paymentAccAge = paymentAccAge;
+		return this;
+	}
+
+	public PaymentRequestBuilder setSuspiciousAccActivity(String suspiciousAccActivity) {
+		this.suspiciousAccActivity = suspiciousAccActivity;
+		return this;
+	}
+
+	public PaymentRequestBuilder setThreeDSReqAuthMethod(String threeDSReqAuthMethod) {
+		this.threeDSReqAuthMethod = threeDSReqAuthMethod;
+		return this;
+	}
+
+	public PaymentRequestBuilder setThreeDSReqAuthTimestamp(String threeDSReqAuthTimestamp) {
+		this.threeDSReqAuthTimestamp = threeDSReqAuthTimestamp;
+		return this;
+	}
+
+	public PaymentRequestBuilder setThreeDSReqPriorRef(String threeDSReqPriorRef) {
+		this.threeDSReqPriorRef = threeDSReqPriorRef;
+		return this;
+	}
+
+	public PaymentRequestBuilder setThreeDSReqPriorAuthMethod(String threeDSReqPriorAuthMethod) {
+		this.threeDSReqPriorAuthMethod = threeDSReqPriorAuthMethod;
+		return this;
+	}
+
+	public PaymentRequestBuilder setThreeDSReqPriorAuthTimestamp(String threeDSReqPriorAuthTimestamp) {
+		this.threeDSReqPriorAuthTimestamp = threeDSReqPriorAuthTimestamp;
+		return this;
+	}
+
+	public PaymentRequestBuilder setSdkTransID(String sdkTransID) {
+		this.sdkTransID = sdkTransID;
+		return this;
+	}
+
+	public PaymentRequestBuilder setSdkReferenceNumber(String sdkReferenceNumber) {
+		this.sdkReferenceNumber = sdkReferenceNumber;
+		return this;
+	}
+
+	public PaymentRequestBuilder setSdkAppID(String sdkAppID) {
+		this.sdkAppID = sdkAppID;
+		return this;
+	}
+
+	public PaymentRequestBuilder setSdkEncData(String sdkEncData) {
+		this.sdkEncData = sdkEncData;
+		return this;
+	}
+
+	public PaymentRequestBuilder setSdkMaxTimeout(String sdkMaxTimeout) {
+		this.sdkMaxTimeout = sdkMaxTimeout;
+		return this;
+	}
+
+	public PaymentRequestBuilder setDeviceRenderOptions(String deviceRenderOptions) {
+		this.deviceRenderOptions = deviceRenderOptions;
+		return this;
+	}
+
+	public PaymentRequestBuilder setSdkEphemPubKey(String sdkEphemPubKey) {
+		this.sdkEphemPubKey = sdkEphemPubKey;
+		return this;
+	}
+
+	public PaymentRequestBuilder setReferenceTransactionId(String referenceTransactionId) {
+		this.referenceTransactionId = referenceTransactionId;
+		return this;
+	}
 
 	public PaymentRequest createPaymentRequest() throws IllegalArgumentException {
         PaymentRequest paymentRequest = new PaymentRequest(mid, subMerchantId, posId, transactionChannel, token, orderId, orderDescription, orderDetailDescription, amount, currency, vatAmount, vatRate, consumerCountry, consumerLanguage, returnUrl, timeLimit, additionalParameters, paymentMethodId, storeFlag, billingAddressLine1, billingAddressLine2, billingCity, billingStateProvince, billingZipCode, billingCountryCode, billingEmailAddress, billingPhone, billingMobilePhone, billingLastName, billingFirstName, billingFullName, shippingAddressLine1, shippingAddressLine2, shippingCity, shippingStateProvince, shippingZipCode, shippingCountryCode, shippingEmailAddress, shippingPhone, dueDate, paymentPlanCode, billingCompanyName, billingBuyerVATNumber, billingBuyerType, shippingCompanyName, shippingAddressLine3, billingAddressLine3, birthDate, companyResponsibleBirthDate, companyResponsibleFullName, companyResponsibleVATNumber, recurringType, posDesc, shippingMobilePhone, shippingLastName, shippingFirstName, shippingFullName, billingSSN, companyTaxId, gender, billingStreetName, billingHouseNumber, billingHouseExtension, shippingStreetName, shippingHouseNumber, shippingHouseExtension, shippingCareOf, lineItems, authorizationType, authenticationRedirect, autoCapture, timestamp, storedCredentialIndicator, storedCredentialReason, schemeReferenceId,
