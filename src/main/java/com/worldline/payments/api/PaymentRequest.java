@@ -117,6 +117,58 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
         setStoredCredentialIndicator(storedCredentialIndicator);
         setStoredCredentialReason(storedCredentialReason);
         setSchemeReferenceId(schemeReferenceId);
+        
+        setPurchaseInstallment(purchaseInstallment);
+    	setMd(md);
+    	setAcctID(acctID);
+    	setAcctType(acctType);
+    	setAddrMatch(addrMatch);
+    	setMessageCategory(messageCategory);
+    	setPurchaseDate(purchaseDate);
+    	setTransType(transType);
+    	setThreeRIInd(threeRIInd);
+    	setThreeDSRequestorAuthenticationInd(threeDSRequestorAuthenticationInd);
+    	setThreeDSRequestorChallengeInd(threeDSRequestorChallengeInd);
+    	setChallengeWindowSize(challengeWindowSize);
+    	setShipIndicator(shipIndicator);
+    	setDeliveryTimeframe(deliveryTimeframe);
+    	setDeliveryEmailAddress(deliveryEmailAddress);
+    	setReorderItemsInd(reorderItemsInd);
+    	setPreOrderPurchaseInd(preOrderPurchaseInd);
+    	setPreOrderDate(preOrderDate);
+    	setGiftCardAmount(giftCardAmount);
+    	setGiftCardCurr(giftCardCurr);
+    	setGiftCardCount(giftCardCount);
+    	setChAccAgeInd(chAccAgeInd);
+    	setChAccDate(chAccDate);
+    	setChAccChangeInd(chAccChangeInd);
+    	setChAccChange(chAccChange);
+    	setChAccPwChangeInd(chAccPwChangeInd);
+    	setChAccPwChange(chAccPwChange);
+    	setNbPurchaseAccount(nbPurchaseAccount);
+    	setProvisionAttemptsDay(provisionAttemptsDay);
+    	setTxnActivityDay(txnActivityDay);
+    	setTxnActivityYear(txnActivityYear);
+    	setShipAddressUsageInd(shipAddressUsageInd);
+    	setShipAddressUsage(shipAddressUsage);
+    	setShipNameIndicator(shipNameIndicator);
+    	setPaymentAccInd(paymentAccInd);
+    	setPaymentAccAge(paymentAccAge);
+    	setSuspiciousAccActivity(suspiciousAccActivity);
+    	setThreeDSReqAuthMethod(threeDSReqAuthMethod);
+    	setThreeDSReqAuthTimestamp(threeDSReqAuthTimestamp);
+    	setThreeDSReqPriorRef(threeDSReqPriorRef);
+    	setThreeDSReqPriorAuthMethod(threeDSReqPriorAuthMethod);
+    	setThreeDSReqPriorAuthTimestamp(threeDSReqPriorAuthTimestamp);
+    	setSdkTransID(sdkTransID);
+    	setSdkReferenceNumber(sdkReferenceNumber);
+    	setSdkAppID(sdkAppID);
+    	setSdkEncData(sdkEncData);
+    	setSdkMaxTimeout(sdkMaxTimeout);
+    	setDeviceRenderOptions(deviceRenderOptions);
+    	setSdkEphemPubKey(sdkEphemPubKey);
+    	setReferenceTransactionId(referenceTransactionId);
+
     }
 
     public void setShippingHouseNumber(String shippingHouseNumber) {
