@@ -167,4 +167,13 @@ public class AbstractPaymentResponse {
     @Parameter(shortName = "ABL")
     protected String authenticationVerificationData;
     
+    @Parameter(shortName = "ABM")
+    protected String md;
+    
+    @Parameter(shortName = "ABN")
+    protected String tDSMethodContent;
+    
+    @Parameter(shortName = "ABO")
+    protected String acsToken;
+    
 }

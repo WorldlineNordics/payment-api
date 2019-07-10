@@ -12,7 +12,7 @@ public class PaymentResponse extends AbstractPaymentResponse {
 
     PaymentResponse() {
     }
-
+    
     public Long getMid() {
         return mid;
     }
@@ -370,6 +370,18 @@ public class PaymentResponse extends AbstractPaymentResponse {
 	
 	public String getAuthenticationVerificationData() {
 		return authenticationVerificationData;
+	}
+
+	public String getMd() {
+		return md;
+	}
+
+	public String gettDSMethodContent() {
+		return tDSMethodContent;
+	}
+
+	public String getAcsToken() {
+		return acsToken;
 	}
 	
 }
