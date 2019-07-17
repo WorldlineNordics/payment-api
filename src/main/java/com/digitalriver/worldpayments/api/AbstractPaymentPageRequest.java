@@ -393,7 +393,7 @@ public abstract class AbstractPaymentPageRequest {
     @Parameter(shortName="ACW")
     protected String sdkEphemPubKey;
     
-    @Parameter(shortName="ACX")
+    @Parameter(shortName="RID")
     protected String referenceTransactionId;
 
 }
