@@ -245,5 +245,155 @@ public abstract class AbstractPaymentPageRequest {
 
 	@Parameter(shortName = "AAV")
 	protected String schemeReferenceId;
+	
+	@Parameter(shortName="ABA")
+	protected String purchaseInstallment;
+    
+    @Parameter(shortName="ABB")
+    protected String md;
+    
+    @Parameter(shortName="ABC")
+    protected String acctID;
+    
+    @Parameter(shortName="ABD")
+    protected String acctType;
+
+	@Parameter(shortName="ABE")
+	protected String addrMatch;
+    
+    @Parameter(shortName="ABF")
+    protected String messageCategory;
+    
+    @Parameter(shortName="ABG")
+    protected String purchaseDate;
+    
+    @Parameter(shortName="ABH")
+    protected String transType;
+    
+    @Parameter(shortName="ABI")
+    protected String threeRIInd;
+    
+    @Parameter(shortName="ABJ")
+    protected String threeDSRequestorAuthenticationInd;
+    
+    @Parameter(shortName="ABK")
+    protected String threeDSRequestorChallengeInd;
+    
+    @Parameter(shortName="ABL")
+    protected String challengeWindowSize;
+    
+    @Parameter(shortName="ABM")
+    protected String shipIndicator;
+    
+    @Parameter(shortName="ABN")
+    protected String deliveryTimeframe;
+    
+    @Parameter(shortName="ABO")
+    protected String deliveryEmailAddress;
+    
+    @Parameter(shortName="ABP")
+    protected String reorderItemsInd;
+    
+    @Parameter(shortName="ABQ")
+    protected String preOrderPurchaseInd;
+    
+    @Parameter(shortName="ABR")
+    protected String preOrderDate;
+    
+    @Parameter(shortName="ABS")
+    protected String giftCardAmount;
+    
+    @Parameter(shortName="ABT")
+    protected String giftCardCurr;
+    
+    @Parameter(shortName="ABU")
+    protected String giftCardCount;
+    
+    @Parameter(shortName="ABV")
+    protected String chAccAgeInd;
+    
+    @Parameter(shortName="ABW")
+    protected String chAccDate;
+    
+    @Parameter(shortName="ABX")
+    protected String chAccChangeInd;
+    
+    @Parameter(shortName="ABY")
+    protected String chAccChange;
+    
+    @Parameter(shortName="ABZ")
+    protected String chAccPwChangeInd;
+    
+    @Parameter(shortName="ACA")
+    protected String chAccPwChange;
+    
+    @Parameter(shortName="ACB")
+    protected String nbPurchaseAccount;
+    
+    @Parameter(shortName="ACC")
+    protected String provisionAttemptsDay;
+    
+    @Parameter(shortName="ACD")
+    protected String txnActivityDay;
+    
+    @Parameter(shortName="ACE")
+    protected String txnActivityYear;
+    
+    @Parameter(shortName="ACF")
+    protected String shipAddressUsageInd;
+    
+    @Parameter(shortName="ACG")
+    protected String shipAddressUsage;
+    
+    @Parameter(shortName="ACH")
+    protected String shipNameIndicator;
+    
+    @Parameter(shortName="ACI")
+    protected String paymentAccInd;
+    
+    @Parameter(shortName="ACJ")
+    protected String paymentAccAge;
+    
+    @Parameter(shortName="ACK")
+    protected String suspiciousAccActivity;
+    
+    @Parameter(shortName="ACL")
+    protected String threeDSReqAuthMethod;
+    
+    @Parameter(shortName="ACM")
+    protected String threeDSReqAuthTimestamp;
+    
+    @Parameter(shortName="ACN")
+    protected String threeDSReqPriorRef;
+    
+    @Parameter(shortName="ACO")
+    protected String threeDSReqPriorAuthMethod;
+    
+    @Parameter(shortName="ACP")
+    protected String threeDSReqPriorAuthTimestamp;
+    
+    @Parameter(shortName="ACQ")
+    protected String sdkTransID;
+    
+    @Parameter(shortName="ACR")
+    protected String sdkReferenceNumber;
+    
+    @Parameter(shortName="ACS")
+    protected String sdkAppID;
+    
+    @Parameter(shortName="ACT")
+    protected String sdkEncData;
+    
+    @Parameter(shortName="ACU")
+    protected String sdkMaxTimeout;
+    
+    @Parameter(shortName="ACV")
+    protected String deviceRenderOptions;
+     
+    @Parameter(shortName="ACW")
+    protected String sdkEphemPubKey;
+    
+    @Parameter(shortName="RID")
+    protected String referenceTransactionId;
 
 }
