@@ -384,4 +384,7 @@ public class PaymentResponse extends AbstractPaymentResponse {
 		return acsToken;
 	}
 	
+	public String getAuthenticationStatusDescription() {
+		return authenticationStatusDescription;
+	}
 }
