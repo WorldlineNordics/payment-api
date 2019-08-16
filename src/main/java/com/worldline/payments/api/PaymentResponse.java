@@ -26,8 +26,10 @@ public class PaymentResponse extends AbstractPaymentResponse {
      */
     public String getStatus() {
         if (status == null || status.isEmpty()) {
-            if (clientAnswerCode == 0) {
+        	if (clientAnswerCode == 0) {
                 return status = "OK";
+            } else if (clientAnswerCode == 0 && authenticationStatus != null) {
+                return status = "AUTHENTICATION";
             } else {
                 return status = "NOK";
             }
