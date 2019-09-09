@@ -176,4 +176,7 @@ public class AbstractPaymentResponse {
     @Parameter(shortName = "ABO")
     protected String acsToken;
     
+    @Parameter(shortName = "ABP")
+    protected String authenticationStatusDescription;
+    
 }
