@@ -386,5 +386,5 @@ public class PaymentResponse extends AbstractPaymentResponse {
 	
 	public String getAuthenticationStatusDescription() {
         return authenticationStatusDescription;
-    }
+	}
 }
