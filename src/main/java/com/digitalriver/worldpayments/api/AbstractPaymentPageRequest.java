@@ -371,29 +371,5 @@ public abstract class AbstractPaymentPageRequest {
     
     @Parameter(shortName="ACP")
     protected String threeDSReqPriorAuthTimestamp;
-    
-    @Parameter(shortName="ACQ")
-    protected String sdkTransID;
-    
-    @Parameter(shortName="ACR")
-    protected String sdkReferenceNumber;
-    
-    @Parameter(shortName="ACS")
-    protected String sdkAppID;
-    
-    @Parameter(shortName="ACT")
-    protected String sdkEncData;
-    
-    @Parameter(shortName="ACU")
-    protected String sdkMaxTimeout;
-    
-    @Parameter(shortName="ACV")
-    protected String deviceRenderOptions;
-     
-    @Parameter(shortName="ACW")
-    protected String sdkEphemPubKey;
-    
-    @Parameter(shortName="RID")
-    protected String referenceTransactionId;
 
 }
