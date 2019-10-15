@@ -129,6 +129,7 @@ public class PaymentRequestBuilder {
     private String threeDSReqPriorRef;
     private String threeDSReqPriorAuthMethod;
     private String threeDSReqPriorAuthTimestamp;
+    private String library_version;
 
     public PaymentRequestBuilder setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
@@ -714,10 +715,16 @@ public class PaymentRequestBuilder {
 		this.threeDSReqPriorAuthTimestamp = threeDSReqPriorAuthTimestamp;
 		return this;
 	}
+	
+	public PaymentRequestBuilder setLibrary_version(String library_version) {
+		this.library_version = library_version;
+		return this;
+	}
+	
 
 	public PaymentRequest createPaymentRequest() throws IllegalArgumentException {
         PaymentRequest paymentRequest = new PaymentRequest(mid, subMerchantId, posId, transactionChannel, token, orderId, orderDescription, orderDetailDescription, amount, currency, vatAmount, vatRate, consumerCountry, consumerLanguage, returnUrl, timeLimit, additionalParameters, paymentMethodId, storeFlag, billingAddressLine1, billingAddressLine2, billingCity, billingStateProvince, billingZipCode, billingCountryCode, billingEmailAddress, billingPhone, billingMobilePhone, billingLastName, billingFirstName, billingFullName, shippingAddressLine1, shippingAddressLine2, shippingCity, shippingStateProvince, shippingZipCode, shippingCountryCode, shippingEmailAddress, shippingPhone, dueDate, paymentPlanCode, billingCompanyName, billingBuyerVATNumber, billingBuyerType, shippingCompanyName, shippingAddressLine3, billingAddressLine3, birthDate, companyResponsibleBirthDate, companyResponsibleFullName, companyResponsibleVATNumber, recurringType, posDesc, shippingMobilePhone, shippingLastName, shippingFirstName, shippingFullName, billingSSN, companyTaxId, gender, billingStreetName, billingHouseNumber, billingHouseExtension, shippingStreetName, shippingHouseNumber, shippingHouseExtension, shippingCareOf, lineItems, authorizationType, authenticationRedirect, autoCapture, timestamp, storedCredentialIndicator, storedCredentialReason, schemeReferenceId,
-        		purchaseInstallment, md, acctID, acctType, addrMatch, messageCategory, purchaseDate, transType, threeRIInd, threeDSRequestorAuthenticationInd, threeDSRequestorChallengeInd, challengeWindowSize, shipIndicator, deliveryTimeframe, deliveryEmailAddress, reorderItemsInd, preOrderPurchaseInd, preOrderDate, giftCardAmount, giftCardCurr, giftCardCount, chAccAgeInd, chAccDate, chAccChangeInd, chAccChange, chAccPwChangeInd, chAccPwChange, nbPurchaseAccount, provisionAttemptsDay, txnActivityDay, txnActivityYear, shipAddressUsageInd, shipAddressUsage, shipNameIndicator, paymentAccInd, paymentAccAge, suspiciousAccActivity, threeDSReqAuthMethod, threeDSReqAuthTimestamp, threeDSReqPriorRef, threeDSReqPriorAuthMethod, threeDSReqPriorAuthTimestamp);
+        		purchaseInstallment, md, acctID, acctType, addrMatch, messageCategory, purchaseDate, transType, threeRIInd, threeDSRequestorAuthenticationInd, threeDSRequestorChallengeInd, challengeWindowSize, shipIndicator, deliveryTimeframe, deliveryEmailAddress, reorderItemsInd, preOrderPurchaseInd, preOrderDate, giftCardAmount, giftCardCurr, giftCardCount, chAccAgeInd, chAccDate, chAccChangeInd, chAccChange, chAccPwChangeInd, chAccPwChange, nbPurchaseAccount, provisionAttemptsDay, txnActivityDay, txnActivityYear, shipAddressUsageInd, shipAddressUsage, shipNameIndicator, paymentAccInd, paymentAccAge, suspiciousAccActivity, threeDSReqAuthMethod, threeDSReqAuthTimestamp, threeDSReqPriorRef, threeDSReqPriorAuthMethod, threeDSReqPriorAuthTimestamp, library_version);
 
         //FIXME: This creates an unnecessary nvp. Needed for validation purposes only
         ParameterAnnotationHelper.mapObjectToNvp(paymentRequest);
