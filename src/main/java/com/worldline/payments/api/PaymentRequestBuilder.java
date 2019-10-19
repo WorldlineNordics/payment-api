@@ -716,8 +716,8 @@ public class PaymentRequestBuilder {
 		return this;
 	}
 	
-	public PaymentRequestBuilder setLibrary_version(String library_version) {
-		this.library_version = library_version;
+	public PaymentRequestBuilder setLibrary_version() {
+		this.library_version = PaymentRequestBuilder.class.getPackage().getImplementationVersion();
 		return this;
 	}
 	
