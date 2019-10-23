@@ -679,8 +679,8 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
 		super.threeDSReqPriorAuthTimestamp = threeDSReqPriorAuthTimestamp;
 	}
 
-	private void setLibrary_version(String library_version) {
-		super.library_version = library_version;
+	private void setLibrary_version(String libraryVersion) {
+		super.libraryVersion = libraryVersion;
 		
 	}
 }
