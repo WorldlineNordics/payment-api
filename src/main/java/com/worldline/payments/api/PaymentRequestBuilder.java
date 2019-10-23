@@ -724,7 +724,7 @@ public class PaymentRequestBuilder {
 
 	public String getLibraryVersion() {
 		this.libraryVersion = PaymentRequestBuilder.class.getPackage().getImplementationVersion();
-		if(this.libraryVersion == null) {
+		if(this.libraryVersion==null) {
 			libraryVersion = "";
 		}
 		return libraryVersion;
