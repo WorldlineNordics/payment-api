@@ -129,7 +129,7 @@ public class PaymentRequestBuilder {
     private String threeDSReqPriorRef;
     private String threeDSReqPriorAuthMethod;
     private String threeDSReqPriorAuthTimestamp;
-    private String libraryVersion;
+    private String libraryVersion = PaymentRequestBuilder.class.getPackage().getImplementationVersion();
 
     public PaymentRequestBuilder setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
@@ -717,7 +717,7 @@ public class PaymentRequestBuilder {
 	}
 	
 	public PaymentRequestBuilder setLibraryVersion() {
-		this.libraryVersion = PaymentRequestBuilder.class.getPackage().getImplementationVersion();
+		//this.libraryVersion = PaymentRequestBuilder.class.getPackage().getImplementationVersion();
 		return this;
 	}
 	
