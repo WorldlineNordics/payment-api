@@ -371,5 +371,8 @@ public abstract class AbstractPaymentPageRequest {
     
     @Parameter(shortName="ACP")
     protected String threeDSReqPriorAuthTimestamp;
+    
+    @Parameter(shortName="ACX")
+    protected String libraryVersion;
 
 }
