@@ -374,5 +374,8 @@ public abstract class AbstractPaymentPageRequest {
     
     @Parameter(shortName="ACX")
     protected String libraryVersion;
+    
+    @Parameter(shortName="ACY")
+    protected String sca;
 
 }
