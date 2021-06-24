@@ -86,7 +86,7 @@ public class CryptoUtils {
             throws CryptoException {
         Signature sig;
         try {
-            sig = Signature.getInstance("SHA1withRSA");
+            sig = Signature.getInstance("SHA256withRSA");
 
             sig.initSign(aPrivateKey);
         } catch (Exception e) {
@@ -293,7 +293,7 @@ public class CryptoUtils {
             byte[] aSignature) throws CryptoException {
         Signature sig;
         try {
-            sig = Signature.getInstance("SHA1withRSA");
+            sig = Signature.getInstance("SHA256withRSA");
             sig.initVerify(aKey);
         } catch (Exception e) {
             throw new CryptoException("Failed to set up signature!", e);
