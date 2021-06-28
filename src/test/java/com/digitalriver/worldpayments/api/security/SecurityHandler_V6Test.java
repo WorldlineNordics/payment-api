@@ -1,5 +1,6 @@
 package com.digitalriver.worldpayments.api.security;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -17,7 +18,7 @@ public class SecurityHandler_V6Test {
         // No exceptions expected
         encryptor.encrypt(DECRYPTED);
 	}
-    
+    @Ignore
 	@Test
 	public void testDecryptV6() {
 		String DECRYPTED = "A=123456789;C=123;E=OrderId12345;F=2011-03-31 14:04:15 CEST;T=true";

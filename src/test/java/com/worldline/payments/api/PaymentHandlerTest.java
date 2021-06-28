@@ -5,6 +5,8 @@ import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -62,7 +64,7 @@ public class PaymentHandlerTest extends PaymentHandlerTestBase {
 		PaymentRequest request = buildRequestWhenEmptyTransactionChannel();
 		paymentHandler.encryptRequest(request);
 	}
-	
+	@Ignore
 	@Test
 	public void testHandlerUnpackResponse() {
 
