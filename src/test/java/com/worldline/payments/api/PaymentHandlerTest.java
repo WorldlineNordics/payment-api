@@ -5,8 +5,6 @@ import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -64,16 +62,18 @@ public class PaymentHandlerTest extends PaymentHandlerTestBase {
 		PaymentRequest request = buildRequestWhenEmptyTransactionChannel();
 		paymentHandler.encryptRequest(request);
 	}
-	@Ignore
+	
 	@Test
 	public void testHandlerUnpackResponse() {
+		paymentHandler = new PaymentHandler(new JKSKeyHandlerV6("src/test/resources/new_merchant.jks", "merchant_ks", "1578446540", "drwp_cert"),
+				"https://nowhere-noendpoint:12345678", "https://nowhere-noendpoint:12345678/paymentOptions");
 
-		String responseString = "BgAAA-oAAAPsp8gylxPew0H0Vr7XLucnN3fsocwCFBN1rUW_9TROMrnXQWZe8Book1K7bdjbC3FfL1SeQicVieKVCh5J-OhrZgr3l-LWnTK8DzeGQmLYxDUKkRcsgrf3Z0_rE-NiVm43qOX7L59VjqVfr05OzHbNflECi6blnLNDgRzzav0TzB03kVO-kW0jyZdXGwgoXtMPFvZNse99Vjn_yaW98dLCg-lvYbm5ff4W3NS6fW11Dy3LeFvdsZ0_cw0zd8t6lynP4sRl4KTSlmwI68DLm9PjfO0wbrbgDhHx49TDlFyqk5F8kS6lk_if9-HTQd4S2LIQdJaazBr-RXAnzHTR7LdVyLD2oxbjfwiRUcMNZm7HyANiBpruMDcIjTIHA665diNAd9Y4Z3Lx--FRPKS_fmmBgg8UcraNlGBln_IztnBhdErz1PTl_qkw4F6jG3fQrOZWIismg58NnaxJmue6LRUFOIU_2KZ4k3ub1uV_0jyCV4pSD-S8fPidNB91q7UB2UOHoNAhWNwLS8PJ-nCWpAQtImtGWxl9mJUxWGLq6cOTHbYf9XRLmkmewvI50nqdswC0wnLfe9a71MkvsLecIPxRqsI4MVDH_bQx3_j0Q_-0Ub4A6bfAQzgIDX41koWbA9XR6p4CNYHZhHpqIC5lAb6WT7w4mfj4OGJoP5pRAonpb8A1iVdn4O1SwTfJ18aHisDyZeuc_WC1YEDtJEUPWPRgWxdC8NLoamqNWq446KBxJaV6hQyjWOu922j4hbMtGBHjduynrRtr2NR5QVMdbuYzFCQfiOBcIu3j70-UpVq62cUCttRzt_RjAYnfBmb7DTq1Sjkw74W94Y9VoiCfa0Ibei865wwULQn0qxh7iNsskr1epUI7pMizNBfB6fjWLm3Ny47D5ZR7ite1YXPgtijH3LaJZ76R47Eud82LIzXVOCykKRZTbhurtMS8crJR9pOoTmk826W44pJFrUrRRLClsKe6Agf2ZHdMzUCMmnIFvQY\u003d";
+		String responseString = "BhtQvMQAAAPsQgLCOHUvE9gK8Gm5kbDGHa1akPP1GKlPA405eVdeAqIgIkhLstItnHwfZesjQKkBhKNxiz0noO9O1WG6z1tNV99KksLOM6NMk_isMJxRl7ZVsP7PHJKeuoahuzWln41LvRVUcC0siE7gBHPB6RA1ZrVU3EKJSvAVxfW2TcdSiI-SZtbUtEhAp8nocUv9hdrbVo37oswcw6FpQQ4Mfbp6ngy9IFp0JmvktMHoVTTUqe-AIbTtf6q18rcgYPCjAo6MHqpDta1oh-kkW0mUPL0ZRSeeS2gr8lC4C1QosKQ2kXysPJK1cYwBCPSUu6fiyknVGh5_QFveMqPc3h6zbwGRxFCP6QY42FT9thi2jOZK0p8RWlwyhSLdyiD1krZxaxuxmx5tQq7N4YPlHBJaCrF7SmHrwdG4cISk4AtiKTv2H52eon_ia31RZ_qbhek5-DMbft7knPUc1CGrjdvfckHlfLa1V189SCYHbZJHvQoYhcUTdM5bYQDlfpxjLipKcKe3K6ySFAaQyvB4rR4fuKMz3110zhxXblRqbn5acYip5XmkzdRU7NQcN2Bzt_57ygC9LqqK4rc316TpJmea-HnrKLM0zA_lGhnb2R8r11k0ph-6Q6FR8cqKYb10otgiTmKrGSlrl30RpAjYF1FMPWTqlNw_-TbTulHul2Y3FMQuOSsuZquFK-Ay53R-wXzYp-FESnnJTZ1VMH6Vglu5S61BooYZiZdBWKOc9FmvX9BaHsD9xpJQ-k9SEjVksBO8mUXnKZ8bFDj7ewGYVmbkvK_S_WMjiOelgzFnkbvGTQyoDUkIkQ1e5LaEnKPi-Zp2k5V8o-bARKvt4ojrjOLoi82x69_uxYnzsGvfUFQf0MXpejhtSg-85gP-pK1aaZn0hLy7JpfYcpYyFxZUw-Y4Vy-0BUyltIzVI7pI81ygTENuxSsBPQYahg3qD8AoGKJFnN6bUZiQ4vpVhGDCgQHmjbiXufpEgDOtweFJDWWGkLT22WyhUVmaETnNYmzBhERHaFO4";
 		PaymentResponse response = paymentHandler.unpackResponse(responseString);
-		assertEquals(1640156216, response.getMid().longValue());
-		assertEquals("Example_order_1516617784095", response.getOrderId());
+		assertEquals(1578446540, response.getMid().longValue());
+		assertEquals("Example_order_1625225639101", response.getOrderId());
 		assertEquals("Visa", response.getPaymentMethodName());
-		assertEquals(5022637728L, response.getTransaction().getTransactionId().longValue());
+		assertEquals(10258640519L, response.getTransaction().getTransactionId().longValue());
 	}
 
 	@Test
