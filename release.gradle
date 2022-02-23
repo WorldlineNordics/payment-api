@@ -1,0 +1,89 @@
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+    apply plugin: 'signing'
+
+    sourceCompatibility = 1.8
+
+    group = 'com.worldline.payments'
+	archivesBaseName = 'payment-api'
+	version = currentVersion
+
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        archiveClassifier.set("sources")
+        from sourceSets.main.allSource
+    }
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        archiveClassifier.set("javadoc")
+        from javadoc.destinationDir
+    }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+                artifact sourcesJar
+                artifact javadocJar
+                pom {
+                    name = 'PaymentAPI'
+                    description = 'Worldline Online Payments Acceptance Payment API'
+                    url = 'https://github.com/WorldlineNordics/payment-api.git'
+                    licenses {
+                        license {
+                            name = 'MIT'
+                            url = 'https://opensource.org/licenses/MIT'
+                            distribution = 'repo'
+                        }
+                    }
+                    developers {
+                        developer {
+                            name = 'Development Admin'
+                            email = 'dev-admin@worldlinesweden.com'
+                        }
+                    }
+                    scm {
+                        url = 'https://github.com/WorldlineNordics/payment-api'
+                        connection = 'scm:git:git://github.com/WorldlineNordics/payment-api.git'
+                        developerConnection = 'scm:git:ssh://git@github.com/WorldlineNordics/payment-api.git'
+                    }
+                    organization {
+                        name = 'Worldline One Commerce Hub'
+                        url = 'https://developer.payments.worldline.com/'
+                    }
+                    issueManagement {
+                        system = 'GitHub'
+                        url = 'https://github.com/WorldlineNordics/payment-api/issues'
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+                credentials {
+                    username sonatypeUsername
+                    password sonatypePassword
+                }
+            }
+        }
+    }
+
+    signing {
+        sign publishing.publications.maven
+    }
+
+    javadoc {
+        if (JavaVersion.current().isJava9Compatible()) {
+            options.addBooleanOption('html5', true)
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}
