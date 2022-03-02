@@ -10,5 +10,5 @@ null
 ### Resolved issues (2) 
 |Key|Summary| 
 |---|---|
-|[PAYAPIJAVA-52](https://jira.int.payments.worldline.com/browse/PAYAPIJAVA-52)|Remove some recently added 3DS2.0 fields from PaymentAPI until supported|
-|[PAYAPIJAVA-51](https://jira.int.payments.worldline.com/browse/PAYAPIJAVA-51)|Update the PaymentPageResponse class for 3DS2.0|
+|[PAYAPIJAVA-52]|Remove some recently added 3DS2.0 fields from PaymentAPI until supported|
+|[PAYAPIJAVA-51]|Update the PaymentPageResponse class for 3DS2.0|
