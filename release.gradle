@@ -25,9 +25,14 @@ allprojects {
                 from components.java
                 artifact sourcesJar
                 artifact javadocJar
+                
+                groupId = group
+                artifactId = archivesBaseName
+                version = version
+            
                 pom {
-                    name = 'PaymentAPI'
-                    description = 'Worldline Online Payments Acceptance Payment API'
+                    name = 'Payment API'
+                    description = 'Payment API'
                     url = 'https://github.com/WorldlineNordics/payment-api.git'
                     licenses {
                         license {
