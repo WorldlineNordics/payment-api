@@ -23,13 +23,13 @@ public class AirlineDataHandler {
 		this.adsUrl = adsUrl;
 	}
 
-	public HttpPost createHttpRequest(AdditionalData additionalData, String token) throws Exception {
-		String endpoint = adsUrl + "/merchants/" + additionalData.getMid() + "/orders/" + additionalData.getOrderId() + "/additionaldata";
+	public HttpPost createHttpRequest(AdditionalData additionalData, String mid, String orderId, String token) throws Exception {
+		String endpoint = adsUrl + "/merchants/" + mid + "/orders/" + orderId + "/additionaldata";
 		final HttpPost httpPost = new HttpPost(endpoint);
 		configureHttpRequest(token, httpPost);
 		HttpEntity entity = new StringEntity(gson.toJson(additionalData));
 		httpPost.setEntity(entity);
-		return httpPost;			
+		return httpPost;	
 	}
 
 	private void configureHttpRequest(String token, final HttpRequestBase httpRequest) {
