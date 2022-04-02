@@ -1,5 +1,6 @@
 package com.digitalriver.worldpayments.api.airlinedata;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -21,10 +22,10 @@ public class AirlineData {
     public Boolean conjunctionTicketIndicator;
     public String conjunctionTicketNumber;
     public Boolean restrictedTicket;
-    public Double totalFare;
-    public Double totalFee;	
+    public BigDecimal totalFare;
+    public BigDecimal totalFee;	
     public String exchangeTicketNumber;
-    public Double exchangeTicketAmount;
+    public BigDecimal exchangeTicketAmount;
     public String controlId;
     public Integer numberOfAirSegments;
     public List<AirlineLeg> airlineLegs;
@@ -164,19 +165,19 @@ public class AirlineData {
 		this.restrictedTicket = restrictedTicket;
 	}
 
-	public Double getTotalFare() {
+	public BigDecimal getTotalFare() {
 		return totalFare;
 	}
 
-	public void setTotalFare(Double totalFare) {
+	public void setTotalFare(BigDecimal totalFare) {
 		this.totalFare = totalFare;
 	}
 
-	public Double getTotalFee() {
+	public BigDecimal getTotalFee() {
 		return totalFee;
 	}
 
-	public void setTotalFee(Double totalFee) {
+	public void setTotalFee(BigDecimal totalFee) {
 		this.totalFee = totalFee;
 	}
 
@@ -188,11 +189,11 @@ public class AirlineData {
 		this.exchangeTicketNumber = exchangeTicketNumber;
 	}
 
-	public Double getExchangeTicketAmount() {
+	public BigDecimal getExchangeTicketAmount() {
 		return exchangeTicketAmount;
 	}
 
-	public void setExchangeTicketAmount(Double exchangeTicketAmount) {
+	public void setExchangeTicketAmount(BigDecimal exchangeTicketAmount) {
 		this.exchangeTicketAmount = exchangeTicketAmount;
 	}
 

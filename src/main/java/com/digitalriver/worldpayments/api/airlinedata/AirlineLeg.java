@@ -1,5 +1,6 @@
 package com.digitalriver.worldpayments.api.airlinedata;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class AirlineLeg {
@@ -16,9 +17,9 @@ public class AirlineLeg {
     public String classOfTravel;
     public String stopoverCode;
     public String flightNumber;
-    public Double fare;
+    public BigDecimal fare;
     public String originalTicketNumber;
-    public Double departTax;
+    public BigDecimal departTax;
 	
 	
 	public AirlineLeg() {
@@ -122,11 +123,11 @@ public class AirlineLeg {
 		this.flightNumber = flightNumber;
 	}
 
-	public Double getFare() {
+	public BigDecimal getFare() {
 		return fare;
 	}
 
-	public void setFare(Double fare) {
+	public void setFare(BigDecimal fare) {
 		this.fare = fare;
 	}
 
@@ -138,11 +139,11 @@ public class AirlineLeg {
 		this.originalTicketNumber = originalTicketNumber;
 	}
 
-	public Double getDepartTax() {
+	public BigDecimal getDepartTax() {
 		return departTax;
 	}
 
-	public void setDepartTax(Double departTax) {
+	public void setDepartTax(BigDecimal departTax) {
 		this.departTax = departTax;
 	}
 
