@@ -9,7 +9,6 @@ public class AdditionalData {
 	private List<AirlineData> airlineData;
 	
 	public AdditionalData(String mid, String orderId, List<AirlineData> airlineDataList) {
-		super();
 		this.mid = mid;
 		this.orderId = orderId;
 		this.airlineData = airlineDataList;

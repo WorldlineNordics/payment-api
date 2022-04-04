@@ -33,7 +33,7 @@ public class AirlineData {
     
     
     public AirlineData() {
-		super();
+    	//Default-constructor
 	}
     
     

@@ -23,7 +23,7 @@ public class AirlineLeg {
 	
 	
 	public AirlineLeg() {
-		super();
+		//Default-constructor
 	}
 	
 	
