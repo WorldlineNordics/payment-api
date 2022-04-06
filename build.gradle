@@ -2,7 +2,6 @@ apply plugin: 'drwp-common-java8'
 apply plugin: 'drwp-lib'
 apply plugin: 'drwp-release'
 
-
 repositories {
     maven { url "${artifactory_url}/all-libs" }
 }
