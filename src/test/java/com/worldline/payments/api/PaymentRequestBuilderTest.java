@@ -46,7 +46,7 @@ public class PaymentRequestBuilderTest {
     public void setWrongMid() {
         try {
             new PaymentRequestBuilder()
-                    .setMid(123456L)
+                    .setMid(12345L)
                     .setOrderId("general-test")
                     .setConsumerCountry("UK")
                     .setConsumerLanguage("en")

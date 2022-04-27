@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public abstract class AbstractPaymentPageRequest {
 
-	@Parameter(shortName = "A", required = true, regEx = "[0-9]{8,11}")
+	@Parameter(shortName = "A", required = true, regEx = "[0-9]{6,11}")
 	protected Long mid;
 
 	@Parameter(shortName = "B")
