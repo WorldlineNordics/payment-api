@@ -28,6 +28,7 @@ public class AirlineData {
     public BigDecimal exchangeTicketAmount;
     public String controlId;
     public Integer numberOfAirSegments;
+    public String pnr;
     public List<AirlineLeg> airlineLegs;
     public String computerizedReservationSystem;
     
@@ -220,6 +221,14 @@ public class AirlineData {
 	public void setComputerizedReservationSystem(String computerizedReservationSystem) {
 		this.computerizedReservationSystem = computerizedReservationSystem;
 	}
+	
+	public String getPnr() {
+		return pnr;
+	}
+
+	public void setPnr(String pnr) {
+		this.pnr = pnr;
+	}
 
 	public List<AirlineLeg> getAirlineLegs() {
 		return airlineLegs;
@@ -242,8 +251,9 @@ public class AirlineData {
 				+ ", conjunctionTicketNumber=" + conjunctionTicketNumber + ", restrictedTicket=" + restrictedTicket
 				+ ", totalFare=" + totalFare + ", totalFee=" + totalFee + ", exchangeTicketNumber="
 				+ exchangeTicketNumber + ", exchangeTicketAmount=" + exchangeTicketAmount + ", controlId=" + controlId
-				+ ", numberOfAirSegments=" + numberOfAirSegments + ", airlineLegs=" + airlineLegs
+				+ ", numberOfAirSegments=" + numberOfAirSegments + ", pnr=" + pnr + ", airlineLegs=" + airlineLegs
 				+ ", computerizedReservationSystem=" + computerizedReservationSystem + "]";
 	}
-	
+
+
 }

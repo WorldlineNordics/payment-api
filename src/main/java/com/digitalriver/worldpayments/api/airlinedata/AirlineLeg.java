@@ -20,6 +20,7 @@ public class AirlineLeg {
     public BigDecimal fare;
     public String originalTicketNumber;
     public BigDecimal departTax;
+    public Integer timeToDeparture; 
 	
 	
 	public AirlineLeg() {
@@ -147,6 +148,13 @@ public class AirlineLeg {
 		this.departTax = departTax;
 	}
 
+	public Integer getTimeToDeparture() {
+		return timeToDeparture;
+	}
+
+	public void setTimeToDeparture(Integer timeToDeparture) {
+		this.timeToDeparture = timeToDeparture;
+	}
 
 
 	@Override
@@ -157,7 +165,7 @@ public class AirlineLeg {
 				+ ", arrivalDate=" + arrivalDate + ", carrierCode=" + carrierCode + ", fareBasisCode=" + fareBasisCode
 				+ ", classOfTravel=" + classOfTravel + ", stopoverCode=" + stopoverCode + ", flightNumber="
 				+ flightNumber + ", fare=" + fare + ", originalTicketNumber=" + originalTicketNumber + ", departTax="
-				+ departTax + "]";
+				+ departTax + ", timeToDeparture=" + timeToDeparture + "]";
 	}
 
 }
