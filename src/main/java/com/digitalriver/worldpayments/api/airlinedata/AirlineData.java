@@ -1,7 +1,6 @@
 package com.digitalriver.worldpayments.api.airlinedata;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 public class AirlineData {
@@ -16,7 +15,7 @@ public class AirlineData {
     public String iataNumericCode;
     public String ticketingCarrierName;
     public String ticketIssueAddress;
-    public Date ticketIssueDate;
+    public String ticketIssueDate;
     public Integer numberInParty;
     public Boolean electronicTicketIndicator;
     public Boolean conjunctionTicketIndicator;
@@ -118,11 +117,11 @@ public class AirlineData {
 		this.ticketIssueAddress = ticketIssueAddress;
 	}
 
-	public Date getTicketIssueDate() {
+	public String getTicketIssueDate() {
 		return ticketIssueDate;
 	}
 
-	public void setTicketIssueDate(Date ticketIssueDate) {
+	public void setTicketIssueDate(String ticketIssueDate) {
 		this.ticketIssueDate = ticketIssueDate;
 	}
 
