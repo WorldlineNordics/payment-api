@@ -1,17 +1,16 @@
 package com.digitalriver.worldpayments.api.airlinedata;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 public class AirlineLeg {
 	
     public String segmentNumber;
     public String departureAirport;
     public String departureLocationCode;
-    public Date departureDate;
+    public String departureDate;
     public String destinationAirport;
     public String arrivalLocationCode;
-    public Date arrivalDate;
+    public String arrivalDate;
     public String carrierCode;
     public String fareBasisCode;
     public String classOfTravel;
@@ -20,6 +19,7 @@ public class AirlineLeg {
     public BigDecimal fare;
     public String originalTicketNumber;
     public BigDecimal departTax;
+    public Integer timeToDeparture; 
 	
 	
 	public AirlineLeg() {
@@ -51,11 +51,11 @@ public class AirlineLeg {
 		this.departureLocationCode = departureLocationCode;
 	}
 
-	public Date getDepartureDate() {
+	public String getDepartureDate() {
 		return departureDate;
 	}
 
-	public void setDepartureDate(Date departureDate) {
+	public void setDepartureDate(String departureDate) {
 		this.departureDate = departureDate;
 	}
 
@@ -75,11 +75,11 @@ public class AirlineLeg {
 		this.arrivalLocationCode = arrivalLocationCode;
 	}
 
-	public Date getArrivalDate() {
+	public String getArrivalDate() {
 		return arrivalDate;
 	}
 
-	public void setArrivalDate(Date arrivalDate) {
+	public void setArrivalDate(String arrivalDate) {
 		this.arrivalDate = arrivalDate;
 	}
 
@@ -147,6 +147,13 @@ public class AirlineLeg {
 		this.departTax = departTax;
 	}
 
+	public Integer getTimeToDeparture() {
+		return timeToDeparture;
+	}
+
+	public void setTimeToDeparture(Integer timeToDeparture) {
+		this.timeToDeparture = timeToDeparture;
+	}
 
 
 	@Override
@@ -157,7 +164,7 @@ public class AirlineLeg {
 				+ ", arrivalDate=" + arrivalDate + ", carrierCode=" + carrierCode + ", fareBasisCode=" + fareBasisCode
 				+ ", classOfTravel=" + classOfTravel + ", stopoverCode=" + stopoverCode + ", flightNumber="
 				+ flightNumber + ", fare=" + fare + ", originalTicketNumber=" + originalTicketNumber + ", departTax="
-				+ departTax + "]";
+				+ departTax + ", timeToDeparture=" + timeToDeparture + "]";
 	}
 
 }

@@ -1,7 +1,6 @@
 package com.digitalriver.worldpayments.api.airlinedata;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 public class AirlineData {
@@ -16,7 +15,7 @@ public class AirlineData {
     public String iataNumericCode;
     public String ticketingCarrierName;
     public String ticketIssueAddress;
-    public Date ticketIssueDate;
+    public String ticketIssueDate;
     public Integer numberInParty;
     public Boolean electronicTicketIndicator;
     public Boolean conjunctionTicketIndicator;
@@ -28,6 +27,7 @@ public class AirlineData {
     public BigDecimal exchangeTicketAmount;
     public String controlId;
     public Integer numberOfAirSegments;
+    public String pnr;
     public List<AirlineLeg> airlineLegs;
     public String computerizedReservationSystem;
     
@@ -117,11 +117,11 @@ public class AirlineData {
 		this.ticketIssueAddress = ticketIssueAddress;
 	}
 
-	public Date getTicketIssueDate() {
+	public String getTicketIssueDate() {
 		return ticketIssueDate;
 	}
 
-	public void setTicketIssueDate(Date ticketIssueDate) {
+	public void setTicketIssueDate(String ticketIssueDate) {
 		this.ticketIssueDate = ticketIssueDate;
 	}
 
@@ -220,6 +220,14 @@ public class AirlineData {
 	public void setComputerizedReservationSystem(String computerizedReservationSystem) {
 		this.computerizedReservationSystem = computerizedReservationSystem;
 	}
+	
+	public String getPnr() {
+		return pnr;
+	}
+
+	public void setPnr(String pnr) {
+		this.pnr = pnr;
+	}
 
 	public List<AirlineLeg> getAirlineLegs() {
 		return airlineLegs;
@@ -242,8 +250,9 @@ public class AirlineData {
 				+ ", conjunctionTicketNumber=" + conjunctionTicketNumber + ", restrictedTicket=" + restrictedTicket
 				+ ", totalFare=" + totalFare + ", totalFee=" + totalFee + ", exchangeTicketNumber="
 				+ exchangeTicketNumber + ", exchangeTicketAmount=" + exchangeTicketAmount + ", controlId=" + controlId
-				+ ", numberOfAirSegments=" + numberOfAirSegments + ", airlineLegs=" + airlineLegs
+				+ ", numberOfAirSegments=" + numberOfAirSegments + ", pnr=" + pnr + ", airlineLegs=" + airlineLegs
 				+ ", computerizedReservationSystem=" + computerizedReservationSystem + "]";
 	}
-	
+
+
 }
