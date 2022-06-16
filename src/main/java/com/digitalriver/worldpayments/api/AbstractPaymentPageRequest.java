@@ -382,5 +382,5 @@ public abstract class AbstractPaymentPageRequest {
 	protected String paymentAuthenticationLevel;
     
     @Parameter(shortName = "ADB")
-	protected String isShorterResponse;
+	protected boolean isShorterResponse;
 }
