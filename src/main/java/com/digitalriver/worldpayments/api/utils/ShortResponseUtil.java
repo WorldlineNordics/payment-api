@@ -4,16 +4,22 @@ import java.security.PublicKey;
 import java.security.Signature;
 import java.util.Base64;
 
+import com.digitalriver.worldpayments.api.utils.CryptoUtils.CryptoException;
+
 public class ShortResponseUtil {
 
-//	private Base64Utils iBase64Encoder;
+	private Base64Utils iBase64Encoder;
 	
-	public void decodeWithBase64(String PPSResponse, PublicKey publicKey, Signature sign)
+	public void decodeWithBase64(String PPSResponse, PublicKey publicKey, byte[] sign) throws CryptoException
 	{
 //		iBase64Encoder.decode(PPSResponse);
 		byte[] response = PPSResponse.getBytes();
-		Base64.getDecoder().decode(response);
+		byte[] decodedResponse = Base64.getDecoder().decode(response);
 		
-//		CryptoUtils.verifySignature(publicKey, response, sign);
+		try {
+			CryptoUtils.verifySignature(publicKey, response, sign);
+		} catch (CryptoException e) {
+			throw e;
+		}
 	}
 }
