@@ -381,6 +381,6 @@ public abstract class AbstractPaymentPageRequest {
     @Parameter(shortName = "ADA", regEx = "(Proceed when SCA Successful|Proceed when SCA Attempted|Proceed without SCA)")
 	protected String paymentAuthenticationLevel;
     
-    @Parameter(shortName = "ADB")
+    @Parameter(shortName = "ADC")
 	protected boolean isShorterResponse;
 }
