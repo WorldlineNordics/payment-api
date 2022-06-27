@@ -37,6 +37,11 @@ public class PaymentPageShorterResponse {
 		this.transactionType = transactionType;
 	}
 	
-	
+
+	@Override
+	public String toString() {
+		return "PaymentPageShorterResponse [orderId=" + orderId + ", transactionStatus=" + transactionStatus
+				+ ", transactionType=" + transactionType + "]";
+	}
 	
 }
