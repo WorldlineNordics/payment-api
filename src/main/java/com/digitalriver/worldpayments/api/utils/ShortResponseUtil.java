@@ -1,6 +1,7 @@
 package com.digitalriver.worldpayments.api.utils;
 
 
+import java.math.BigInteger;
 import java.security.PublicKey;
 import java.util.Map;
 
@@ -19,6 +20,17 @@ public class ShortResponseUtil {
     private String iBaseUrl;
     public static final byte RSA_2048_AES_128_ENC_MODE_V6 = 6;
     private static final byte RSA_1024_AES_128_ENC_MODE_V5 = 5;
+    private JKSKeyHandlerV6 iKeyHandlerV6;
+    private KeyHandler iKeyHandler;
+    
+    public ShortResponseUtil(JKSKeyHandlerV6 aKeyHandlerV6, KeyHandler iKeyHandlerV5) {
+		iKeyHandlerV6 = aKeyHandlerV6;
+		iBase64Encoder = new Base64Utils();
+	}
+    public ShortResponseUtil(KeyHandler aKeyHandler) {
+		KeyHandler iKeyHandler = aKeyHandler;
+		Base64Utils iEncoder = new Base64Utils();
+	}
     
     private Base64Utils iBase64Encoder;
 
@@ -32,7 +44,7 @@ public class ShortResponseUtil {
 	}
     
     
-	public void decodeWithBase64(String PPSResponse) throws CryptoException
+	public PaymentPageShorterResponse decodeWithBase64(String PPSResponse) throws CryptoException
 	{
 		byte[] envelope;
 		byte[] netgiroCertSerialNo;
@@ -41,39 +53,42 @@ public class ShortResponseUtil {
 		byte[] netgiroCertFingerprint;
 		envelope = iBase64Encoder.decode(PPSResponse);
 		PublicKey drwpPublicKey;
-//		switch (envelope[0]) {
-//		
-//		case RSA_2048_AES_128_ENC_MODE_V6:
-//		cipherText = new byte[envelope.length - 261];
-//		System.arraycopy(envelope, 1, netgiroCertSerialNo, 0, 4);
-//		System.arraycopy(envelope, 5, signature, 0, 256);
-//		System.arraycopy(envelope, 261, cipherText, 0, cipherText.length);
-//		
-//		try {
-//			if (!CryptoUtils.verifySignature(drwpPublicKey, cipherText, signature)) {
-//				throw new SecurityHandlerException("Signature does not match!");
-//			}
-//		} catch (CryptoException e) {
-//			throw new SecurityHandlerException("Failed to verify signature!", e);
-//		}
-//		
-//		case RSA_1024_AES_128_ENC_MODE_V5:
-//			cipherText = new byte[envelope.length - 273];
-//			System.arraycopy(envelope, 1, netgiroCertFingerprint, 0, 16);
-//			System.arraycopy(envelope, 17, signature, 0, 256);
-//			System.arraycopy(envelope, 273, cipherText, 0, cipherText.length);
+		switch (envelope[0]) {
 		
-//		try {
-//			if (!CryptoUtils.verifySignature(verifySignKey, cipherText,
-//					signature)) {
-//				throw new SecurityHandlerException("Signature does not match!");
-//			}
-//		} catch (CryptoException e) {
-//			throw new SecurityHandlerException("Failed to verify signature!", e);
-//		}
-//		}
+		case RSA_2048_AES_128_ENC_MODE_V6:
+			cipherText = new byte[envelope.length - 261];
+			System.arraycopy(envelope, 1, netgiroCertSerialNo, 0, 4);
+			System.arraycopy(envelope, 5, signature, 0, 256);
+			System.arraycopy(envelope, 261, cipherText, 0, cipherText.length);
+			drwpPublicKey = iKeyHandler.getDrwpPublicKey(new BigInteger(netgiroCertSerialNo).longValue());
 		
-	//	return createShorterPaymentResponse(nvpMap);
+		try {
+			if (!CryptoUtils.verifySignature(drwpPublicKey, cipherText, signature)) {
+				throw new SecurityHandlerException("Signature does not match!");
+			}
+		} catch (CryptoException e) {
+			throw new SecurityHandlerException("Failed to verify signature!", e);
+		}
+		
+		case RSA_1024_AES_128_ENC_MODE_V5:
+			cipherText = new byte[envelope.length - 273];
+			System.arraycopy(envelope, 1, netgiroCertFingerprint, 0, 16);
+			System.arraycopy(envelope, 17, signature, 0, 256);
+			System.arraycopy(envelope, 273, cipherText, 0, cipherText.length);
+			verifySignKey = iKeyHandler.getPublicKey(netgiroCertFingerprint);
+		try {
+			if (!CryptoUtils.verifySignature(verifySignKey, cipherText,
+					signature)) {
+				throw new SecurityHandlerException("Signature does not match!");
+			}
+		} catch (CryptoException e) {
+			throw new SecurityHandlerException("Failed to verify signature!", e);
+		}
+		}
+		
+//		Map<String, String> nvpMap = ParseUtil.parseWithEscape(envelope.toString(),
+//	                '=', ';');
+//		return createShorterPaymentResponse(nvpMap);
 	}
 	
 	private static PaymentPageShorterResponse createShorterPaymentResponse(final Map<String, String> nvp) {
