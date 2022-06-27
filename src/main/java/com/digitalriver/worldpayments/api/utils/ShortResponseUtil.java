@@ -49,30 +49,24 @@ public class ShortResponseUtil {
 		}
 		
 		try {
-			plainText = CryptoUtils.unzip(cipherText);
-		} catch (CryptoException e) {
-			throw new SecurityHandlerException(
-					"Failed to unzip plaintext!", e);
-		}
-		
-		try {
-			return new String(plainText, ENCODING_UTF_8);
+			return new String(cipherText, ENCODING_UTF_8);
 		} catch (UnsupportedEncodingException e) {
 			// Should never happen
 			throw new SecurityHandlerException(
 					"Failed to convert result to UTF-8", e);
 		}
 		
-//		Map<String, String> nvpMap = ParseUtil.parseWithEscape(envelope.toString(),
-//	                '=', ';');
+		
 //		return createShorterPaymentResponse(nvpMap);
 	}
 	
-	private static PaymentPageShorterResponse createShorterPaymentResponse(final Map<String, String> nvp) {
+	private static PaymentPageShorterResponse createShorterPaymentResponse(String decodedResponse) {
 
+		Map<String, String> nvpMap = ParseUtil.parseWithEscape(decodedResponse, '=', ';');
+		
 		PaymentPageShorterResponse ppShorterResponse = new PaymentPageShorterResponse();
         try {
-            ParameterAnnotationHelper.mapNvpToObject(ppShorterResponse, nvp);
+            ParameterAnnotationHelper.mapNvpToObject(ppShorterResponse, nvpMap);
         } catch (Exception e) {
             throw new IllegalArgumentException("Contact Worldline support",
                     e);
