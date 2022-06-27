@@ -28,12 +28,12 @@ public class ShortResponseUtil {
 		byte[] envelope;
 		byte[] netgiroCertSerialNo = new byte[4];
 		byte[] signature = new byte[256];
-		byte[] cipherText;
 		envelope = iBase64Encoder.decode(PpsResponse);
+		byte[] plainText;
+		byte[] cipherText = new byte[envelope.length - 261];
 		PublicKey drwpPublicKey;
 		
 		if (envelope[0] == 6) {
-			cipherText = new byte[envelope.length - 261];
 			System.arraycopy(envelope, 1, netgiroCertSerialNo, 0, 4);
 			System.arraycopy(envelope, 5, signature, 0, 256);
 			System.arraycopy(envelope, 261, cipherText, 0, cipherText.length);
@@ -49,7 +49,14 @@ public class ShortResponseUtil {
 		}
 		
 		try {
-			return new String(envelope, ENCODING_UTF_8);
+			plainText = CryptoUtils.unzip(cipherText);
+		} catch (CryptoException e) {
+			throw new SecurityHandlerException(
+					"Failed to unzip plaintext!", e);
+		}
+		
+		try {
+			return new String(plainText, ENCODING_UTF_8);
 		} catch (UnsupportedEncodingException e) {
 			// Should never happen
 			throw new SecurityHandlerException(
