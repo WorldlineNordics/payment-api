@@ -354,4 +354,9 @@ public class PaymentPageRequest extends AbstractPaymentPageRequest {
 	public void setSchemeReferenceId(String schemeReferenceId) {
 		super.schemeReferenceId = schemeReferenceId;
 	}
+	
+	public void setIsShorterResponse(boolean isShorterResponse) {
+		super.isShorterResponse = isShorterResponse;
+	}
+	
 }

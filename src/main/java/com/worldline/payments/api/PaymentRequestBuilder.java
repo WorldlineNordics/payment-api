@@ -132,7 +132,8 @@ public class PaymentRequestBuilder {
     private String libraryVersion;
     private String sca;
     private String paymentAuthenticationLevel = "Proceed when SCA Successful";
-
+    private boolean isShorterResponse = false;
+    
     public PaymentRequestBuilder setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
         return this;
@@ -727,6 +728,11 @@ public class PaymentRequestBuilder {
 		this.paymentAuthenticationLevel = paymentAuthenticationLevel;
 		return this;
 	}
+	
+	public PaymentRequestBuilder setIsShorterResponse(boolean isShorterResponse) {
+		this.isShorterResponse = isShorterResponse;
+		return this;
+	}
 
 	public String getLibraryVersion() {
 		this.libraryVersion = PaymentRequestBuilder.class.getPackage().getImplementationVersion();
@@ -738,7 +744,7 @@ public class PaymentRequestBuilder {
 
 	public PaymentRequest createPaymentRequest() throws IllegalArgumentException {
         PaymentRequest paymentRequest = new PaymentRequest(mid, subMerchantId, posId, transactionChannel, token, orderId, orderDescription, orderDetailDescription, amount, currency, vatAmount, vatRate, consumerCountry, consumerLanguage, returnUrl, timeLimit, additionalParameters, paymentMethodId, storeFlag, billingAddressLine1, billingAddressLine2, billingCity, billingStateProvince, billingZipCode, billingCountryCode, billingEmailAddress, billingPhone, billingMobilePhone, billingLastName, billingFirstName, billingFullName, shippingAddressLine1, shippingAddressLine2, shippingCity, shippingStateProvince, shippingZipCode, shippingCountryCode, shippingEmailAddress, shippingPhone, dueDate, paymentPlanCode, billingCompanyName, billingBuyerVATNumber, billingBuyerType, shippingCompanyName, shippingAddressLine3, billingAddressLine3, birthDate, companyResponsibleBirthDate, companyResponsibleFullName, companyResponsibleVATNumber, recurringType, posDesc, shippingMobilePhone, shippingLastName, shippingFirstName, shippingFullName, billingSSN, companyTaxId, gender, billingStreetName, billingHouseNumber, billingHouseExtension, shippingStreetName, shippingHouseNumber, shippingHouseExtension, shippingCareOf, lineItems, authorizationType, authenticationRedirect, autoCapture, timestamp, storedCredentialIndicator, storedCredentialReason, schemeReferenceId,
-        		purchaseInstallment, md, acctID, acctType, addrMatch, messageCategory, purchaseDate, transType, threeRIInd, threeDSRequestorAuthenticationInd, threeDSRequestorChallengeInd, challengeWindowSize, shipIndicator, deliveryTimeframe, deliveryEmailAddress, reorderItemsInd, preOrderPurchaseInd, preOrderDate, giftCardAmount, giftCardCurr, giftCardCount, chAccAgeInd, chAccDate, chAccChangeInd, chAccChange, chAccPwChangeInd, chAccPwChange, nbPurchaseAccount, provisionAttemptsDay, txnActivityDay, txnActivityYear, shipAddressUsageInd, shipAddressUsage, shipNameIndicator, paymentAccInd, paymentAccAge, suspiciousAccActivity, threeDSReqAuthMethod, threeDSReqAuthTimestamp, threeDSReqPriorRef, threeDSReqPriorAuthMethod, threeDSReqPriorAuthTimestamp, sca, getLibraryVersion(), paymentAuthenticationLevel);
+        		purchaseInstallment, md, acctID, acctType, addrMatch, messageCategory, purchaseDate, transType, threeRIInd, threeDSRequestorAuthenticationInd, threeDSRequestorChallengeInd, challengeWindowSize, shipIndicator, deliveryTimeframe, deliveryEmailAddress, reorderItemsInd, preOrderPurchaseInd, preOrderDate, giftCardAmount, giftCardCurr, giftCardCount, chAccAgeInd, chAccDate, chAccChangeInd, chAccChange, chAccPwChangeInd, chAccPwChange, nbPurchaseAccount, provisionAttemptsDay, txnActivityDay, txnActivityYear, shipAddressUsageInd, shipAddressUsage, shipNameIndicator, paymentAccInd, paymentAccAge, suspiciousAccActivity, threeDSReqAuthMethod, threeDSReqAuthTimestamp, threeDSReqPriorRef, threeDSReqPriorAuthMethod, threeDSReqPriorAuthTimestamp, sca, getLibraryVersion(), paymentAuthenticationLevel, isShorterResponse);
 
         //FIXME: This creates an unnecessary nvp. Needed for validation purposes only
         ParameterAnnotationHelper.mapObjectToNvp(paymentRequest);
