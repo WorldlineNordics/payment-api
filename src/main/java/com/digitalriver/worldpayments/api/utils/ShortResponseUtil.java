@@ -1,6 +1,7 @@
 package com.digitalriver.worldpayments.api.utils;
 
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.PublicKey;
 import java.util.Map;
@@ -15,25 +16,12 @@ import com.digitalriver.worldpayments.api.security6.SecurityHandlerImpl;
 import com.digitalriver.worldpayments.api.utils.CryptoUtils.CryptoException;
 
 public class ShortResponseUtil {
-
 	
-    private String iBaseUrl;
+    private static final String ENCODING_UTF_8 = "UTF-8";
     public static final byte RSA_2048_AES_128_ENC_MODE_V6 = 6;
     private static final byte RSA_1024_AES_128_ENC_MODE_V5 = 5;
-    private JKSKeyHandlerV6 iKeyHandlerV6;
-    private KeyHandler iKeyHandler;
-    
-    public ShortResponseUtil(JKSKeyHandlerV6 aKeyHandlerV6, KeyHandler iKeyHandlerV5) {
-		iKeyHandlerV6 = aKeyHandlerV6;
-		iBase64Encoder = new Base64Utils();
-	}
-    public ShortResponseUtil(KeyHandler aKeyHandler) {
-		KeyHandler iKeyHandler = aKeyHandler;
-		Base64Utils iEncoder = new Base64Utils();
-	}
     
     private Base64Utils iBase64Encoder;
-
 	private JKSKeyHandlerV6 iKeyHandlerV6;
 	private KeyHandler iKeyHandlerV5;
 
@@ -43,47 +31,56 @@ public class ShortResponseUtil {
 		iBase64Encoder = new Base64Utils();
 	}
     
-    
-	public PaymentPageShorterResponse decodeWithBase64(String PPSResponse) throws CryptoException
-	{
+	public String decodeWithBase64(String PpsResponse) throws CryptoException {
 		byte[] envelope;
-		byte[] netgiroCertSerialNo;
-		byte[] signature;
+		byte[] netgiroCertSerialNo = new byte[4];
+		byte[] signature = new byte[256];
 		byte[] cipherText;
-		byte[] netgiroCertFingerprint;
-		envelope = iBase64Encoder.decode(PPSResponse);
+		byte[] netgiroCertFingerprint = new byte[4];
+		envelope = iBase64Encoder.decode(PpsResponse);
 		PublicKey drwpPublicKey;
-		switch (envelope[0]) {
+		PublicKey verifySignKey;
 		
+		switch (envelope[0]) {
 		case RSA_2048_AES_128_ENC_MODE_V6:
 			cipherText = new byte[envelope.length - 261];
 			System.arraycopy(envelope, 1, netgiroCertSerialNo, 0, 4);
 			System.arraycopy(envelope, 5, signature, 0, 256);
 			System.arraycopy(envelope, 261, cipherText, 0, cipherText.length);
-			drwpPublicKey = iKeyHandler.getDrwpPublicKey(new BigInteger(netgiroCertSerialNo).longValue());
+			drwpPublicKey = iKeyHandlerV6.getDrwpPublicKey(new BigInteger(netgiroCertSerialNo).longValue());
 		
-		try {
-			if (!CryptoUtils.verifySignature(drwpPublicKey, cipherText, signature)) {
-				throw new SecurityHandlerException("Signature does not match!");
+			try {
+				if (!CryptoUtils.verifySignature(drwpPublicKey, cipherText, signature)) {
+					throw new SecurityHandlerException("Signature does not match!");
+				}
+			} catch (CryptoException e) {
+				throw new SecurityHandlerException("Failed to verify signature!", e);
 			}
-		} catch (CryptoException e) {
-			throw new SecurityHandlerException("Failed to verify signature!", e);
-		}
-		
+			
 		case RSA_1024_AES_128_ENC_MODE_V5:
 			cipherText = new byte[envelope.length - 273];
 			System.arraycopy(envelope, 1, netgiroCertFingerprint, 0, 16);
 			System.arraycopy(envelope, 17, signature, 0, 256);
 			System.arraycopy(envelope, 273, cipherText, 0, cipherText.length);
-			verifySignKey = iKeyHandler.getPublicKey(netgiroCertFingerprint);
-		try {
-			if (!CryptoUtils.verifySignature(verifySignKey, cipherText,
-					signature)) {
-				throw new SecurityHandlerException("Signature does not match!");
+			verifySignKey = iKeyHandlerV5.getPublicKey(netgiroCertFingerprint);
+			
+			try {
+				if (!CryptoUtils.verifySignature(verifySignKey, cipherText,
+						signature)) {
+					throw new SecurityHandlerException("Signature does not match!");
+				}
+			} catch (CryptoException e) {
+				throw new SecurityHandlerException("Failed to verify signature!", e);
 			}
-		} catch (CryptoException e) {
-			throw new SecurityHandlerException("Failed to verify signature!", e);
+			
 		}
+		
+		try {
+			return new String(envelope, ENCODING_UTF_8);
+		} catch (UnsupportedEncodingException e) {
+			// Should never happen
+			throw new SecurityHandlerException(
+					"Failed to convert result to UTF-8", e);
 		}
 		
 //		Map<String, String> nvpMap = ParseUtil.parseWithEscape(envelope.toString(),
