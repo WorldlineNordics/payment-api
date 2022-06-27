@@ -8,6 +8,7 @@ import com.digitalriver.worldpayments.api.ParameterAnnotationHelper;
 import com.digitalriver.worldpayments.api.PaymentPageShorterResponse;
 import com.digitalriver.worldpayments.api.security.SecurityHandler;
 import com.digitalriver.worldpayments.api.security.SecurityHandlerException;
+import com.digitalriver.worldpayments.api.security5.KeyHandler;
 import com.digitalriver.worldpayments.api.security6.JKSKeyHandlerV6;
 import com.digitalriver.worldpayments.api.security6.SecurityHandlerImpl;
 import com.digitalriver.worldpayments.api.utils.CryptoUtils.CryptoException;
@@ -16,9 +17,20 @@ public class ShortResponseUtil {
 
 	
     private String iBaseUrl;
-    private Base64Utils iBase64Encoder;
     public static final byte RSA_2048_AES_128_ENC_MODE_V6 = 6;
     private static final byte RSA_1024_AES_128_ENC_MODE_V5 = 5;
+    
+    private Base64Utils iBase64Encoder;
+
+	private JKSKeyHandlerV6 iKeyHandlerV6;
+	private KeyHandler iKeyHandlerV5;
+
+	public ShortResponseUtil(JKSKeyHandlerV6 iKeyHandlerV6, KeyHandler iKeyHandlerV5) {
+		iKeyHandlerV6 = iKeyHandlerV6;
+		iKeyHandlerV5 = iKeyHandlerV5;
+		iBase64Encoder = new Base64Utils();
+	}
+    
     
 	public void decodeWithBase64(String PPSResponse) throws CryptoException
 	{
