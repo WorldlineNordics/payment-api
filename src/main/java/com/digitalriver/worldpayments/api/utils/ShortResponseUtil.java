@@ -60,7 +60,7 @@ public class ShortResponseUtil {
 //		return createShorterPaymentResponse(nvpMap);
 	}
 	
-	private static PaymentPageShorterResponse createShorterPaymentResponse(String decodedResponse) {
+	public static PaymentPageShorterResponse createShorterPaymentResponse(String decodedResponse) {
 
 		Map<String, String> nvpMap = ParseUtil.parseWithEscape(decodedResponse, '=', ';');
 		
