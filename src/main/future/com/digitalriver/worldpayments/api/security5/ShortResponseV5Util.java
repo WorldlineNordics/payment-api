@@ -6,14 +6,13 @@ import java.util.Map;
 
 import com.digitalriver.worldpayments.api.ParameterAnnotationHelper;
 import com.digitalriver.worldpayments.api.PaymentPageShorterResponse;
-import com.digitalriver.worldpayments.api.security.SecurityHandler;
 import com.digitalriver.worldpayments.api.security.SecurityHandlerException;
 import com.digitalriver.worldpayments.api.utils.Base64Utils;
 import com.digitalriver.worldpayments.api.utils.CryptoUtils;
 import com.digitalriver.worldpayments.api.utils.ParseUtil;
 import com.digitalriver.worldpayments.api.utils.CryptoUtils.CryptoException;
 
-public abstract class ShortResponseV5Util {
+public class ShortResponseV5Util {
 
 	private static final String ENCODING_UTF_8 = "UTF-8";
 	public static final byte RSA_2048_AES_128_ENC_MODE_V6 = 6;
@@ -29,7 +28,6 @@ public abstract class ShortResponseV5Util {
 		byte[] envelope;
 		byte[] netgiroCertFingerprint = new byte[16];
 		byte[] signature = new byte[256];
-		byte[] plainText;
 		byte[] cipherText;
 		PublicKey verifySignKey;
 
