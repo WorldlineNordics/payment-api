@@ -14,21 +14,20 @@ import com.digitalriver.worldpayments.api.utils.CryptoUtils.CryptoException;
 public class ShortResponseUtil {
 
 	private static final String ENCODING_UTF_8 = "UTF-8";
-	public static final byte RSA_2048_AES_128_ENC_MODE_V6 = 6;
-
-	private Base64Utils iBase64Encoder;
-	private JKSKeyHandlerV6 iKeyHandlerV6;
+	
+	private final Base64Utils iBase64Encoder;
+	private final JKSKeyHandlerV6 iKeyHandlerV6;
 
 	public ShortResponseUtil(JKSKeyHandlerV6 iKeyHandlerV6) {
 		this.iKeyHandlerV6 = iKeyHandlerV6;
 		this.iBase64Encoder = new Base64Utils();
 	}
 
-	public String decodeWithBase64(String PpsResponse) {
+	public String decodeWithBase64(String ppsResponse) {
 		byte[] envelope;
 		byte[] netgiroCertSerialNo = new byte[4];
 		byte[] signature = new byte[256];
-		envelope = iBase64Encoder.decode(PpsResponse);
+		envelope = iBase64Encoder.decode(ppsResponse);
 		byte[] cipherText = new byte[envelope.length - 261];
 		PublicKey drwpPublicKey;
 

@@ -15,7 +15,6 @@ import com.digitalriver.worldpayments.api.utils.CryptoUtils.CryptoException;
 public class ShortResponseV5Util {
 
 	private static final String ENCODING_UTF_8 = "UTF-8";
-	public static final byte RSA_2048_AES_128_ENC_MODE_V6 = 6;
 	private KeyHandler iKeyHandler;
 	private Base64Utils iEncoder;
 
@@ -24,14 +23,14 @@ public class ShortResponseV5Util {
 		iEncoder = new Base64Utils();
 	}
 
-	public String decodeWithBase64(String PpsResponse) {
+	public String decodeWithBase64(String ppsResponse) {
 		byte[] envelope;
 		byte[] netgiroCertFingerprint = new byte[16];
 		byte[] signature = new byte[256];
 		byte[] cipherText;
 		PublicKey verifySignKey;
 
-		envelope = iEncoder.decode(PpsResponse);
+		envelope = iEncoder.decode(ppsResponse);
 		cipherText = new byte[envelope.length - 273];
 
 		System.arraycopy(envelope, 1, netgiroCertFingerprint, 0, 16);

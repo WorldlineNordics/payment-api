@@ -13,7 +13,7 @@ import java.util.Map;
 public class PaymentRequest extends AbstractPaymentPageRequest {
 
     public PaymentRequest(Long mid, String subMerchantId, String posId, String transactionChannel, String token, String orderId, String orderDescription, String orderDetailDescription, BigDecimal amount, String currency, BigDecimal vatAmount, Double vatRate, String consumerCountry, String consumerLanguage, String returnUrl, Integer timeLimit, Map<String, String> additionalParameters, Integer paymentMethodId, StoreFlag storeFlag, String billingAddressLine1, String billingAddressLine2, String billingCity, String billingStateProvince, String billingZipCode, String billingCountryCode, String billingEmailAddress, String billingPhone, String billingMobilePhone, String billingLastName, String billingFirstName, String billingFullName, String shippingAddressLine1, String shippingAddressLine2, String shippingCity, String shippingStateProvince, String shippingZipCode, String shippingCountryCode, String shippingEmailAddress, String shippingPhone, String dueDate, String paymentPlanCode, String billingCompanyName, String billingBuyerVATNumber, String billingBuyerType, String shippingCompanyName, String shippingAddressLine3, String billingAddressLine3, String birthDate, String companyResponsibleBirthDate, String companyResponsibleFullName, String companyResponsibleVATNumber, String recurringType, String posDesc, String shippingMobilePhone, String shippingLastName, String shippingFirstName, String shippingFullName, String billingSSN, String companyTaxId, String gender, String billingStreetName, String billingHouseNumber, String billingHouseExtension, String shippingStreetName, String shippingHouseNumber, String shippingHouseExtension, String shippingCareOf, List<LineItem> lineItems, AuthorizationType authorizationType, AuthenticationRedirect authenticationRedirect, boolean autoCapture, Long timestamp, StoredCredentialIndicator storedCredentialIndicator, StoredCredentialReason storedCredentialReason, String schemeReferenceId,
-    	String purchaseInstallment, String md, String acctID, String acctType, String addrMatch, String messageCategory, String purchaseDate, String transType, String threeRIInd, String threeDSRequestorAuthenticationInd, String threeDSRequestorChallengeInd, String challengeWindowSize, String shipIndicator, String deliveryTimeframe, String deliveryEmailAddress, String reorderItemsInd, String preOrderPurchaseInd, String preOrderDate, String giftCardAmount, String giftCardCurr, String giftCardCount, String chAccAgeInd, String chAccDate, String chAccChangeInd, String chAccChange, String chAccPwChangeInd, String chAccPwChange, String nbPurchaseAccount, String provisionAttemptsDay, String txnActivityDay, String txnActivityYear, String shipAddressUsageInd, String shipAddressUsage, String shipNameIndicator, String paymentAccInd, String paymentAccAge, String suspiciousAccActivity, String threeDSReqAuthMethod, String threeDSReqAuthTimestamp, String threeDSReqPriorRef, String threeDSReqPriorAuthMethod, String threeDSReqPriorAuthTimestamp, String sca, String libraryVersion, String paymentAuthenticationLevel, Boolean isShorterResponse) {
+    	String purchaseInstallment, String md, String acctID, String acctType, String addrMatch, String messageCategory, String purchaseDate, String transType, String threeRIInd, String threeDSRequestorAuthenticationInd, String threeDSRequestorChallengeInd, String challengeWindowSize, String shipIndicator, String deliveryTimeframe, String deliveryEmailAddress, String reorderItemsInd, String preOrderPurchaseInd, String preOrderDate, String giftCardAmount, String giftCardCurr, String giftCardCount, String chAccAgeInd, String chAccDate, String chAccChangeInd, String chAccChange, String chAccPwChangeInd, String chAccPwChange, String nbPurchaseAccount, String provisionAttemptsDay, String txnActivityDay, String txnActivityYear, String shipAddressUsageInd, String shipAddressUsage, String shipNameIndicator, String paymentAccInd, String paymentAccAge, String suspiciousAccActivity, String threeDSReqAuthMethod, String threeDSReqAuthTimestamp, String threeDSReqPriorRef, String threeDSReqPriorAuthMethod, String threeDSReqPriorAuthTimestamp, String sca, String libraryVersion, String paymentAuthenticationLevel) {
         setMid(mid);
         setSubMerchantId(subMerchantId);
         setPosId(posId);
@@ -163,7 +163,7 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
     	setSca(sca);
     	setLibraryVersion(libraryVersion);
     	setPaymentAuthenticationLevel(paymentAuthenticationLevel);
-    	setIsShorterResponse(isShorterResponse);
+    	
     }
 
     public void setShippingHouseNumber(String shippingHouseNumber) {
@@ -693,7 +693,4 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
 		super.paymentAuthenticationLevel = paymentAuthenticationLevel;
 	}
 	
-	public void setIsShorterResponse(boolean isShorterResponse) {
-		super.isShorterResponse = isShorterResponse;
-	}
 }
