@@ -132,8 +132,7 @@ public class PaymentRequestBuilder {
     private String libraryVersion;
     private String sca;
     private String paymentAuthenticationLevel = "Proceed when SCA Successful";
-    private boolean isShorterResponse = false;
-    
+
     public PaymentRequestBuilder setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
         return this;
@@ -726,11 +725,6 @@ public class PaymentRequestBuilder {
 	
 	public PaymentRequestBuilder setPaymentAuthenticationLevel(String paymentAuthenticationLevel) {
 		this.paymentAuthenticationLevel = paymentAuthenticationLevel;
-		return this;
-	}
-	
-	public PaymentRequestBuilder setIsShorterResponse(boolean isShorterResponse) {
-		this.isShorterResponse = isShorterResponse;
 		return this;
 	}
 
