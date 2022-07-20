@@ -163,6 +163,7 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
     	setSca(sca);
     	setLibraryVersion(libraryVersion);
     	setPaymentAuthenticationLevel(paymentAuthenticationLevel);
+    	
     }
 
     public void setShippingHouseNumber(String shippingHouseNumber) {
@@ -691,4 +692,5 @@ public class PaymentRequest extends AbstractPaymentPageRequest {
 	public void setPaymentAuthenticationLevel(String paymentAuthenticationLevel) {
 		super.paymentAuthenticationLevel = paymentAuthenticationLevel;
 	}
+	
 }
